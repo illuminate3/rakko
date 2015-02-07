@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b393d1564591903f65f06e99dfa3d693",
+    "hash": "6933200f3dea075e6fd515ed0fd25680",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -431,17 +431,17 @@
             "time": "2014-12-20 21:24:13"
         },
         {
-            "name": "illuminate3/lingos",
+            "name": "illuminate3/kotoba",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate3/lingos.git",
-                "reference": "5859905899599b8a9e430ed17ae46946f6092add"
+                "url": "https://github.com/illuminate3/kotoba.git",
+                "reference": "4c1904fa7867a8762d7d175fbdaa596cbb052889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/lingos/zipball/5859905899599b8a9e430ed17ae46946f6092add",
-                "reference": "5859905899599b8a9e430ed17ae46946f6092add",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/4c1904fa7867a8762d7d175fbdaa596cbb052889",
+                "reference": "4c1904fa7867a8762d7d175fbdaa596cbb052889",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Illuminate3\\Lingos\\": "src/Illuminate3/Lingos/"
+                    "Illuminate3\\Kotoba\\": "src/Illuminate3/Kotoba/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -461,18 +461,18 @@
                 {
                     "name": "Illuminate3",
                     "email": "carsten.sapporo@gmail.com",
-                    "homepage": "https://github.com/illuminate3/lingos",
+                    "homepage": "https://github.com/illuminate3/kotoba",
                     "role": "Developer"
                 }
             ],
-            "description": "Baseline language files for Laravel4",
-            "homepage": "https://github.com/illuminate3/lingos",
+            "description": "Baseline language files for Laravel 5",
+            "homepage": "https://github.com/illuminate3/kotoba",
             "keywords": [
                 "i18n",
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-06 03:44:35"
+            "time": "2015-02-07 08:01:46"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -3149,7 +3149,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "illuminate3/lingos": 20,
+        "illuminate3/kotoba": 20,
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20

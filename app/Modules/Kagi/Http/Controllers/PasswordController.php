@@ -18,7 +18,7 @@ class PasswordController extends Controller {
 	|
 	*/
 
-	use ResetsPasswords;
+	use KagiResetPassword;
 
 	/**
 	 * Create a new password controller instance.

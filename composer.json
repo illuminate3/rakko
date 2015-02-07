@@ -6,7 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"illuminate3/lingos": "dev-master",
+		"illuminate3/kotoba": "dev-master",
 		"caffeinated/modules": "dev-master",
 		"caffeinated/themes": "~1.0",
 		"caffeinated/flash": "dev-master",

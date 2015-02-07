@@ -17,7 +17,7 @@ class RoleController extends \KagiController {
     public function index()
     {
         // Show the page
-        return view('admin.roles.index');
+        return View('kagi::roles.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -32,7 +32,7 @@ class RoleController extends \KagiController {
         $permisionsadd =array();
 
         // Show the page
-        return view('admin.roles.create_edit', compact('permissionsAdmin', 'permissionsUser','permisionsadd'));
+        return View('kagi::roles.create_edit', compact('permissionsAdmin', 'permissionsUser','permisionsadd'));
     }
     /**
      * Store a newly created resource in storage.
@@ -81,7 +81,7 @@ class RoleController extends \KagiController {
         $permisionsadd = PermissionRole::where('role_id','=',$id)->select('permission_id')->get();
 
         // Show the page
-        return view('admin.roles.create_edit', compact('role', 'permissionsAdmin', 'permissionsUser','permisionsadd'));
+        return View('kagi::roles.create_edit', compact('role', 'permissionsAdmin', 'permissionsUser','permisionsadd'));
     }
 
     /**
@@ -131,7 +131,7 @@ class RoleController extends \KagiController {
     {
         $role = Role::find($id);
         // Show the page
-        return view('admin.roles.delete', compact('role'));
+        return View('kagi::roles.delete', compact('role'));
     }
 
     /**

@@ -153,7 +153,7 @@ return [
 /*
  * Package Service Providers
  */
-'Illuminate3\Lingos\LingosServiceProvider',
+'Illuminate3\Kotoba\KotobaServiceProvider',
 'Caffeinated\Modules\ModulesServiceProvider',
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',

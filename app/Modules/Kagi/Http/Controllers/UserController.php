@@ -19,7 +19,7 @@ class UserController extends \KagiController {
     public function index()
     {
         // Show the page
-        return view('admin.users.index');
+        return View('kagi::users.index');
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends \KagiController {
         $roles = Role::all();
         // Selected groups
         $selectedRoles = array();
-        return view('admin.users.create_edit', compact('roles', 'selectedRoles'));
+        return View('kagi::users.create_edit', compact('roles', 'selectedRoles'));
     }
 
     /**
@@ -69,7 +69,7 @@ class UserController extends \KagiController {
         $roles = Role::all();
         $selectedRoles = AssignedRoles::where('user_id','=',$user->id)->lists('role_id');
 
-        return view('admin.users.create_edit', compact('user', 'roles', 'selectedRoles'));
+        return View('kagi::users.create_edit', compact('user', 'roles', 'selectedRoles'));
     }
 
     /**
@@ -114,7 +114,7 @@ class UserController extends \KagiController {
     {
         $user = User::find($id);
         // Show the page
-        return view('admin.users.delete', compact('user'));
+        return View('kagi::users.delete', compact('user'));
     }
 
     /**

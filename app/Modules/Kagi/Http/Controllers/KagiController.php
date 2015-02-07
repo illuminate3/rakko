@@ -30,7 +30,7 @@ class KagiController extends Controller {
 	public function index()
 	{
 //dd("loaded");
-		return view('kagi::kagi');
+		return View('kagi::kagi');
 	}
 
 

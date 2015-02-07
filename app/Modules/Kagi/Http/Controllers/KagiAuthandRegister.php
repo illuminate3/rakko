@@ -85,7 +85,7 @@ trait KagiAuthandRegister {
 		return redirect($this->loginPath())
 					->withInput($request->only('email'))
 					->withErrors([
-						'email' => 'These credentials do not match our records.',
+						'email' => trans('kotoba::auth.error.email'),
 					]);
 	}
 
