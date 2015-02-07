@@ -34,4 +34,14 @@ class KagiServiceProvider extends ServiceProvider
 		Lang::addNamespace('kagi', __DIR__.'/../Resources/Lang/');
 		View::addNamespace('kagi', __DIR__.'/../Resources/Views/');
 	}
+
+	/**
+	 * Boot the service provider.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		include __DIR__.'/../Config/config.php';
+	}
 }

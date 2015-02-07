@@ -46,7 +46,7 @@
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-								{{ trans('kotoba::auth.button.log_in') }}
+								{{ trans('kotoba::button.log_in') }}
 							</button>
 
 							<a href="/password/email">{{ trans('kotoba::auth.forgot_password') }}</a>

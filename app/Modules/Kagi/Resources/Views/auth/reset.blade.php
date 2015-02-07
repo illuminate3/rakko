@@ -41,7 +41,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									{{ trans('kotoba::auth.reset_password') }}
+									{{ trans('kotoba::auth.button.reset_password') }}
 								</button>
 							</div>
 						</div>

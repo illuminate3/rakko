@@ -47,7 +47,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									{{ trans('kotoba::auth.button.register') }}
+									{{ trans('kotoba::button.register') }}
 								</button>
 							</div>
 						</div>
