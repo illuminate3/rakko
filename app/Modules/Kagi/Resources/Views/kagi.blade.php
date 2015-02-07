@@ -1,17 +1,17 @@
 <html>
 	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<title>Kagi</title>
 		<style>
 			body {
 				margin: 0;
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #B0BEC5;
 				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
+				font-weight: 400;
+				font-family: 'Open Sans', sans-serif;
+				color: #111;
 			}
 
 			.container {
@@ -32,6 +32,7 @@
 
 			.quote {
 				font-size: 24px;
+				text-align: left;
 			}
 		</style>
 	</head>
@@ -40,9 +41,11 @@
 			<div class="content">
 				<div class="title">Kagi</div>
 				<div class="quote">
-				鍵:kagi:key and sometimes refers to the lock itself - noun
-				<br>
-				Kegi is a module for Laravel 5 authentification and Authorization
+					鍵 : kagi
+					<br>
+					noun - key also can refer to the lock itself
+					<br>
+					Kagi is a module for Laravel 5 Authentification and Authorization
 				</div>
 			</div>
 		</div>

@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('kagi', 'KagiController@index');
+
+Route::controllers([
+	'auth' => 'AuthController',
+	'password' => 'PasswordController',
+]);
+
+
 Route::group(['prefix' => 'kagi'], function() {
-	Route::get('home', 'KagiController@index');
+//	Route::get('home', 'KagiController@index');
 });

@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;

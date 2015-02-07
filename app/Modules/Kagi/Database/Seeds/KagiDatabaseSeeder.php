@@ -14,8 +14,11 @@ class KagiDatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
+//		$this->call('App\Modules\Kagi\Database\Seeds\FoobarTableSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\RolesTableSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\PermissionsTableSeeder');
 
-		// $this->call('App\Modules\Kagi\Database\Seeds\FoobarTableSeeder');
 	}
 
 }
