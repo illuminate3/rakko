@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
+//use Illuminate\Contracts\Auth\Registrar;
+use App\Modules\Kagi\Services\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller {

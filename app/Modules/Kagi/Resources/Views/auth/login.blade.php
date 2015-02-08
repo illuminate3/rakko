@@ -45,11 +45,19 @@
 
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
-							<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+
+							<button type="submit" class="btn btn-success">
 								{{ trans('kotoba::button.log_in') }}
 							</button>
 
-							<a href="/password/email">{{ trans('kotoba::auth.forgot_password') }}</a>
+							<a href="/password/email" class="btn btn-info">
+								{{ trans('kotoba::auth.forgot_password') }}
+							</a>
+
+							<a href="/auth/register" class="btn btn-primary">
+								{{ trans('kotoba::auth.register') }}
+							</a>
+
 						</div>
 					</div>
 

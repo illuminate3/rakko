@@ -2,13 +2,13 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+class EntrustSetupTables extends Migration {
+
 	public function __construct()
 	{
 		// Get the prefix
 		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
 	}
-
-class EntrustSetupTables extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -51,8 +51,8 @@ class EntrustSetupTables extends Migration {
 	{
 //		Schema::drop('assigned_roles');
 //		Schema::drop('roles');
-		Schema::drop($this->prefix . 'roles');
 		Schema::drop($this->prefix . 'assigned_roles');
+		Schema::drop($this->prefix . 'roles');
 	}
 
 }

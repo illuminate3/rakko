@@ -25,6 +25,9 @@ class KagiServiceProvider extends ServiceProvider
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/kagi.php', 'kagi'
 		);
+		$this->mergeConfigFrom(
+			__DIR__.'/../Config/kagi_services.php', 'kagi_services'
+		);
 
 	}
 
@@ -54,6 +57,9 @@ $this->publishes([
 */
 $this->publishes([
 	__DIR__.'/../Config/kagi.php' => config_path('kagi.php'),
+]);
+$this->publishes([
+	__DIR__.'/../Config/kagi_services.php' => config_path('kagi_services.php'),
 ]);
 
 	}

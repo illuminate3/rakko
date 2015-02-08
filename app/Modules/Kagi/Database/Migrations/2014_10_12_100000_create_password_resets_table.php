@@ -32,7 +32,7 @@ class CreatePasswordResetsTable extends Migration {
 
 			$table->string('email')->unique()->index();
 			$table->string('token')->index();
-			$table->timestamp('created_at');
+//			$table->timestamp('created_at');
 
 
 			$table->softDeletes();

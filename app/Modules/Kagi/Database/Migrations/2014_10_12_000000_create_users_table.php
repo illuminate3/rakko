@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 
 
+			$table->string('name');
 			$table->string('email')->unique()->index();
 			$table->string('password')->nullable()->index();
 
@@ -46,7 +47,7 @@ class CreateUsersTable extends Migration {
 
 			$table->boolean('verified')->default(0);
 			$table->boolean('disabled')->default(0);
-			$table->string('confirmation_code');
+			$table->string('confirmation_code')->nullable();
 			$table->boolean('confirmed')->default(false);
 
 			$table->boolean('activated')->default(0);

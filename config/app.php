@@ -159,6 +159,7 @@ return [
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
+'Illuminate\Html\HtmlServiceProvider',
 
 	],
 

@@ -11,9 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// Just a dummy page to demonstrate the authentication (or lack of).
+get('/', function()
+{
+    if (Auth::check()) return 'Welcome back, '  . Auth::user()->username;
 
-Route::get('home', 'HomeController@index');
+    return 'Hi guest. ' . link_to('login', 'Login With Github!');
+});
+
+// Login a user with GitHub (or any provider).
+get('login', 'SocialAuthController@login');
+
+
+Route::get('welcome', 'WelcomeController@index');
+
+//Route::get('/', 'HomeController@index');
 
 /*
 Route::controllers([
