@@ -8,7 +8,7 @@ class CreateUsersTable extends Migration {
 	public function __construct()
 	{
 		// Get the prefix
-		$this->prefix = Config::get('kagi::kagi_db.prefix', '');
+		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
 	}
 
 	/**
@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-dd($this->prefix);
+//dd($this->prefix);
 
 //		Schema::create('users', function(Blueprint $table)
 		Schema::create($this->prefix . 'users', function(Blueprint $table)
@@ -71,7 +71,8 @@ dd($this->prefix);
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+//		Schema::drop('users');
+		Schema::drop($this->prefix . 'users');
 	}
 
 }

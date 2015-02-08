@@ -158,6 +158,7 @@ return [
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
+'Laravel\Socialite\SocialiteServiceProvider',
 
 	],
 
@@ -214,6 +215,7 @@ return [
 'Theme'     => 'Caffeinated\Themes\Facades\Theme',
 'Component' => 'Caffeinated\Themes\Facades\Component',
 'Flash'     => 'Caffeinated\Flash\Facades\Flash',
+'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
 	],
 

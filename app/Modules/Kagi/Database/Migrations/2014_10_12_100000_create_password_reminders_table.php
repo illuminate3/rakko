@@ -5,6 +5,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePasswordRemindersTable extends Migration {
 
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,7 +18,8 @@ class CreatePasswordRemindersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('password_reminders', function(Blueprint $table)
+//		Schema::create('password_reminders', function(Blueprint $table)
+		Schema::create($this->prefix . 'password_reminders', function(Blueprint $table)
 		{
 /*
 			$table->string('email')->index();
@@ -42,7 +49,8 @@ class CreatePasswordRemindersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('password_reminders');
+//		Schema::drop('password_reminders');
+		Schema::drop($this->prefix . 'password_reminders');
 	}
 
 }

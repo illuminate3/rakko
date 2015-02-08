@@ -5,6 +5,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePasswordResetsTable extends Migration {
 
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,7 +18,8 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('password_resets', function(Blueprint $table)
+//		Schema::create('password_resets', function(Blueprint $table)
+		Schema::create($this->prefix . 'password_resets', function(Blueprint $table)
 		{
 /*
 			$table->string('email')->index();
@@ -41,7 +48,8 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('password_resets');
+//		Schema::drop('password_resets');
+		Schema::drop($this->prefix . 'password_resets');
 	}
 
 }

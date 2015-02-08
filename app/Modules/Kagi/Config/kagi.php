@@ -8,7 +8,7 @@ return [
 |--------------------------------------------------------------------------
 */
 'kagi_db' => array(
-	'prefix'					=> 'kagi',
+	'prefix'					=> '',
 	'default_role_id'			=> '2',
 	'activated'					=> '1',
 	'verified'					=> '1',
