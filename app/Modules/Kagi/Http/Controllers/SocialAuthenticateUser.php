@@ -45,7 +45,12 @@ class SocialAuthenticateUser {
 	{
 		if ( ! $hasCode) return $this->getAuthorizationFirst();
 
-		$user = $this->users->findByUsernameOrCreate($this->getGithubUser());
+		if ( Config::get('kagi.kagi_social', '') == 'github' ) {
+			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
+		}
+		if ( Config::get('kagi.kagi_social', '') == 'google' ) {
+			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
+		}
 
 		$this->auth->login($user, true);
 
@@ -66,8 +71,12 @@ class SocialAuthenticateUser {
 	 */
 	private function getGithubUser()
 	{
-		$socialType = Config::get('kagi.kagi_social', '');
-		return $this->socialite->driver($socialType)->user();
+		return $this->socialite->driver('github')->user();
+	}
+
+	private function getGoogleUser()
+	{
+		return $this->socialite->driver('google')->user();
 	}
 
 }
