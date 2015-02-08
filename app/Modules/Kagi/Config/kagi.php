@@ -14,4 +14,11 @@ return [
 	'verified'					=> '1',
 ),
 
+/* SocialLite choices
+|
+| facebook, twitter, google, and github
+|
+*/
+'kagi_social'					=> 'github',
+
 ];

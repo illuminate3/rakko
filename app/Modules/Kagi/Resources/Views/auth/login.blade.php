@@ -55,7 +55,11 @@
 							</a>
 
 							<a href="/auth/register" class="btn btn-primary">
-								{{ trans('kotoba::auth.register') }}
+								{{ trans('kotoba::button.register') }}
+							</a>
+
+							<a href="/password/email" class="btn btn-default">
+								{{ trans('kotoba::button.social_log_in') }}
 							</a>
 
 						</div>

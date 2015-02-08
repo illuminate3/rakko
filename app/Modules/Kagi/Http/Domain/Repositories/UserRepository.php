@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Kagi\Http\Domain\Repositories;
 
-use app\User;
+use App\User;
 
 class UserRepository {
 
@@ -10,6 +10,7 @@ class UserRepository {
 	 */
 	public function findByUsernameOrCreate($userData)
 	{
+//dd($userData);
 		return User::firstOrCreate([
 			'name' => $userData->nickname,
 			'email'    => $userData->email,

@@ -1,10 +1,13 @@
 <?php namespace App\Modules\Kagi\Http\Controllers;
 
-use Illuminate\Contracts\Auth\Authenticator;
+//use Illuminate\Contracts\Auth\Authenticator;
+use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Modules\Kagi\Http\Listeners\AuthenticateUserListener;
+use Config;
 
-class AuthenticateUser {
+class SocialAuthenticateUser {
 
 	/**
 	 * @var UserRepository
@@ -17,16 +20,16 @@ class AuthenticateUser {
 	private $socialite;
 
 	/**
-	 * @var Authenticator
+	 * @var Guard
 	 */
 	private $auth;
 
 	/**
 	 * @param UserRepository $users
 	 * @param Socialite $socialite
-	 * @param Authenticator $auth
+	 * @param Guard $auth
 	 */
-	public function __construct(UserRepository $users, Socialite $socialite, Authenticator $auth)
+	public function __construct(UserRepository $users, Socialite $socialite, Guard $auth)
 	{
 		$this->users = $users;
 		$this->socialite = $socialite;
@@ -54,7 +57,8 @@ class AuthenticateUser {
 	 */
 	private function getAuthorizationFirst()
 	{
-		return $this->socialite->driver('github')->redirect();
+		$socialType = Config::get('kagi.kagi_social', '');
+		return $this->socialite->driver($socialType)->redirect();
 	}
 
 	/**
@@ -62,7 +66,8 @@ class AuthenticateUser {
 	 */
 	private function getGithubUser()
 	{
-		return $this->socialite->driver('github')->user();
+		$socialType = Config::get('kagi.kagi_social', '');
+		return $this->socialite->driver($socialType)->user();
 	}
 
 }
