@@ -12,16 +12,43 @@
 */
 
 Route::get('kagi', 'KagiController@index');
-
-// Login a user with GitHub (or any provider).
-get('social/login', 'SocialAuthController@login');
-
-
+/*
 Route::group(['prefix' => 'kagi'], function() {
 //	Route::get('home', 'KagiController@index');
 });
+*/
+
+// Login a user with GitHub (or any provider).
+get('social/login', 'SocialAuthController@login');
 
 Route::controllers([
 	'auth' => 'AuthController',
 	'password' => 'PasswordController',
 ]);
+
+//Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function() {
+	Route::pattern('id', '[0-9]+');
+	Route::pattern('id2', '[0-9]+');
+
+	#Users
+	Route::get('users/', 'UserController@index');
+	Route::get('users/create', 'UserController@getCreate');
+	Route::post('users/create', 'UserController@postCreate');
+	Route::get('users/{id}/edit', 'UserController@getEdit');
+	Route::post('users/{id}/edit', 'UserController@postEdit');
+	Route::get('users/{id}/delete', 'UserController@getDelete');
+	Route::post('users/{id}/delete', 'UserController@postDelete');
+	Route::get('users/data', 'UserController@data');
+
+	#Roles
+	Route::get('roles/', 'RoleController@index');
+	Route::get('roles/create', 'RoleController@getCreate');
+	Route::post('roles/create', 'RoleController@postCreate');
+	Route::get('roles/{id}/edit', 'RoleController@getEdit');
+	Route::post('roles/{id}/edit', 'RoleController@postEdit');
+	Route::get('roles/{id}/delete', 'RoleController@getDelete');
+	Route::post('roles/{id}/delete', 'RoleController@postDelete');
+	Route::get('roles/data', 'RoleController@data');
+
+});

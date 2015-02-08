@@ -44,6 +44,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="/admin/users">users</a></li>
+								<li><a href="/admin/roles">roles</a></li>
 								<li><a href="/auth/logout">{{ trans('kotoba::auth.log_out') }}</a></li>
 							</ul>
 						</li>
@@ -54,7 +56,7 @@
 	</nav>
 
 	@yield('content')
-
+@include('flash::message')
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('app')
 
 {{-- Web site Title --}}
 @section('title')
@@ -38,7 +38,7 @@
 		oTable = $('#table').dataTable({
 			"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 			"sPaginationType" : "bootstrap",
-			
+
 			"bProcessing" : true,
 			"bServerSide" : true,
 			"sAjaxSource" : "{{ URL::to('admin/users/data/') }}",
@@ -53,6 +53,6 @@
 				});
 			}
 		});
-	}); 
+	});
 </script>
 @stop

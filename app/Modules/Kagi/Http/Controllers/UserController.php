@@ -5,22 +5,23 @@ use App\User;
 use App\Modules\Kagi\Http\Domain\AssignedRoles;
 use App\Modules\Kagi\Http\Domain\Role;
 use Bllim\Datatables\Facade\Datatables;
-use App\Modules\Kagi\Http\Requests\UserRequest;
+//use App\Modules\Kagi\Http\Requests\UserRequest;
 use App\Modules\Kagi\Http\Requests\UserEditRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-class UserController extends \KagiController {
+class UserController extends KagiController {
 
-    /*
-    * Display a listing of the resource.
-    *
-    * @return Response
-    */
-    public function index()
-    {
-        // Show the page
-        return View('kagi::users.index');
-    }
+	/*
+	* Display a listing of the resource.
+	*
+	* @return Response
+	*/
+	public function index()
+	{
+//dd("loaded");
+		// Show the page
+		return View('kagi::users.index');
+	}
 
     /**
      * Show the form for creating a new resource.

@@ -32,6 +32,7 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Modules\Kagi\Http\Middleware\RedirectIfAuthenticated',
 */
+		'admin' => 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
 	];
 
 }
