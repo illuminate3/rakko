@@ -1,0 +1,89 @@
+.navagoco {
+	padding: 4px;
+	margin: 0px;
+}
+
+.navagoco ul {
+	padding: 0;
+	margin: 0 0 0 18px;
+}
+
+.navagoco, .navagoco ul, .navagoco li {
+	list-style: none;
+}
+
+.navagoco > li {
+	margin: 4px 0;
+}
+
+.navagoco > li li {
+	margin: 2px 0;
+}
+
+.navagoco a {
+	color: #333;
+	display: block;
+	outline: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	text-decoration: none;
+	width:100%;
+}
+
+/*
+.navagoco li > a > span {
+	float: right;
+	font-size: 19px;
+	font-weight: bolder;
+}
+*/
+.navagoco li > a > span {
+	float: left;
+	margin-right: 4px;
+	font-size: 19px;
+	font-weight: bolder;
+}
+
+.navagoco li > a:hover > span {
+	color: #fff;
+}
+
+.navagoco li > a > span:after {
+/*
+	content: '\25b2';
+*/
+	content: '\25bc';
+	margin-right: 5px;
+}
+.navagoco li.open > a > span:after {
+/*
+	content: '\25bc';
+*/
+	content: '\25b2';
+	margin-right: 5px;
+}
+
+/*
+.navagoco a:hover, .navagoco li.active > a {
+*/
+.navagoco li > a:hover, .navagoco li.active > a {
+	background-color: #101010;
+	color: #f5f5f5;
+}
+
+.navagoco > li.active > a  {
+	background-color: #101010;
+}
+
+.navagoco li a {
+	font-size: 14px;
+	line-height: 18px;
+	padding: 2px 10px;
+}
+
+.navagoco > li > a {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 4px 10px;
+}

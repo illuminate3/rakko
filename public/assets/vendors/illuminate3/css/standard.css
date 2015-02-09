@@ -1,0 +1,241 @@
+/* ------------------------------------------------- html5 ------------------------------------------------- */
+header, nav, article, aside, footer, hgroup, section { display: block }
+
+/*
+	height: 40px;
+	margin-top: 10px;
+margin-bottom: 10px;
+*/
+
+header {
+	z-index: 99;
+}
+
+footer {
+	z-index: 99;
+}
+
+nav {
+}
+
+section {
+}
+
+
+figure {
+}
+
+details {
+}
+
+/* ------------------------------------------------- font-awesome ------------------------------------------------- */
+.fa,
+.fa > a,
+.fa > li {
+	margin-right: 5px;
+}
+.glyphicon,
+.glyphicon > a,
+.glyphicon > li {
+	margin-right: 5px;
+}
+
+/* ------------------------------------------------- padding ------------------------------------------------- */
+
+.padding-none{padding:0 !important}
+.padding{padding:10px !important}
+.padding-sm{padding:5px !important}
+.padding-md{padding:10px !important}
+.padding-lg{padding:20px !important}
+.padding-xl{padding:40px !important}
+
+.padding-top-none{padding-top:0 !important}
+.padding-top{padding-top:10px !important}
+.padding-top-sm{padding-top:5px !important}
+.padding-top-md{padding-top:10px !important}
+.padding-top-lg{padding-top:20px !important}
+.padding-top-xl{padding-top:40px !important}
+
+.padding-right-none{padding-right:0 !important}
+.padding-right{padding-right:10px !important}
+.padding-right-sm{padding-right:5px !important}
+.padding-right-md{padding-right:10px !important}
+.padding-right-lg{padding-right:20px !important}
+.padding-right-xl{padding-right:40px !important}
+
+.padding-bottom-none{padding-bottom:0 !important}
+.padding-bottom{padding-bottom:10px !important}
+.padding-bottom-sm{padding-bottom:5px !important}
+.padding-bottom-md{padding-bottom:10px !important}
+.padding-bottom-lg{padding-bottom:20px !important}
+.padding-bottom-xl{padding-bottom:40px !important}
+
+.padding-left-none{padding-left:0 !important}
+.padding-left{padding-left:10px !important}
+.padding-left-sm{padding-left:5px !important}
+.padding-left-md{padding-left:10px !important}
+.padding-left-lg{padding-left:20px !important}
+.padding-left-xl{padding-left:40px !important}
+
+/* ------------------------------------------------- margins ------------------------------------------------- */
+
+.margin-none{margin:0 !important}
+
+.margin{margin:10px !important}
+.margin-sm{margin:5px !important}
+.margin-md{margin:10px !important}
+.margin-lg{margin:20px !important}
+.margin-xl{margin:40px !important}
+
+.margin-top-none{margin-top:0 !important}
+.margin-top{margin-top:10px !important}
+.margin-top-sm{margin-top:5px !important}
+.margin-top-md{margin-top:10px !important}
+.margin-top-lg{margin-top:20px !important}
+.margin-top-xl{margin-top:40px !important}
+
+.margin-right-none{margin-right:0 !important}
+.margin-right{margin-right:10px !important}
+.margin-right-sm{margin-right:5px !important}
+.margin-right-md{margin-right:10px !important}
+.margin-right-lg{margin-right:20px !important}
+.margin-right-xl{margin-right:40px !important}
+
+.margin-bottom-none{margin-bottom:0 !important}
+.margin-bottom{margin-bottom:10px !important}
+.margin-bottom-sm{margin-bottom:5px !important}
+.margin-bottom-md{margin-bottom:10px !important}
+.margin-bottom-lg{margin-bottom:20px !important}
+.margin-bottom-xl{margin-bottom:40px !important}
+
+.margin-left-none{margin-left:0 !important}
+.margin-left{margin-left:10px !important}
+.margin-left-sm{margin-left:5px !important}
+.margin-left-md{margin-left:10px !important}
+.margin-left-lg{margin-left:20px !important}
+.margin-left-xl{margin-left:40px !important}
+
+/* ------------------------------------------------- borders ------------------------------------------------- */
+
+.border-left-none{border-left:none !important}
+.border-right-none{border-right:none !important}
+.border-bottom-none{border-bottom:none !important}
+.border-top-none{border-top:none !important}
+
+/* ------------------------------------------------- floats ------------------------------------------------- */
+.float-left {float: left;}
+.float-right {float: right;}
+
+/* ------------------------------------------------- block ------------------------------------------------- */
+.display-inline-block{display:inline-block;}
+.display-block{display:block;}
+.display-inline{display:inline;}
+
+/* ------------------------------------------------- position ------------------------------------------------- */
+.position-left {
+	display:inline-block;
+	float: left;
+	margin-left: 5px;
+	margin-right: auto;
+}
+.position-right {
+	display:inline-block;
+	float: right;
+	margin-right: 10px;
+	margin-left: auto;
+}
+.position-center {
+	float: none;
+	margin: 0 auto;
+}
+
+.centered {
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	top: 30%; left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+}
+
+/* ------------------------------------------------- text ------------------------------------------------- */
+.text-left {
+	float: left;
+	text-align: left;
+	margin-right: auto;
+}
+.text-right {
+	float: right;
+	text-align: right;
+	margin-left: auto;
+}
+.text-center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ------------------------------------------------- form size ------------------------------------------------- */
+.size-xs{width:5em !important;}
+.size-sm{width:15em !important;}
+.size-md{width:30em !important;}
+.size-lg{width:40em !important;}
+.size-xl{width:50em !important;}
+.size-auto{width:auto !important;}
+.size1{width:1em !important;}
+.size2{width:2em !important;}
+.size3{width:3em !important;}
+.size4{width:4em !important;}
+.size5{width:5em !important;}
+.size6{width:6em !important;}
+.size7{width:7em !important;}
+.size8{width:8em !important;}
+.size9{width:9em !important;}
+.size10{width:10em !important;}
+.size11{width:11em !important;}
+.size12{width:12em !important;}
+.size13{width:13em !important;}
+.size14{width:14em !important;}
+.size15{width:15em !important;}
+.size16{width:16em !important;}
+.size17{width:17em !important;}
+.size18{width:18em !important;}
+.size19{width:19em !important;}
+.size20{width:20em !important;}
+.size21{width:21em !important;}
+.size22{width:22em !important;}
+.size23{width:23em !important;}
+.size24{width:24em !important;}
+.size25{width:25em !important;}
+.size26{width:26em !important;}
+.size27{width:27em !important;}
+.size28{width:28em !important;}
+.size29{width:29em !important;}
+.size30{width:30em !important;}
+.size31{width:31em !important;}
+.size32{width:32em !important;}
+.size33{width:33em !important;}
+.size34{width:34em !important;}
+.size35{width:35em !important;}
+.size36{width:36em !important;}
+.size37{width:37em !important;}
+.size38{width:38em !important;}
+.size39{width:39em !important;}
+.size40{width:40em !important;}
+.size41{width:41em !important;}
+.size42{width:42em !important;}
+.size43{width:43em !important;}
+.size44{width:44em !important;}
+.size45{width:45em !important;}
+.size46{width:46em !important;}
+.size47{width:47em !important;}
+.size48{width:48em !important;}
+.size49{width:49em !important;}
+.size50{width:50em !important;}
+
+/*@media screen and (max-width: 767px) {
+	[class*="size"]{
+		width:100% !important;
+	}
+}*/

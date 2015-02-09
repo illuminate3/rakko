@@ -150,6 +150,7 @@ return [
  */
 ///'Way\Generators\GeneratorsServiceProvider',
 'App\Providers\ErrorServiceProvider',
+'Barryvdh\Debugbar\ServiceProvider',
 /*
  * Package Service Providers
  */
@@ -218,6 +219,10 @@ return [
 'Flash'     => 'Caffeinated\Flash\Facades\Flash',
 'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
+/*
+ * DEV Package Alias
+ */
+'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];

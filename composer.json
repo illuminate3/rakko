@@ -18,8 +18,10 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"filp/whoops": "~1.1",
+		"barryvdh/laravel-debugbar": "~2.0",
 		"way/generators": "3.0.1"
 	},
+"repositories": [ { "type": "vcs", "url": "https://github.com/bart/datatable.git" } ],
 	"autoload": {
 		"classmap": [
 			"database"

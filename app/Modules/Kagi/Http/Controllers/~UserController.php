@@ -9,7 +9,7 @@ use Bllim\Datatables\Facade\Datatables;
 use App\Modules\Kagi\Http\Requests\UserEditRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-class UserController extends KagiController {
+class UserController111 extends KagiController {
 
 	/*
 	* Display a listing of the resource.

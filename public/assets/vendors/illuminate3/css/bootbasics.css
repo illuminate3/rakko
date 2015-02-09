@@ -1,0 +1,148 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+	height: 100%;
+	/* The html and body elements cannot have any padding or margin. */
+	padding-top: 5px;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by its height */
+	margin: 0 auto -40px;
+	/* Pad bottom by footer height */
+	padding: 35px 10px 41px 10px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+	height: 40px;
+	padding: 5px 0px 0px 0px;
+	background-color: #e7e7e7;
+}
+
+.heightpure100
+{
+	height: calc(100%);
+}
+
+.notification-badge {
+	position: relative;
+	top: -10px;
+	left: -15px;
+	margin-right: -18px;
+}
+/* Themes for different contexts */
+.badge-default {
+	background-color: #ccc;
+	color: #fff;
+}
+.badge-primary {
+	background-color: #428bca;
+	color: #fff;
+}
+.btn-success {
+	background-color: #5cb85c;
+	color: #fff;
+}
+.badge-info {
+	background-color: #5bc0de;
+	color: #fff;
+}
+.badge-warning {
+	background-color: #f0ad4e;
+	color: #fff;
+}
+.badge-danger {
+	background-color: #d9534f;
+	color: #fff;
+}
+
+/* Custom modal size -------------------------------------------------- */
+/*
+.modal.modal-wide .modal-dialog {
+	width: 90%;
+}
+*/
+/*
+.modal-wide .modal-body {
+	overflow-y: auto;
+}
+*/
+
+/* Side notes for calling out things
+-------------------------------------------------- */
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+	margin: 20px 0;
+	padding: 15px 30px 15px 15px;
+	border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+	margin-top: 0;
+}
+.bs-callout p:last-child {
+	margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+	background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+	background-color: #fcf2f2;
+	border-color: #dFb5b4;
+}
+.bs-callout-warning {
+	background-color: #fefbed;
+	border-color: #f1e7bc;
+}
+.bs-callout-info {
+	background-color: #f0f7fd;
+	border-color: #d0e3f0;
+}
+.bs-callout-danger h4 {
+	color: #B94A48;
+}
+
+.bs-callout-warning h4 {
+	color: #C09853;
+}
+
+.bs-callout-info h4 {
+	color: #3A87AD;
+}
+
+/* FullCalendar
+-------------------------------------------------- */
+#calendar {
+	padding: 15px;
+}
+
+.Toolbar
+{
+position: relative;
+display: table;
+}
+
+.Toolbar > div
+{
+display: table-cell;
+padding-right: 8px;
+vertical-align: top;
+}
+
+.Toolbar
+{
+.btn-group, .btn-group-vertical
+{
+    vertical-align: inherit;
+}
+}
