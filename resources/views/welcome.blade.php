@@ -45,6 +45,16 @@
 			margin-bottom: 10px;
 		}
 
+		a:link {
+			color: #B0BEC5;
+			text-decoration: none;
+		}
+
+		a:visited {
+			color: #B0BEC5;
+			text-decoration: none;
+		}
+
 		.quote {
 			font-size: 32px;
 		}
@@ -56,7 +66,9 @@
 		<div class="content">
 			<img src="/images/rakko.jpg">
 			<div class="title">
-				{{ Config::get('general.title') }}
+				<a href="/">
+					{{ Config::get('general.title') }}
+				</a>
 			</div>
 			<div class="quote">{{ Inspiring::quote() }}</div>
 		</div>

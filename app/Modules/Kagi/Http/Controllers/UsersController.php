@@ -4,20 +4,20 @@ use App\Modules\Kagi\Http\Controllers\KagiController;
 use App\User;
 use App\Modules\Kagi\Http\Domain\AssignedRoles;
 use App\Modules\Kagi\Http\Domain\Role;
-use Bllim\Datatables\Facade\Datatables;
+//use Bllim\Datatables\Facade\Datatables;
 //use App\Modules\Kagi\Http\Requests\UserRequest;
 use App\Modules\Kagi\Http\Requests\UserEditRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-use View;
+use View, Form;
+use Datatable;
 /*
 use Vedette\models\User as User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use View, Input, Redirect, Config, Validator, Hash, Auth, Form;
+use Input, Redirect, Config, Validator, Hash, Auth;
 use Bootstrap;
-use Datatable;
 */
-class UserController extends KagiController {
+class UsersController extends KagiController {
 
 	protected $user;
 
@@ -35,7 +35,7 @@ class UserController extends KagiController {
 	public function index()
 	{
 		$users = $this->user->all();
-
+//dd($users);
 //		return View('kagi::users.index');
 		return View::make('kagi::users.index')
 			->with(compact("users"));
@@ -77,10 +77,10 @@ class UserController extends KagiController {
 
 if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 	return Redirect::route(Config::get('vedette.vedette_routes.add_profile'))->with('email', $user->email);
-//		->withMessage(Bootstrap::success(trans('lingos::account.success.create'), true, true));
+//		->withMessage(Bootstrap::success(trans('kotoba::account.success.create'), true, true));
 } else {
 	return Redirect::route('users.index')
-		->withMessage(Bootstrap::success(trans('lingos::account.success.create'), true, true));
+		->withMessage(Bootstrap::success(trans('kotoba::account.success.create'), true, true));
 }
 
 		}
@@ -88,7 +88,7 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 		return Redirect::route('users.create')
 			->withInput()
 			->withErrors($validation)
-			->withMessage(Bootstrap::danger( trans('lingos::account.error.create'), true, true));
+			->withMessage(Bootstrap::danger( trans('kotoba::account.error.create'), true, true));
 	}
 
 	/**
@@ -154,7 +154,7 @@ catch (ModelNotFoundException $e)
 
 		if ( !Auth::User()->hasRoleWithName('Admin') ) {
 			return Redirect::to('/')
-				->withMessage(Bootstrap::danger( trans('lingos::general.error.forbidden'), true, true));
+				->withMessage(Bootstrap::danger( trans('kotoba::general.error.forbidden'), true, true));
 		}
 
 		$input = array_except(Input::all(), '_method');
@@ -222,14 +222,14 @@ catch (ModelNotFoundException $e)
 			$user->roles()->sync($input['roles']);
 
 			return Redirect::route('users.index')
-				->withMessage(Bootstrap::success( trans('lingos::account.success.update'), true, true));
+				->withMessage(Bootstrap::success( trans('kotoba::account.success.update'), true, true));
 
 		}
 
 		return Redirect::route('users.edit', $id)
 			->withInput()
 			->withErrors($validation)
-			->withMessage(Bootstrap::danger( trans('lingos::role.error.update'), true, true));
+			->withMessage(Bootstrap::danger( trans('kotoba::role.error.update'), true, true));
 
 
 	}
@@ -258,7 +258,7 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 			Auth::logout();
 		}
 
-		return Redirect::route('users.index')->withMessage(Bootstrap::success( trans('lingos::account.success.delete'), true, true));
+		return Redirect::route('users.index')->withMessage(Bootstrap::success( trans('kotoba::account.success.delete'), true, true));
 	}
 
 	/**
@@ -266,6 +266,8 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 	 */
 	public function getDatatable()
 	{
+//dd('loaded');
+
 //		$query = User::select('email', 'id', 'created_at')->remember(10)->get();
 
 		return Datatable::collection(User::all())
@@ -274,12 +276,14 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 
 			->addColumn('email',
 				function($model) {
-					return $model->present()->email();
+//					return $model->present()->email();
+					return 'email';
 				})
 
 			->addColumn('roles',
 				function($model) {
-					return $model->present()->roles();
+//					return $model->present()->roles();
+					return 'role';
 				})
 
 			->addColumn('actions',
@@ -291,15 +295,15 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('lingos::general.close') . '</span></button>
-										<h4 class="modal-title">' . trans('lingos::account.ask.delete') . '</h4>
+										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('kotoba::general.close') . '</span></button>
+										<h4 class="modal-title">' . trans('kotoba::account.ask.delete') . '</h4>
 									</div>
 									<div class="modal-body">
-										<p>' . trans('lingos::account.ask.delete') . '<b>'.$model->id.'</b></p>
+										<p>' . trans('kotoba::account.ask.delete') . '<b>'.$model->id.'</b></p>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('lingos::button.no') . '</button>
-										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('lingos::button.yes') . '</button>
+										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('kotoba::button.no') . '</button>
+										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('kotoba::button.yes') . '</button>
 									</div>
 								</div><!-- /.modal-content -->
 							</div><!-- /.modal-dialog -->
@@ -308,25 +312,25 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 */
 				$modal =
 					'<div class="modal fade" id="delete-Record-'.$model->id.'">
-						'.Form::open(array("route" => array("users.destroy", $model->id), "method" => "delete")).'
+						'.Form::open(array("route" => array("admin.users.destroy", $model->id), "method" => "delete")).'
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('lingos::general.close') . '</span></button>
-										<h4 class="modal-title">' . trans('lingos::account.ask.delete') . '</h4>
+										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('kotoba::general.close') . '</span></button>
+										<h4 class="modal-title">' . trans('kotoba::account.ask.delete') . '</h4>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('lingos::button.no') . '</button>
-										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('lingos::button.yes') . '</button>
+										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('kotoba::button.no') . '</button>
+										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('kotoba::button.yes') . '</button>
 									</div>
 								</div><!-- /.modal-content -->
 							</div><!-- /.modal-dialog -->
 						'.Form::close().'
 					</div><!-- /.modal -->';
 				return
-					'<a href="/users/' . $model->id . '" class="btn btn-primary form-group" title="' . trans('lingos::general.view') . '"><i class="fa fa-chevron-right fa-fw"></i>' . trans('lingos::button.view') . '</a>&nbsp;'
-					. '<a href="/users/' . $model->id . '/edit" class="btn btn-success form-group" title="' . trans('lingos::account.command.edit') . '"><i class="fa fa-edit fa-fw"></i>' . trans('lingos::button.edit') . '</a>&nbsp;'
-					. Form::button('<span class="glyphicon glyphicon-trash"></span> ' . trans('lingos::button.delete'), array('name'=>'deleteRecord', 'class' => 'btn btn-danger', 'type' => 'button',  'data-toggle' => 'modal', 'data-target' => '#delete-Record-'.$model->id))
+					'<a href="/users/' . $model->id . '" class="btn btn-primary form-group" title="' . trans('kotoba::general.view') . '"><i class="fa fa-chevron-right fa-fw"></i>' . trans('kotoba::button.view') . '</a>&nbsp;'
+					. '<a href="/users/' . $model->id . '/edit" class="btn btn-success form-group" title="' . trans('kotoba::account.command.edit') . '"><i class="fa fa-edit fa-fw"></i>' . trans('kotoba::button.edit') . '</a>&nbsp;'
+					. Form::button('<span class="glyphicon glyphicon-trash"></span> ' . trans('kotoba::button.delete'), array('name'=>'deleteRecord', 'class' => 'btn btn-danger', 'type' => 'button',  'data-toggle' => 'modal', 'data-target' => '#delete-Record-'.$model->id))
 					. $modal;
 				})
 

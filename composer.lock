@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa8b437b1bede619de329f5ed1263349",
+    "hash": "b58db6154a624e26cc0a139a7068051f",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/shinobi.git",
-                "reference": "ac26ffb6268e88a4ed5049b1807b43291b22fee4"
+                "reference": "0da12ccda32c9aef4e8145d4fe9cdf92911ad438"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/shinobi/zipball/ac26ffb6268e88a4ed5049b1807b43291b22fee4",
-                "reference": "ac26ffb6268e88a4ed5049b1807b43291b22fee4",
+                "url": "https://api.github.com/repos/caffeinated/shinobi/zipball/0da12ccda32c9aef4e8145d4fe9cdf92911ad438",
+                "reference": "0da12ccda32c9aef4e8145d4fe9cdf92911ad438",
                 "shasum": ""
             },
             "require": {
@@ -164,7 +164,7 @@
                 "roles",
                 "shinobi"
             ],
-            "time": "2015-02-06 19:56:48"
+            "time": "2015-02-09 00:54:20"
         },
         {
             "name": "caffeinated/themes",
@@ -213,6 +213,61 @@
                 "themes"
             ],
             "time": "2015-02-04 19:38:11"
+        },
+        {
+            "name": "chumper/datatable",
+            "version": "dev-l5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bart/Datatable.git",
+                "reference": "c14deb98c816d960574354a3aa8c4865b43eeae4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bart/Datatable/zipball/c14deb98c816d960574354a3aa8c4865b43eeae4",
+                "reference": "c14deb98c816d960574354a3aa8c4865b43eeae4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/support": "~5.0",
+                "illuminate/view": "~5.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "orchestra/testbench": "2.1.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Chumper\\Datatable": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Plaschke",
+                    "email": "github@nilsplaschke.de",
+                    "homepage": "http://nilsplaschke.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is a laravel 4 package for the server and client side of datatablaes at http://datatables.net/",
+            "homepage": "http://github.com/Chumper/datatable",
+            "keywords": [
+                "ajax",
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/bart/Datatable/tree/l5"
+            },
+            "time": "2015-02-06 19:12:27"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -915,6 +970,52 @@
                 "tokenizer"
             ],
             "time": "2015-01-26 23:07:39"
+        },
+        {
+            "name": "laracasts/presenter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Presenter.git",
+                "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Presenter/zipball/b284f3137f990efd6e95df49d254f1ccc4541e92",
+                "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Presenter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Simple view presenters",
+            "keywords": [
+                "laravel",
+                "presenter",
+                "view"
+            ],
+            "time": "2014-09-13 13:18:07"
         },
         {
             "name": "laravel/framework",
@@ -3629,14 +3730,23 @@
             "time": "2014-09-13 13:09:05"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "2.3",
+            "alias_normalized": "2.3.0.0",
+            "version": "dev-l5",
+            "package": "chumper/datatable"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "illuminate3/kotoba": 20,
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,
-        "illuminate/html": 20
+        "chumper/datatable": 20,
+        "illuminate/html": 20,
+        "laracasts/presenter": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

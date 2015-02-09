@@ -32,6 +32,15 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id2', '[0-9]+');
 
 	#Users
+/*
+	Route::resource('users', 'UsersController',
+		[
+//			'before' => 'csrf'
+//			'except' => array('show')
+		]);
+*/
+	Route::resource('users', 'UsersController');
+/*
 	Route::get('users/', 'UserController@index');
 	Route::get('users/create', 'UserController@getCreate');
 	Route::post('users/create', 'UserController@postCreate');
@@ -40,7 +49,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('users/{id}/delete', 'UserController@getDelete');
 	Route::post('users/{id}/delete', 'UserController@postDelete');
 	Route::get('users/data', 'UserController@data');
-
+*/
 	#Roles
 	Route::get('roles/', 'RoleController@index');
 	Route::get('roles/create', 'RoleController@getCreate');
@@ -52,3 +61,14 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('roles/data', 'RoleController@data');
 
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Chumper Datatables API
+|--------------------------------------------------------------------------
+*/
+Route::get('api/users', array(
+	'as'=>'api.users',
+	'uses'=>'UsersController@getDatatable'
+	));

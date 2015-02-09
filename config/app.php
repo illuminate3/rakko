@@ -161,6 +161,7 @@ return [
 'Caffeinated\Shinobi\ShinobiServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
 'Illuminate\Html\HtmlServiceProvider',
+'Chumper\Datatable\DatatableServiceProvider',
 
 	],
 
@@ -213,11 +214,14 @@ return [
 /*
  * Package Alias
  */
-'Module'    => 'Caffeinated\Modules\Facades\Module',
-'Theme'     => 'Caffeinated\Themes\Facades\Theme',
-'Component' => 'Caffeinated\Themes\Facades\Component',
-'Flash'     => 'Caffeinated\Flash\Facades\Flash',
-'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+'Module'		=> 'Caffeinated\Modules\Facades\Module',
+'Theme'			=> 'Caffeinated\Themes\Facades\Theme',
+'Component'		=> 'Caffeinated\Themes\Facades\Component',
+'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
+'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
+'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
+'Form'			=> 'Illuminate\Html\FormFacade',
+'HTML'			=> 'Illuminate\Html\HtmlFacade',
 
 /*
  * DEV Package Alias
