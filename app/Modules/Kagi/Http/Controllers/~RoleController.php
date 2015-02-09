@@ -8,7 +8,7 @@ use Bllim\Datatables\Facade\Datatables;
 use App\Modules\Kagi\Http\Requests\RoleRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-class RoleController extends \KagiController {
+class RoleController1111 extends KagiController {
     /*
     * Display a listing of the resource.
     *

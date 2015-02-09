@@ -51,6 +51,8 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('users/data', 'UserController@data');
 */
 	#Roles
+	Route::resource('roles', 'RolessController');
+/*
 	Route::get('roles/', 'RoleController@index');
 	Route::get('roles/create', 'RoleController@getCreate');
 	Route::post('roles/create', 'RoleController@postCreate');
@@ -59,7 +61,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('roles/{id}/delete', 'RoleController@getDelete');
 	Route::post('roles/{id}/delete', 'RoleController@postDelete');
 	Route::get('roles/data', 'RoleController@data');
-
+*/
 });
 
 

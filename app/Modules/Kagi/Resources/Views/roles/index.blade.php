@@ -1,56 +1,96 @@
-@extends('admin.layouts.default')
+@extends('app')
 
-{{-- Web site Title --}}
 @section('title')
-{{{ Lang::get("admin/role.roles") }}} :: @parent
+@parent
+	{{ Config::get('general.separator') }}
+	{{ trans('kotoba::role.roles') }}
 @stop
 
-{{-- Content --}}
+@section('styles')
+	<link rel="stylesheet" href="{{ asset('packages/illuminate3/vedette/assets/vendors/Datatables-Bootstrap3/BS3/assets/css/datatables.css') }}">
+@stop
+
+@section('scripts')
+	<script src="{{ asset('packages/illuminate3/vedette/assets/js/restfulizer.js') }}"></script>
+	<script src="{{ asset('packages/illuminate3/vedette/assets/vendors/DataTables/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('packages/illuminate3/vedette/assets/vendors/Datatables-Bootstrap3/BS3/assets/js/datatables.js') }}"></script>
+@stop
+
+@section('inline-scripts')
+
+var text_confirm_message = '{{ trans('kotoba::role.ask.delete') }}';
+
+$(document).ready(function() {
+
+	$('#DataTable').dataTable({
+		stateSave: true
+	});
+	$('#DataTable').each(function(){
+		var datatable = $(this);
+		var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+		search_input.attr('placeholder', 'Search');
+		search_input.addClass('form-control input-sm');
+		var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+		length_sel.addClass('form-control input-sm');
+	});
+
+});
+@stop
+
 @section('content')
-<div class="page-header">
-	<h3>  {{{ Lang::get("admin/role.roles") }}}
-	<div class="pull-right">
-		<div class="pull-right">
-            <a href="{{{ URL::to('admin/roles/create') }}}" class="btn btn-sm  btn-primary iframe"><span class="glyphicon glyphicon-plus-sign"></span> {{ Lang::get("admin/modal.new") }}</a>
-        </div>
-	</div></h3>
+<div class="row">
+<h1>
+	<p class="pull-right">
+	</p>
+	<i class="fa fa-gavel fa-lg"></i>
+	{{ Lang::choice('kotoba::role.role', 2) }}
+	<hr>
+</h1>
 </div>
 
-<table id="table" class="table table-striped table-hover">
+
+<div class="row">
+@if (count($roles))
+
+
+<div class="table-responsive">
+<table class="table table-striped table-hover" id="DataTable">
 	<thead>
 		<tr>
-			<th>{{{ Lang::get("admin/modal.title") }}}</th>
-			<th>{{{ Lang::get("admin/admin.created_at") }}}</th>
-			<th>{{{ Lang::get("admin/admin.action") }}}</th>
+			<th>#</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.level') }}</th>
+			<th>{{ trans('kotoba::table.active') }}</th>
+			<th>{{ trans('kotoba::table.actions') }}</th>
 		</tr>
 	</thead>
-	<tbody></tbody>
-</table>
-@stop
+	<tbody>
+		@foreach ($roles as $role)
+			<tr>
+				<td>{{ $role->id }}</td>
+				<td>{{ $role->name() }}</td>
+				<td>{{ $role->slug }}</td>
+				<td>{{ $role->description }}</td>
+				<td width="20%">
+					{!! Form::open(array(
+						'route' => array('roles.destroy', $role->id),
+						'role' => 'form',
+						'method' => 'delete',
+						'class' => 'form-inline'
+					)) !!}
 
-{{-- Scripts --}}
-@section('scripts')
-<script type="text/javascript">
-	var oTable;
-	$(document).ready(function() {
-		oTable = $('#table').dataTable({
-			"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-			"sPaginationType" : "bootstrap",
-			
-			"bProcessing" : true,
-			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('admin/roles/data/') }}",
-			"fnDrawCallback" : function(oSettings) {
-				$(".iframe").colorbox({
-					iframe : true,
-					width : "80%",
-					height : "80%",
-					onClosed : function() {
-						window.location.reload();
-					}
-				});
-			}
-		});
-	}); 
-</script>
+
+					{!! Form::close() !!}
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>
+</div><!-- ./responsive -->
+
+
+@else
+	{{-- Bootstrap::info( trans('kotoba::general.no_records'), true) --}}
+@endif
+</div>
 @stop

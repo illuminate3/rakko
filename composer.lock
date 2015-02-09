@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b58db6154a624e26cc0a139a7068051f",
+    "hash": "82e06599d063efe1a152cf106f07797d",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -742,17 +742,68 @@
             "time": "2015-01-01 16:31:18"
         },
         {
+            "name": "illuminate3/bootawesome",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate3/bootawesome.git",
+                "reference": "754c380811b87a8a3c979202608c25e6fbc09ebb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/754c380811b87a8a3c979202608c25e6fbc09ebb",
+                "reference": "754c380811b87a8a3c979202608c25e6fbc09ebb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1",
+                "phpspec/phpspec": "2.0.*@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Illuminate3\\BootAwesome": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Illuminate3",
+                    "email": "carsten.sapporo@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An easy way to intergrate Twitter Bootstrap with Laravel 4.",
+            "homepage": "https://github.com/Illuminate3/bootawesome",
+            "keywords": [
+                "FontAwesome",
+                "bootstrap",
+                "form",
+                "laravel",
+                "templates",
+                "twitter",
+                "views"
+            ],
+            "time": "2014-10-03 13:20:09"
+        },
+        {
             "name": "illuminate3/kotoba",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "77c285d81ae14b026c4c096bf16c734a8f0e0703"
+                "reference": "e9d10648633f7b6b48379078a8d2fad7065d91af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/77c285d81ae14b026c4c096bf16c734a8f0e0703",
-                "reference": "77c285d81ae14b026c4c096bf16c734a8f0e0703",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/e9d10648633f7b6b48379078a8d2fad7065d91af",
+                "reference": "e9d10648633f7b6b48379078a8d2fad7065d91af",
                 "shasum": ""
             },
             "require": {
@@ -783,7 +834,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-07 10:28:14"
+            "time": "2015-02-09 02:29:03"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -3741,6 +3792,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "illuminate3/kotoba": 20,
+        "illuminate3/bootawesome": 20,
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,

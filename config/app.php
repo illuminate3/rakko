@@ -150,7 +150,7 @@ return [
  */
 ///'Way\Generators\GeneratorsServiceProvider',
 'App\Providers\ErrorServiceProvider',
-'Barryvdh\Debugbar\ServiceProvider',
+//'Barryvdh\Debugbar\ServiceProvider',
 /*
  * Package Service Providers
  */
@@ -226,7 +226,7 @@ return [
 /*
  * DEV Package Alias
  */
-'Debugbar'  => 'Barryvdh\Debugbar\Facade',
+//'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];

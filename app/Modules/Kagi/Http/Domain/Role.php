@@ -2,7 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends \Model {
+use Caffeinated\Shinobi\Traits\ShinobiTrait;
+use Laracasts\Presenter\PresentableTrait;
+
+class Role extends Model {
+
+	use ShinobiTrait, PresentableTrait;
 
 	protected $fillable = [];
 

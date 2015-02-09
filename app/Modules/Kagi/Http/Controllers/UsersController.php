@@ -277,18 +277,18 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 			->addColumn('email',
 				function($model) {
 //					return $model->present()->email();
-					return 'email';
+					return $model->email;
 				})
 
 			->addColumn('roles',
 				function($model) {
 //					return $model->present()->roles();
-					return 'role';
+					return $model->name;
 				})
 
+/*
 			->addColumn('actions',
 				function($model) {
-/*
 				$modal =
 					'<div class="modal fade" id="delete-Record-'.$model->id.'">
 						'.Form::open(array("route" => array("users.destroy", $model->id), "method" => "delete")).'
@@ -309,7 +309,6 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 							</div><!-- /.modal-dialog -->
 						'.Form::close().'
 					</div><!-- /.modal -->';
-*/
 				$modal =
 					'<div class="modal fade" id="delete-Record-'.$model->id.'">
 						'.Form::open(array("route" => array("admin.users.destroy", $model->id), "method" => "delete")).'
@@ -333,6 +332,7 @@ if ( Config::get('vedette.vedette_settings.add_profile') == True ) {
 					. Form::button('<span class="glyphicon glyphicon-trash"></span> ' . trans('kotoba::button.delete'), array('name'=>'deleteRecord', 'class' => 'btn btn-danger', 'type' => 'button',  'data-toggle' => 'modal', 'data-target' => '#delete-Record-'.$model->id))
 					. $modal;
 				})
+*/
 
 			->searchColumns('email', 'roles')
 			->orderColumns('id','email', 'created_at')

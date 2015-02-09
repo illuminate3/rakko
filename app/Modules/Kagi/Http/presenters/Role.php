@@ -1,8 +1,8 @@
-<?php namespace Vedette\helpers\presenters\presenter;
+<?php namespace App\modules\Kagi\Http\Presenters;
 
-use Vedette\helpers\presenters\Presenter;
+use Laracasts\Presenter\Presenter;
 
-class Role extends Presenter {
+class RolePresenter extends Presenter {
 
 	/**
 	 * Present the name
