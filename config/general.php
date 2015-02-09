@@ -6,7 +6,7 @@ return [
 | General configs used for naming conventions
 |--------------------------------------------------------------------------
 */
-	'title'							=> 'Rakko',
+	'title'							=> 'Rakko : ラッコ',
 	'author'						=> 'https://github.com/illuminate3, illuminate3',
 	'keywords'						=> 'Laravel, bootstrap, starter, modules',
 	'description'					=> 'Rakko is a Larvael 5 based app that allows you to build with modules',
