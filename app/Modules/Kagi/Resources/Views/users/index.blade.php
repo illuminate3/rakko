@@ -56,6 +56,20 @@ $(document).ready(function() {
 <div>
 <br>
 <br>
+{{--
+{!!
+dd(Datatable::table()
+    ->addColumn('id',trans('kotoba::table.email'), Lang::choice('kotoba::table.role', 2), Lang::choice('kotoba::table.action', 2))
+    ->setUrl(route('api.users'))
+    ->setOptions(array(
+        'dom' =>"T<'clear'>lfrtip",
+        'tabletools' => array(
+            "aSwfPath" => "/assets/Datatables/extensions/TableTools/swf/copy_csv_cls_pdf.swf"
+        )
+    ))
+    ->render('_partials.datatable'));
+    !!}
+--}}
 {{-- Datatable::table()
 	->addColumn('id',trans('kotoba::table.email'), Lang::choice('kotoba::table.role', 2), Lang::choice('kotoba::table.action', 2))
 	->setUrl(route('api.users'))

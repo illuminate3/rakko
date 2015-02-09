@@ -155,6 +155,7 @@ return [
  * Package Service Providers
  */
 'Illuminate3\Kotoba\KotobaServiceProvider',
+//'Illuminate3\BootAwesome\BootstrapServiceProvider',
 'Caffeinated\Modules\ModulesServiceProvider',
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',
@@ -222,6 +223,7 @@ return [
 'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
 'Form'			=> 'Illuminate\Html\FormFacade',
 'HTML'			=> 'Illuminate\Html\HtmlFacade',
+'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
 
 /*
  * DEV Package Alias
