@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "82e06599d063efe1a152cf106f07797d",
+    "hash": "d793fb6475a2e863de125b578c4f65c5",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -747,15 +747,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/bootawesome.git",
-                "reference": "754c380811b87a8a3c979202608c25e6fbc09ebb"
+                "reference": "d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/754c380811b87a8a3c979202608c25e6fbc09ebb",
-                "reference": "754c380811b87a8a3c979202608c25e6fbc09ebb",
+                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5",
+                "reference": "d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5",
                 "shasum": ""
             },
             "require": {
+                "illuminate/html": "dev-master",
+                "illuminate3/kotoba": "dev-master",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -776,13 +778,14 @@
                 {
                     "name": "Illuminate3",
                     "email": "carsten.sapporo@gmail.com",
-                    "role": "Developer"
+                    "role": "Forker and Expander"
                 }
             ],
             "description": "An easy way to intergrate Twitter Bootstrap with Laravel 4.",
             "homepage": "https://github.com/Illuminate3/bootawesome",
             "keywords": [
                 "FontAwesome",
+                "alerts",
                 "bootstrap",
                 "form",
                 "laravel",
@@ -790,7 +793,7 @@
                 "twitter",
                 "views"
             ],
-            "time": "2014-10-03 13:20:09"
+            "time": "2015-02-09 11:45:40"
         },
         {
             "name": "illuminate3/kotoba",
@@ -2502,6 +2505,59 @@
                 "environment"
             ],
             "time": "2014-12-05 15:19:21"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables-oracle.git",
+                "reference": "ea06ddbc896fbb820dfd8b771ba6184a0218a9f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/ea06ddbc896fbb820dfd8b771ba6184a0218a9f1",
+                "reference": "ea06ddbc896fbb820dfd8b771ba6184a0218a9f1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0",
+                "illuminate/filesystem": "~5.0",
+                "illuminate/http": "~5.0",
+                "illuminate/support": "~5.0",
+                "illuminate/view": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "yajra\\Datatables": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "Server-side handler of DataTables jQuery Plugin for Laravel 4|5",
+            "keywords": [
+                "datatable",
+                "datatables",
+                "datatables jquery plugin",
+                "laravel",
+                "laravel4",
+                "laravel5"
+            ],
+            "time": "2015-02-07 05:32:34"
         }
     ],
     "packages-dev": [

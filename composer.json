@@ -14,8 +14,9 @@
 		"caffeinated/shinobi": "dev-master",
 		"laravel/socialite": "~2.0",
 		"chumper/datatable": "l5-dev as 2.3",
-		"illuminate/html": "dev-master",
-		"laracasts/presenter": "dev-master"
+		"laravelcollective/html": "~5.0",
+		"laracasts/presenter": "dev-master",
+		"yajra/laravel-datatables-oracle" : ">=v4.0.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

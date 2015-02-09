@@ -1,8 +1,10 @@
 <?php namespace App\Modules\Kagi\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+//use app\Http\Kernel as Kernel;
 
-class Kernel extends HttpKernel {
+//class KagiKernel extends Kernel {
+class KagiKernel extends HttpKernel {
 
 	/**
 	 * The application's global HTTP middleware stack.
@@ -11,13 +13,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $middleware = [
 /*
-		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-		'Illuminate\Cookie\Middleware\EncryptCookies',
-		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'App\Http\Middleware\VerifyCsrfToken',
-
+*/
 	];
 
 	/**
@@ -31,6 +27,7 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Modules\Kagi\Http\Middleware\RedirectIfAuthenticated',
 */
+//		'admin' => 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
 	];
 
 }

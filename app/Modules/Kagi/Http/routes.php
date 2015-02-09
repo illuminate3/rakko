@@ -39,20 +39,18 @@ Route::group(['prefix' => 'admin'], function() {
 //			'except' => array('show')
 		]);
 */
-	Route::resource('users', 'UsersController');
-/*
-	Route::get('users/', 'UserController@index');
-	Route::get('users/create', 'UserController@getCreate');
-	Route::post('users/create', 'UserController@postCreate');
-	Route::get('users/{id}/edit', 'UserController@getEdit');
-	Route::post('users/{id}/edit', 'UserController@postEdit');
-	Route::get('users/{id}/delete', 'UserController@getDelete');
-	Route::post('users/{id}/delete', 'UserController@postDelete');
-	Route::get('users/data', 'UserController@data');
-*/
+//	Route::resource('users', 'UsersController');
+	Route::get('users/', 'UsersController@index');
+	Route::get('users/create', 'UsersController@getCreate');
+	Route::post('users/create', 'UsersController@postCreate');
+	Route::get('users/{id}/edit', 'UsersController@getEdit');
+	Route::post('users/{id}/edit', 'UsersController@postEdit');
+	Route::get('users/{id}/delete', 'UsersController@getDelete');
+	Route::post('users/{id}/delete', 'UsersController@postDelete');
+	Route::get('users/data', 'UsersController@data');
+
 	#Roles
-	Route::resource('roles', 'RolessController');
-/*
+//	Route::resource('roles', 'RolessController');
 	Route::get('roles/', 'RoleController@index');
 	Route::get('roles/create', 'RoleController@getCreate');
 	Route::post('roles/create', 'RoleController@postCreate');
@@ -61,7 +59,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('roles/{id}/delete', 'RoleController@getDelete');
 	Route::post('roles/{id}/delete', 'RoleController@postDelete');
 	Route::get('roles/data', 'RoleController@data');
-*/
+
 });
 
 

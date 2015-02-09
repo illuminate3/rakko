@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class AssignedRoles extends \Model {
+class AssignedRoles extends Model {
 
 	protected $guarded = array();
 

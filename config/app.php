@@ -148,9 +148,9 @@ return [
 /*
  * DEV Package Service Providers
  */
+'Barryvdh\Debugbar\ServiceProvider',
 ///'Way\Generators\GeneratorsServiceProvider',
 'App\Providers\ErrorServiceProvider',
-//'Barryvdh\Debugbar\ServiceProvider',
 /*
  * Package Service Providers
  */
@@ -161,8 +161,9 @@ return [
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
-'Illuminate\Html\HtmlServiceProvider',
+'Collective\Html\HtmlServiceProvider',
 'Chumper\Datatable\DatatableServiceProvider',
+'yajra\Datatables\DatatablesServiceProvider',
 
 	],
 
@@ -221,14 +222,16 @@ return [
 'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
 'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
 'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
-'Form'			=> 'Illuminate\Html\FormFacade',
-'HTML'			=> 'Illuminate\Html\HtmlFacade',
+'Form'			=> 'Collective\Html\FormFacade',
+'Html'			=> 'Collective\Html\HtmlFacade',
 'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
+'Datatables'	=> 'yajra\Datatables\Datatables',
 
 /*
  * DEV Package Alias
  */
-//'Debugbar'  => 'Barryvdh\Debugbar\Facade',
+'Debugbar'		=> 'Barryvdh\Debugbar\Facade',
+
 	],
 
 ];

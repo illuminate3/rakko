@@ -1,48 +1,48 @@
-@extends('admin.layouts.modal')
+@extends('app')
 @section('content')
 <ul class="nav nav-tabs">
 	<li class="active">
-		<a href="#tab-general" data-toggle="tab">{{{ Lang::get('admin/modal.general') }}}</a>
+		<a href="#tab-general" data-toggle="tab">{{ Lang::get('admin/modal.general') }}</a>
 	</li>
 </ul>
 <form class="form-horizontal" method="post" action="@if (isset($user)){{ URL::to('admin/users/' . $user->id . '/edit') }}@endif" autocomplete="off">
-	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 	<div class="tab-content">
 		<div class="tab-pane active" id="tab-general">
 			<div class="col-md-12">
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="name">{{ Lang::get('admin/users.name') }}</label>
 				<div class="col-md-10">
-					<input class="form-control" tabindex="1" placeholder="{{ Lang::get('admin/users.name') }}" type="text" name="name" id="name" value="{{{ Input::old('name', isset($user) ? $user->name : null) }}}">
+					<input class="form-control" tabindex="1" placeholder="{{ Lang::get('admin/users.name') }}" type="text" name="name" id="name" value="{{ Input::old('name', isset($user) ? $user->name : null) }}">
 				</div>
 			</div>
 			</div>
 			@if(!isset($user))
                 <div class="col-md-12">
-                <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
+                <div class="form-group {{ $errors->has('email') ? 'error' : '' }}">
                     <label class="col-md-2 control-label" for="email">{{ Lang::get('admin/users.email') }}</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="email" tabindex="4" placeholder="{{ Lang::get('admin/users.email') }}" name="email" id="email" value="{{{ Input::old('email', isset($user) ? $user->email : null) }}}" />
-                        {{{ $errors->first('email', '<span class="help-inline">:message</span>') }}}
+                        <input class="form-control" type="email" tabindex="4" placeholder="{{ Lang::get('admin/users.email') }}" name="email" id="email" value="{{ Input::old('email', isset($user) ? $user->email : null) }}" />
+                        {{ $errors->first('email', '<span class="help-inline">:message</span>') }}
                     </div>
                 </div>
                 </div>
 			@endif
 			<div class="col-md-12">
-			<div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
+			<div class="form-group {{ $errors->has('password') ? 'error' : '' }}">
 				<label class="col-md-2 control-label" for="password">{{ Lang::get('admin/users.password') }}</label>
 				<div class="col-md-10">
 					<input class="form-control"  tabindex="5" placeholder="{{ Lang::get('admin/users.password') }}" type="password" name="password" id="password" value="" />
-					{{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
+					{{ $errors->first('password', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
 			</div>
 			<div class="col-md-12">
-			<div class="form-group {{{ $errors->has('password_confirmation') ? 'error' : '' }}}">
+			<div class="form-group {{ $errors->has('password_confirmation') ? 'error' : '' }}">
 				<label class="col-md-2 control-label" for="password_confirmation">{{ Lang::get('admin/users.password_confirmation') }}</label>
 				<div class="col-md-10">
 					<input class="form-control" type="password" tabindex="6" placeholder="{{ Lang::get('admin/users.password_confirmation') }}"  name="password_confirmation" id="password_confirmation" value="" />
-					{{{ $errors->first('password_confirmation', '<span class="help-inline">:message</span>') }}}
+					{{ $errors->first('password_confirmation', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
 			</div>
@@ -51,8 +51,8 @@
 				<label class="col-md-2 control-label" for="confirm">{{ Lang::get('admin/users.activate_user') }}</label>
 				<div class="col-md-6">
 					<select class="form-control" name="confirmed" id="confirmed">
-						<option value="1"{{{ ((isset($user) && $user->confirmed == 1)? ' selected="selected"' : '') }}}>{{{ Lang::get('admin/users.yes') }}}</option>
-						<option value="0"{{{ ((isset($user) && $user->confirmed == 0) ? ' selected="selected"' : '') }}}>{{{ Lang::get('admin/users.no') }}}</option>
+						<option value="1"{{ ((isset($user) && $user->confirmed == 1)? ' selected="selected"' : '') }}>{{ Lang::get('admin/users.yes') }}</option>
+						<option value="0"{{ ((isset($user) && $user->confirmed == 0) ? ' selected="selected"' : '') }}>{{ Lang::get('admin/users.no') }}</option>
 					</select>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 				<div class="col-md-6">
 					<select name="roles[]" id="roles" multiple style="width:100%;">
 						@foreach ($roles as $role)
-						<option value="{{{ $role->id }}}"{{{ ( array_search($role->id, $selectedRoles) !== false && array_search($role->id, $selectedRoles) >= 0 ? ' selected="selected"' : '') }}}>{{{ $role->name }}}</option>
+						<option value="{{ $role->id }}"{{ ( array_search($role->id, $selectedRoles) !== false && array_search($role->id, $selectedRoles) >= 0 ? ' selected="selected"' : '') }}>{{ $role->name }}</option>
 						@endforeach
 					</select>
 
@@ -92,9 +92,7 @@
 </form>
 @stop
 @section('scripts')
-<script type="text/javascript">
 	$(function() {
 		$("#roles").select2()
 	});
-</script>
 @stop

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-<table id="{{ $id }}" class="{{ $class }}">
+<table id="DataTable" class="{{ $class }}">
 
 	<colgroup>
 		@for ($i = 0; $i < count($columns); $i++)
@@ -28,6 +28,10 @@
 </table>
 </div><!-- ./responsive -->
 
+{!! dd($data); !!}
+
+{{--
 @if (!$noScript)
     @include('datatable::javascript', array('id' => $id, 'options' => $options, 'callbacks' =>  $callbacks))
 @endif
+--}}
