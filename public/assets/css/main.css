@@ -7,7 +7,7 @@ http://codepen.io/nikhil/pen/yHLlm
 html {
 	position: relative;
 	min-height: 100%;
-	margin: 0 30px 0 100px;
+	margin: 0 30px 0 30px;
 }
 body {
 /* Margin bottom by footer height */
@@ -37,6 +37,8 @@ body {
 	margin-left: 65px;
 */
 }
+
+/*
 .navbar-brand {
 	width: 3.5em;
 	text-align:center;
@@ -44,7 +46,7 @@ body {
 	box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.26);
 	margin-right:20px;
 }
-
+*/
 .menu {
 	position: fixed;
 	top: 50px;
