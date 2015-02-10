@@ -35,4 +35,30 @@ class ModuleManagerServiceProvider extends ServiceProvider
 
 		View::addNamespace('ModuleManager', __DIR__.'/../Resources/Views/');
 	}
+
+	/**
+	 * Boot the service provider.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+	// Publish a config file
+//dd("loaded");
+		$this->mergeConfigFrom(
+			__DIR__.'/../Config/modulemanager.php', 'module_manager.php'
+			);
+
+		$this->publishes([
+			__DIR__.'/path/to/config/modulemanager.php' => config_path('modulemanager.php'),
+		]);
+
+		$this->publishes([
+			__DIR__.'/../config/modulemanager.php', config_path('modulemanager.php')
+		], 'config');
+
+	}
+
+
+
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\ModuleManager\Http\Controllers;
 
-class MMHomeController extends Controller {
+class MMController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------

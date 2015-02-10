@@ -10,9 +10,12 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+/*
 Route::group(['prefix' => 'ModuleManager'], function() {
 	Route::get('/', function() {
 		dd('This is the ModuleManager module index page.');
 	});
 });
+*/
+
+Route::resource('manager', 'MMController');

@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('users/data', 'UsersController@data');
 
 	#Roles
-//	Route::resource('roles', 'RolessController');
+//	Route::resource('roles', 'RolesController');
 	Route::get('roles/', 'RoleController@index');
 	Route::get('roles/create', 'RoleController@getCreate');
 	Route::post('roles/create', 'RoleController@postCreate');
