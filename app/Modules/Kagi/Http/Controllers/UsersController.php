@@ -133,24 +133,36 @@ class UsersController extends KagiController {
         $user->delete();
     }
 
-    /**
-     * Show a list of all the languages posts formatted for Datatables.
-     *
-     * @return Datatables JSON
-     */
-    public function data()
-    {
-        $users = User::select(array('users.id','users.name','users.email','users.confirmed', 'users.created_at'))
-            ->orderBy('users.email', 'ASC');
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+		$users = User::select(array('users.id','users.name','users.email','users.confirmed', 'users.created_at'))
+			->orderBy('users.email', 'ASC');
 
-        return Datatables::of($users)
-            -> edit_column('confirmed', '@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif')
-            ->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-pencil"></span>  {{ Lang::get("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ Lang::get("admin/modal.delete") }}</a>
-                ')
-            ->remove_column('id')
+		return Datatables::of($users)
 
-            ->make();
-    }
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				<a href="{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}" class="btn btn-sm btn-danger iframe">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+				')
+
+				->remove_column('id')
+
+				->make();
+	}
 
 }

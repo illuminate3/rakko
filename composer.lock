@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d793fb6475a2e863de125b578c4f65c5",
+    "hash": "2154beac1c6864ed8814d245b216cce9",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -696,68 +696,22 @@
             "time": "2014-08-17 21:15:53"
         },
         {
-            "name": "illuminate/html",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/html.git",
-                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/html/zipball/3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
-                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "~5.0",
-                "illuminate/session": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Html\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "time": "2015-01-01 16:31:18"
-        },
-        {
             "name": "illuminate3/bootawesome",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/bootawesome.git",
-                "reference": "d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5"
+                "reference": "63178e1dc758acb89968d4c7a1163fe859b19afe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5",
-                "reference": "d1d3e6a585b4ad7b1fd5d6556b97be9432573bd5",
+                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/63178e1dc758acb89968d4c7a1163fe859b19afe",
+                "reference": "63178e1dc758acb89968d4c7a1163fe859b19afe",
                 "shasum": ""
             },
             "require": {
-                "illuminate/html": "dev-master",
                 "illuminate3/kotoba": "dev-master",
+                "laravelcollective/html": "~5.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -778,7 +732,7 @@
                 {
                     "name": "Illuminate3",
                     "email": "carsten.sapporo@gmail.com",
-                    "role": "Forker and Expander"
+                    "role": "Forked, Expanded and Awesome"
                 }
             ],
             "description": "An easy way to intergrate Twitter Bootstrap with Laravel 4.",
@@ -793,7 +747,7 @@
                 "twitter",
                 "views"
             ],
-            "time": "2015-02-09 11:45:40"
+            "time": "2015-02-10 00:49:55"
         },
         {
             "name": "illuminate3/kotoba",
@@ -1249,6 +1203,56 @@
                 "oauth"
             ],
             "time": "2015-01-23 19:59:22"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "a21c998f997163018bb4ee4f40e5db71b0067095"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/a21c998f997163018bb4ee4f40e5db71b0067095",
+                "reference": "a21c998f997163018bb4ee4f40e5db71b0067095",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/routing": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "time": "2015-02-05 16:40:45"
         },
         {
             "name": "league/flysystem",
@@ -3853,7 +3857,6 @@
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,
         "chumper/datatable": 20,
-        "illuminate/html": 20,
         "laracasts/presenter": 20
     },
     "prefer-stable": false,

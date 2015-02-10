@@ -2,18 +2,18 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{{ Lang::get("admin/users.users") }}} :: @parent
+{{ Lang::choice('kotoba::account.user', 2) }} :: @parent
 @stop
 
 @section('styles')
-	<link href="{{asset('assets/admin/css/jquery.dataTables.css')}}" rel="stylesheet">
-	<link href="{{asset('assets/admin/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets/admin/css/jquery.dataTables.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/admin/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script src="{{asset('assets/admin/js/jquery.dataTables.min.js')}}"></script>
-	<script src="{{asset('assets/admin/js/dataTables.bootstrap.js')}}"></script>
-	<script src="{{asset('assets/admin/js/bootstrap-dataTables-paging.js')}}"></script>
+	<script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('assets/admin/js/dataTables.bootstrap.js') }}"></script>
+	<script src="{{ asset('assets/admin/js/bootstrap-dataTables-paging.js') }}"></script>
 @stop
 
 @section('inline-scripts')
@@ -29,25 +29,31 @@
 	});
 @stop
 
+
+
 {{-- Content --}}
 @section('content')
 <div class="page-header">
-	<h3> {{{ Lang::get("admin/users.users") }}}
+	<h3>
+{{ Lang::choice('kotoba::account.user', 2) }}
 	<div class="pull-right">
 		<div class="pull-right">
-            <a href="{{{ URL::to('admin/users/create') }}}" class="btn btn-sm  btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> {{ Lang::get("admin/modal.new") }}</a>
+            <a href="{{ URL::to('admin/users/create') }}" class="btn btn-sm  btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> {{ trans('kotoba::button.new') }}</a>
         </div>
-	</div></h3>
+	</div>
+	</h3>
+			"dom" : "T<'clear'>lfrtip",
+
 </div>
 
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{{ Lang::get("admin/users.name") }}}</th>
-			<th>{{{ Lang::get("admin/users.email") }}}</th>
-			<th>{{{ Lang::get("admin/users.activate_user") }}}</th>
-            <th>{{{ Lang::get("admin/admin.created_at") }}}</th>
-            <th>{{{ Lang::get("admin/admin.action") }}}</th>
+			<th>{{ trans('kotoba::account.name') }}</th>
+			<th>{{ trans('kotoba::account.email') }}</th>
+			<th>{{ trans('kotoba::general.activate') }}</th>
+            <th>{{ trans('kotoba::general.created_at') }}</th>
+            <th>{{ trans('kotoba::general.action') }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>
