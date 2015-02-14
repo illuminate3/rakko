@@ -24,7 +24,7 @@
 			"sPaginationType" : "bootstrap",
 			"bProcessing" : true,
 			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('admin/users/data/') }}",
+			"sAjaxSource" : "{{ URL::to('admin/api/users') }}",
 		});
 	});
 @stop
@@ -33,6 +33,35 @@
 
 {{-- Content --}}
 @section('content')
+<div class="row">
+<h1>
+	<p class="pull-right">
+{{--
+	@if (Auth::check())
+		@if (Auth::user()->hasRoleWithName('Admin'))
+			{{ Bootstrap::linkIcon(
+				'users.create',
+				trans('lingos::button.user.new'),
+				'plus fa-fw',
+				array('class' => 'btn btn-info')
+			) }}
+		@endif
+	@endif
+--}}
+	{{-- Bootstrap::linkIcon(
+		'users.index',
+		trans('kotoba::button.back'),
+		'chevron-left fa-fw',
+		array('class' => 'btn btn-default')
+	) --}}
+	</p>
+	<i class="fa fa-group fa-lg"></i>
+	{{ Lang::choice('kotoba::account.user', 2) }}
+	<hr>
+</h1>
+</div>
+
+
 <div class="page-header">
 	<h3>
 {{ Lang::choice('kotoba::account.user', 2) }}
@@ -58,10 +87,4 @@
 	</thead>
 	<tbody></tbody>
 </table>
-@stop
-
-{{-- Scripts --}}
-@section('scripts1')
-<script type="text/javascript">
-</script>
 @stop

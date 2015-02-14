@@ -1,5 +1,204 @@
 @extends('app')
+
+{{-- Web site Title --}}
+@section('title')
+{{ Lang::choice('kotoba::account.user', 2) }} :: @parent
+@stop
+
+@section('styles')
+@stop
+
+@section('scripts')
+@stop
+
+@section('inline-scripts')
+	$(function() {
+		$("#roles").select2()
+	});
+@stop
+
+
+{{-- Content --}}
 @section('content')
+<div class="row">
+<h1>
+	<p class="pull-right">
+	{{-- Bootstrap::linkIcon(
+		'roles.index',
+		trans('lingos::button.back'),
+		'chevron-left fa-fw',
+		array('class' => 'btn btn-default')
+	) --}}
+	</p>
+	<i class="fa fa-edit fa-lg"></i>
+	{{ trans('kotoba::button.edit') }}
+	<hr>
+</h1>
+</div>
+
+
+<div class="row">
+{!! Form::model(
+	$user,
+	[
+		'route' => ['admin.users.update', $user->id],
+		'method' => 'put',
+		'class' => 'form-horizontal'
+	]
+) !!}
+
+
+	<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
+<input class="form-control" placeholder="Name" id="name" required="required" autofocus="autofocus" name="name" type="text" value="Admin">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
+<input class="form-control" placeholder="Description" id="level" name="description" type="text">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-signal fa-fw"></i></span>
+<input class="form-control" placeholder="Level" id="level" name="level" type="text">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="checkbox">
+<label>
+<input checked="checked" name="active" type="checkbox" value="1">
+&nbsp;Active
+</label>
+</div>
+</div>
+
+	<hr>
+
+	<div class="form-group">
+<input class="btn btn-success btn-block" type="submit" value="Save">
+</div>
+
+<div class="row">
+		<div class="col-md-4">
+		<a href="/roles" class="btn btn-default btn-block" title="Cancel">
+		<i class="fa fa-times fa-fw"></i>Cancel</a>
+		</div>
+		<div class="col-sm-4">
+		<div class="form-group">
+<input class="btn btn-default btn-block" type="reset" value="Reset">
+</div>
+
+		</div>
+		<div class="col-sm-4">
+		<a class="btn btn-default btn-block action_confirm" data-method="delete" title="Delete User" onclick=" if ($(this).hasClass('action_confirm')) { if(confirm(&quot;lingos::job_title.ask.delete&quot;)) { $(this).find(&quot;form&quot;).submit(); } } else { $(this).find(&quot;form&quot;).submit(); }">
+		<i class="fa fa-trash-o fa-fw"></i>Delete
+<form action="/users/%7Busers%7D" method="POST" style="display:none">
+ <input type="hidden" name="_method" value="delete">
+</form>
+</a>
+		</div>
+		</div>
+
+
+{!! Form::close() !!}
+		</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<a href="/admin" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<i class="fa fa-chevron-left fa-fw"></i>
+	{{ trans('kotoba::button.back') }}
+</a>
+
+<div class="container">
+{!! Form::model(
+	$user,
+	[
+		'route' => ['admin.users.update', $user->id],
+		'method' => 'put',
+		'class' => 'form-horizontal'
+	]
+) !!}
+
+
+<div class="form-group">
+	<label for="name" class="col-sm-2 control-label">{{ trans('kotoba::account.name') }}</label>
+	<div class="col-sm-10">
+		<input type="text" class="form-control" id="name" value="{{ $user->name }}" placeholder="{{ trans('kotoba::account.name') }}">
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="email" class="col-sm-2 control-label">{{ trans('kotoba::account.email') }}</label>
+	<div class="col-sm-10">
+		<input type="email" class="form-control" id="email" value="{{ $user->email }}" placeholder="{{ trans('kotoba::account.email') }}">
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="password" class="col-sm-2 control-label">{{ trans('kotoba::auth.password') }}</label>
+	<div class="col-sm-10">
+		<input type="password" class="form-control" id="password" placeholder="{{ trans('kotoba::auth.password') }}">
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="confirm_password" class="col-sm-2 control-label">{{ trans('kotoba::auth.confirm_password') }}</label>
+	<div class="col-sm-10">
+		<input type="password" class="form-control" id="confirm_password" placeholder="{{ trans('kotoba::auth.confirm_password') }}">
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+		<button type="submit" class="btn btn-block btn-success">{{ trans('kotoba::button.submit') }}</button>
+	</div>
+</div>
+
+{!! Form::close() !!}
+
+
+	<div class="row">
+		<div class="col-sm-4">
+		<button type="submit" class="btn btn-block btn-success">{{ trans('kotoba::button.submit') }}</button>
+		</div>
+		<div class="col-sm-4">
+		<button type="submit" class="btn btn-block btn-success">{{ trans('kotoba::button.submit') }}</button>
+		</div>
+		<div class="col-sm-4">
+		<button type="submit" class="btn btn-block btn-success">{{ trans('kotoba::button.submit') }}</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="page-header">
+	<h3>
+{{ Lang::choice('kotoba::account.user', 2) }}
+	<div class="pull-right">
+		<div class="pull-right">
+			<a href="{{ URL::to('admin/users/create') }}" class="btn btn-sm  btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> {{ trans('kotoba::button.new') }}</a>
+		</div>
+	</div>
+	</h3>
+</div>
+
 <ul class="nav nav-tabs">
 	<li class="active">
 		<a href="#tab-general" data-toggle="tab">{{ Lang::get('admin/modal.general') }}</a>
@@ -60,6 +259,8 @@
 			<div class="col-md-12">
 			<br>
 			</div>
+
+{{--
 			<div class="col-md-12">
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="roles">{{ Lang::get('admin/users.roles') }}</label>
@@ -74,25 +275,22 @@
 				</div>
 			</div>
 			</div>
+--}}
+
 		</div>
 	</div>
 	<div class="form-group">
         <div class="col-md-12">
             <button type="reset" class="btn btn-sm btn-warning close_popup">
-                <span class="glyphicon glyphicon-ban-circle"></span>  {{ Lang::get("admin/modal.cancel") }}
+                <span class="glyphicon glyphicon-ban-circle"></span>  {{ trans('kotoba::button.cancel') }}
             </button>
             <button type="reset" class="btn btn-sm btn-default">
-                <span class="glyphicon glyphicon-remove-circle"></span>  {{ Lang::get("admin/modal.reset") }}
+                <span class="glyphicon glyphicon-remove-circle"></span>  {{ trans('kotoba::button.reset') }}
             </button>
             <button type="submit" class="btn btn-sm btn-success">
-                <span class="glyphicon glyphicon-ok-circle"></span> @if (isset($user))  {{ Lang::get("admin/modal.edit") }} @else  {{ Lang::get("admin/modal.create") }} @endif
+                <span class="glyphicon glyphicon-ok-circle"></span> @if (isset($user))  {{ trans('kotoba::button.edit') }} @else  {{ trans('kotoba::button.create') }} @endif
             </button>
         </div>
     </div>
 </form>
-@stop
-@section('scripts')
-	$(function() {
-		$("#roles").select2()
-	});
 @stop

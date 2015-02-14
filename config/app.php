@@ -162,7 +162,7 @@ return [
 'Caffeinated\Shinobi\ShinobiServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
 'Collective\Html\HtmlServiceProvider',
-'Chumper\Datatable\DatatableServiceProvider',
+//'Chumper\Datatable\DatatableServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 
 	],
@@ -221,10 +221,10 @@ return [
 'Component'		=> 'Caffeinated\Themes\Facades\Component',
 'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
 'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
-'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
+//'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
 'Form'			=> 'Collective\Html\FormFacade',
 'Html'			=> 'Collective\Html\HtmlFacade',
-'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
+//'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
 'Datatables'	=> 'yajra\Datatables\Datatables',
 
 /*

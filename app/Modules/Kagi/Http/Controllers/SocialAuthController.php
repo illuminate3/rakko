@@ -28,6 +28,7 @@ class SocialAuthController extends Controller implements AuthenticateUserListene
 	 */
 	public function userHasLoggedIn($user)
 	{
+dd($user);
 		return redirect('/');
 	}
 

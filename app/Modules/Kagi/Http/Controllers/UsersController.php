@@ -1,137 +1,185 @@
 <?php namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\Http\Controllers\KagiController;
-use App\User;
-use App\Modules\Kagi\Http\Domain\AssignedRoles;
-use App\Modules\Kagi\Http\Domain\Role;
-//use Bllim\Datatables\Facade\Datatables;
-//use App\Modules\Kagi\Http\Requests\UserRequest;
-use App\Modules\Kagi\Http\Requests\UserEditRequest;
-use App\Modules\Kagi\Http\Requests\DeleteRequest;
+use App\Modules\Kagi\Http\Domain\Models\User;
+use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
+use App\Modules\Kagi\Http\Domain\Repositories\RoleRepository;
+
+use Illuminate\Http\Request;
+use App\Modules\Kagi\Http\Requests\UserCreateRequest;
+use App\Modules\Kagi\Http\Requests\UserUpdateRequest;
+use App\Modules\Kagi\Http\Requests\RoleRequest;
 
 //use Datatable;
 use Datatables;
+use Bootstrap;
 
 class UsersController extends KagiController {
 
-	/*
-	* Display a listing of the resource.
-	*
-	* @return Response
-	*/
+	/**
+	 * The UserRepository instance.
+	 *
+	 * @var App\Repositories\UserRepository
+	 */
+	protected $user;
+
+	/**
+	 * The RoleRepository instance.
+	 *
+	 * @var App\Repositories\RoleRepository
+	 */
+	protected $role;
+
+	/**
+	 * Create a new UserController instance.
+	 *
+	 * @param  App\Repositories\UserRepository $user
+	 * @param  App\Repositories\RoleRepository $role
+	 * @return void
+	 */
+	public function __construct(
+			UserRepository $user,
+			RoleRepository $role
+		)
+	{
+		$this->user = $user;
+		$this->role = $role;
+
+		$this->middleware('admin');
+//		$this->middleware('ajax', ['only' => 'updateSeen']);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function index()
 	{
-//dd("loaded");
-		// Show the page
+//$users = User::all();
+//dd($users);
 		return View('kagi::users.index');
 	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function getCreate() {
-        $roles = Role::all();
-        // Selected groups
-        $selectedRoles = array();
-        return View('kagi::users.create_edit', compact('roles', 'selectedRoles'));
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+dd("create");
+		return view('back.users.create', $this->user->create());
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function postCreate(UserRequest $request) {
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  App\requests\UserCreateRequest $request
+	 *
+	 * @return Response
+	 */
+	public function store(
+		UserCreateRequest $request)
+	{
+dd("store");
+		$this->user->store($request->all());
 
-        $user = new User ();
-        $user -> name = $request->name;
-        $user -> email = $request->email;
-        $user -> password = $request->password;
-        $user -> confirmation_code = $request->password;
-        $user -> confirmed = $request->confirmed;
-        $user -> save();
-        foreach($request->roles as $item)
-        {
-            $role = new AssignedRoles();
-            $role -> role_id = $item;
-            $role -> user_id = $user -> id;
-            $role -> save();
-        }
-    }
+		return redirect('user')->with('ok', trans('back/users.created'));
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $user
-     * @return Response
-     */
-    public function getEdit($id) {
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+dd("show");
+		return View('kagi::users.show',  $this->user->show($id));
+	}
 
-        $user = User::find($id);
-        $roles = Role::all();
-        $selectedRoles = AssignedRoles::where('user_id','=',$user->id)->lists('role_id');
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+//dd("edit");
+		return View('kagi::users.create_edit',  $this->user->edit($id));
+	}
 
-        return View('kagi::users.create_edit', compact('user', 'roles', 'selectedRoles'));
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  App\requests\UserUpdateRequest $request
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update(
+		UserUpdateRequest $request, $id)
+	{
+dd("update");
+		$this->user->update($request->all(), $id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param $user
-     * @return Response
-     */
-    public function postEdit(UserEditRequest $request, $id) {
+		return redirect('user')->with('ok', trans('back/users.updated'));
+	}
 
-        $user = User::find($id);
-        $user -> name = $request->name;
-        $user -> confirmed = $request->confirmed;
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  Illuminate\Http\Request $request
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateSeen(
+		Request $request,
+		$id)
+	{
+		$this->user->update($request->all(), $id);
 
-        $password = $request->password;
-        $passwordConfirmation = $request->password_confirmation;
+		return response()->json(['statut' => 'ok']);
+	}
 
-        if (!empty($password)) {
-            if ($password === $passwordConfirmation) {
-                $user -> password = $password;
-                $user -> password_confirmation = $passwordConfirmation;
-            }
-        }
-        $user -> save();
-        AssignedRoles::where('user_id','=',$user->id)->delete();
-        foreach($request->roles as $item)
-        {
-            $role = new AssignedRoles;
-            $role -> role_id = $item;
-            $role -> user_id = $user -> id;
-            $role -> save();
-        }
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $user
-     * @return Response
-     */
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		$this->user->destroy($id);
 
-    public function getDelete($id)
-    {
-        $user = User::find($id);
-        // Show the page
-        return View('kagi::users.delete', compact('user'));
-    }
+		return redirect('user')->with('ok', trans('back/users.destroyed'));
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $user
-     * @return Response
-     */
-    public function postDelete(DeleteRequest $request,$id)
-    {
-        $user= User::find($id);
-        $user->delete();
-    }
+	/**
+	 * Display the roles form
+	 *
+	 * @return Response
+	 */
+	public function getRoles()
+	{
+		$roles = $this->role->all();
+
+		return view('back.users.roles', compact('roles'));
+	}
+
+	/**
+	 * Update roles
+	 *
+	 * @param  App\requests\RoleRequest $request
+	 * @return Response
+	 */
+	public function postRoles(RoleRequest $request)
+	{
+		$this->role->update($request->except('_token'));
+
+		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
+	}
 
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
@@ -140,8 +188,10 @@ class UsersController extends KagiController {
 	*/
 	public function data()
 	{
+//dd("loaded");
 		$users = User::select(array('users.id','users.name','users.email','users.confirmed', 'users.created_at'))
 			->orderBy('users.email', 'ASC');
+//dd($users);
 
 		return Datatables::of($users)
 

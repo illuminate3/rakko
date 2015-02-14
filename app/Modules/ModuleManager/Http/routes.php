@@ -18,4 +18,4 @@ Route::group(['prefix' => 'ModuleManager'], function() {
 });
 */
 
-Route::resource('manager', 'MMController');
+//Route::resource('manager', 'MMController');

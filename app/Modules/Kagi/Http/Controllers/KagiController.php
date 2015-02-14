@@ -1,8 +1,12 @@
 <?php namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
-class KagiController extends Controller {
+abstract class KagiController extends BaseController {
+
+	use DispatchesCommands, ValidatesRequests;
 
 	/**
 	 * Initializer.

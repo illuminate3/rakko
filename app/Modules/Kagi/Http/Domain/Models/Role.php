@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Kagi\Http\Domain;
+<?php namespace App\Modules\Kagi\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
