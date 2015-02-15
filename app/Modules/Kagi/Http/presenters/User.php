@@ -32,12 +32,12 @@ class User extends Presenter {
 	 *
 	 * @return string
 	 */
-	public function disabled()
+	public function banned()
 	{
 //dd("loaded");
 		$return = '';
-		$disabled = $this->entity->disabled;
-		if ( $disabled == 1 ) {
+		$banned = $this->entity->banned;
+		if ( $banned == 1 ) {
 			$return = "checked";
 		}
 

@@ -62,12 +62,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/modules.git",
-                "reference": "58288de4d91e8995c7dccddbcd52c3a1d87c1662"
+                "reference": "9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/modules/zipball/58288de4d91e8995c7dccddbcd52c3a1d87c1662",
-                "reference": "58288de4d91e8995c7dccddbcd52c3a1d87c1662",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868",
+                "reference": "9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -108,7 +108,7 @@
                 "laravel",
                 "modules"
             ],
-            "time": "2015-02-10 01:29:37"
+            "time": "2015-02-12 19:40:19"
         },
         {
             "name": "caffeinated/shinobi",
@@ -168,16 +168,16 @@
         },
         {
             "name": "caffeinated/themes",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/themes.git",
-                "reference": "0c6f9a889a4b773d0d0b7199094b3a8bfdd0eb19"
+                "reference": "31318e3b91ab374dbc26583bcf3d9ecca63bc817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/themes/zipball/0c6f9a889a4b773d0d0b7199094b3a8bfdd0eb19",
-                "reference": "0c6f9a889a4b773d0d0b7199094b3a8bfdd0eb19",
+                "url": "https://api.github.com/repos/caffeinated/themes/zipball/31318e3b91ab374dbc26583bcf3d9ecca63bc817",
+                "reference": "31318e3b91ab374dbc26583bcf3d9ecca63bc817",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +188,7 @@
                 "php": ">=5.4.0"
             },
             "suggest": {
-                "rcrowe/twigBridge": "Allows the ability to utilize Twig as the templating engine"
+                "caffeinated/sapling": "Laravel 5.0 Twig integration package"
             },
             "type": "library",
             "autoload": {
@@ -208,11 +208,13 @@
             ],
             "description": "Laravel 5 Themes",
             "keywords": [
+                "blade",
                 "caffeinated",
                 "laravel",
-                "themes"
+                "themes",
+                "twig"
             ],
-            "time": "2015-02-04 19:38:11"
+            "time": "2015-02-11 18:48:40"
         },
         {
             "name": "chumper/datatable",
@@ -579,21 +581,20 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.2.3",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
+                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/475b29ccd411f2fa8a408e64576418728c032cfa",
+                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "guzzlehttp/streams": "~2.1",
+                "guzzlehttp/ringphp": "~1.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -601,22 +602,16 @@
                 "phpunit/phpunit": "~4.0",
                 "psr/log": "~1.0"
             },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -640,41 +635,44 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-10-05 19:29:14"
+            "time": "2015-01-28 01:03:29"
         },
         {
-            "name": "guzzlehttp/streams",
-            "version": "2.1.0",
+            "name": "guzzlehttp/ringphp",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534"
+                "url": "https://github.com/guzzle/RingPHP.git",
+                "reference": "a903f51b692427318bc813217c0e6505287e79a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/f91b721d73f0e561410903b3b3c90a5d0e40b534",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/a903f51b692427318bc813217c0e6505287e79a4",
+                "reference": "a903f51b692427318bc813217c0e6505287e79a4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "guzzlehttp/streams": "~3.0",
+                "php": ">=5.4.0",
+                "react/promise": "~2.0"
             },
             "require-dev": {
+                "ext-curl": "*",
                 "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "ext-curl": "Guzzle will use specific adapters if cURL is present"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                    "GuzzleHttp\\Ring\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -687,13 +685,57 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
+            "time": "2014-12-11 05:50:32"
+        },
+        {
+            "name": "guzzlehttp/streams",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/streams.git",
+                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/streams/zipball/47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
+                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Stream\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Provides a simple abstraction over streams of data",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-08-17 21:15:53"
+            "time": "2014-10-12 19:18:40"
         },
         {
             "name": "illuminate3/bootawesome",
@@ -701,12 +743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/bootawesome.git",
-                "reference": "63178e1dc758acb89968d4c7a1163fe859b19afe"
+                "reference": "c3ae86cc597176f408f57dd05deefc6e3975a840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/63178e1dc758acb89968d4c7a1163fe859b19afe",
-                "reference": "63178e1dc758acb89968d4c7a1163fe859b19afe",
+                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/c3ae86cc597176f408f57dd05deefc6e3975a840",
+                "reference": "c3ae86cc597176f408f57dd05deefc6e3975a840",
                 "shasum": ""
             },
             "require": {
@@ -747,7 +789,7 @@
                 "twitter",
                 "views"
             ],
-            "time": "2015-02-10 00:49:55"
+            "time": "2015-02-14 08:22:10"
         },
         {
             "name": "illuminate3/kotoba",
@@ -1027,16 +1069,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.2",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "30391aa20874c30725f653bea1ea5b895a5217cf"
+                "reference": "b1aea041cbc0cd54563e2d3709a54a71eed57653"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/30391aa20874c30725f653bea1ea5b895a5217cf",
-                "reference": "30391aa20874c30725f653bea1ea5b895a5217cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b1aea041cbc0cd54563e2d3709a54a71eed57653",
+                "reference": "b1aea041cbc0cd54563e2d3709a54a71eed57653",
                 "shasum": ""
             },
             "require": {
@@ -1148,24 +1190,24 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-06 23:14:12"
+            "time": "2015-02-13 19:10:59"
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "ca028df357d9585be55ec2db48f591dbbfbdd3cf"
+                "reference": "7f96a35e8976faea4c282abcd5c196ef8ddfab7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/ca028df357d9585be55ec2db48f591dbbfbdd3cf",
-                "reference": "ca028df357d9585be55ec2db48f591dbbfbdd3cf",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/7f96a35e8976faea4c282abcd5c196ef8ddfab7c",
+                "reference": "7f96a35e8976faea4c282abcd5c196ef8ddfab7c",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "~4.0",
+                "guzzlehttp/guzzle": "~4.0|~5.0",
                 "illuminate/contracts": "~5.0",
                 "illuminate/http": "~5.0",
                 "illuminate/support": "~5.0",
@@ -1202,7 +1244,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-01-23 19:59:22"
+            "time": "2015-02-14 01:56:05"
         },
         {
             "name": "laravelcollective/html",
@@ -1647,16 +1689,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.3.3",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174"
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0355cecab0591c83fed019a9572c510b0da29174",
-                "reference": "0355cecab0591c83fed019a9572c510b0da29174",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2ce0e8f3020fd292c2ad2a496c5d83939823f642",
+                "reference": "2ce0e8f3020fd292c2ad2a496c5d83939823f642",
                 "shasum": ""
             },
             "require": {
@@ -1706,14 +1748,58 @@
                 }
             ],
             "description": "An interactive shell for modern PHP.",
-            "homepage": "https://github.com/bobthecow/psysh",
+            "homepage": "http://psysh.org",
             "keywords": [
                 "REPL",
                 "console",
                 "interactive",
                 "shell"
             ],
-            "time": "2015-01-20 21:18:03"
+            "time": "2015-02-12 19:35:52"
+        },
+        {
+            "name": "react/promise",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise.git",
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@googlemail.com"
+                }
+            ],
+            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
+            "time": "2014-12-30 13:32:42"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2512,16 +2598,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-oracle.git",
-                "reference": "ea06ddbc896fbb820dfd8b771ba6184a0218a9f1"
+                "reference": "fd9f06d16b64b1ff63d9541083f8ca82264f1b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/ea06ddbc896fbb820dfd8b771ba6184a0218a9f1",
-                "reference": "ea06ddbc896fbb820dfd8b771ba6184a0218a9f1",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/fd9f06d16b64b1ff63d9541083f8ca82264f1b23",
+                "reference": "fd9f06d16b64b1ff63d9541083f8ca82264f1b23",
                 "shasum": ""
             },
             "require": {
@@ -2561,7 +2647,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2015-02-07 05:32:34"
+            "time": "2015-02-12 02:15:09"
         }
     ],
     "packages-dev": [

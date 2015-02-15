@@ -5,7 +5,7 @@ use App\User;
 use App\Modules\Kagi\Http\Domain\AssignedRoles;
 use App\Modules\Kagi\Http\Domain\Role;
 //use Bllim\Datatables\Facade\Datatables;
-//use App\Modules\Kagi\Http\Requests\UserRequest;
+use App\Modules\Kagi\Http\Requests\UserRequest;
 use App\Modules\Kagi\Http\Requests\UserEditRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 

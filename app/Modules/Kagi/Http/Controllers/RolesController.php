@@ -1,165 +1,174 @@
 <?php namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\Http\Controllers\KagiController;
-use App\Modules\Kagi\Http\Domain\Role;
-use App\Modules\Kagi\Http\Domain\Permission;
-use App\Modules\Kagi\Http\Domain\PermissionRole;
-use Bllim\Datatables\Facade\Datatables;
-use App\Modules\Kagi\Http\Requests\RoleRequest;
+use App\Modules\Kagi\Http\Domain\Models\Role;
+use App\Modules\Kagi\Http\Domain\Repositories\RoleRepository;
+
+use Illuminate\Http\Request;
+use App\Modules\Kagi\Http\Requests\RoleCreateRequest;
+use App\Modules\Kagi\Http\Requests\RoleUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-class RoleController extends KagiController {
-    /*
-    * Display a listing of the resource.
-    *
-    * @return Response
-    */
-    public function index()
-    {
-        // Show the page
-        return View('kagi::roles.index');
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function getCreate() {
-        // Get all the available permissions
-        $permissionsAdmin = Permission::where('is_admin','=',1)->get();
-        $permissionsUser = Permission::where('is_admin','=',0)->get();
-        // Selected permissions
-        $permisionsadd =array();
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
 
-        // Show the page
-        return View('kagi::roles.create_edit', compact('permissionsAdmin', 'permissionsUser','permisionsadd'));
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function postCreate(RoleRequest $request) {
+class RolesController extends KagiController {
 
-        $is_admin = 0;
-        // Check if role is for admin user
-        if(!empty($request->permission)){
-	    	$permissionsAdmin = Permission::where('is_admin','=',1)->get();
-		    foreach ($permissionsAdmin as $perm){
-	            foreach($request->permission as $item){
-	                if($item==$perm['id'] && $perm['is_admin']=='1')
-	                {
-	                    $is_admin = 1;
-	                }
-	            }
-	        }
-		}
-        $role = new Role();
-        $role -> is_admin = $is_admin;
-        $role -> name = $request->name;
-        $role -> save();
-		if(is_array($request->permission)){
-	        foreach ($request->permission as $item) {
-	            $permission = new PermissionRole();
-	            $permission->permission_id = $item;
-	            $permission->role_id = $role->id;
-	            $permission -> save();
-	        }
-		}
-    }
+	/**
+	 * The UserRepository instance.
+	 *
+	 * @var App\Repositories\UserRepository
+	 */
+	protected $role;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $role
-     * @return Response
-     */
-    public function getEdit($id) {
-        $role = Role::find($id);
-        $permissionsAdmin = Permission::where('is_admin','=',1)->get();
-        $permissionsUser = Permission::where('is_admin','=',0)->get();
-        $permisionsadd = PermissionRole::where('role_id','=',$id)->select('permission_id')->get();
+	/**
+	 * Create a new UserController instance.
+	 *
+	 * @param  App\Repositories\RoleRepository $role
+	 * @return void
+	 */
+	public function __construct(
+			RoleRepository $role
+		)
+	{
+		$this->role = $role;
 
-        // Show the page
-        return View('kagi::roles.create_edit', compact('role', 'permissionsAdmin', 'permissionsUser','permisionsadd'));
-    }
+		$this->middleware('admin');
+//		$this->middleware('ajax', ['only' => 'updateSeen']);
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param $role
-     * @return Response
-     */
-    public function postEdit(RoleRequest $request, $id) {
-        $is_admin = 0;
-		if(!empty($request->permission)){
-	        $permissionsAdmin = Permission::where('is_admin','=',1)->get();
-	        foreach ($permissionsAdmin as $perm){
-	            foreach($request->permission as $item){
-	                if($item==$perm['id'] && $perm['is_admin']=='1')
-	                {
-	                    $is_admin = 1;
-	                }
-	            }
-	        }
-		}
-        $role = Role::find($id);
-        $role -> is_admin = $is_admin;
-        $role -> name = $request->name;
-        $role -> save();
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+//$roles = User::all();
+//dd($roles);
+		return View('kagi::roles.index');
+	}
 
-        PermissionRole::where('role_id','=',$id) -> delete();
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+//dd("create");
+//		return view('kagi::roles.create', $this->role->create());
+		return view('kagi::roles.create');
+	}
 
-		if(is_array($request->permission)){
-	        foreach ($request->permission as $item) {
-	            $permission = new PermissionRole();
-	            $permission->permission_id = $item;
-	            $permission->role_id = $role->id;
-	            $permission -> save();
-	        }
-		}
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  App\requests\UserCreateRequest $request
+	 *
+	 * @return Response
+	 */
+	public function store(
+		RoleCreateRequest $request
+		)
+	{
+		$this->role->store($request->all());
+		Flash::success( trans('kotoba::role.success.create') );
+		return redirect('admin/roles');
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $role
-     * @return Response
-     */
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+dd("show");
+		return View('kagi::roles.show',  $this->role->show($id));
+	}
 
-    public function getDelete($id)
-    {
-        $role = Role::find($id);
-        // Show the page
-        return View('kagi::roles.delete', compact('role'));
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+//dd("edit");
+		return View('kagi::roles.edit',  $this->role->edit($id));
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $post
-     * @return Response
-     */
-    public function postDelete(DeleteRequest $request,$id)
-    {
-        $role = Role::find($id);
-        $role->delete();
-    }
-    /**
-     * Show a list of all the languages posts formatted for Datatables.
-     *
-     * @return Datatables JSON
-     */
-    public function data()
-    {
-        $roles = Role::select(array('roles.id','roles.name','roles.created_at'));
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  App\Modules\Kagi\Http\Requests\RoleUpdateRequest $request
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update(
+		RoleUpdateRequest $request,
+		$id
+		)
+	{
+//dd("update");
+		$this->role->update($request->all(), $id);
+		Flash::success( trans('kotoba::role.success.update') );
+		return redirect('admin/roles');
+	}
 
-        return Datatables::of($roles)
-            ->add_column('actions', '<a href="{{{ URL::to(\'admin/roles/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ Lang::get("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/roles/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ Lang::get("admin/modal.delete") }}</a>
-                ')
-            ->remove_column('id')
-            ->make();
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy(
+		DeleteRequest $request,
+		$id
+		)
+	{
+		$this->role->destroy($id);
+
+		return redirect('role')->with('ok', trans('back/roles.destroyed'));
+	}
+
+
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//dd("loaded");
+		$roles = Role::select(array('roles.id','roles.name','roles.slug','roles.description', 'roles.created_at'))
+			->orderBy('roles.name', 'ASC');
+//dd($roles);
+
+		return Datatables::of($roles)
+/*
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+*/
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'admin/roles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/delete\' ) }}" class="btn btn-sm btn-danger iframe">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+				')
+
+				->remove_column('id')
+
+				->make();
+	}
 
 }

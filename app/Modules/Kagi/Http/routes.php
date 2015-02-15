@@ -49,14 +49,9 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('users/{id}/delete', 'UsersController@getDelete');
 	Route::post('users/{id}/delete', 'UsersController@postDelete');
 */
-//	Route::get('users/data', 'UsersController@data');
-	Route::get('api/users', array(
-	//	'as'=>'api.users',
-		'uses'=>'UsersController@data'
-		));
 
 	#Roles
-//	Route::resource('roles', 'RolesController');
+	Route::resource('roles', 'RolesController');
 /*
 	Route::get('roles/', 'RoleController@index');
 	Route::get('roles/create', 'RoleController@getCreate');
@@ -67,6 +62,25 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::post('roles/{id}/delete', 'RoleController@postDelete');
 	Route::get('roles/data', 'RoleController@data');
 */
+
+	Route::resource('permissions', 'PermissionsController');
+
+
+// API DATA
+	Route::get('api/users', array(
+	//	'as'=>'api.users',
+		'uses'=>'UsersController@data'
+		));
+	Route::get('api/roles', array(
+	//	'as'=>'api.users',
+		'uses'=>'RolesController@data'
+		));
+	Route::get('api/permissions', array(
+	//	'as'=>'api.users',
+		'uses'=>'PermissionsController@data'
+		));
+
+
 });
 
 

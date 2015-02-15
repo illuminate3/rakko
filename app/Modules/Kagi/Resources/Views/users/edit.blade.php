@@ -84,23 +84,23 @@
 <div class="form-group">
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="verified" name="verified" value="{{ $user->verified }}" {{ $user->present()->verified }}>
-		&nbsp;verified
+		<input type="checkbox" id="verified" name="verified" value="1" {{ $user->present()->verified }}>
+		&nbsp;{{ trans('kotoba::general.verified') }}
 	</label>
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="disabled" name="disabled" value="{{ $user->disabled }}" {{ $user->present()->disabled }}>
-		&nbsp;disabled
+		<input type="checkbox" id="banned" name="banned" value="1" {{ $user->present()->banned }}>
+		&nbsp;{{ trans('kotoba::general.banned') }}
 	</label>
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="confirmed" name="confirmed" value="{{ $user->confirmed }}" {{ $user->present()->confirmed }}>
-		&nbsp;confirmed
+		<input type="checkbox" id="confirmed" name="confirmed" value="1" {{ $user->present()->confirmed }}>
+		&nbsp;{{ trans('kotoba::general.confirmed') }}
 	</label>
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="activated" name="activated" value="{{ $user->activated }}" {{ $user->present()->activated }}>
-		&nbsp;activated
+		<input type="checkbox" id="activated" name="activated" value="1" {{ $user->present()->activated }}>
+		&nbsp;{{ trans('kotoba::general.activated') }}
 	</label>
 
 </div>
@@ -137,4 +137,5 @@
 
 </div> <!-- ./ row -->
 </div> <!-- ./ wrap/container -->
+
 @stop

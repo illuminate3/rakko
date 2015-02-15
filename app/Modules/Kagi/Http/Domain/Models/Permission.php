@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Laracasts\Presenter\PresentableTrait;
 
-class Role extends Model {
+class Permission extends Model {
 
 	use PresentableTrait;
 
@@ -13,16 +13,11 @@ class Role extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'roles';
+	protected $table = 'permissions';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\Role';
+	protected $presenter = 'App\modules\Kagi\Http\Presenters\Permission';
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-//	protected $hidden = ['password', 'remember_token'];
+//	protected $hidden = ['_token'];
 
 	protected $fillable = ['name', 'slug', 'description'];
 

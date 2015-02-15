@@ -10,17 +10,13 @@ abstract class BaseRepository {
 	protected $model;
 
 	/**
-	 * Get number of records.
+	 * Get all models.
 	 *
-	 * @return array
+	 * @return Illuminate\Support\Collection
 	 */
-	public function getNumber()
+	public function all()
 	{
-		$total = $this->model->count();
-
-		$new = $this->model->whereSeen(0)->count();
-
-		return compact('total', 'new');
+		return $this->model->all();
 	}
 
 	/**

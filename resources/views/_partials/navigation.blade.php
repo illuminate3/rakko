@@ -37,6 +37,11 @@
 						</a>
 					</li>
 					<li>
+						<a href="/admin/permissions">
+							{{ Lang::choice('kotoba::permission.permission', 2) }}
+						</a>
+					</li>
+					<li>
 						<a href="/auth/logout">
 							{{ trans('kotoba::auth.log_out') }}
 						</a>

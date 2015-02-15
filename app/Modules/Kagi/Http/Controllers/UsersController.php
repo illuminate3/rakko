@@ -4,14 +4,15 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 use App\Modules\Kagi\Http\Domain\Repositories\RoleRepository;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Modules\Kagi\Http\Requests\UserCreateRequest;
 use App\Modules\Kagi\Http\Requests\UserUpdateRequest;
-use App\Modules\Kagi\Http\Requests\RoleRequest;
+use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
 //use Datatable;
 use Datatables;
-use Bootstrap;
+//use Bootstrap;
+use Flash;
 
 class UsersController extends KagiController {
 
@@ -67,8 +68,9 @@ class UsersController extends KagiController {
 	 */
 	public function create()
 	{
-dd("create");
-		return view('back.users.create', $this->user->create());
+//dd("create");
+//		return view('kagi::users.create', $this->user->create());
+		return view('kagi::users.create');
 	}
 
 	/**
@@ -79,7 +81,8 @@ dd("create");
 	 * @return Response
 	 */
 	public function store(
-		UserCreateRequest $request)
+		UserCreateRequest $request
+		)
 	{
 dd("store");
 		$this->user->store($request->all());
@@ -119,28 +122,14 @@ dd("show");
 	 * @return Response
 	 */
 	public function update(
-		UserUpdateRequest $request, $id)
+		UserUpdateRequest $request,
+		$id
+		)
 	{
-dd("update");
+//dd("update");
 		$this->user->update($request->all(), $id);
-
-		return redirect('user')->with('ok', trans('back/users.updated'));
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Illuminate\Http\Request $request
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function updateSeen(
-		Request $request,
-		$id)
-	{
-		$this->user->update($request->all(), $id);
-
-		return response()->json(['statut' => 'ok']);
+		Flash::success( trans('kotoba::account.success.update') );
+		return redirect('admin/users');
 	}
 
 	/**
@@ -149,7 +138,10 @@ dd("update");
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(
+		DeleteRequest $request,
+		$id
+		)
 	{
 		$this->user->destroy($id);
 
@@ -189,20 +181,41 @@ dd("update");
 	public function data()
 	{
 //dd("loaded");
-		$users = User::select(array('users.id','users.name','users.email','users.confirmed', 'users.created_at'))
+/*
+			<th>{{ trans('kotoba::general.verified') }}</th>
+			<th>{{ trans('kotoba::general.banned') }}</th>
+			<th>{{ trans('kotoba::general.confirmed') }}</th>
+			<th>{{ trans('kotoba::general.activated') }}</th>
+*/
+		$users = User::select(array('users.id','users.name','users.email','users.verified','users.banned','users.confirmed','users.activated', 'users.created_at'))
 			->orderBy('users.email', 'ASC');
 //dd($users);
 
 		return Datatables::of($users)
 
 			-> edit_column(
+				'verified',
+				'@if ($verified=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+			-> edit_column(
+				'banned',
+				'@if ($banned=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+			-> edit_column(
 				'confirmed',
 				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+			-> edit_column(
+				'activated',
+				'@if ($activated=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
 				)
 
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/show\' ) }}" class="btn btn-info btn-sm" >
+					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+				</a>
+				<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				<a href="{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}" class="btn btn-sm btn-danger iframe">

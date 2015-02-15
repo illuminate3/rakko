@@ -23,27 +23,11 @@ class UserRepository extends BaseRepository {
 	 */
 	public function __construct(
 		User $user,
-		Role $role)
+		Role $role
+		)
 	{
 		$this->model = $user;
 		$this->role = $role;
-	}
-
-	/**
-	 * Get user collection.
-	 *
-	 * @param  int  $id
-	 * @return Illuminate\Support\Collection
-	 */
-	public function edit($id)
-	{
-//dd("edit");
-//dd($id);
-		$user = $this->getById($id);
-
-//		$select = $this->role->all()->lists('title', 'id');
-
-		return compact('user', 'select');
 	}
 
 	/**
@@ -64,6 +48,61 @@ class UserRepository extends BaseRepository {
 		return compact('user' ,'statut');
 	}
 
+	/**
+	 * Get user collection.
+	 *
+	 * @param  int  $id
+	 * @return Illuminate\Support\Collection
+	 */
+	public function edit($id)
+	{
+		$user = $this->getById($id);
+
+//		$select = $this->role->all()->lists('title', 'id');
+
+		return compact('user', 'select');
+	}
+
+	/**
+	 * Get all models.
+	 *
+	 * @return Illuminate\Support\Collection
+	 */
+	public function store($input)
+	{
+//dd($input);
+		$this->model = new User;
+		$this->model->create($input);
+	}
+
+	/**
+	 * Update a role.
+	 *
+	 * @param  array  $inputs
+	 * @param  int    $id
+	 * @return void
+	 */
+	public function update($input, $id)
+	{
+//dd($input);
+		$user = $this->getById($id);
+//dd($input['confirmed']);
+		if ( !isset($input['verified']) ) {
+			$user->verified = 0;
+		}
+		if ( !isset($input['banned']) ) {
+			$user->banned = 0;
+		}
+		if ( !isset($input['confirmed']) ) {
+			$user->confirmed = 0;
+		}
+		if ( !isset($input['activated']) ) {
+			$user->activated = 0;
+		}
+//dd($user->verified);
+		$user->update($input);
+	}
+
 
 
 
@@ -74,20 +113,28 @@ class UserRepository extends BaseRepository {
 	public function findByUsernameOrCreateGithub($userData)
 	{
 //dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
 			'name' => $userData->nickname,
 			'email'    => $userData->email,
 //			'avatar'   => $userData->avatar
+			'verified'   => 1,
+			'confirmed'   => 1,
+			'activated'   => 1
 		]);
 	}
 
 	public function findByUsernameOrCreateGoogle($userData)
 	{
 //dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
 			'name' => $userData->name,
 			'email'    => $userData->email,
 //			'avatar'   => $userData->avatar
+			'verified'   => 1,
+			'confirmed'   => 1,
+			'activated'   => 1
 		]);
 	}
 }

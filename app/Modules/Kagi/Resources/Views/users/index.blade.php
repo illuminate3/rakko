@@ -33,58 +33,44 @@
 
 {{-- Content --}}
 @section('content')
+
 <div class="row">
 <h1>
 	<p class="pull-right">
-{{--
-	@if (Auth::check())
-		@if (Auth::user()->hasRoleWithName('Admin'))
-			{{ Bootstrap::linkIcon(
-				'users.create',
-				trans('lingos::button.user.new'),
-				'plus fa-fw',
-				array('class' => 'btn btn-info')
-			) }}
-		@endif
-	@endif
---}}
-	{{-- Bootstrap::linkIcon(
-		'users.index',
-		trans('kotoba::button.back'),
-		'chevron-left fa-fw',
-		array('class' => 'btn btn-default')
-	) --}}
+	<a href="/admin/users/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+		<i class="fa fa-plus fa-fw"></i>
+		{{ trans('kotoba::button.new') }}
+	</a>
 	</p>
-	<i class="fa fa-group fa-lg"></i>
-	{{ Lang::choice('kotoba::account.user', 2) }}
+	<i class="fa fa-users fa-lg"></i>
+		{{ Lang::choice('kotoba::account.user', 2) }}
 	<hr>
 </h1>
 </div>
 
 
-<div class="page-header">
-	<h3>
-{{ Lang::choice('kotoba::account.user', 2) }}
-	<div class="pull-right">
-		<div class="pull-right">
-            <a href="{{ URL::to('admin/users/create') }}" class="btn btn-sm  btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> {{ trans('kotoba::button.new') }}</a>
-        </div>
-	</div>
-	</h3>
-			"dom" : "T<'clear'>lfrtip",
+<div class="row">
 
-</div>
+"dom" : "T<'clear'>lfrtip",
 
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th>{{ trans('kotoba::account.name') }}</th>
 			<th>{{ trans('kotoba::account.email') }}</th>
-			<th>{{ trans('kotoba::general.activate') }}</th>
-            <th>{{ trans('kotoba::general.created_at') }}</th>
-            <th>{{ trans('kotoba::general.action') }}</th>
+
+			<th>{{ trans('kotoba::general.verified') }}</th>
+			<th>{{ trans('kotoba::general.banned') }}</th>
+			<th>{{ trans('kotoba::general.confirmed') }}</th>
+			<th>{{ trans('kotoba::general.activated') }}</th>
+
+			<th>{{ trans('kotoba::general.created_at') }}</th>
+			<th>{{ trans('kotoba::general.action') }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>
 </table>
+
+</div>
+
 @stop

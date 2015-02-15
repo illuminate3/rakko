@@ -161,9 +161,9 @@ return [
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
-'Collective\Html\HtmlServiceProvider',
 //'Chumper\Datatable\DatatableServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
+'Collective\Html\HtmlServiceProvider',
 
 	],
 

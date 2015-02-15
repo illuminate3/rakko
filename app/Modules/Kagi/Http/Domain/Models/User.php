@@ -1,25 +1,4 @@
 <?php namespace App\Modules\Kagi\Http\Domain\Models;
-/*
-use Illuminate\Database\Eloquent\Model;
-
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Auth\Passwords\CanResetPasswordTrait;
-
-//use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-//use Illuminate\Contracts\Auth\UserProvider as UserContract;
-
-use Illuminate\Auth\UserTrait;
-use Caffeinated\Shinobi\Traits\ShinobiTrait;
-use Laracasts\Presenter\PresentableTrait;
-
-class User extends Model implements CanResetPasswordContract
-//class User extends Model implements AuthenticatableContract, CanResetPasswordContract
-{
-	use UserTrait, CanResetPasswordTrait, PresentableTrait, Authenticatable, CanResetPassword, ShinobiTrait;
-//	use PresentableTrait, Authenticatable, CanResetPassword, ShinobiTrait;
-*/
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -50,7 +29,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
 
 
 }

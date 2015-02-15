@@ -2,7 +2,7 @@
 
 use Laracasts\Presenter\Presenter;
 
-class Role extends Presenter {
+class Permission extends Presenter {
 
 	/**
 	 * Present the name

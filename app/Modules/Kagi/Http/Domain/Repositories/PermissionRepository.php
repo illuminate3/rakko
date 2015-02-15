@@ -1,29 +1,30 @@
 <?php namespace App\Modules\Kagi\Http\Domain\Repositories;
 
-use App\Modules\Kagi\Http\Domain\Models\Role;
+use App\Modules\Kagi\Http\Domain\Models\Permission;
+use Illuminate\Http\Request;
 
 //use File, Auth;
 
-class RoleRepository extends BaseRepository {
+class PermissionRepository extends BaseRepository {
 
 	/**
 	 * The Role instance.
 	 *
-	 * @var App\Models\Role
+	 * @var App\Modules\Kagi\Http\Domain\Models\Permission
 	 */
-	protected $role;
+	protected $permission;
 
 	/**
-	 * Create a new RoleRepository instance.
+	 * Create a new PermissionRepository instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Models\Role $role
+	 * @param  App\Modules\Kagi\Http\Domain\Models\Permission $permission
 	 * @return void
 	 */
 	public function __construct(
-		Role $role
+		Permission $permission
 		)
 	{
-		$this->model = $role;
+		$this->model = $permission;
 	}
 
 	/**
@@ -48,36 +49,37 @@ class RoleRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$role = $this->getById($id);
+		$permission = $this->getById($id);
 
 //		$select = $this->role->all()->lists('title', 'id');
 
-		return compact('role', 'select');
+		return compact('permission', 'select');
 	}
 
 	/**
 	 * Get all models.
 	 *
+	 * @param  array  $input
 	 * @return Illuminate\Support\Collection
 	 */
 	public function store($input)
 	{
 //dd($input);
-		$this->model = new Role;
+		$this->model = new Permission;
 		$this->model->create($input);
 	}
 
 	/**
-	 * Update a role.
+	 * Update a permission.
 	 *
-	 * @param  array  $inputs
+	 * @param  array  $input
 	 * @param  int    $id
 	 * @return void
 	 */
 	public function update($input, $id)
 	{
-		$role = $this->getById($id);
-		$role->update($input);
+		$permission = $this->getById($id);
+		$permission->update($input);
 	}
 
 }
