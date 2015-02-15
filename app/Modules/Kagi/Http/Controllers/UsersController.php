@@ -108,7 +108,7 @@ dd("show");
 	public function edit($id)
 	{
 //dd("edit");
-		return View('kagi::users.create_edit',  $this->user->edit($id));
+		return View('kagi::users.edit',  $this->user->edit($id));
 	}
 
 	/**

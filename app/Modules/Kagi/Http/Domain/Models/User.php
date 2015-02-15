@@ -32,7 +32,7 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword, ShinobiTrait;
+	use Authenticatable, CanResetPassword, PresentableTrait, ShinobiTrait;
 
 	/**
 	 * The database table used by the model.
@@ -41,7 +41,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $table = 'users';
 
-	protected $presenter = 'UserPresenter';
+	protected $presenter = 'App\modules\Kagi\Http\Presenters\User';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

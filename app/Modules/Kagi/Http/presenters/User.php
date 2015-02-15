@@ -2,7 +2,7 @@
 
 use Laracasts\Presenter\Presenter;
 
-class UserPresenter extends Presenter {
+class User extends Presenter {
 
 //dd('loaded');
 
@@ -25,6 +25,74 @@ class UserPresenter extends Presenter {
 	public function email()
 	{
 		return $this->entity->email;
+	}
+
+	/**
+	 * Present the email
+	 *
+	 * @return string
+	 */
+	public function disabled()
+	{
+//dd("loaded");
+		$return = '';
+		$disabled = $this->entity->disabled;
+		if ( $disabled == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Present the email
+	 *
+	 * @return string
+	 */
+	public function verified()
+	{
+//dd("loaded");
+		$return = '';
+		$verified = $this->entity->verified;
+		if ( $verified == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Present the email
+	 *
+	 * @return string
+	 */
+	public function confirmed()
+	{
+//dd("loaded");
+		$return = '';
+		$confirmed = $this->entity->confirmed;
+		if ( $confirmed == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Present the email
+	 *
+	 * @return string
+	 */
+	public function activated()
+	{
+//dd("loaded");
+		$return = '';
+		$activated = $this->entity->activated;
+		if ( $activated == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
 	}
 
 	/**

@@ -35,12 +35,13 @@
 {{-- Bootstrap::cssFont() --}}
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-3.3.2/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-3.3.2/css/bootstrap-theme.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/font-awesome-4.3.0/css/font-awesome.css') }}">
 
 {{--
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-3.3.2/css/bootstrap-theme.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/SlidePushMenus.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/navgoco/jquery.navgoco.css') }}" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
 --}}
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">

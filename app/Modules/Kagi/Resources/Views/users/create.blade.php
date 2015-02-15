@@ -20,7 +20,109 @@
 
 {{-- Content --}}
 @section('content')
+
+<div id="wrap" class="container">
+
 <div class="row">
+<h1>
+	<p class="pull-right">
+		<a href="/roles" class="btn btn-default" title="Back">
+			<i class="fa fa-chevron-left fa-fw"></i>
+			Back
+		</a>
+	</p>
+	<i class="fa fa-edit fa-lg"></i>
+	Edit Role
+	<hr>
+</h1>
+</div>
+
+
+<div class="row">
+{!! Form::model(
+	$user,
+	[
+		'route' => ['admin.users.update', $user->id],
+		'method' => 'put',
+		'class' => 'form-horizontal'
+	]
+) !!}
+
+<form method="POST" action="http://localhost/roles/1" accept-charset="UTF-8" department="form"><input name="_method" type="hidden" value="PATCH">
+<input name="_token" type="hidden" value="uQgEVRmggxhJmVey1FlKR5dUHOQ9tEbYjxTI9sR4">
+
+
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
+<input class="form-control" placeholder="Name" id="name" required="required" autofocus="autofocus" name="name" type="text" value="Admin">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
+<input class="form-control" placeholder="Description" id="level" name="description" type="text">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-signal fa-fw"></i></span>
+<input class="form-control" placeholder="Level" id="level" name="level" type="text">
+</div>
+</div>
+
+
+	<div class="form-group">
+<div class="checkbox">
+<label>
+<input checked="checked" name="active" type="checkbox" value="1">
+&nbsp;Active
+</label>
+</div>
+</div>
+
+	<hr>
+
+	<div class="form-group">
+<input class="btn btn-success btn-block" type="submit" value="Save">
+</div>
+
+
+	<div class="row">
+		<div class="col-sm-4">
+		<a href="/roles" class="btn btn-default btn-block" title="Cancel">
+		<i class="fa fa-times fa-fw"></i>Cancel</a>
+		</div>
+		<div class="col-sm-4">
+		<div class="form-group">
+<input class="btn btn-default btn-block" type="reset" value="Reset">
+</div>
+
+		</div>
+		<div class="col-sm-4">
+		<a class="btn btn-default btn-block action_confirm" data-method="delete" title="Delete User" onclick=" if ($(this).hasClass('action_confirm')) { if(confirm(&quot;lingos::job_title.ask.delete&quot;)) { $(this).find(&quot;form&quot;).submit(); } } else { $(this).find(&quot;form&quot;).submit(); }">
+		<i class="fa fa-trash-o fa-fw"></i>Delete
+<form action="/users/%7Busers%7D" method="POST" style="display:none">
+ <input type="hidden" name="_method" value="delete">
+</form>
+</a>
+		</div>
+	</div>
+
+
+</form>
+</div>
+
+
+
+	</div>
+
+
+<div class="row-fluid">
 <h1>
 	<p class="pull-right">
 	{{-- Bootstrap::linkIcon(
