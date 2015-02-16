@@ -3,7 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 //use Illuminate\Contracts\Auth\Registrar;
-use App\Modules\Kagi\Services\Registrar;
+use App\Modules\Kagi\Http\Domain\Services\Registrar;
+use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
+
+use Flash;
 
 trait KagiAuthandRegister {
 
@@ -70,7 +73,10 @@ trait KagiAuthandRegister {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function postLogin(Request $request)
+	public function postLogin(
+		LoginRegistrar $loginRegistrar,
+		Request $request
+		)
 	{
 		$this->validate($request, [
 			'email' => 'required', 'password' => 'required',
@@ -78,8 +84,16 @@ trait KagiAuthandRegister {
 
 		$credentials = $request->only('email', 'password');
 
+		$check = $loginRegistrar->checkUserApproval($request->email);
+//dd($check);
+		if ( $check != 'true' ) {
+			Flash::error(trans('kotoba::auth.error.not_approved'));
+			return redirect($this->loginPath());
+		}
+
 		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
+			$loginRegistrar->touchLastLogin($request->email);
 			return redirect()->intended($this->redirectPath());
 		}
 

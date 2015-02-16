@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Kagi\Services;
+<?php namespace App\Modules\Kagi\Http\Domain\Services;
 
 use App\User;
 use Validator;

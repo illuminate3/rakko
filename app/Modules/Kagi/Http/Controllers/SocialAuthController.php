@@ -12,7 +12,10 @@ class SocialAuthController extends Controller implements AuthenticateUserListene
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-	public function login(SocialAuthenticateUser $authenticateUser, Request $request)
+	public function login(
+		SocialAuthenticateUser $authenticateUser,
+		Request $request
+		)
 	{
 		$hasCode = $request->has('code');
 //dd($hasCode);
@@ -28,7 +31,7 @@ class SocialAuthController extends Controller implements AuthenticateUserListene
 	 */
 	public function userHasLoggedIn($user)
 	{
-dd($user);
+dd("social userhaslogged in");
 		return redirect('/');
 	}
 

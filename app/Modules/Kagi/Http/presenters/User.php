@@ -8,7 +8,7 @@ class User extends Presenter {
 
 
 	/**
-	 * Present the name
+	 * name
 	 *
 	 * @return string
 	 */
@@ -18,7 +18,7 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the email
+	 * email
 	 *
 	 * @return string
 	 */
@@ -28,7 +28,7 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the email
+	 * banned checkbox
 	 *
 	 * @return string
 	 */
@@ -45,7 +45,7 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the email
+	 * verified checkbox
 	 *
 	 * @return string
 	 */
@@ -62,7 +62,7 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the email
+	 * confirmed checkbox
 	 *
 	 * @return string
 	 */
@@ -79,7 +79,7 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the email
+	 * activated checkbox
 	 *
 	 * @return string
 	 */
@@ -96,7 +96,87 @@ class User extends Presenter {
 	}
 
 	/**
-	 * Present the roles
+	 * banned icon
+	 *
+	 * @return string
+	 */
+	public function iconBanned()
+	{
+//dd("loaded");
+		$return = '';
+		$banned = $this->entity->banned;
+
+		if ( $banned == 1 ) {
+			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
+		} else {
+			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+		}
+
+		return $return;
+	}
+
+	/**
+	 * verified icon
+	 *
+	 * @return string
+	 */
+	public function iconVerified()
+	{
+//dd("loaded");
+		$return = '';
+		$verified = $this->entity->verified;
+
+		if ( $verified == 1 ) {
+			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
+		} else {
+			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+		}
+
+		return $return;
+	}
+
+	/**
+	 * confirmed icon
+	 *
+	 * @return string
+	 */
+	public function iconConfirmed()
+	{
+//dd("loaded");
+		$return = '';
+		$confirmed = $this->entity->confirmed;
+
+		if ( $confirmed == 1 ) {
+			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
+		} else {
+			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+		}
+
+		return $return;
+	}
+
+	/**
+	 * activated icon
+	 *
+	 * @return string
+	 */
+	public function iconActivated()
+	{
+//dd("loaded");
+		$return = '';
+		$activated = $this->entity->activated;
+
+		if ( $activated == 1 ) {
+			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
+		} else {
+			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+		}
+
+		return $return;
+	}
+
+	/**
+	 * roles
 	 *
 	 * @return string
 	 */

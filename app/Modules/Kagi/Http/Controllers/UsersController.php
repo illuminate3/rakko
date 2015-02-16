@@ -98,7 +98,7 @@ dd("store");
 	 */
 	public function show($id)
 	{
-dd("show");
+//dd("show");
 		return View('kagi::users.show',  $this->user->show($id));
 	}
 
@@ -212,7 +212,7 @@ dd("show");
 
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/show\' ) }}" class="btn btn-info btn-sm" >
+				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
 					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
 				</a>
 				<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >

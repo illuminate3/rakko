@@ -3,9 +3,18 @@
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 
+use Hash, Input, DB;
+use DateTime;
 //use File, Auth;
 
 class UserRepository extends BaseRepository {
+
+	/**
+	 * The User instance.
+	 *
+	 * @var App\Models\User
+	 */
+	protected $user;
 
 	/**
 	 * The Role instance.
@@ -87,6 +96,13 @@ class UserRepository extends BaseRepository {
 //dd($input);
 		$user = $this->getById($id);
 //dd($input['confirmed']);
+
+		if ( Input::has('password') ) {
+			$input['password'] = Hash::make($input['password']);
+//			$user->password = Hash::make($input['password']);
+		}
+//dd($user->password);
+
 		if ( !isset($input['verified']) ) {
 			$user->verified = 0;
 		}
@@ -104,37 +120,4 @@ class UserRepository extends BaseRepository {
 	}
 
 
-
-
-	/**
-	 * @param $userData
-	 * @return static
-	 */
-	public function findByUsernameOrCreateGithub($userData)
-	{
-//dd($userData);
-//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
-		return User::firstOrCreate([
-			'name' => $userData->nickname,
-			'email'    => $userData->email,
-//			'avatar'   => $userData->avatar
-			'verified'   => 1,
-			'confirmed'   => 1,
-			'activated'   => 1
-		]);
-	}
-
-	public function findByUsernameOrCreateGoogle($userData)
-	{
-//dd($userData);
-//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
-		return User::firstOrCreate([
-			'name' => $userData->name,
-			'email'    => $userData->email,
-//			'avatar'   => $userData->avatar
-			'verified'   => 1,
-			'confirmed'   => 1,
-			'activated'   => 1
-		]);
-	}
 }

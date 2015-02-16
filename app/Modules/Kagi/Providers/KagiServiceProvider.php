@@ -1,5 +1,4 @@
-<?php
-namespace App\Modules\Kagi\Providers;
+<?php namespace App\Modules\Kagi\Providers;
 
 use App;
 use Config;

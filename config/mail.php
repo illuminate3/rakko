@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => env('EMAIL_HOST', 'smtp.mailgun.org'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
 	|
 	*/
 
-	'port' => 587,
+	'port' => env('EMAIL_PORT', 587),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,10 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => [
+		'address' => env('EMAIL_FROM_ADDRESS', NULL),
+		'name' => env('EMAIL_FROM_NAME', NULL),
+		],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +70,7 @@ return [
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => env('EMAIL_ENCRYPTION', 'tls'),
 
 	/*
 	|--------------------------------------------------------------------------

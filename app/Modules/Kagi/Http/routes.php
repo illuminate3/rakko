@@ -22,8 +22,8 @@ Route::group(['prefix' => 'kagi'], function() {
 get('social/login', 'SocialAuthController@login');
 
 Route::controllers([
-	'auth' => 'AuthController',
-	'password' => 'PasswordController',
+	'auth' => 'kagiAuthController',
+	'password' => 'KagiPasswordController',
 ]);
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {

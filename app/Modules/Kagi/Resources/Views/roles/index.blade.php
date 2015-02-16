@@ -59,8 +59,8 @@
 			<th>{{ trans('kotoba::account.name') }}</th>
 			<th>{{ trans('kotoba::general.slug') }}</th>
 			<th>{{ trans('kotoba::general.description') }}</th>
-            <th>{{ trans('kotoba::general.created_at') }}</th>
-            <th>{{ trans('kotoba::general.action') }}</th>
+			<th>{{ trans('kotoba::general.created_at') }}</th>
+			<th>{{ trans('kotoba::general.action') }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>

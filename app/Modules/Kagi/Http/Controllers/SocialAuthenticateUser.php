@@ -2,9 +2,13 @@
 
 //use Illuminate\Contracts\Auth\Authenticator;
 use Illuminate\Contracts\Auth\Guard;
-use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
+
 use Laravel\Socialite\Contracts\Factory as Socialite;
+
+use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 use App\Modules\Kagi\Http\Listeners\AuthenticateUserListener;
+use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
+
 use Config;
 
 class SocialAuthenticateUser {
@@ -29,7 +33,11 @@ class SocialAuthenticateUser {
 	 * @param Socialite $socialite
 	 * @param Guard $auth
 	 */
-	public function __construct(UserRepository $users, Socialite $socialite, Guard $auth)
+	public function __construct(
+		UserRepository $users,
+		Socialite $socialite,
+		Guard $auth
+		)
 	{
 		$this->users = $users;
 		$this->socialite = $socialite;
@@ -41,15 +49,21 @@ class SocialAuthenticateUser {
 	 * @param AuthenticateUserListener $listener
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-	public function execute($hasCode, AuthenticateUserListener $listener)
+	public function execute(
+		$hasCode,
+		AuthenticateUserListener $listener,
+		LoginRegistrar $loginRegistrar
+		)
 	{
 		if ( ! $hasCode) return $this->getAuthorizationFirst();
 
 		if ( Config::get('kagi.kagi_social', '') == 'github' ) {
-			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
+//			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
+			$user = $loginRegistrar->findByUsernameOrCreateGithub($this->getGithubUser());
 		}
 		if ( Config::get('kagi.kagi_social', '') == 'google' ) {
-			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
+//			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
+			$user = $loginRegistrar->findByUsernameOrCreateGoogle($this->getGoogleUser());
 		}
 
 		$this->auth->login($user, true);

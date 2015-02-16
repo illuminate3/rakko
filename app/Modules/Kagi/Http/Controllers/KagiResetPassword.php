@@ -63,7 +63,7 @@ trait KagiResetPassword {
 	 */
 	protected function getEmailSubject()
 	{
-		return isset($this->subject) ? $this->subject : trans('kotoba::auth.password_link');
+		return isset($this->subject) ? $this->subject : trans('kotoba::email.password_link');
 	}
 
 	/**
