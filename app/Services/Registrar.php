@@ -3,6 +3,7 @@
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Config;
 
 class Registrar implements RegistrarContract {
 
@@ -17,7 +18,7 @@ class Registrar implements RegistrarContract {
 		return Validator::make($data, [
 			'name' => 'required|max:255',
 			'email' => 'required|email|max:255|unique:users',
-			'password' => 'required|confirmed|min:6',
+			'password'			=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
 		]);
 	}
 

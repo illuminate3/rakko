@@ -37,6 +37,11 @@
 </div>
 
 
+@if (count($errors) > 0)
+	@include('kagi::_partials.errors')
+@endif
+
+
 <div class="row">
 {!! Form::model(
 	$user,
@@ -75,7 +80,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-key fa-fw fa-rotate-180"></i></span>
-		<input type="password" id="confirm_password" name="confirm_password" value="" placeholder="{{ trans('kotoba::auth.confirm_password') }}" class="form-control">
+		<input type="password" id="password_confirmation" name="password_confirmation" value="" placeholder="{{ trans('kotoba::auth.password_confirmation') }}" class="form-control">
 </div>
 </div>
 

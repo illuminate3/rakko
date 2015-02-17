@@ -30,7 +30,8 @@ class Registrar implements RegistrarContract {
 		return Validator::make($data, [
 			'name'				=> 'required|max:255',
 			'email'				=> 'required|email|max:255|unique:users',
-			'password'			=> 'required|confirmed|min:6',
+//			'password'			=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
+//			'password'			=> 'required|confirmed|min:6',
 		]);
 	}
 
@@ -169,7 +170,7 @@ class Registrar implements RegistrarContract {
 //dd($user);
 
 		$user->activated = 1;
-		$user->activated_at = date("Y-m-d H:i:s"),
+		$user->activated_at = date("Y-m-d H:i:s");
 
 		return $user->update();
 	}

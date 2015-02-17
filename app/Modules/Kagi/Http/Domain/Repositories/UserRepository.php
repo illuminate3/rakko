@@ -4,7 +4,7 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 //use Caffeinated\Shinobi\Models\Role;
 
-use Hash, Input, DB;
+use Hash, DB;
 use DateTime;
 //use File, Auth;
 
@@ -106,28 +106,26 @@ dd($permissions);
 	{
 //dd($input);
 		$user = $this->getById($id);
-//dd($input['confirmed']);
 
-		if ( Input::has('password') ) {
-			$input['password'] = Hash::make($input['password']);
-//			$user->password = Hash::make($input['password']);
+		if ( $input['password'] != NULL ) {
+			$user->password = Hash::make($input['password']);
 		}
-//dd($user->password);
 
-		if ( !isset($input['verified']) ) {
-			$user->verified = 0;
+		if ( isset($input['verified']) ) {
+			$user->verified = $input['verified'];
 		}
-		if ( !isset($input['banned']) ) {
-			$user->banned = 0;
+		if ( isset($input['banned']) ) {
+			$user->banned = $input['banned'];
 		}
-		if ( !isset($input['confirmed']) ) {
-			$user->confirmed = 0;
+		if ( isset($input['confirmed']) ) {
+			$user->confirmed = $input['confirmed'];
 		}
-		if ( !isset($input['activated']) ) {
-			$user->activated = 0;
+		if ( isset($input['activated']) ) {
+			$user->activated = $input['activated'];
 		}
-//dd($user->verified);
-		$user->update($input);
+//dd($user);
+
+		$user->update();
 	}
 
 

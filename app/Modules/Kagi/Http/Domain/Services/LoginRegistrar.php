@@ -82,14 +82,14 @@ class LoginRegistrar extends Model {
 //dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
-			'name'				=> $userData->nickname,
-			'email'				=> $userData->email,
-//			'avatar'			=> $userData->avatar,
-			'activated_at'		=> date("Y-m-d H:i:s"),
-			'verified'			=> 1,
-			'confirmed'			=> 1,
-			'activated'			=> 1,
-			'confirmation_code'	= md5(microtime().Config::get('app.key'))
+			'name'					=> $userData->nickname,
+			'email'					=> $userData->email,
+//			'avatar'				=> $userData->avatar,
+			'activated_at'			=> date("Y-m-d H:i:s"),
+			'verified'				=> 1,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 		]);
 	}
 
@@ -98,14 +98,14 @@ class LoginRegistrar extends Model {
 //dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
-			'name'				=> $userData->name,
-			'email'				=> $userData->email,
-//			'avatar'			=> $userData->avatar,
-			'activated_at'		=> date("Y-m-d H:i:s"),
-			'verified'			=> 1,
-			'confirmed'			=> 1,
-			'activated'			=> 1
-			'confirmation_code'	= md5(microtime().Config::get('app.key'))
+			'name'					=> $userData->name,
+			'email'					=> $userData->email,
+//			'avatar'				=> $userData->avatar,
+			'activated_at'			=> date("Y-m-d H:i:s"),
+			'verified'				=> 1,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 		]);
 	}
 

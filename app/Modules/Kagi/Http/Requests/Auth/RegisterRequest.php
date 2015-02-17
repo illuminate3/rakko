@@ -1,6 +1,7 @@
 <?php namespace App\Modules\Kagi\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Config;
 
 class RegisterRequest extends FormRequest {
 
@@ -22,8 +23,8 @@ class RegisterRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'email' => 'required|email|unique:users',
-			'password' => 'required|confirmed|min:8',
+			'email'				=> 'required|email|unique:users',
+			'password'			=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
 		];
 	}
 

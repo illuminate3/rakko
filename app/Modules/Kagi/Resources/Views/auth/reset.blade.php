@@ -32,7 +32,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">{{ trans('kotoba::auth.confirm_password') }}</label>
+							<label class="col-md-4 control-label">{{ trans('kotoba::auth.password_confirmation') }}</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>

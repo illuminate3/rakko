@@ -7,9 +7,16 @@ return [
 | general
 |--------------------------------------------------------------------------
 */
-'site_name'					=> 'Kagi',
-'separator'					=> ':',
-'site_email'				=> 'kagi@example.com',
+'site_name'						=> 'Kagi',
+'separator'						=> ':',
+'site_email'					=> 'kagi@example.com',
+
+/*
+|--------------------------------------------------------------------------
+| general
+|--------------------------------------------------------------------------
+*/
+'password_min'					=> 'min:6',
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +24,7 @@ return [
 |--------------------------------------------------------------------------
 */
 'kagi_db' => array(
-	'prefix'					=> '',
+	'prefix'					=> '', // not fully implemented, also may not make of difference due to models
 	'default_role_id'			=> '2',
 	'activated'					=> '1',
 	'verified'					=> '1',

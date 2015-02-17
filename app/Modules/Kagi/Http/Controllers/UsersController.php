@@ -4,7 +4,7 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 use App\Modules\Kagi\Http\Domain\Repositories\RoleRepository;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Modules\Kagi\Http\Requests\UserCreateRequest;
 use App\Modules\Kagi\Http\Requests\UserUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
@@ -126,7 +126,7 @@ dd("store");
 		$id
 		)
 	{
-//dd("update");
+//dd($request->password);
 		$this->user->update($request->all(), $id);
 		Flash::success( trans('kotoba::account.success.update') );
 		return redirect('admin/users');
