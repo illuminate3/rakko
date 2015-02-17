@@ -107,21 +107,40 @@ dd($permissions);
 //dd($input);
 		$user = $this->getById($id);
 
+		if ( isset($input['name']) ) {
+			$user->name = $input['name'];
+		}
+		if ( isset($input['email']) ) {
+			$user->email = $input['email'];
+		}
+
 		if ( $input['password'] != NULL ) {
 			$user->password = Hash::make($input['password']);
 		}
 
 		if ( isset($input['verified']) ) {
-			$user->verified = $input['verified'];
+//			$user->verified = $input['verified'];
+			$user->verified = 1;
+		} else {
+			$user->verified = 0;
 		}
 		if ( isset($input['banned']) ) {
-			$user->banned = $input['banned'];
+//			$user->banned = $input['banned'];
+			$user->banned = 1;
+		} else {
+			$user->banned = 0;
 		}
 		if ( isset($input['confirmed']) ) {
-			$user->confirmed = $input['confirmed'];
+//			$user->confirmed = $input['confirmed'];
+			$user->confirmed = 1;
+		} else {
+			$user->confirmed = 0;
 		}
 		if ( isset($input['activated']) ) {
-			$user->activated = $input['activated'];
+//			$user->activated = $input['activated'];
+			$user->activated = 1;
+		} else {
+			$user->activated = 0;
 		}
 //dd($user);
 

@@ -48,13 +48,10 @@ class LoginRegistrar extends Model {
 			->pluck('id');
 
 		$user = $this->findOrFail($id);
-//dd($user);
 //dd($user->banned);
 
 // Run authorization checks against user status
 		$approved = true;
-/*
-// NEED to implement at later date
 		if ( $user->verified == 0) {
 			$approved = false;
 		}
@@ -64,9 +61,8 @@ class LoginRegistrar extends Model {
 		if ( $user->activated == 0) {
 			$approved = false;
 		}
-*/
-		if ( $user->banned == 0) {
-			$approved = true;
+		if ( $user->banned == 1) {
+			$approved = false;
 		}
 //dd($approved);
 
