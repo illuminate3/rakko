@@ -68,9 +68,15 @@ class Registrar implements RegistrarContract {
 		$this->sendConfirmation($name, $email, $confirmation_code);
 
 		return $user;
-
 	}
 
+
+	/**
+	 * Send confirmation email to user
+	 *
+	 * @param  array  $data
+	 * @return User
+	 */
 	public function sendConfirmation($name, $email, $confirmation_code)
 	{
 //dd($user);
