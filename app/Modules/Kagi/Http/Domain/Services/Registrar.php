@@ -134,7 +134,6 @@ class Registrar implements RegistrarContract {
 
 	}
 
-
 	/**
 	 * Change the user confirm status
 	 *
@@ -148,6 +147,24 @@ class Registrar implements RegistrarContract {
 //dd($user);
 
 		$user->confirmed = 1;
+		return $user->update();
+	}
+
+	/**
+	 * Change the user confirm status
+	 *
+	 * @param  $user
+	 *
+	 * @return
+	 */
+	public function activateUser($user)
+	{
+		$user = User::findOrFail($user->id);
+//dd($user);
+
+		$user->activated = 1;
+		$user->activated_at = date("Y-m-d H:i:s"),
+
 		return $user->update();
 	}
 

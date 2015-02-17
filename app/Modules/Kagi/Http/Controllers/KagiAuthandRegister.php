@@ -211,6 +211,7 @@ trait KagiAuthandRegister {
 
 		if ( $user != NULL) {
 			$user = $this->registrar->confirmUser($user);
+			$user = $this->registrar->activateUser($user);
 
 			Flash::success( trans('kotoba::auth.success.login') );
 			return redirect($this->redirectPath());
