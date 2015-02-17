@@ -6,14 +6,20 @@
 @stop
 
 @section('styles')
+	<link href="{{ asset('assets/vendors/multiselect_12_11_14/css/style.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/multiselect_12_11_14/js/multiselect.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
+
+	jQuery(document).ready(function($) {
+		$('#multiselect').multiselect();
+	});
 @stop
 
 
@@ -76,6 +82,30 @@
 	{{ $permission->name }}
 </li>
 @endforeach
+
+
+<div class="row">
+	<div class="col-sm-5">
+		<select name="from" id="multiselect" class="col-sm-12" size="12" multiple="multiple">
+			<option value="1">Item 1</option>
+			<option value="2">Item 5</option>
+			<option value="2">Item 2</option>
+			<option value="2">Item 4</option>
+			<option value="3">Item 3</option>
+		</select>
+	</div>
+
+	<div class="col-sm-2">
+		<button type="button" id="multiselect_rightAll" class="btn btn-default btn-block"><i class="fa fa-fast-forward fa-fw"></i></button>
+		<button type="button" id="multiselect_rightSelected" class="btn btn-default btn-block"><i class="fa fa-chevron-right fa-fw"></i></button>
+		<button type="button" id="multiselect_leftSelected" class="btn btn-default btn-block"><i class="fa fa-chevron-left fa-fw"></i></button>
+		<button type="button" id="multiselect_leftAll" class="btn btn-default btn-block"><i class="fa fa-fast-backward fa-fw"></i></button>
+	</div>
+
+	<div class="col-sm-5">
+		<select name="to" id="multiselect_to" class="col-sm-12" size="12" multiple="multiple"></select>
+	</div>
+</div>
 
 
 <hr>
