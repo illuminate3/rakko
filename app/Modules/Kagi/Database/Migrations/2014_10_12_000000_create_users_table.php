@@ -46,7 +46,8 @@ class CreateUsersTable extends Migration {
 			$table->string('reset_password_code')->nullable();
 
 //			$table->boolean('verified')->default(0)->nullable();
-			$table->boolean('disabled')->default(0)->nullable();
+//			$table->boolean('disabled')->default(0)->nullable();
+			$table->boolean('blocked')->default(0)->nullable();
 			$table->boolean('banned')->default(0)->nullable();
 			$table->boolean('confirmed')->default(0)->nullable();
 			$table->boolean('activated')->default(0)->nullable();
