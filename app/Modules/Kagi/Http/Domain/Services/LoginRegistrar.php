@@ -88,7 +88,8 @@ class LoginRegistrar extends Model {
 			'activated_at'		=> date("Y-m-d H:i:s"),
 			'verified'			=> 1,
 			'confirmed'			=> 1,
-			'activated'			=> 1
+			'activated'			=> 1,
+			'confirmation_code'	= md5(microtime().Config::get('app.key'))
 		]);
 	}
 
@@ -104,6 +105,7 @@ class LoginRegistrar extends Model {
 			'verified'			=> 1,
 			'confirmed'			=> 1,
 			'activated'			=> 1
+			'confirmation_code'	= md5(microtime().Config::get('app.key'))
 		]);
 	}
 

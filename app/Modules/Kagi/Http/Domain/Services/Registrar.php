@@ -5,10 +5,19 @@ use App\Modules\Kagi\Http\Domain\Models\User as User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 //use Illuminate\Mail\Mailer as Mail;
+
 use Mail;
 use Config;
+use DB;
 
 class Registrar implements RegistrarContract {
+
+
+/*
+|--------------------------------------------------------------------------
+| Register User
+|--------------------------------------------------------------------------
+*/
 
 	/**
 	 * Get a validator for an incoming registration request.
@@ -38,6 +47,7 @@ class Registrar implements RegistrarContract {
 		$name = $data['name'];
 		$email = $data['email'];
 		$confirmation_code = md5(uniqid(mt_rand(), true));
+//		$confirmation_code = md5(microtime().Config::get('app.key'));
 //dd($confirmation_code);
 
 		$user = User::create([
@@ -45,6 +55,13 @@ class Registrar implements RegistrarContract {
 			'name'				=> $name,
 			'email'				=> $email,
 			'password'			=> bcrypt($data['password'])
+/*
+			'activated_at'		=> date("Y-m-d H:i:s"),
+			'verified'			=> 1,
+			'confirmed'			=> 1,
+			'activated'			=> 1,
+			'confirmation_code'	= md5(microtime().Config::get('app.key'))
+*/
 		]);
 //dd($user);
 
@@ -63,6 +80,75 @@ class Registrar implements RegistrarContract {
 			$message->to($email, $name);
 			$message->subject(Config::get('kagi.site_name').Config::get('kagi.separator').trans('kotoba::email.confirmation.confirm'));
 		});
+	}
+
+
+/*
+|--------------------------------------------------------------------------
+| Confirm User
+|--------------------------------------------------------------------------
+*/
+
+
+	/**
+	 * check against db for code
+	 *
+	 * @param string $code
+	 *
+	 * @return
+	 */
+	public function confirmCode($code)
+	{
+		$confirmation = DB::table('users')
+			->where('confirmation_code', '=', $code)
+			->where('confirmed', '!=', 1, 'AND')
+			->first();
+//dd('loaded');
+
+		if ( $confirmation != NULL) {
+			return $confirmation;
+		} else {
+			return False;
+		}
+	}
+
+	/**
+	 * check against db for code
+	 *
+	 * @param string $code
+	 *
+	 * @return
+	 */
+	public function confirmEmail($email)
+	{
+		$user = DB::table('users')
+			->where('email', '=', $email)
+			->first();
+//dd('loaded');
+
+		if ( $user != NULL ) {
+			return $user;
+		} else {
+			return False;
+		}
+
+	}
+
+
+	/**
+	 * Change the user confirm status
+	 *
+	 * @param  $user
+	 *
+	 * @return
+	 */
+	public function confirmUser($user)
+	{
+		$user = User::findOrFail($user->id);
+//dd($user);
+
+		$user->confirmed = 1;
+		return $user->update();
 	}
 
 }

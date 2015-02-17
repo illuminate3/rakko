@@ -50,7 +50,9 @@ Route::controllers([
 ]);
 Route::group(['prefix' => 'auth'], function() {
 	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
-}
+//	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
+	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
+});
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::group(['prefix' => 'admin'], function() {
