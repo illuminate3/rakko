@@ -165,10 +165,12 @@ dd("destroy");
 				'<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
-				<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/delete\' ) }}" class="btn btn-sm btn-danger iframe">
+				')
+/*
+				<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
 					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
 				</a>
-				')
+*/
 
 				->remove_column('id')
 

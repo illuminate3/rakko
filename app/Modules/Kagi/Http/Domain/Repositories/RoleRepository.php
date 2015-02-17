@@ -1,6 +1,8 @@
 <?php namespace App\Modules\Kagi\Http\Domain\Repositories;
 
 use App\Modules\Kagi\Http\Domain\Models\Role;
+use App\Modules\Kagi\Http\Domain\Models\Permission;
+use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
 //use File, Auth;
 
@@ -20,11 +22,16 @@ class RoleRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
-		Role $role
+		Role $role,
+		Permission $permission,
+		shinobiRole $shinobiRole
 		)
 	{
 		$this->model = $role;
+		$this->permission = $permission;
+		$this->role = $shinobiRole;
 	}
+
 
 	/**
 	 * Get role collection.
@@ -49,10 +56,13 @@ class RoleRepository extends BaseRepository {
 	public function edit($id)
 	{
 		$role = $this->getById($id);
+//dd($role);
+$permissions = $this->permission->all();
+//dd($permissions);
 
 //		$select = $this->role->all()->lists('title', 'id');
 
-		return compact('role', 'select');
+		return compact('role', 'permissions');
 	}
 
 	/**

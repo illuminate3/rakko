@@ -9,12 +9,12 @@
 		<div>
 			{{ trans('kotoba::email.password_email') }}
 			&nbsp;:&nbsp;
-			<a href="{{ url('password/reset/'.$token) }}">
+			<a href="{{ url('auth/confirm/'.$confirmation_code) }}">
 				{{ trans('kotoba::email.password_link') }}
 			</a>
 			<br>
 			<br>
-			{{ url('password/reset/'.$token) }}
+			{{ url('auth/confirm/'.$confirmation_code) }}
 		</div>
 
 	</body>

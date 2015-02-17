@@ -14,19 +14,22 @@
 	<script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('assets/admin/js/dataTables.bootstrap.js') }}"></script>
 	<script src="{{ asset('assets/admin/js/bootstrap-dataTables-paging.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	var oTable;
-	$(document).ready(function() {
-		oTable = $('#table').dataTable({
-			"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-			"sPaginationType" : "bootstrap",
-			"bProcessing" : true,
-			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('admin/api/users') }}",
-		});
+var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
+
+var oTable;
+$(document).ready(function() {
+	oTable = $('#table').dataTable({
+		"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+		"sPaginationType" : "bootstrap",
+		"bProcessing" : true,
+		"bServerSide" : true,
+		"sAjaxSource" : "{{ URL::to('admin/api/users') }}",
 	});
+});
 @stop
 
 

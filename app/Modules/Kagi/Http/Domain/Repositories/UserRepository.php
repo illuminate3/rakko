@@ -2,6 +2,7 @@
 
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
+//use Caffeinated\Shinobi\Models\Role;
 
 use Hash, Input, DB;
 use DateTime;
@@ -66,6 +67,16 @@ class UserRepository extends BaseRepository {
 	public function edit($id)
 	{
 		$user = $this->getById($id);
+/*
+$role = Role::find(1);
+$role->revokeAllPermissions();
+$role->save();
+//$role->assignPermission(1);
+//$role->save();
+dd($role);
+$permissions = $role->getPermissions();
+dd($permissions);
+*/
 
 //		$select = $this->role->all()->lists('title', 'id');
 

@@ -9,11 +9,11 @@
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('js/restfulizer.js') }}"></script>
-	<script src="{{ asset('packages/illuminate3/vedette/assets/js/restfulizer.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
 

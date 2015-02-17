@@ -9,12 +9,11 @@
 @stop
 
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	$(function() {
-		$("#roles").select2()
-	});
+	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
 
@@ -128,10 +127,10 @@
 </div>
 
 <div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
+	<a class="btn btn-danger btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+		<i class="fa fa-trash-o fa-fw"></i>
+		{{ trans('kotoba::general.command.delete') }}
+	</a>
 </div>
 </div>
 

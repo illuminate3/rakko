@@ -9,9 +9,11 @@
 @stop
 
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
 
@@ -57,7 +59,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-bookmark fa-fw"></i></span>
-		<input type="text" id="slug" name="slug" value="{{ $role->name }}" placeholder="{{ trans('kotoba::general.slug') }}" class="form-control">
+		<input type="text" id="slug" name="slug" value="{{ $role->slug }}" placeholder="{{ trans('kotoba::general.slug') }}" class="form-control">
 </div>
 </div>
 
@@ -68,6 +70,12 @@
 		<input type="text" id="description" name="description" value="{{ $role->name }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>
+
+@foreach ($permissions as $permission)
+<li>
+	{{ $permission->name }}
+</li>
+@endforeach
 
 
 <hr>
@@ -92,10 +100,10 @@
 </div>
 
 <div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
+	<a class="btn btn-danger btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+		<i class="fa fa-trash-o fa-fw"></i>
+		{{ trans('kotoba::general.command.delete') }}
+	</a>
 </div>
 </div>
 

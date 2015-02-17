@@ -36,6 +36,8 @@ class User extends Presenter {
 	{
 //dd("loaded");
 		$return = '';
+//		return $this->entity->active ? trans('lingos::general.yes') : trans('lingos::general.no');
+
 		$banned = $this->entity->banned;
 		if ( $banned == 1 ) {
 			$return = "checked";

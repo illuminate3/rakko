@@ -3,10 +3,11 @@
 use Illuminate\Database\Eloquent\Model;
 
 use Laracasts\Presenter\PresentableTrait;
+use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
 class Role extends Model {
 
-	use PresentableTrait;
+	use PresentableTrait, ShinobiTrait;
 
 	/**
 	 * The database table used by the model.

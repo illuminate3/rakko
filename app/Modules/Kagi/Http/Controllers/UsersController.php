@@ -218,10 +218,11 @@ dd("store");
 				<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
-				<a href="{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}" class="btn btn-sm btn-danger iframe">
+				')
+/*				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
 					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
 				</a>
-				')
+*/
 
 				->remove_column('id')
 

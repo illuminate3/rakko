@@ -45,15 +45,15 @@ class CreateUsersTable extends Migration {
 			$table->rememberToken()->nullable()->index();
 			$table->string('reset_password_code')->nullable();
 
-			$table->boolean('verified')->default(0)->nullable();
-//			$table->boolean('disabled')->default(0);
+//			$table->boolean('verified')->default(0)->nullable();
+			$table->boolean('disabled')->default(0)->nullable();
 			$table->boolean('banned')->default(0)->nullable();
 			$table->boolean('confirmed')->default(0)->nullable();
 			$table->boolean('activated')->default(0)->nullable();
 
 			$table->string('confirmation_code')->nullable();
 			$table->timestamp('activated_at')->nullable();
-			$table->string('activation_code')->nullable()->index();
+//			$table->string('activation_code')->nullable()->index();
 
 			$table->timestamp('last_login')->nullable();
 
