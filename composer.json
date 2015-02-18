@@ -6,17 +6,17 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"illuminate3/kotoba": "dev-master",
-		"illuminate3/bootawesome": "dev-master",
-		"caffeinated/modules": "dev-master",
-		"caffeinated/themes": "~1.0",
-		"caffeinated/flash": "dev-master",
-		"caffeinated/shinobi": "dev-master",
-		"laravel/socialite": "~2.0",
-		"chumper/datatable": "l5-dev as 2.3",
-		"laravelcollective/html": "~5.0",
-		"laracasts/presenter": "dev-master",
-		"yajra/laravel-datatables-oracle" : ">=v4.0.1"
+"illuminate3/kotoba": "dev-master",
+"caffeinated/modules": "dev-master",
+"caffeinated/themes": "~1.0",
+"caffeinated/flash": "dev-master",
+"caffeinated/shinobi": "dev-master",
+"laravel/socialite": "~2.0",
+"chumper/datatable": "l5-dev as 2.3",
+"laravelcollective/html": "~5.0",
+"laracasts/presenter": "dev-master",
+"yajra/laravel-datatables-oracle" : ">=v4.0.1",
+"graham-campbell/throttle": "~3.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

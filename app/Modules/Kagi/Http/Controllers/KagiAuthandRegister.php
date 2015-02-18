@@ -111,6 +111,51 @@ trait KagiAuthandRegister {
 		$check = $loginRegistrar->checkUserApproval($request->email);
 //dd($check);
 
+
+/*
+if ($this->userRepo->isThrottled($input)) {
+dd("tested");
+
+**
+ * Tells if the given identity has reached the throttle_limit.
+ *
+ * @param mixed $identity The login identity.
+ *
+ * @return bool True if the identity has reached the throttle_limit.
+ *
+public function isThrottled($identity)
+{
+	$identity = $this->parseIdentity($identity);
+	// Retuns the current count
+	$count = $this->countThrottle($identity, 0);
+	return $count >= $this->app['config']->get('confide::throttle_limit');
+}
+
+
+**
+ * Increments the count for the given string by one stores
+ * it into cache and returns the current value for that
+ * identity.
+ *
+ * @param string $identityString
+ * @param int    $increments     Amount that is going to be added to the throttling attemps for the given identity.
+ *
+ * @return int How many times that same string was used.
+ *
+protected function countThrottle($identityString, $increments = 1)
+{
+	$count = $this->app['cache']
+		->get('login_throttling:'.md5($identityString), 0);
+	$count = $count + $increments;
+	$ttl = $this->app['config']->get('confide::throttle_time_period');
+	$this->app['cache']
+		->put('login_throttling:'.md5($identityString), $count, $ttl);
+	return $count;
+}
+
+}
+*/
+
 		if ( $check == true ) {
 			if ($this->auth->attempt($credentials, $request->has('remember')))
 			{
