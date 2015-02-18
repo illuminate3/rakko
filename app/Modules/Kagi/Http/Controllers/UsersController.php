@@ -187,15 +187,15 @@ dd("store");
 			<th>{{ trans('kotoba::general.confirmed') }}</th>
 			<th>{{ trans('kotoba::general.activated') }}</th>
 */
-		$users = User::select(array('users.id','users.name','users.email','users.verified','users.banned','users.confirmed','users.activated', 'users.created_at'))
+		$users = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
 			->orderBy('users.email', 'ASC');
 //dd($users);
 
 		return Datatables::of($users)
 
 			-> edit_column(
-				'verified',
-				'@if ($verified=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				'blocked',
+				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
 				)
 			-> edit_column(
 				'banned',

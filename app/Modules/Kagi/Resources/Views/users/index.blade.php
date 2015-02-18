@@ -62,7 +62,7 @@ $(document).ready(function() {
 			<th>{{ trans('kotoba::account.name') }}</th>
 			<th>{{ trans('kotoba::account.email') }}</th>
 
-			<th>{{ trans('kotoba::general.verified') }}</th>
+			<th>{{ trans('kotoba::general.blocked') }}</th>
 			<th>{{ trans('kotoba::general.banned') }}</th>
 			<th>{{ trans('kotoba::general.confirmed') }}</th>
 			<th>{{ trans('kotoba::general.activated') }}</th>

@@ -33,12 +33,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		'name',
 		'email',
 		'password',
-		'verified',
+		'blocked',
 		'banned',
 		'confirmed',
 		'activated',
 		'confirmation_code'
 		];
+
+
+// DEFINE Relationships --------------------------------------------------
+
+	public function roles()
+	{
+		return $this->belongsToMany('App\Modules\Kagi\Http\Domain\Models\Role');
+	}
 
 
 }

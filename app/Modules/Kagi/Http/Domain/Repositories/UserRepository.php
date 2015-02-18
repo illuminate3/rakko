@@ -2,9 +2,9 @@
 
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
-//use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
-use Hash, DB;
+use Hash, DB, Auth;
 use DateTime;
 //use File, Auth;
 
@@ -33,11 +33,13 @@ class UserRepository extends BaseRepository {
 	 */
 	public function __construct(
 		User $user,
-		Role $role
+		Role $role,
+		shinobiRole $shinobiRole
 		)
 	{
 		$this->model = $user;
 		$this->role = $role;
+		$this->shinobiRole = $shinobiRole;
 	}
 
 	/**
@@ -48,14 +50,11 @@ class UserRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-//dd("show");
-//dd($id);
-//		$user = $this->model->with('role')->findOrFail($id);
-		$user = $this->getById($id);
+		$user = $this->model->with('roles')->findOrFail($id);
+//		$user = $this->getById($id);
+//dd($user);
 
-//		$statut = $this->getStatut();
-
-		return compact('user' ,'statut');
+		return compact('user');
 	}
 
 	/**
@@ -66,21 +65,12 @@ class UserRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$user = $this->getById($id);
-/*
-$role = Role::find(1);
-$role->revokeAllPermissions();
-$role->save();
-//$role->assignPermission(1);
-//$role->save();
-dd($role);
-$permissions = $role->getPermissions();
-dd($permissions);
-*/
+		$user = $this->model->find($id);
+//dd($user);
+		$roles = $this->shinobiRole->lists('name', 'id');
+		$allRoles =  $this->role->all()->lists('name', 'id');
 
-//		$select = $this->role->all()->lists('title', 'id');
-
-		return compact('user', 'select');
+		return compact('user', 'roles', 'allRoles');
 	}
 
 	/**
@@ -118,11 +108,11 @@ dd($permissions);
 			$user->password = Hash::make($input['password']);
 		}
 
-		if ( isset($input['verified']) ) {
-//			$user->verified = $input['verified'];
-			$user->verified = 1;
+		if ( isset($input['blocked']) ) {
+//			$user->blocked = $input['blocked'];
+			$user->blocked = 1;
 		} else {
-			$user->verified = 0;
+			$user->blocked = 0;
 		}
 		if ( isset($input['banned']) ) {
 //			$user->banned = $input['banned'];
@@ -139,12 +129,17 @@ dd($permissions);
 		if ( isset($input['activated']) ) {
 //			$user->activated = $input['activated'];
 			$user->activated = 1;
+			$user->activated_at = date("Y-m-d H:i:s");
+
 		} else {
 			$user->activated = 0;
+			$user->activated_at = NULL;
 		}
 //dd($user);
 
 		$user->update();
+
+		$user->syncRoles($input['my-select']);
 	}
 
 

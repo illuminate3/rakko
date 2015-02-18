@@ -27,7 +27,7 @@ return [
 	'prefix'					=> '', // not fully implemented, also may not make of difference due to models
 	'default_role_id'			=> '2',
 	'activated'					=> '1',
-	'verified'					=> '1',
+	'blocked'					=> '0',
 ),
 
 

@@ -81,8 +81,8 @@
 <div class="form-group">
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="verified" name="verified" value="1">
-		&nbsp;{{ trans('kotoba::general.verified') }}
+		<input type="checkbox" id="blocked" name="blocked" value="1">
+		&nbsp;{{ trans('kotoba::general.blocked') }}
 	</label>
 
 	<label class="checkbox-inline">

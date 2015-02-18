@@ -6,14 +6,25 @@
 @stop
 
 @section('styles')
+	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
 @stop
 
 @section('inline-scripts')
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
+	jQuery(document).ready(function($) {
+		$('#my-select').multiSelect(
+			{
+				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
+				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
+			}
+		)
+	});
 @stop
 
 
@@ -88,8 +99,8 @@
 <div class="form-group">
 
 	<label class="checkbox-inline">
-		<input type="checkbox" id="verified" name="verified" value="1" {{ $user->present()->verified }}>
-		&nbsp;{{ trans('kotoba::general.verified') }}
+		<input type="checkbox" id="blocked" name="blocked" value="1" {{ $user->present()->blocked }}>
+		&nbsp;{{ trans('kotoba::general.blocked') }}
 	</label>
 
 	<label class="checkbox-inline">
@@ -108,6 +119,24 @@
 	</label>
 
 </div>
+
+
+
+
+<hr>
+<h3>
+	<i class="fa fa-gavel fa-fw"></i>
+	{{ Lang::choice('kotoba::role.role', 2) }}
+</h3>
+<select multiple="multiple" id="my-select" name="my-select[]">
+@foreach ($allRoles as $key => $value)
+	@if (isset($roles[$key]) )
+		<option value='{{ $key }}' selected>{{ $value }}</option>
+	@else
+		<option value='{{ $key }}'>{{ $value }}</option>
+	@endif
+@endforeach
+</select>
 
 
 <hr>

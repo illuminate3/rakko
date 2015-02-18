@@ -7,6 +7,7 @@
 
 @section('styles')
 	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
@@ -17,7 +18,12 @@
 @section('inline-scripts')
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 	jQuery(document).ready(function($) {
-		$('#my-select').multiSelect()
+		$('#my-select').multiSelect(
+			{
+				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
+				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
+			}
+		)
 	});
 @stop
 

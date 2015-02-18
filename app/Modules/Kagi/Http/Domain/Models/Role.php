@@ -28,4 +28,12 @@ class Role extends Model {
 	protected $fillable = ['name', 'slug', 'description'];
 
 
+// DEFINE Relationships --------------------------------------------------
+	public function user()
+	{
+		return $this->hasMany('App\Modules\Kagi\Http\Domain\Models\User');
+	}
+
+
+
 }

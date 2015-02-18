@@ -109,7 +109,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-body">
-					{{-- $user->present()->roles() --}}
+					{{ $user->present()->roles() }}
 				</div>
 			</div>
 
@@ -130,8 +130,8 @@
 			<table class="table table-striped table-hover">
 				<tbody>
 					<tr>
-						<td>{{ trans('kotoba::general.verified') }}</td>
-						<td>{!! $user->present()->iconVerified !!}</td>
+						<td>{{ trans('kotoba::general.blocked') }}</td>
+						<td>{!! $user->present()->iconBlocked !!}</td>
 					</tr>
 					<tr>
 						<td>{{ trans('kotoba::general.banned') }}</td>

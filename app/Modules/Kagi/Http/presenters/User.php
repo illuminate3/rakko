@@ -47,16 +47,16 @@ class User extends Presenter {
 	}
 
 	/**
-	 * verified checkbox
+	 * blocked checkbox
 	 *
 	 * @return string
 	 */
-	public function verified()
+	public function blocked()
 	{
 //dd("loaded");
 		$return = '';
-		$verified = $this->entity->verified;
-		if ( $verified == 1 ) {
+		$blocked = $this->entity->blocked;
+		if ( $blocked == 1 ) {
 			$return = "checked";
 		}
 
@@ -118,17 +118,17 @@ class User extends Presenter {
 	}
 
 	/**
-	 * verified icon
+	 * blocked icon
 	 *
 	 * @return string
 	 */
-	public function iconVerified()
+	public function iconBlocked()
 	{
 //dd("loaded");
 		$return = '';
-		$verified = $this->entity->verified;
+		$blocked = $this->entity->blocked;
 
-		if ( $verified == 1 ) {
+		if ( $blocked == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
 			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';

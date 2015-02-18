@@ -108,19 +108,18 @@ trait KagiAuthandRegister {
 		]);
 */
 		$credentials = $request->only('email', 'password');
-
-		if ($this->auth->attempt($credentials, $request->has('remember')))
-		{
-			$check = $loginRegistrar->checkUserApproval($request->email);
+		$check = $loginRegistrar->checkUserApproval($request->email);
 //dd($check);
 
-			if ( $check == 'true' ) {
+		if ( $check == true ) {
+			if ($this->auth->attempt($credentials, $request->has('remember')))
+			{
 				$loginRegistrar->touchLastLogin($request->email);
 				return redirect()->intended($this->redirectPath());
-			} else {
-				Flash::error(trans('kotoba::auth.error.not_approved'));
-				return redirect($this->loginPath());
 			}
+		} else {
+			Flash::error(trans('kotoba::auth.error.not_approved'));
+			return redirect($this->loginPath());
 		}
 
 		return redirect($this->loginPath())

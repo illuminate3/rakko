@@ -52,7 +52,7 @@ class LoginRegistrar extends Model {
 
 // Run authorization checks against user status
 		$approved = true;
-		if ( $user->verified == 0) {
+		if ( $user->blocked == 1) {
 			$approved = false;
 		}
 		if ( $user->confirmed == 0) {
@@ -76,13 +76,14 @@ class LoginRegistrar extends Model {
 	public function findByUsernameOrCreateGithub($userData)
 	{
 //dd($userData);
-//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
 			'name'					=> $userData->nickname,
 			'email'					=> $userData->email,
 //			'avatar'				=> $userData->avatar,
 			'activated_at'			=> date("Y-m-d H:i:s"),
-			'verified'				=> 1,
+			'blocked'				=> 0,
+			'banned'				=> 0,
 			'confirmed'				=> 1,
 			'activated'				=> 1,
 			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
@@ -92,13 +93,14 @@ class LoginRegistrar extends Model {
 	public function findByUsernameOrCreateGoogle($userData)
 	{
 //dd($userData);
-//	protected $fillable = ['name', 'email', 'password', 'verified', 'banned', 'confirmed', 'activated'];
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
 		return User::firstOrCreate([
 			'name'					=> $userData->name,
 			'email'					=> $userData->email,
 //			'avatar'				=> $userData->avatar,
 			'activated_at'			=> date("Y-m-d H:i:s"),
-			'verified'				=> 1,
+			'blocked'				=> 0,
+			'banned'				=> 0,
 			'confirmed'				=> 1,
 			'activated'				=> 1,
 			'confirmation_code'		=> md5(microtime().Config::get('app.key'))

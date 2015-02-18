@@ -58,7 +58,7 @@ class Registrar implements RegistrarContract {
 			'password'			=> bcrypt($data['password'])
 /*
 			'activated_at'		=> date("Y-m-d H:i:s"),
-			'verified'			=> 1,
+			'blocked'			=> 0,
 			'confirmed'			=> 1,
 			'activated'			=> 1,
 			'confirmation_code'	= md5(microtime().Config::get('app.key'))

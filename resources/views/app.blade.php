@@ -67,8 +67,6 @@
 		@include('_partials.content')
 	</div><!-- ./container -->
 
-{{ var_dump($errors) }}
-
 	@include('_partials.footer')
 
 
