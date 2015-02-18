@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
 //use App\Modules\Kagi\Http\Domain\Services\ConfirmRegistrar;
+use App\Modules\Kagi\Http\Requests\Auth\LoginRequest;
 
 use Flash;
 

@@ -40,6 +40,11 @@ body {
 */
 }
 
+.ms-container{
+	width: 100% !important
+}
+
+
 /*
 .navbar-brand {
 	width: 3.5em;

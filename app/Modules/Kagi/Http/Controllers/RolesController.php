@@ -117,8 +117,9 @@ dd("show");
 		$id
 		)
 	{
-//dd("update");
+//dd($request);
 		$this->role->update($request->all(), $id);
+
 		Flash::success( trans('kotoba::role.success.update') );
 		return redirect('admin/roles');
 	}

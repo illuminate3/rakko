@@ -5,6 +5,7 @@ use App\Modules\Kagi\Http\Domain\Models\Permission;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
 //use File, Auth;
+use DB;
 
 class RoleRepository extends BaseRepository {
 
@@ -55,14 +56,11 @@ class RoleRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$role = $this->getById($id);
-//dd($role);
-$permissions = $this->permission->all();
-//dd($permissions);
+		$role = $this->role->find($id);
+		$permissions = $role->permissions->lists('name', 'id');
+		$allPermissions =  $this->permission->all()->lists('name', 'id');
 
-//		$select = $this->role->all()->lists('title', 'id');
-
-		return compact('role', 'permissions');
+		return compact('role', 'allPermissions', 'permissions');
 	}
 
 	/**
@@ -86,8 +84,11 @@ $permissions = $this->permission->all();
 	 */
 	public function update($input, $id)
 	{
-		$role = $this->getById($id);
+//dd($input);
+		$role = $this->role->find($id);
 		$role->update($input);
+
+		$role->syncPermissions($input['my-select']);
 	}
 
 }

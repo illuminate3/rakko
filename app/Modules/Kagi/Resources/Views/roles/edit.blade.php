@@ -6,19 +6,18 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/multiselect_12_11_14/css/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendors/multiselect_12_11_14/js/multiselect.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
 @stop
 
 @section('inline-scripts')
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
-
 	jQuery(document).ready(function($) {
-		$('#multiselect').multiselect();
+		$('#my-select').multiSelect()
 	});
 @stop
 
@@ -77,35 +76,21 @@
 </div>
 </div>
 
-@foreach ($permissions as $permission)
-<li>
-	{{ $permission->name }}
-</li>
+
+<hr>
+<h3>
+	<i class="fa fa-gavel fa-fw"></i>
+	{{ Lang::choice('kotoba::permission.permission', 2) }}
+</h3>
+<select multiple="multiple" id="my-select" name="my-select[]">
+@foreach ($allPermissions as $key => $value)
+	@if (isset($permissions[$key]) )
+		<option value='{{ $key }}' selected>{{ $value }}</option>
+	@else
+		<option value='{{ $key }}'>{{ $value }}</option>
+	@endif
 @endforeach
-
-
-<div class="row">
-	<div class="col-sm-5">
-		<select name="from" id="multiselect" class="col-sm-12" size="12" multiple="multiple">
-			<option value="1">Item 1</option>
-			<option value="2">Item 5</option>
-			<option value="2">Item 2</option>
-			<option value="2">Item 4</option>
-			<option value="3">Item 3</option>
-		</select>
-	</div>
-
-	<div class="col-sm-2">
-		<button type="button" id="multiselect_rightAll" class="btn btn-default btn-block"><i class="fa fa-fast-forward fa-fw"></i></button>
-		<button type="button" id="multiselect_rightSelected" class="btn btn-default btn-block"><i class="fa fa-chevron-right fa-fw"></i></button>
-		<button type="button" id="multiselect_leftSelected" class="btn btn-default btn-block"><i class="fa fa-chevron-left fa-fw"></i></button>
-		<button type="button" id="multiselect_leftAll" class="btn btn-default btn-block"><i class="fa fa-fast-backward fa-fw"></i></button>
-	</div>
-
-	<div class="col-sm-5">
-		<select name="to" id="multiselect_to" class="col-sm-12" size="12" multiple="multiple"></select>
-	</div>
-</div>
+</select>
 
 
 <hr>
