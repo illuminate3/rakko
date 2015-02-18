@@ -47,22 +47,24 @@ class LoginRegistrar extends Model {
 			->where('email', '=', $email)
 			->pluck('id');
 
-		$user = $this->findOrFail($id);
-//dd($user->banned);
+		$user = $this->find($id);
+//dd($user);
 
 // Run authorization checks against user status
-		$approved = true;
-		if ( $user->blocked == 1) {
-			$approved = false;
-		}
-		if ( $user->confirmed == 0) {
-			$approved = false;
-		}
-		if ( $user->activated == 0) {
-			$approved = false;
-		}
-		if ( $user->banned == 1) {
-			$approved = false;
+		$approved = false;
+		if ($user != null) {
+			if ( $user->confirmed == 1) {
+				$approved = true;
+			}
+			if ( $user->activated == 1) {
+				$approved = true;
+			}
+			if ( $user->blocked == 1) {
+				$approved = false;
+			}
+			if ( $user->banned == 1) {
+				$approved = false;
+			}
 		}
 //dd($approved);
 

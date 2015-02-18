@@ -28,6 +28,7 @@ class KagiKernel extends HttpKernel {
 		'guest' => 'App\Modules\Kagi\Http\Middleware\RedirectIfAuthenticated',
 */
 //		'admin' => 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
+//		'throttle' => 'App\Modules\Kagi\Http\Middleware\Throttle',
 	];
 
 }

@@ -7,6 +7,8 @@ use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
 //use App\Modules\Kagi\Http\Domain\Services\ConfirmRegistrar;
 use App\Modules\Kagi\Http\Requests\Auth\LoginRequest;
+use GrahamCampbell\Throttle\Facades\Throttle;
+use Illuminate\Support\Facades\Request as FRequest;
 
 use Flash;
 
@@ -87,6 +89,34 @@ trait KagiAuthandRegister {
 	public function getLogin()
 	{
 //dd("loaded");
+// let's quickly get the current request object
+$request = FRequest::getFacadeRoot();
+
+// now let's get a throttler object for that request
+// we'll use the same config as in the previous example
+// note that only the first parameter is "required"
+
+$throttler = Throttle::get($request, 50, 30);
+
+// let's check if we've gone over the limit
+var_dump($throttler->check());
+
+// we implement Countable
+var_dump(count($throttler));
+
+// there are a few more functions available
+// please see the previous documentation
+// the attempt function will hit the throttle, then return check
+var_dump(Throttle::attempt($request));
+
+// so this is the same as writing
+var_dump(Throttle::hit($request)->check());
+
+// and, of course, the same as
+var_dump(Throttle::get($request)->attempt());
+  var_dump($throttler->count());
+
+
 		return View('kagi::auth.login');
 	}
 
@@ -110,6 +140,9 @@ trait KagiAuthandRegister {
 		$credentials = $request->only('email', 'password');
 		$check = $loginRegistrar->checkUserApproval($request->email);
 //dd($check);
+
+
+//dd("stop");
 
 
 /*

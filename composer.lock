@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2154beac1c6864ed8814d245b216cce9",
+    "hash": "9bfb3d2c799a7e2abf6e7cce96dea6fc",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -488,6 +488,65 @@
             "time": "2014-12-20 21:24:13"
         },
         {
+            "name": "graham-campbell/throttle",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Throttle.git",
+                "reference": "260693711d203d8a75d36b8d49d58d1e82341dc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Throttle/zipball/260693711d203d8a75d36b8d49d58d1e82341dc3",
+                "reference": "260693711d203d8a75d36b8d49d58d1e82341dc3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "5.0.*",
+                "illuminate/contracts": "5.0.*",
+                "illuminate/http": "5.0.*",
+                "illuminate/support": "5.0.*",
+                "php": ">=5.4.7"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Throttle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@mineuk.com"
+                }
+            ],
+            "description": "Throttle Is A Rate Limiter For Laravel 5",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Throttle",
+                "Laravel-Throttle",
+                "framework",
+                "laravel",
+                "rate limit",
+                "throttle",
+                "throttling"
+            ],
+            "time": "2015-02-05 20:09:31"
+        },
+        {
             "name": "guzzle/guzzle",
             "version": "v3.9.2",
             "source": {
@@ -738,71 +797,17 @@
             "time": "2014-10-12 19:18:40"
         },
         {
-            "name": "illuminate3/bootawesome",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate3/bootawesome.git",
-                "reference": "c3ae86cc597176f408f57dd05deefc6e3975a840"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/bootawesome/zipball/c3ae86cc597176f408f57dd05deefc6e3975a840",
-                "reference": "c3ae86cc597176f408f57dd05deefc6e3975a840",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate3/kotoba": "dev-master",
-                "laravelcollective/html": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9.1",
-                "phpspec/phpspec": "2.0.*@dev"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Illuminate3\\BootAwesome": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Illuminate3",
-                    "email": "carsten.sapporo@gmail.com",
-                    "role": "Forked, Expanded and Awesome"
-                }
-            ],
-            "description": "An easy way to intergrate Twitter Bootstrap with Laravel 4.",
-            "homepage": "https://github.com/Illuminate3/bootawesome",
-            "keywords": [
-                "FontAwesome",
-                "alerts",
-                "bootstrap",
-                "form",
-                "laravel",
-                "templates",
-                "twitter",
-                "views"
-            ],
-            "time": "2015-02-14 08:22:10"
-        },
-        {
             "name": "illuminate3/kotoba",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "48c83c1661f43eda92604b6abc8ab8895e30c5a3"
+                "reference": "ecac431c8b219c0a4f4df80323dfa9067b5b517e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/48c83c1661f43eda92604b6abc8ab8895e30c5a3",
-                "reference": "48c83c1661f43eda92604b6abc8ab8895e30c5a3",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/ecac431c8b219c0a4f4df80323dfa9067b5b517e",
+                "reference": "ecac431c8b219c0a4f4df80323dfa9067b5b517e",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +838,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-17 04:42:33"
+            "time": "2015-02-18 19:58:54"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -3938,7 +3943,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "illuminate3/kotoba": 20,
-        "illuminate3/bootawesome": 20,
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,

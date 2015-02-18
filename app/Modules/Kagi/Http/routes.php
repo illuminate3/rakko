@@ -33,6 +33,11 @@ Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 */
+/*
+Route::get('auth/login', array('before' => 'throttle:50,30', function () {
+    return 'Why herro there!';
+}, ));
+*/
 
 Route::get('kagi', 'KagiController@index');
 /*

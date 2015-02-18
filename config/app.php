@@ -164,6 +164,7 @@ return [
 //'Chumper\Datatable\DatatableServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 'Collective\Html\HtmlServiceProvider',
+'GrahamCampbell\Throttle\ThrottleServiceProvider',
 
 	],
 
@@ -226,6 +227,7 @@ return [
 'Html'			=> 'Collective\Html\HtmlFacade',
 //'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
 'Datatables'	=> 'yajra\Datatables\Datatables',
+'Throttle' => 'GrahamCampbell\Throttle\Facades\Throttle',
 
 /*
  * DEV Package Alias
