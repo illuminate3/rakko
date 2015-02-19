@@ -78,14 +78,14 @@ trait KagiAuthandRegister {
 		$throttler = Throttle::get($request, Config::get('kagi.throttle', '3'), Config::get('kagi.time_out', '2'));
 //Throttle::clear();
 //dd($throttler);
-
+/*
 // check if we've gone over the limit
 		var_dump($throttler->check());
 // implement Countable
 		var_dump($throttler->count());
 // the attempt function will hit the throttle, then return check
 		var_dump(Throttle::attempt($request));
-
+*/
 // Check throttle, return with error
 		if (!Throttle::attempt($request, 5)) {
 			Flash::error(trans('kotoba::auth.error.not_approved'));
@@ -113,7 +113,7 @@ trait KagiAuthandRegister {
 		if ( $check == true ) {
 			if ($this->auth->attempt($credentials, $request->has('remember')))
 			{
-				Throttle::clear();
+//				Throttle::clear();
 				$loginRegistrar->touchLastLogin($request->email);
 				return redirect()->intended($this->redirectPath());
 			}

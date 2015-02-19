@@ -11,8 +11,9 @@
 "caffeinated/themes": "~1.0",
 "caffeinated/flash": "dev-master",
 "caffeinated/shinobi": "dev-master",
+"caffeinated/menus": "~1.0@dev",
 "laravel/socialite": "~2.0",
-"chumper/datatable": "l5-dev as 2.3",
+"chumper/datatable": "dev-master",
 "laravelcollective/html": "~5.0",
 "laracasts/presenter": "dev-master",
 "yajra/laravel-datatables-oracle" : ">=v4.0.1",
@@ -25,7 +26,6 @@
 		"barryvdh/laravel-debugbar": "~2.0",
 		"way/generators": "3.0.1"
 	},
-"repositories": [ { "type": "vcs", "url": "https://github.com/bart/datatable.git" } ],
 	"autoload": {
 		"classmap": [
 			"database"

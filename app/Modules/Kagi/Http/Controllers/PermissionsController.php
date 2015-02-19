@@ -8,7 +8,10 @@ use App\Modules\Kagi\Http\Requests\PermissionCreateRequest;
 use App\Modules\Kagi\Http\Requests\PermissionUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-//use Datatable;
+use Datatable;
+use DB;
+use Form;
+
 use Datatables;
 //use Bootstrap;
 use Flash;
@@ -176,5 +179,69 @@ dd("destroy");
 
 				->make();
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDatatable()
+	{
+//dd('loaded');
+
+/*
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+*/
+
+//		$query = DB::table('permissions')->remember(10);
+		$query = DB::table('permissions');
+//dd($query);
+
+		return Datatable::query($query)
+			->showColumns('id', 'name', 'slug', 'description', 'created_at')
+//			->showColumns('id', 'name')
+
+/*
+			->addColumn('actions',
+
+				function($model) {
+
+				$modal =
+					'<div class="modal fade" id="delete-Record-'.$model->id.'">
+						'.Form::open(array("route" => array("admin.permissions.destroy", $model->id), "method" => "delete")).'
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('lingos::general.close') . '</span></button>
+										<h4 class="modal-title">' . trans('lingos::account.ask.delete') . '</h4>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('lingos::button.no') . '</button>
+										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('lingos::button.yes') . '</button>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						'.Form::close().'
+					</div><!-- /.modal -->';
+				return
+					'<a href="/admin.permissions/' . $model->id . '" class="btn btn-primary form-group" title="' . trans('lingos::general.view') . '"><i class="fa fa-chevron-right fa-fw"></i>' . trans('lingos::button.view') . '</a>&nbsp;'
+					. '<a href="/admin.permissions/' . $model->id . '/edit" class="btn btn-success form-group" title="' . trans('lingos::account.command.edit') . '"><i class="fa fa-edit fa-fw"></i>' . trans('lingos::button.edit') . '</a>&nbsp;'
+					. Form::button('<span class="glyphicon glyphicon-trash"></span> ' . trans('lingos::button.delete'), array('name'=>'deleteRecord', 'class' => 'btn btn-danger', 'type' => 'button',  'data-toggle' => 'modal', 'data-target' => '#delete-Record-'.$model->id))
+					. $modal;
+				})
+
+			->searchColumns('name')
+			->orderColumns('id', 'name')
+*/
+			->searchColumns('name', 'slug', 'description')
+			->orderColumns('id', 'name', 'slug', 'description', 'created_at')
+
+			->make();
+	}
+
+
 
 }

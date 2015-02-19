@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9bfb3d2c799a7e2abf6e7cce96dea6fc",
+    "hash": "c812fce27d169586668448b12b158f4e",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -55,6 +55,57 @@
                 "laravel"
             ],
             "time": "2015-02-04 23:29:37"
+        },
+        {
+            "name": "caffeinated/menus",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caffeinated/menus.git",
+                "reference": "e3b79b11495554cbe462ac104c82a046c725a22f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caffeinated/menus/zipball/e3b79b11495554cbe462ac104c82a046c725a22f",
+                "reference": "e3b79b11495554cbe462ac104c82a046c725a22f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/routing": "~5.0",
+                "illuminate/support": "~5.0",
+                "laravelcollective/html": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Caffeinated\\Menus\\": "src/Caffeinated/Menus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shea Lewis",
+                    "email": "shea.lewis89@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Menus",
+            "keywords": [
+                "caffeinated",
+                "laravel",
+                "menu",
+                "navigation"
+            ],
+            "time": "2015-02-18 20:56:17"
         },
         {
             "name": "caffeinated/modules",
@@ -218,22 +269,22 @@
         },
         {
             "name": "chumper/datatable",
-            "version": "dev-l5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bart/Datatable.git",
-                "reference": "c14deb98c816d960574354a3aa8c4865b43eeae4"
+                "url": "https://github.com/Chumper/Datatable.git",
+                "reference": "f621d51d847c5011a8dde70361869397e1facdd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bart/Datatable/zipball/c14deb98c816d960574354a3aa8c4865b43eeae4",
-                "reference": "c14deb98c816d960574354a3aa8c4865b43eeae4",
+                "url": "https://api.github.com/repos/Chumper/Datatable/zipball/f621d51d847c5011a8dde70361869397e1facdd6",
+                "reference": "f621d51d847c5011a8dde70361869397e1facdd6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/support": "~5.0",
-                "illuminate/view": "~5.0",
+                "illuminate/config": "4.*|~5.0",
+                "illuminate/support": "4.*|~5.0",
+                "illuminate/view": "4.*|~5.0",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -247,6 +298,7 @@
                     "Chumper\\Datatable": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -266,10 +318,7 @@
                 "jquery",
                 "laravel"
             ],
-            "support": {
-                "source": "https://github.com/bart/Datatable/tree/l5"
-            },
-            "time": "2015-02-06 19:12:27"
+            "time": "2015-01-18 21:37:26"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -802,12 +851,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "ecac431c8b219c0a4f4df80323dfa9067b5b517e"
+                "reference": "a10315eb27d6a3233e70c266f99a6685c7090d3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/ecac431c8b219c0a4f4df80323dfa9067b5b517e",
-                "reference": "ecac431c8b219c0a4f4df80323dfa9067b5b517e",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/a10315eb27d6a3233e70c266f99a6685c7090d3f",
+                "reference": "a10315eb27d6a3233e70c266f99a6685c7090d3f",
                 "shasum": ""
             },
             "require": {
@@ -838,7 +887,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-18 19:58:54"
+            "time": "2015-02-19 03:45:57"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -3932,20 +3981,14 @@
             "time": "2014-09-13 13:09:05"
         }
     ],
-    "aliases": [
-        {
-            "alias": "2.3",
-            "alias_normalized": "2.3.0.0",
-            "version": "dev-l5",
-            "package": "chumper/datatable"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "illuminate3/kotoba": 20,
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,
+        "caffeinated/menus": 20,
         "chumper/datatable": 20,
         "laracasts/presenter": 20
     },

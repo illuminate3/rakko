@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery.flip.js"></script>
+    <title>jQuery plugin</title>
+    <style type="text/css">
+      #card, #card2{
+        width: 600px;
+        height: 400px;
+      }
+      .front, .back{
+        padding: 10px;
+      }
+      .front{
+        background-color: #ccc;
+      }
+      .back{
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card">
+      <div class="front">
+          Front: Cursus aliquet mus et sociis, placerat adipiscing a placerat magnis integer nisi lacus in, turpis porttitor? Lectus nunc dis in porta, montes lacus. Tortor. Pid sit nisi eu nec aenean.
+
+<button class="btn btn-primary" id="flip-btn">Click to flip</button>
+      </div>
+      <div class="back">
+          Back: Dolor scelerisque ridiculus! Mus? Augue, montes, montes proin rhoncus vel a parturient dapibus eros? Penatibus nascetur. In turpis nisi elementum nascetur habitasse augue egestas, in ac rhoncus odio porttitor turpis.
+<button class="btn btn-primary" id="unflip-btn">Click to unflip</button>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    $(function(){
+      $("#card").flip({
+        axis: "y",
+        trigger: "manual"
+      });
+
+        $("#flip-btn").click(function(){
+          $("#card").flip(true);
+        });
+
+        $("#unflip-btn").click(function(){
+          $("#card").flip(false);
+        });
+
+    });
+    </script>
+  </body>
+</html>

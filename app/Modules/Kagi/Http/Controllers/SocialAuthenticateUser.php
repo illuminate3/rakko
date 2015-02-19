@@ -53,19 +53,20 @@ class SocialAuthenticateUser {
 	 */
 	public function execute(
 		$hasCode,
-		AuthenticateUserListener $listener,
-		LoginRegistrar $loginRegistrar
+		AuthenticateUserListener $listener
+//		LoginRegistrar $loginRegistrar
 		)
 	{
 		if ( ! $hasCode) return $this->getAuthorizationFirst();
 
 		if ( Config::get('kagi.kagi_social') == 'github' ) {
-//			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
-			$user = $loginRegistrar->findByUsernameOrCreateGithub($this->getGithubUser());
+//dd($this->getGithubUser());
+			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
+//			$user = $loginRegistrar->findByUsernameOrCreateGithub($this->getGithubUser());
 		}
 		if ( Config::get('kagi.kagi_social') == 'google' ) {
-//			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
-			$user = $loginRegistrar->findByUsernameOrCreateGoogle($this->getGoogleUser());
+			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
+//			$user = $loginRegistrar->findByUsernameOrCreateGoogle($this->getGoogleUser());
 		}
 
 		$this->auth->login($user, true);
@@ -87,6 +88,8 @@ class SocialAuthenticateUser {
 	 */
 	private function getGithubUser()
 	{
+//dd("loaded");
+dd($this->socialite->driver('github')->user());
 		return $this->socialite->driver('github')->user();
 	}
 

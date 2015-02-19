@@ -160,11 +160,12 @@ return [
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
+'Caffeinated\Menus\MenusServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
-//'Chumper\Datatable\DatatableServiceProvider',
-'yajra\Datatables\DatatablesServiceProvider',
 'Collective\Html\HtmlServiceProvider',
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
+'yajra\Datatables\DatatablesServiceProvider',
+'Chumper\Datatable\DatatableServiceProvider',
 
 	],
 
@@ -217,17 +218,22 @@ return [
 /*
  * Package Alias
  */
+'Carbon'		=> 'Carbon\Carbon',
 'Module'		=> 'Caffeinated\Modules\Facades\Module',
 'Theme'			=> 'Caffeinated\Themes\Facades\Theme',
 'Component'		=> 'Caffeinated\Themes\Facades\Component',
 'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
+'Menu' => 'Caffeinated\Menus\Facades\Menu',
 'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
-//'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
 'Form'			=> 'Collective\Html\FormFacade',
 'Html'			=> 'Collective\Html\HtmlFacade',
-//'Bootstrap'		=> 'Illuminate3\BootAwesome\Facades\Bootstrap',
+'Throttle'		=> 'GrahamCampbell\Throttle\Facades\Throttle',
 'Datatables'	=> 'yajra\Datatables\Datatables',
-'Throttle' => 'GrahamCampbell\Throttle\Facades\Throttle',
+//'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
+//'Datatable'			=> 'Chumper\Datatable\Facades\DatatableFacade',
+//'Datatable' => 'Chumper\Datatable\Facades\Datatable',
+'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
+
 
 /*
  * DEV Package Alias

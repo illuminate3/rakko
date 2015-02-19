@@ -48,19 +48,12 @@ class KagiServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-//		include __DIR__.'/../Config/config.php';
-/*
-$this->publishes([
-	__DIR__.'/../Config/kagi.php', config_path('kagi.php')
-], 'config');
-*/
-$this->publishes([
-	__DIR__.'/../Config/kagi.php' => config_path('kagi.php'),
-]);
-$this->publishes([
-	__DIR__.'/../Config/kagi_services.php' => config_path('kagi_services.php'),
-]);
-
+		$this->publishes([
+			__DIR__.'/../Config/kagi.php' => config_path('kagi.php'),
+		]);
+		$this->publishes([
+			__DIR__.'/../Config/kagi_services.php' => config_path('kagi_services.php'),
+		]);
 	}
 
 
