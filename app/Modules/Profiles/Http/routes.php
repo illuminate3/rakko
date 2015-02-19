@@ -10,9 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+/*
 Route::group(['prefix' => 'Profiles'], function() {
 	Route::get('/', function() {
 		dd('This is the Profiles module index page.');
 	});
 });
+*/

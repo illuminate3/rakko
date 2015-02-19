@@ -165,7 +165,7 @@ return [
 'Collective\Html\HtmlServiceProvider',
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
-'Chumper\Datatable\DatatableServiceProvider',
+//'Chumper\Datatable\DatatableServiceProvider',
 
 	],
 

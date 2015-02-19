@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/modules.git",
-                "reference": "9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868"
+                "reference": "6ae64ade7597a5e163de5f1b5ffb1e14ee720d92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/modules/zipball/9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868",
-                "reference": "9a4ce4fe3637b7bbfbe9fed0b08a4b1de1500868",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/6ae64ade7597a5e163de5f1b5ffb1e14ee720d92",
+                "reference": "6ae64ade7597a5e163de5f1b5ffb1e14ee720d92",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 "laravel",
                 "modules"
             ],
-            "time": "2015-02-12 19:40:19"
+            "time": "2015-02-19 22:00:35"
         },
         {
             "name": "caffeinated/shinobi",
