@@ -124,19 +124,32 @@
 
 
 <hr>
-<h3>
-	<i class="fa fa-gavel fa-fw"></i>
-	{{ Lang::choice('kotoba::role.role', 2) }}
-</h3>
-<select multiple="multiple" id="my-select" name="my-select[]">
-@foreach ($allRoles as $key => $value)
-	@if (isset($roles[$key]) )
-		<option value='{{ $key }}' selected>{{ $value }}</option>
-	@else
-		<option value='{{ $key }}'>{{ $value }}</option>
-	@endif
-@endforeach
-</select>
+
+@if ($allRoles != NULL)
+	<h3>
+		<i class="fa fa-gavel fa-fw"></i>
+		{{ Lang::choice('kotoba::role.role', 2) }}
+	</h3>
+	<select multiple="multiple" id="my-select" name="roles[]">
+	@foreach ($allRoles as $key => $value)
+
+		@if ($userRoles->count())
+			@if (isset($roles[$key]) )
+				<option value='{{ $key }}' selected>{{ $value }}</option>
+			@else
+				<option value='{{ $key }}'>{{ $value }}</option>
+			@endif
+		@else
+			<option value='{{ $key }}'>{{ $value }}</option>
+		@endif
+
+	@endforeach
+	</select>
+@else
+	<div class="alert alert-danger" role="alert">
+	{{ trans('kotoba::role.error.not_found') }}
+	</div>
+@endif
 
 
 <hr>

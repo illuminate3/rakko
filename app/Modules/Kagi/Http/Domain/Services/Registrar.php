@@ -166,13 +166,16 @@ class Registrar implements RegistrarContract {
 	 */
 	public function activateUser($user)
 	{
-		$user = User::findOrFail($user->id);
 //dd($user);
+		$user = User::find($user->id);
 
-		$user->activated = 1;
-		$user->activated_at = date("Y-m-d H:i:s");
-
-		return $user->update();
+		if ($user != NULL) {
+			$user->activated = 1;
+			$user->activated_at = date("Y-m-d H:i:s");
+			return $user->update();
+		} else {
+			return;
+		}
 	}
 
 }

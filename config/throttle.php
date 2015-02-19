@@ -25,6 +25,6 @@ return [
     |
     */
 
-    'driver' => 'array',
+    'driver' => 'apc',
 
 ];

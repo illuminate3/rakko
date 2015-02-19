@@ -7,6 +7,8 @@ use Laravel\Socialite\Contracts\Factory as Socialite;
 
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 use App\Modules\Kagi\Http\Listeners\AuthenticateUserListener;
+
+use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
 
 use Config;
@@ -57,11 +59,11 @@ class SocialAuthenticateUser {
 	{
 		if ( ! $hasCode) return $this->getAuthorizationFirst();
 
-		if ( Config::get('kagi.kagi_social', '') == 'github' ) {
+		if ( Config::get('kagi.kagi_social') == 'github' ) {
 //			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
 			$user = $loginRegistrar->findByUsernameOrCreateGithub($this->getGithubUser());
 		}
-		if ( Config::get('kagi.kagi_social', '') == 'google' ) {
+		if ( Config::get('kagi.kagi_social') == 'google' ) {
 //			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
 			$user = $loginRegistrar->findByUsernameOrCreateGoogle($this->getGoogleUser());
 		}

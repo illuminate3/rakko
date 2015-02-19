@@ -41,11 +41,10 @@ class RoleRepository extends BaseRepository {
 	 */
 	public function create()
 	{
-//		$select = $this->role->all()->lists('title', 'id');
-//		$statut = $this->getStatut();
+		$allPermissions =  $this->permission->all()->lists('name', 'id');
+//dd($allPermissions);
 
-//		return compact('select', 'statut');
-//		return compact('select', 'statut');
+		return compact('allPermissions');
 	}
 
 	/**
@@ -73,6 +72,10 @@ class RoleRepository extends BaseRepository {
 //dd($input);
 		$this->model = new Role;
 		$this->model->create($input);
+
+		$role_id = DB::getPdo()->lastInsertId();
+		$role = $this->role->find($role_id);
+		$role->syncPermissions($input['my-select']);
 	}
 
 	/**

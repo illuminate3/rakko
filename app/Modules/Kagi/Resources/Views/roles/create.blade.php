@@ -6,12 +6,23 @@
 @stop
 
 @section('styles')
+	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+	jQuery(document).ready(function($) {
+		$('#my-select').multiSelect(
+			{
+				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
+				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
+			}
+		)
+	});
 @stop
 
 
@@ -68,6 +79,25 @@
 
 
 <hr>
+
+@if ($allPermissions != NULL)
+	<h3>
+		<i class="fa fa-gavel fa-fw"></i>
+		{{ Lang::choice('kotoba::role.role', 2) }}
+	</h3>
+	<select multiple="multiple" id="my-select" name="my-select[]">
+		@foreach ($allPermissions as $key => $value)
+			<option value='{{ $key }}'>{{ $value }}</option>
+		@endforeach
+	</select>
+@else
+	<div class="alert alert-danger" role="alert">
+	{{ trans('kotoba::permission.error.not_found') }}
+	</div>
+@endif
+
+<hr>
+
 
 <div class="form-group">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">

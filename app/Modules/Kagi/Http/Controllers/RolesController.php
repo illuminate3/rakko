@@ -45,8 +45,6 @@ class RolesController extends KagiController {
 	 */
 	public function index()
 	{
-//$roles = User::all();
-//dd($roles);
 		return View('kagi::roles.index');
 	}
 
@@ -57,9 +55,7 @@ class RolesController extends KagiController {
 	 */
 	public function create()
 	{
-//dd("create");
-//		return view('kagi::roles.create', $this->role->create());
-		return view('kagi::roles.create');
+		return view('kagi::roles.create',  $this->role->create());
 	}
 
 	/**

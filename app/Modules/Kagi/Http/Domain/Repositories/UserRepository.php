@@ -67,10 +67,12 @@ class UserRepository extends BaseRepository {
 	{
 		$user = $this->model->find($id);
 //dd($user);
+
+		$userRoles = User::find($id)->roles;
 		$roles = $this->shinobiRole->lists('name', 'id');
 		$allRoles =  $this->role->all()->lists('name', 'id');
 
-		return compact('user', 'roles', 'allRoles');
+		return compact('user', 'roles', 'allRoles', 'userRoles');
 	}
 
 	/**
@@ -139,7 +141,7 @@ class UserRepository extends BaseRepository {
 
 		$user->update();
 
-		$user->syncRoles($input['my-select']);
+		$user->syncRoles($input['roles']);
 	}
 
 

@@ -28,6 +28,7 @@ class UserUpdateRequest extends FormRequest {
 //			'password'					=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
 //			'password'					=> 'required|confirmed|min:6',
 //			'password_confirmation'		=> 'required_with:password'
+			'roles'						=> 'required',
 		];
 	}
 
