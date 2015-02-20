@@ -71,5 +71,44 @@ class LoginRegistrar extends Model {
 		return $approved;
 	}
 
+	/**
+	 * @param $userData
+	 * @return static
+	 */
+/*
+	public function findByUsernameOrCreateGithub($userData)
+	{
+//dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
+		return User::firstOrCreate([
+			'name'					=> $userData->nickname,
+			'email'					=> $userData->email,
+//			'avatar'				=> $userData->avatar,
+			'activated_at'			=> date("Y-m-d H:i:s"),
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+		]);
+	}
+
+	public function findByUsernameOrCreateGoogle($userData)
+	{
+//dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
+		return User::firstOrCreate([
+			'name'					=> $userData->name,
+			'email'					=> $userData->email,
+//			'avatar'				=> $userData->avatar,
+			'activated_at'			=> date("Y-m-d H:i:s"),
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+		]);
+	}
+*/
 
 }

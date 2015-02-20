@@ -1,8 +1,7 @@
 <?php namespace App\Modules\Profiles\Http\Domain\Repositories;
 
 use App\Modules\Kagi\Http\Domain\Models\User;
-use App\Modules\Kagi\Http\Domain\Models\Role;
-use Caffeinated\Shinobi\Models\Role as shinobiRole;
+use App\Modules\Profiles\Http\Domain\Models\Profile;
 
 use Hash, DB, Auth;
 use DateTime;
@@ -13,33 +12,31 @@ class ProfileRepository extends BaseRepository {
 	/**
 	 * The User instance.
 	 *
-	 * @var App\Models\User
+	 * @var App\Modules\Kagi\Http\Domain\Models\User
 	 */
 	protected $user;
 
 	/**
 	 * The Role instance.
 	 *
-	 * @var App\Models\Role
+	 * @var App\Modules\Profiles\Http\Domain\Models\Profile
 	 */
-	protected $role;
+	protected $profile;
 
 	/**
 	 * Create a new UserRepository instance.
 	 *
    	 * @param  App\Modules\Kagi\Http\Domain\Models\User $user
-	 * @param  App\Modules\Kagi\Http\Domain\Models\Role $role
+	 * @param  App\Modules\Profiles\Http\Domain\Models\Profile $profiles
 	 * @return void
 	 */
 	public function __construct(
 		User $user,
-		Role $role,
-		shinobiRole $shinobiRole
+		Profile $profiles
 		)
 	{
-		$this->model = $user;
-		$this->role = $role;
-		$this->shinobiRole = $shinobiRole;
+		$this->user = $user;
+		$this->profiles = $profiles;
 	}
 
 	/**

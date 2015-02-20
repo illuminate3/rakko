@@ -146,6 +146,11 @@ return [
 		'App\Providers\RouteServiceProvider',
 
 /*
+ * Extend Application Service Providers...
+ */
+'App\Providers\MenuServiceProvider',
+
+/*
  * DEV Package Service Providers
  */
 'Barryvdh\Debugbar\ServiceProvider',
@@ -223,7 +228,7 @@ return [
 'Theme'			=> 'Caffeinated\Themes\Facades\Theme',
 'Component'		=> 'Caffeinated\Themes\Facades\Component',
 'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
-'Menu' => 'Caffeinated\Menus\Facades\Menu',
+'Menu'			=> 'Caffeinated\Menus\Facades\Menu',
 'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
 'Form'			=> 'Collective\Html\FormFacade',
 'Html'			=> 'Collective\Html\HtmlFacade',

@@ -1,49 +1,50 @@
 <?php namespace App\Modules\Profiles\Http\Controllers;
 
+use App\Modules\Profiles\Http\Domain\Models\Profile;
+use App\Modules\Profiles\Http\Domain\Repositories\ProfileRepository;
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
-use App\Modules\Kagi\Http\Domain\Repositories\RoleRepository;
 
 use Illuminate\Http\Request;
-use App\Modules\Kagi\Http\Requests\UserCreateRequest;
-use App\Modules\Kagi\Http\Requests\UserUpdateRequest;
-use App\Modules\Kagi\Http\Requests\DeleteRequest;
+use App\Modules\Profile\Http\Requests\ProfileCreateRequest;
+use App\Modules\Profile\Http\Requests\ProfileUpdateRequest;
+use App\Modules\Profile\Http\Requests\DeleteRequest;
 
 //use Datatable;
 use Datatables;
 //use Bootstrap;
 use Flash;
 
-class ProfilesController extends KagiController {
+class ProfilesController extends ProfileController {
 
 	/**
 	 * The UserRepository instance.
 	 *
-	 * @var App\Repositories\UserRepository
+	 * @var App\Modules\Kagi\Http\Domain\Repositories\UserRepository
 	 */
 	protected $user;
 
 	/**
 	 * The RoleRepository instance.
 	 *
-	 * @var App\Repositories\RoleRepository
+	 * @var App\Modules\Profiles\Http\Domain\Repositories\ProfileRepository
 	 */
-	protected $role;
+	protected $profile;
 
 	/**
 	 * Create a new UserController instance.
 	 *
-	 * @param  App\Repositories\UserRepository $user
-	 * @param  App\Repositories\RoleRepository $role
+	 * @param  App\Modules\Kagi\Http\Domain\Repositories\UserRepository $user
+	 * @param  App\Modules\Profiles\Http\Domain\Repositories\ProfileRepository $profile
 	 * @return void
 	 */
 	public function __construct(
 			UserRepository $user,
-			RoleRepository $role
+			ProfileRepository $profile
 		)
 	{
 		$this->user = $user;
-		$this->role = $role;
+		$this->profile = $profile;
 
 		$this->middleware('admin');
 //		$this->middleware('ajax', ['only' => 'updateSeen']);
@@ -56,9 +57,8 @@ class ProfilesController extends KagiController {
 	 */
 	public function index()
 	{
-//$users = User::all();
-//dd($users);
-		return View('kagi::users.index');
+//dd("loaded");
+		return View('profiles::profiles.index');
 	}
 
 	/**

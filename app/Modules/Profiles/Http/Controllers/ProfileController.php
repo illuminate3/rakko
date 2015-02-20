@@ -1,0 +1,41 @@
+<?php namespace App\Modules\Profiles\Http\Controllers;
+
+use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+abstract class ProfileController extends BaseController {
+
+	use DispatchesCommands, ValidatesRequests;
+
+	/**
+	 * Initializer.
+	 *
+	 * @return \AdminController
+	 */
+	public function __construct()
+	{
+/*
+		parent::__construct();
+		$this->middleware('csrf');
+		$this->middleware('auth');
+*/
+//		$this->middleware('guest');
+		$this->middleware('admin');
+
+	}
+
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+//dd("loaded");
+		return View('profiles::index');
+	}
+
+
+}

@@ -3,20 +3,19 @@
 use Illuminate\Database\Eloquent\Model;
 
 use Laracasts\Presenter\PresentableTrait;
-use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
 class Profile extends Model {
 
-	use PresentableTrait, ShinobiTrait;
+	use PresentableTrait;
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'roles';
+	protected $table = 'profiles';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\Role';
+	protected $presenter = 'App\modules\Kagi\Http\Presenters\Profile';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

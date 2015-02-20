@@ -17,3 +17,4 @@ Route::group(['prefix' => 'Profiles'], function() {
 	});
 });
 */
+	Route::resource('profiles', 'ProfilesController');

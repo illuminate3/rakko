@@ -4,7 +4,7 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
-use Hash, DB, Auth;
+use Hash, DB, Auth, Config, Eloquent;
 use DateTime;
 //use File, Auth;
 
@@ -37,7 +37,7 @@ class UserRepository extends BaseRepository {
 		shinobiRole $shinobiRole
 		)
 	{
-		$this->model = $user;
+		$this->user = $user;
 		$this->role = $role;
 		$this->shinobiRole = $shinobiRole;
 	}
@@ -50,7 +50,7 @@ class UserRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$user = $this->model->with('roles')->findOrFail($id);
+		$user = $this->user->with('roles')->findOrFail($id);
 //		$user = $this->getById($id);
 //dd($user);
 
@@ -65,7 +65,7 @@ class UserRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$user = $this->model->find($id);
+		$user = $this->user->find($id);
 //dd($user);
 
 		$userRoles = User::find($id)->roles;
@@ -83,8 +83,8 @@ class UserRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-		$this->model = new User;
-		$this->model->create($input);
+		$this->user = new User;
+		$this->user->create($input);
 	}
 
 	/**
@@ -145,25 +145,72 @@ class UserRepository extends BaseRepository {
 	}
 
 
+	public function checkUserExists($name, $email)
+	{
+		$user = DB::table('users')
+			->where('name', '=', $name)
+			->where('email', '=', $email, 'AND')
+			->first();
+//dd($user);
+
+		return $user;
+	}
+
+	/**
+	 * Update user login timestamp
+	 *
+	 * @param  int  $email
+	 * @return
+	 */
+	public function touchLastLogin($id)
+	{
+		return DB::table('users')
+			->where('id', '=', $id)
+			->update([
+				'last_login' => date("Y-m-d H:i:s")
+			]);
+	}
+
 	/**
 	 * @param $userData
 	 * @return static
 	 */
 	public function findByUsernameOrCreateGithub($userData)
 	{
-dd($userData);
+//dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
-		return User::firstOrCreate([
-			'name'					=> $userData->nickname,
-			'email'					=> $userData->email,
-//			'avatar'				=> $userData->avatar,
-			'activated_at'			=> date("Y-m-d H:i:s"),
-			'blocked'				=> 0,
-			'banned'				=> 0,
-			'confirmed'				=> 1,
-			'activated'				=> 1,
-			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
-		]);
+
+		if ($userData->name == NULL) {
+			$name = $userData->nickname;
+		}
+		if ($userData->email == NULL) {
+			$email = $userData->nickname;
+		}
+		$date = date("Y-m-d H:i:s");
+
+		$check = $this->checkUserExists($name, $email);
+		if ($check == NULL) {
+			return User::create([
+				'name'					=> $name,
+				'email'					=> $email,
+//				'avatar'				=> $userData->avatar,
+				'blocked'				=> 0,
+				'banned'				=> 0,
+				'confirmed'				=> 1,
+				'activated'				=> 1,
+				'activated_at'			=> $date,
+				'last_login'			=> $date,
+				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+			]);
+		} else {
+//dd($check->id);
+			$this->touchLastLogin($check->id);
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+		}
+
 	}
 
 	public function findByUsernameOrCreateGoogle($userData)
