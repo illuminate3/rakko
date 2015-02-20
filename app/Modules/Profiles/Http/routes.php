@@ -18,3 +18,10 @@ Route::group(['prefix' => 'Profiles'], function() {
 });
 */
 	Route::resource('profiles', 'ProfilesController');
+
+
+# API data
+	Route::get('api/profiles', array(
+	//	'as'=>'api.users',
+		'uses'=>'ProfilesController@data'
+		));

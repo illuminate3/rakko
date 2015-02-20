@@ -1,0 +1,23 @@
+<?php namespace App\Modules\Profiles\Http\Domain\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Modules\Kagi\Http\Domain\Models\User;
+
+class User extends App\Modules\Kagi\Http\Domain\Models\User {
+
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'users';
+
+// DEFINE Relationships --------------------------------------------------
+
+	public function profile()
+	{
+		return $this->hasOne('App\Modules\Profiles\Http\Domain\Models\Profile');
+	}
+
+
+}

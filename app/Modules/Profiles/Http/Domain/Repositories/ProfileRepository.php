@@ -27,16 +27,16 @@ class ProfileRepository extends BaseRepository {
 	 * Create a new UserRepository instance.
 	 *
    	 * @param  App\Modules\Kagi\Http\Domain\Models\User $user
-	 * @param  App\Modules\Profiles\Http\Domain\Models\Profile $profiles
+	 * @param  App\Modules\Profiles\Http\Domain\Models\Profile $profile
 	 * @return void
 	 */
 	public function __construct(
 		User $user,
-		Profile $profiles
+		Profile $profile
 		)
 	{
 		$this->user = $user;
-		$this->profiles = $profiles;
+		$this->profile = $profile;
 	}
 
 	/**
@@ -47,11 +47,10 @@ class ProfileRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$user = $this->model->with('roles')->findOrFail($id);
-//		$user = $this->getById($id);
-//dd($user);
+		$profile = $this->profile->with('user')->find($id);
+//dd($profile);
 
-		return compact('user');
+		return compact('profile');
 	}
 
 	/**
@@ -62,14 +61,15 @@ class ProfileRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$user = $this->model->find($id);
-//dd($user);
+		$profile = $this->profile->find($id);
+//dd($profile);
 
-		$userRoles = User::find($id)->roles;
-		$roles = $this->shinobiRole->lists('name', 'id');
-		$allRoles =  $this->role->all()->lists('name', 'id');
+// 		$userRoles = User::find($id)->roles;
+// 		$roles = $this->shinobiRole->lists('name', 'id');
+// 		$allRoles =  $this->role->all()->lists('name', 'id');
 
-		return compact('user', 'roles', 'allRoles', 'userRoles');
+// 		return compact('user', 'roles', 'allRoles', 'userRoles');
+		return compact('profile');
 	}
 
 	/**

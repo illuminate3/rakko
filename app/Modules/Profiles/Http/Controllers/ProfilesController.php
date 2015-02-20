@@ -70,7 +70,7 @@ class ProfilesController extends ProfileController {
 	{
 //dd("create");
 //		return view('kagi::users.create', $this->user->create());
-		return view('kagi::users.create');
+		return view('profiles::profiles.create');
 	}
 
 	/**
@@ -99,7 +99,7 @@ dd("store");
 	public function show($id)
 	{
 //dd("show");
-		return View('kagi::users.show',  $this->user->show($id));
+		return View('profiles::profiles.show',  $this->profile->show($id));
 	}
 
 	/**
@@ -111,7 +111,7 @@ dd("store");
 	public function edit($id)
 	{
 //dd("edit");
-		return View('kagi::users.edit',  $this->user->edit($id));
+		return View('profiles::profiles.edit',  $this->profile->edit($id));
 	}
 
 	/**
@@ -187,35 +187,18 @@ dd("store");
 			<th>{{ trans('kotoba::general.confirmed') }}</th>
 			<th>{{ trans('kotoba::general.activated') }}</th>
 */
-		$users = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
-			->orderBy('users.email', 'ASC');
-//dd($users);
+		$profiles = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
+			->orderBy('profiles.last_name', 'ASC');
+//dd($profiles);
 
-		return Datatables::of($users)
-
-			-> edit_column(
-				'blocked',
-				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'banned',
-				'@if ($banned=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'activated',
-				'@if ($activated=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
+		return Datatables::of($profiles)
 
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+				'<a href="{{ URL::to(\'profiles/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
 					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
 				</a>
-				<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				<a href="{{ URL::to(\'profiles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')

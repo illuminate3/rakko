@@ -27,6 +27,12 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li>
+						<a href="/profiles/{{ Auth::user()->id }}">
+							{{ Lang::choice('kotoba::account.profile', 1) }}
+						</a>
+					</li>
+				<li class="divider"></li>
+					<li>
 						<a href="/admin/users">
 							{{ Lang::choice('kotoba::account.user', 2) }}
 						</a>

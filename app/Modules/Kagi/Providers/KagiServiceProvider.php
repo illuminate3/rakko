@@ -37,7 +37,7 @@ class KagiServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-		Lang::addNamespace('kagi', __DIR__.'/../Resources/Lang/');
+//		Lang::addNamespace('kagi', __DIR__.'/../Resources/Lang/');
 		View::addNamespace('kagi', __DIR__.'/../Resources/Views/');
 	}
 

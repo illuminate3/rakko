@@ -47,7 +47,7 @@ class CreateProfilesTable extends Migration {
 			$table->string('prefix',20)->nullable();
 			$table->string('suffix',20)->nullable();
 
-//			$table->string('email',100)->nullable();
+			$table->string('email_1',100)->nullable();
 			$table->string('email_2',100)->nullable();
 
 			$table->string('phone_1',20)->nullable();
@@ -58,7 +58,7 @@ class CreateProfilesTable extends Migration {
 			$table->string('state',60)->nullable();
 			$table->string('zipcode',20)->nullable();
 
-			$table->string('avatar',100)->nullable();
+//			$table->string('avatar',100)->nullable();
 			$table->text('notes')->nullable();
 
 

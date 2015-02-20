@@ -57,8 +57,7 @@ class CreateUsersTable extends Migration {
 //			$table->string('activation_code')->nullable()->index();
 
 			$table->timestamp('last_login')->nullable();
-
-
+			$table->string('avatar',100)->nullable();
 
 
 			$table->softDeletes();

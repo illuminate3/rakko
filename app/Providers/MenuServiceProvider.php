@@ -1,6 +1,8 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
+use Auth;
 use Menu;
 
 class MenuServiceProvider extends ServiceProvider {
@@ -27,7 +29,11 @@ $menu->about->add('Who We are', 'who-we-are')
     $menu->add('Contact', 'contact');
 */
 $menu->add('Rakko', 'welcome');
+
 $menu->add('Profiles', 'profiles');
+//		 ->add('view profile', 'profiles'. Auth::user()->id );
+
+
 
 });
 	}

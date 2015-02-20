@@ -31,7 +31,7 @@ class ProfilesServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-		Lang::addNamespace('profiles', __DIR__.'/../Resources/Lang/');
+//		Lang::addNamespace('profiles', __DIR__.'/../Resources/Lang/');
 		View::addNamespace('profiles', __DIR__.'/../Resources/Views/');
 	}
 }

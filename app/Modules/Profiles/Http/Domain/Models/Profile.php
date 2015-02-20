@@ -1,6 +1,7 @@
 <?php namespace App\Modules\Profiles\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Modules\Kagi\Http\Domain\Models\User;
 
 use Laracasts\Presenter\PresentableTrait;
 
@@ -24,13 +25,30 @@ class Profile extends Model {
 	 */
 //	protected $hidden = ['password', 'remember_token'];
 
-	protected $fillable = ['name', 'slug', 'description'];
+	protected $fillable = [
+		'user_id',
+		'first_name',
+		'middle_initial',
+		'last_name',
+		'prefix',
+		'suffix',
+		'email_1',
+		'email_2',
+		'phone_1',
+		'phone_2',
+		'address',
+		'city',
+		'state',
+		'avatar',
+		'prefix',
+		'notes'
+		];
 
 
 // DEFINE Relationships --------------------------------------------------
 	public function user()
 	{
-		return $this->hasMany('App\Modules\Kagi\Http\Domain\Models\User');
+		return $this->belongsTo('App\Modules\Kagi\Http\Domain\Models\User');
 	}
 
 
