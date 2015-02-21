@@ -14,8 +14,15 @@ class MenuServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-//
-Menu::make('public', function($menu) {
+		Menu::make('public', function($menu) {
+			$menu->add('Rakko', 'welcome');
+			$menu->add('Profiles', 'profiles');
+// 			$menu->add('View Profile', 'profiles/'.Auth::user()->id);
+// 			$menu->add('view profile', 'profiles'. Auth::user()->id );
+		});
+	}
+
+
 /*
     $menu->add('Home');
     $menu->add('About', 'about');
@@ -28,15 +35,6 @@ $menu->about->add('Who We are', 'who-we-are')
     $menu->add('Blog', 'blog');
     $menu->add('Contact', 'contact');
 */
-$menu->add('Rakko', 'welcome');
-
-$menu->add('Profiles', 'profiles');
-//		 ->add('view profile', 'profiles'. Auth::user()->id );
-
-
-
-});
-	}
 
 	/**
 	 * Register any application services.

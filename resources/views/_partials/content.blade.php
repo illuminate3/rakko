@@ -2,7 +2,7 @@
 
 @yield('content')
 
-User ID: {{ Auth::user()->id }}
+User ID: @if(isset(Auth::user()->id)) {{ Auth::user()->id }} @endif
 
 {!! $menu_public->asUl() !!}
 

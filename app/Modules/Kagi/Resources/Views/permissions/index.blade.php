@@ -51,8 +51,6 @@
 
 <div class="row">
 
-"dom" : "T<'clear'>lfrtip",
-
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>

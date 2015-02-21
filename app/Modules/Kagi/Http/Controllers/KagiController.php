@@ -1,17 +1,20 @@
 <?php namespace App\Modules\Kagi\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
-abstract class KagiController extends BaseController {
+//abstract class KagiController extends BaseController {
+class KagiController extends Controller
+{
 
 	use DispatchesCommands, ValidatesRequests;
 
 	/**
 	 * Initializer.
 	 *
-	 * @return \AdminController
+	 * @return \KagiController
 	 */
 	public function __construct()
 	{
@@ -33,7 +36,6 @@ abstract class KagiController extends BaseController {
 	 */
 	public function index()
 	{
-//dd("loaded");
 		return View('kagi::kagi');
 	}
 

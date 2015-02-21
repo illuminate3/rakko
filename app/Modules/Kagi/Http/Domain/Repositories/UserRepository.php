@@ -97,7 +97,7 @@ class UserRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input);
-		$user = $this->getById($id);
+		$user = $this->user->find($id);
 
 		if ( isset($input['name']) ) {
 			$user->name = $input['name'];
@@ -111,25 +111,21 @@ class UserRepository extends BaseRepository {
 		}
 
 		if ( isset($input['blocked']) ) {
-//			$user->blocked = $input['blocked'];
 			$user->blocked = 1;
 		} else {
 			$user->blocked = 0;
 		}
 		if ( isset($input['banned']) ) {
-//			$user->banned = $input['banned'];
 			$user->banned = 1;
 		} else {
 			$user->banned = 0;
 		}
 		if ( isset($input['confirmed']) ) {
-//			$user->confirmed = $input['confirmed'];
 			$user->confirmed = 1;
 		} else {
 			$user->confirmed = 0;
 		}
 		if ( isset($input['activated']) ) {
-//			$user->activated = $input['activated'];
 			$user->activated = 1;
 			$user->activated_at = date("Y-m-d H:i:s");
 

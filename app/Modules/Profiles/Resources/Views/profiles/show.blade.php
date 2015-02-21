@@ -103,7 +103,7 @@
 		</div>
 		<div class="col-md-4">
 				@if($profile->avatar)
-					<img src="{{ $avatar }}" class="img-circle profile">
+					<img src="{{ $avatar }}" class="img-rounded profile">
 
 {{--
 					<img src="{{ Request::root() . $avatar['thumb'] }}" class="img-circle profile">
@@ -123,7 +123,7 @@
 				@else
 					<img
 						src="{{ asset('/assets/images/usr.png') }}"
-						class="img-circle profile"
+						class="img-thumbnail profile"
 					/>
 					{{-- trans('kotoba::account.error.logo') --}}
 				@endif

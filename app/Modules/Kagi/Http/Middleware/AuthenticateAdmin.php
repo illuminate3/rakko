@@ -19,7 +19,7 @@ class AuthenticateAdmin implements Middleware
 	{
 //dd($request);
 /*
-		if (! Auth::user()->can('access.admin')) {
+		if (! Auth::user()->can('manage_admin')) {
 			Flash::error('Sorry, you do not have the proper permissions.');
 
 			return new RedirectResponse(url('/'));

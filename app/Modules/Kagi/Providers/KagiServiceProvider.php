@@ -15,11 +15,8 @@ class KagiServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		// This service provider is a convenient place to register your modules
-		// services in the IoC container. If you wish, you may make additional
-		// methods or service providers to keep the code more focused and granular.
+
 		App::register('App\Modules\Kagi\Providers\RouteServiceProvider');
-		$this->registerNamespaces();
 
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/kagi.php', 'kagi'
@@ -27,6 +24,11 @@ class KagiServiceProvider extends ServiceProvider
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/kagi_services.php', 'kagi_services'
 		);
+
+		$this->registerNamespaces();
+
+// Broken .. not sure why yet ...
+//		$this->registerConsoleCommands();
 
 	}
 
@@ -54,6 +56,42 @@ class KagiServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../Config/kagi_services.php' => config_path('kagi_services.php'),
 		]);
+	}
+
+	/**
+	 * Get the services provided by the provider.
+	 *
+	 * @return string
+	 */
+	public function provides()
+	{
+//		return ['kagi'];
+	}
+
+	/**
+	 * Register the package console commands.
+	 *
+	 * @return void
+	 */
+	protected function registerConsoleCommands()
+	{
+// 		$this->registerInstallCommand();
+//
+// 		$this->commands([
+// 			'kagi.install'
+// 		]);
+	}
+
+	/**
+	 * Register the "module:seed" console command.
+	 *
+	 * @return Console\ModuleSeedCommand
+	 */
+	protected function registerInstallCommand()
+	{
+// 		$this->app->bindShared('kagi.install', function() {
+// 			return new App\Modules\Kagi\Console\Commands\kagiCommand;
+// 		});
 	}
 
 
