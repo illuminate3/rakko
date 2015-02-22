@@ -10,6 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+	Route::get('module_manager/welcome', array(
+		'uses'=>'MMController@welcome'
+		));
+
 /*
 Route::group(['prefix' => 'ModuleManager'], function() {
 	Route::get('/', function() {
@@ -18,4 +23,11 @@ Route::group(['prefix' => 'ModuleManager'], function() {
 });
 */
 
-//Route::resource('manager', 'MMController');
+Route::resource('module_manager', 'MMController');
+
+
+# API data
+	Route::get('api/module_manager', array(
+	//	'as'=>'api.users',
+		'uses'=>'MMController@data'
+		));

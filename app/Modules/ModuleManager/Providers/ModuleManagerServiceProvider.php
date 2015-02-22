@@ -1,5 +1,4 @@
-<?php
-namespace App\Modules\ModuleManager\Providers;
+<?php namespace App\Modules\ModuleManager\Providers;
 
 use App;
 use Config;
@@ -10,30 +9,35 @@ use Illuminate\Support\ServiceProvider;
 class ModuleManagerServiceProvider extends ServiceProvider
 {
 	/**
-	 * Register the ModuleManager module service provider.
+	 * Register the Kagi module service provider.
 	 *
 	 * @return void
 	 */
 	public function register()
 	{
-		// This service provider is a convenient place to register your modules
-		// services in the IoC container. If you wish, you may make additional
-		// methods or service providers to keep the code more focused and granular.
+
 		App::register('App\Modules\ModuleManager\Providers\RouteServiceProvider');
 
+		$this->mergeConfigFrom(
+			__DIR__.'/../Config/module_manager.php', 'module_manager'
+		);
+
 		$this->registerNamespaces();
+
+// Broken .. not sure why yet ...
+//		$this->registerConsoleCommands();
+
 	}
 
 	/**
-	 * Register the ModuleManager module resource namespaces.
+	 * Register the Kagi module resource namespaces.
 	 *
 	 * @return void
 	 */
 	protected function registerNamespaces()
 	{
-		Lang::addNamespace('ModuleManager', __DIR__.'/../Resources/Lang/');
-
-		View::addNamespace('ModuleManager', __DIR__.'/../Resources/Views/');
+//		Lang::addNamespace('module_manager', __DIR__.'/../Resources/Lang/');
+		View::addNamespace('module_manager', __DIR__.'/../Resources/Views/');
 	}
 
 	/**
@@ -43,22 +47,46 @@ class ModuleManagerServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-	// Publish a config file
-//dd("loaded");
-		$this->mergeConfigFrom(
-			__DIR__.'/../Config/modulemanager.php', 'module_manager.php'
-			);
-
 		$this->publishes([
-			__DIR__.'/path/to/config/modulemanager.php' => config_path('modulemanager.php'),
+			__DIR__.'/../Config/module_manager.php' => config_path('module_manager.php'),
 		]);
-
-		$this->publishes([
-			__DIR__.'/../config/modulemanager.php', config_path('modulemanager.php')
-		], 'config');
-
 	}
 
+	/**
+	 * Get the services provided by the provider.
+	 *
+	 * @return string
+	 */
+	public function provides()
+	{
+//		return ['module_manager'];
+	}
+
+	/**
+	 * Register the package console commands.
+	 *
+	 * @return void
+	 */
+	protected function registerConsoleCommands()
+	{
+// 		$this->registerInstallCommand();
+//
+// 		$this->commands([
+// 			'module_manager.install'
+// 		]);
+	}
+
+	/**
+	 * Register the "module:seed" console command.
+	 *
+	 * @return Console\ModuleSeedCommand
+	 */
+	protected function registerInstallCommand()
+	{
+// 		$this->app->bindShared('module_manager.install', function() {
+// 			return new App\Modules\ModuleManager\Console\Commands\ModuleManagerCommand;
+// 		});
+	}
 
 
 }

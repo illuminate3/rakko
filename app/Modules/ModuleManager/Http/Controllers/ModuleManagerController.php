@@ -1,17 +1,19 @@
-<?php namespace App\Modules\Profiles\Http\Controllers;
+<?php namespace App\Modules\ModuleManager\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
-abstract class ProfileController extends BaseController {
+class ModuleManagerController extends Controller
+{
 
 	use DispatchesCommands, ValidatesRequests;
 
 	/**
 	 * Initializer.
 	 *
-	 * @return \AdminController
+	 * @return \KagiController
 	 */
 	public function __construct()
 	{

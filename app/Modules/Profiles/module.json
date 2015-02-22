@@ -2,6 +2,6 @@
 	"name": "Profiles",
 	"slug": "Profiles",
 	"version": "1.0",
-	"description": "This is the description for the Profiles module.",
+	"description": "Profiles for Rakko",
 	"enabled": true
 }

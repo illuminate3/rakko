@@ -3,12 +3,12 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModuleManagerTable extends Migration {
+class CreateModulesTable extends Migration {
 
 	public function __construct()
 	{
 		// Get the prefix
-		$this->prefix = Config::get('modulemanager.module_manager_db.prefix', '');
+		$this->prefix = Config::get('module_manager.module_db.prefix', '');
 	}
 
 	/**
@@ -26,7 +26,7 @@ class CreateModuleManagerTable extends Migration {
 "enabled": true
 */
 //dd($this->prefix);
-		Schema::create($this->prefix . 'module_manager', function(Blueprint $table)
+		Schema::create($this->prefix . 'modules', function(Blueprint $table)
 		{
 
 			$table->engine = 'InnoDB';
@@ -36,8 +36,8 @@ class CreateModuleManagerTable extends Migration {
 			$table->string('name')->unique()->index();
 			$table->string('slug')->unique()->index();
 			$table->string('version')->nullable()->index();
-			$table->text('version')->nullable();
-			$table->boolean('enabled')->nullable()->default('true');
+			$table->text('description')->nullable();
+			$table->boolean('enabled')->nullable()->default('1');
 
 
 			$table->softDeletes();
@@ -53,7 +53,7 @@ class CreateModuleManagerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'module_manager');
+		Schema::drop($this->prefix . 'modules');
 	}
 
 }

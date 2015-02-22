@@ -86,5 +86,7 @@ class UsersTableSeeder extends Seeder {
 		$user = User::find(1);
 		$user->roles()->attach(1);
 
-	}
+	} // run
+
+
 }

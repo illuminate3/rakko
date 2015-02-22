@@ -2,6 +2,6 @@
 	"name": "ModuleManager",
 	"slug": "ModuleManager",
 	"version": "1.0",
-	"description": "This is the description for the ModuleManager module.",
+	"description": "Module Management for Rakko",
 	"enabled": true
 }

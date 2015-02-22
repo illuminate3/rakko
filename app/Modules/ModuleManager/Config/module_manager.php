@@ -9,7 +9,7 @@ return [
 | db settings
 |--------------------------------------------------------------------------
 */
-'module_manager_db' => array(
+'module_db' => array(
 	'prefix'					=> '',
 ),
 

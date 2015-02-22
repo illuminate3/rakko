@@ -10,6 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+	Route::get('profiles/welcome', array(
+		'uses'=>'ProfilesController@welcome'
+		));
+
 /*
 Route::group(['prefix' => 'Profiles'], function() {
 	Route::get('/', function() {

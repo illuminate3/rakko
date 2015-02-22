@@ -1,5 +1,4 @@
-<?php
-namespace App\Modules\Profiles\Database\Seeds;
+<?php namespace App\Modules\Profiles\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -13,9 +12,13 @@ class ProfilesDatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+
 		Model::unguard();
 
-		// $this->call('App\Modules\Profiles\Database\Seeds\FoobarTableSeeder');
-	}
+		$this->call('App\Modules\Profiles\Database\Seeds\ModuleSeeder');
+		$this->call('App\Modules\Profiles\Database\Seeds\ProfilesTableSeeder');
+
+	} // run
+
 
 }

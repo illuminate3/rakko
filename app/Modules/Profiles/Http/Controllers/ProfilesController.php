@@ -51,6 +51,17 @@ class ProfilesController extends ProfileController {
 	}
 
 	/**
+	 * Display Welcome
+	 *
+	 * @return Response
+	 */
+	public function welcome()
+	{
+//dd("loaded");
+		return View('profiles::welcome');
+	}
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
