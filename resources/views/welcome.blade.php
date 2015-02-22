@@ -14,7 +14,7 @@
 	</title>
 
 	<link rel="shortcut icon" href="{{ asset('assets/ico/favicon.png') }}">
-	<link rel="icon" href="{{ asset('assets/favicon.ico') }}">
+	<link rel="icon" href="{{ asset('favicon.ico') }}">
 
 	<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
@@ -64,7 +64,9 @@
 <body>
 	<div class="container">
 		<div class="content">
-			<img src="/images/rakko.jpg">
+			<a href="/">
+				<img src="assets/images/rakko.jpg">
+			</a>
 			<div class="title">
 				<a href="/">
 					{{ Config::get('general.title') }}
