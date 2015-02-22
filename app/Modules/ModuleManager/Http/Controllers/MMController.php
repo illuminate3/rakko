@@ -46,7 +46,7 @@ class MMController extends ModuleManagerController {
 	public function welcome()
 	{
 //dd("loaded");
-		return View('module_manager::welcome');
+		return View('module_manager::module_manager');
 	}
 
 	/**
@@ -199,11 +199,11 @@ dd("store");
 				'<a href="{{ URL::to(\'module_manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
-				')
-/*
-				'<a href="{{ URL::to(\'module_manager/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+				<a href="{{ URL::to(\'welcome/\' . $slug . \'/\' ) }}" class="btn btn-info btn-sm" >
 					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
 				</a>
+				')
+/*
 				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
 					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
 				</a>

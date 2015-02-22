@@ -11,9 +11,9 @@
 |
 */
 
-	Route::get('module_manager/welcome', array(
-		'uses'=>'MMController@welcome'
-		));
+Route::get('welcome/module_manager', array(
+	'uses'=>'MMController@welcome'
+	));
 
 /*
 Route::group(['prefix' => 'ModuleManager'], function() {

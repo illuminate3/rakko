@@ -13,9 +13,12 @@ class ModuleManagerDatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+
 		Model::unguard();
 
-		// $this->call('App\Modules\ModuleManager\Database\Seeds\FoobarTableSeeder');
+		$this->call('App\Modules\ModuleManager\Database\Seeds\ModuleSeeder');
+
 	}
+
 
 }

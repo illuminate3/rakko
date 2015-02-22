@@ -6,6 +6,8 @@ pa module:seed Kagi
 pa module:migrate Profiles
 pa module:seed Profiles
 
+http://ja.wikipedia.org/wiki/楽古川
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

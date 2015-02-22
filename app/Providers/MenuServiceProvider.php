@@ -15,7 +15,7 @@ class MenuServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		Menu::make('public', function($menu) {
-			$menu->add('Rakko', 'welcome');
+			$menu->add('Rakko', 'welcome/kagi');
 			$menu->add('Profiles', 'profiles');
 			$menu->add('Module Manager', 'module_manager');
 // 			$menu->add('View Profile', 'profiles/'.Auth::user()->id);

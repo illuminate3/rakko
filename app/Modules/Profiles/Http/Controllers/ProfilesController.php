@@ -58,7 +58,7 @@ class ProfilesController extends ProfileController {
 	public function welcome()
 	{
 //dd("loaded");
-		return View('profiles::welcome');
+		return View('profiles::profiles');
 	}
 
 	/**

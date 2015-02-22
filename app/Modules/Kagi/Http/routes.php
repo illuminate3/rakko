@@ -33,13 +33,8 @@ Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 */
-/*
-Route::get('auth/login', array('before' => 'throttle:2,2', function () {
-    return 'Why herro there!';
-}, ));
-*/
 
-Route::get('kagi', 'KagiController@index');
+Route::get('welcome/kagi', 'KagiController@welcome');
 /*
 Route::group(['prefix' => 'kagi'], function() {
 //	Route::get('home', 'KagiController@index');
@@ -55,7 +50,6 @@ Route::controllers([
 ]);
 Route::group(['prefix' => 'auth'], function() {
 	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
-//	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
 	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
 });
 

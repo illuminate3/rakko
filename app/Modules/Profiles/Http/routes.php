@@ -11,9 +11,9 @@
 |
 */
 
-	Route::get('profiles/welcome', array(
-		'uses'=>'ProfilesController@welcome'
-		));
+Route::get('welcome/profiles', array(
+	'uses'=>'ProfilesController@welcome'
+	));
 
 /*
 Route::group(['prefix' => 'Profiles'], function() {

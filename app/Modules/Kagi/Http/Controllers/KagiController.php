@@ -34,7 +34,7 @@ class KagiController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function welcome()
 	{
 		return View('kagi::kagi');
 	}
