@@ -65,7 +65,7 @@ $(document).ready(function() {
 			<th>{{ trans('kotoba::account.primary_email') }}</th>
 			<th>{{ trans('kotoba::account.email_2') }}</th>
 
-			<th>{{ trans('kotoba::general.action') }}</th>
+			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>

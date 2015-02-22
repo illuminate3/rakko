@@ -12,9 +12,6 @@
 @stop
 
 @section('inline-scripts')
-	$(function() {
-		$("#roles").select2()
-	});
 @stop
 
 

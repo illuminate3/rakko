@@ -78,7 +78,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
-		<input type="text" id="description" name="description" value="{{ $role->name }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
+		<input type="text" id="description" name="description" value="{{ $role->description }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>
 

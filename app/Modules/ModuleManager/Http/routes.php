@@ -28,6 +28,5 @@ Route::resource('module_manager', 'MMController');
 
 # API data
 	Route::get('api/module_manager', array(
-	//	'as'=>'api.users',
 		'uses'=>'MMController@data'
 		));

@@ -56,16 +56,16 @@ $(document).ready(function() {
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::account.name') }}</th>
-			<th>{{ trans('kotoba::account.email') }}</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.email') }}</th>
 
-			<th>{{ trans('kotoba::general.blocked') }}</th>
-			<th>{{ trans('kotoba::general.banned') }}</th>
-			<th>{{ trans('kotoba::general.confirmed') }}</th>
-			<th>{{ trans('kotoba::general.activated') }}</th>
+			<th>{{ trans('kotoba::table.blocked') }}</th>
+			<th>{{ trans('kotoba::table.banned') }}</th>
+			<th>{{ trans('kotoba::table.confirmed') }}</th>
+			<th>{{ trans('kotoba::table.activated') }}</th>
+			<th>{{ trans('kotoba::table.created_at') }}</th>
 
-			<th>{{ trans('kotoba::general.created_at') }}</th>
-			<th>{{ trans('kotoba::general.action') }}</th>
+			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>

@@ -27,7 +27,7 @@ $(document).ready(function() {
 		"sPaginationType" : "bootstrap",
 		"bProcessing" : true,
 		"bServerSide" : true,
-		"sAjaxSource" : "{{ URL::to('api/profiles') }}",
+		"sAjaxSource" : "{{ URL::to('api/module_manager') }}",
 	});
 });
 @stop
@@ -46,7 +46,7 @@ $(document).ready(function() {
 	</a>
 	</p>
 	<i class="fa fa-gears fa-lg"></i>
-		{{ Lang::choice('kotoba::account.profile', 2) }}
+		{{ Lang::choice('kotoba::module.module', 2) }}
 	<hr>
 </h1>
 </div>
@@ -54,18 +54,16 @@ $(document).ready(function() {
 
 <div class="row">
 
-"dom" : "T<'clear'>lfrtip",
-
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::account.first_name') }}</th>
-			<th>{{ trans('kotoba::account.last_name') }}</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.slug') }}</th>
+			<th>{{ trans('kotoba::table.version') }}</th>
+			<th>{{ trans('kotoba::table.description') }}</th>
+			<th>{{ trans('kotoba::table.enabled') }}</th>
 
-			<th>{{ trans('kotoba::account.primary_email') }}</th>
-			<th>{{ trans('kotoba::account.email_2') }}</th>
-
-			<th>{{ trans('kotoba::general.action') }}</th>
+			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>

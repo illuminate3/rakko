@@ -48,6 +48,11 @@
 							{{ Lang::choice('kotoba::permission.permission', 2) }}
 						</a>
 					</li>
+					<li>
+						<a href="/module_manager">
+							{{ trans('kotoba::module.manager') }}
+						</a>
+					</li>
 				<li class="divider"></li>
 {{-- @endif --}}
 					<li>

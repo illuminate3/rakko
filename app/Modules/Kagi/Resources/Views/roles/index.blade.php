@@ -54,11 +54,12 @@
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::account.name') }}</th>
-			<th>{{ trans('kotoba::general.slug') }}</th>
-			<th>{{ trans('kotoba::general.description') }}</th>
-			<th>{{ trans('kotoba::general.created_at') }}</th>
-			<th>{{ trans('kotoba::general.action') }}</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.slug') }}</th>
+			<th>{{ trans('kotoba::table.description') }}</th>
+			<th>{{ trans('kotoba::table.created_at') }}</th>
+
+			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>

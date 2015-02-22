@@ -2,8 +2,10 @@
 
 use App\Modules\ModuleManager\Http\Domain\Models\Module;
 
-use Hash, DB, Auth;
-use DateTime;
+use DB;
+use Caffeinated\Modules\Facades\Module as ModuleFacade;
+//use Hash, DB, Auth;
+//use DateTime;
 //use File, Auth;
 
 class ModuleRepository extends BaseRepository {
@@ -36,10 +38,10 @@ class ModuleRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$profile = $this->profile->with('user')->find($id);
-//dd($profile);
+		$module = $this->module->find($id);
+//dd($module);
 
-		return compact('profile');
+		return compact('module');
 	}
 
 	/**
@@ -50,15 +52,10 @@ class ModuleRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$profile = $this->profile->find($id);
-//dd($profile);
+		$module = $this->module->find($id);
+//dd($module);
 
-// 		$userRoles = User::find($id)->roles;
-// 		$roles = $this->shinobiRole->lists('name', 'id');
-// 		$allRoles =  $this->role->all()->lists('name', 'id');
-
-// 		return compact('user', 'roles', 'allRoles', 'userRoles');
-		return compact('profile');
+		return compact('module');
 	}
 
 	/**
@@ -82,52 +79,20 @@ class ModuleRepository extends BaseRepository {
 	 */
 	public function update($input, $id)
 	{
-//dd($input);
-		$user = $this->getById($id);
+//dd($input['enabled']);
+		$module = Module::find($id);
+//dd($module->name);
 
-		if ( isset($input['name']) ) {
-			$user->name = $input['name'];
-		}
-		if ( isset($input['email']) ) {
-			$user->email = $input['email'];
-		}
-
-		if ( $input['password'] != NULL ) {
-			$user->password = Hash::make($input['password']);
-		}
-
-		if ( isset($input['blocked']) ) {
-//			$user->blocked = $input['blocked'];
-			$user->blocked = 1;
+		if ($input['enabled'] == 0 ) {
+			$module->enabled = 0;
+			ModuleFacade::disable($module->name);
 		} else {
-			$user->blocked = 0;
+			$module->enabled = 1;
+			ModuleFacade::enable($module->name);
+//ModuleFacade::setProperty($module->name . '::enabled', true);
 		}
-		if ( isset($input['banned']) ) {
-//			$user->banned = $input['banned'];
-			$user->banned = 1;
-		} else {
-			$user->banned = 0;
-		}
-		if ( isset($input['confirmed']) ) {
-//			$user->confirmed = $input['confirmed'];
-			$user->confirmed = 1;
-		} else {
-			$user->confirmed = 0;
-		}
-		if ( isset($input['activated']) ) {
-//			$user->activated = $input['activated'];
-			$user->activated = 1;
-			$user->activated_at = date("Y-m-d H:i:s");
 
-		} else {
-			$user->activated = 0;
-			$user->activated_at = NULL;
-		}
-//dd($user);
-
-		$user->update();
-
-		$user->syncRoles($input['roles']);
+		return $module->update();
 	}
 
 

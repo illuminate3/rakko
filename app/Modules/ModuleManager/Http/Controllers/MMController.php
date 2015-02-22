@@ -98,7 +98,7 @@ dd("store");
 	public function show($id)
 	{
 //dd("show");
-		return View('profiles::profiles.show',  $this->profile->show($id));
+		return View('module_manager::modules.show',  $this->module->show($id));
 	}
 
 	/**
@@ -110,7 +110,7 @@ dd("store");
 	public function edit($id)
 	{
 //dd("edit");
-		return View('profiles::profiles.edit',  $this->profile->edit($id));
+		return View('module_manager::modules.edit',  $this->module->edit($id));
 	}
 
 	/**
@@ -121,14 +121,15 @@ dd("store");
 	 * @return Response
 	 */
 	public function update(
-		UserUpdateRequest $request,
+		ModuleUpdateRequest $request,
 		$id
 		)
 	{
-//dd($request->password);
-		$this->user->update($request->all(), $id);
-		Flash::success( trans('kotoba::account.success.update') );
-		return redirect('admin/users');
+//dd($request->enabled);
+
+		$this->module->update($request->all(), $id);
+		Flash::success( trans('kotoba::module.success.update') );
+		return redirect('module_manager');
 	}
 
 	/**
@@ -187,22 +188,23 @@ dd("store");
 			$table->text('description')->nullable();
 			$table->boolean('enabled')->nullable()->default('true');
 */
-		$modules = Profile::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled'))
+		$modules = Module::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled'))
 			->orderBy('modules.name', 'ASC');
 //dd($profiles);
 
-		return Datatables::of($profiles)
+		return Datatables::of($modules)
 
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'module_manager/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
-					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
-				</a>
-				<a href="{{ URL::to(\'module_manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'<a href="{{ URL::to(\'module_manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')
-/*				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
+/*
+				'<a href="{{ URL::to(\'module_manager/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+				</a>
+				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
 					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
 				</a>
 */

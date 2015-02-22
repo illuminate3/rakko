@@ -1,7 +1,7 @@
 {
-	"name": "Profiles",
-	"slug": "Profiles",
-	"version": "1.0",
-	"description": "Profiles for Rakko",
-	"enabled": true
+    "name": "Profiles",
+    "slug": "Profiles",
+    "version": "1.0",
+    "description": "Profiles for Rakko",
+    "enabled": true
 }
