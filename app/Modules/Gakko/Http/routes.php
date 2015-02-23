@@ -16,15 +16,16 @@ Route::get('welcome/gakko', array(
 	));
 
 Route::resource('departments', 'DepartmentsController');
-Route::resource('grades', 'GradesController');
 Route::resource('divisions', 'DivisionsController');
-Route::resource('positions', 'PositionsController');
-Route::resource('subjects', 'SubjectsController');
 Route::resource('employee_types', 'EmployeeTypesController');
+Route::resource('employees', 'EmployeesController');
+Route::resource('grades', 'GradesController');
 Route::resource('job_titles', 'JobTitlesController');
-Route::resource('statuses', 'StatusesController');
-Route::resource('sites', 'SitesController');
+Route::resource('positions', 'PositionsController');
 Route::resource('rooms', 'RoomsController');
+Route::resource('sites', 'SitesController');
+Route::resource('statuses', 'StatusesController');
+Route::resource('subjects', 'SubjectsController');
 /*
 Route::group(array(
 //	'prefix' => Config::get('vedette::vedette_settings.prefix_auth')),

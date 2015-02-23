@@ -55,7 +55,9 @@
 	<thead>
 		<tr>
 			<th>{{ trans('kotoba::table.name') }}</th>
-			<th>{{ trans('kotoba::table.description') }}</th>
+			<th>{{ trans('kotoba::table.division') }}</th>
+			<th>{{ trans('kotoba::table.website') }}</th>
+			<th>{{ trans('kotoba::table.supervisior') }}</th>
 
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>

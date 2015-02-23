@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{ Lang::choice('kotoba::hr.profile', 2) }} :: @parent
+{{ Lang::choice('kotoba::hr.employee', 2) }} :: @parent
 @stop
 
 @section('styles')
@@ -34,7 +34,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/profiles" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/employees" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -48,7 +48,7 @@
 
 <div class="row">
 {!! Form::open([
-	'url' => 'profiles',
+	'url' => 'employees',
 	'method' => 'POST',
 	'class' => 'form'
 ]) !!}
@@ -82,7 +82,7 @@
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+	<a href="/employees" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>

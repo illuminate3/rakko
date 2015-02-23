@@ -1,21 +1,21 @@
 <?php
 namespace App\Modules\Gakko\Http\Domain\Repositories;
 
-use App\Modules\Gakko\Http\Domain\Models\Profile;
+use App\Modules\Gakko\Http\Domain\Models\Employee;
 
 use DB;
 //use Hash, DB, Auth;
 //use DateTime;
 //use File, Auth;
 
-class ProfileRepository extends BaseRepository {
+class EmployeeRepository extends BaseRepository {
 
 	/**
 	 * The Module instance.
 	 *
 	 * @var App\Modules\ModuleManager\Http\Domain\Models\Module
 	 */
-	protected $profile;
+	protected $employee;
 
 	/**
 	 * Create a new ModuleRepository instance.
@@ -24,10 +24,10 @@ class ProfileRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
-		Profile $profile
+		Employee $employee
 		)
 	{
-		$this->model = $profile;
+		$this->model = $employee;
 	}
 
 	/**
@@ -51,10 +51,10 @@ class ProfileRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$profile = $this->model->find($id);
+		$employee = $this->model->find($id);
 //dd($module);
 
-		return compact('profile');
+		return compact('employee');
 	}
 
 	/**
@@ -65,10 +65,10 @@ class ProfileRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$profile = $this->model->find($id);
+		$employee = $this->model->find($id);
 //dd($module);
 
-		return compact('profile');
+		return compact('employee');
 	}
 
 	/**
@@ -79,7 +79,7 @@ class ProfileRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-		$this->model = new Profile;
+		$this->model = new Employee;
 		$this->model->create($input);
 	}
 
@@ -93,8 +93,8 @@ class ProfileRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input['enabled']);
-		$profile = Profile::find($id);
-		$profile->update($input);
+		$employee = Employee::find($id);
+		$employee->update($input);
 	}
 
 

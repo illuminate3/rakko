@@ -75,9 +75,7 @@ class SitesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$site = $this->site->findOrFail($id);
-
-		return View::make('HR::sites.show', compact('site'));
+		return View('gakko::sites.show',  $this->site->show($id));
 	}
 
 	/**
@@ -143,13 +141,14 @@ class SitesController extends GakkoController {
 		'state',
 		'zipcode',
 		'logo',
+		'division_id',
 		'user_id',
 		'ad_code',
 		'bld_number',
 		'status_id',
 		'notes'
 */
-		$sites = Site::select(array('sites.id','sites.name','sites.email'))
+		$sites = Site::select(array('sites.id','sites.name','sites.division_id','sites.website','sites.user_id'))
 			->orderBy('sites.name', 'ASC');
 //dd($sites);
 
@@ -162,7 +161,10 @@ class SitesController extends GakkoController {
 */
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'sites/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'<a href="{{ URL::to(\'sites/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+				</a>
+				<a href="{{ URL::to(\'sites/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')

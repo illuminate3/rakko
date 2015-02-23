@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{ Lang::choice('kotoba::hr.profile', 2) }} :: @parent
+{{ Lang::choice('kotoba::hr.employee', 2) }} :: @parent
 @stop
 
 @section('styles')
@@ -36,7 +36,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/profiles" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/employees" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -50,9 +50,9 @@
 
 <div class="row">
 {!! Form::model(
-	$profile,
+	$employee,
 	[
-		'route' => ['profiles.update', $profile->id],
+		'route' => ['employees.update', $employee->id],
 		'method' => 'PATCH',
 		'class' => 'form'
 	]
@@ -62,7 +62,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
-		<input type="text" id="name" name="name" value="{{ $profile->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+		<input type="text" id="name" name="name" value="{{ $employee->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
 </div>
 </div>
 
@@ -70,7 +70,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
-		<input type="text" id="description" name="description" value="{{ $profile->description }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
+		<input type="text" id="description" name="description" value="{{ $employee->description }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>
 
@@ -87,7 +87,7 @@
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+	<a href="/employees" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>

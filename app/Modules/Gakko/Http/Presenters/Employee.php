@@ -5,7 +5,7 @@ use Laracasts\Presenter\Presenter;
 
 use DB;
 
-class Profile extends Presenter {
+class Employee extends Presenter {
 
 //dd('loaded');
 

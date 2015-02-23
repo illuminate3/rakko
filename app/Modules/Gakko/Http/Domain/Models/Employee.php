@@ -4,7 +4,7 @@ namespace App\Modules\Gakko\Http\Domain\Models;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class Profile extends Model {
+class Employee extends Model {
 
 	use PresentableTrait;
 
@@ -13,7 +13,7 @@ class Profile extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'profiles';
+	protected $table = 'employees';
 
 	protected $presenter = 'App\modules\ModuleManager\Http\Presenters\Module';
 
@@ -26,11 +26,22 @@ class Profile extends Model {
 
 // DEFINE Fillable -------------------------------------------------------
 /*
-"name": "ModuleManager",
-"slug": "ModuleManager",
-"version": "1.0",
-"description": "This is the description for the ModuleManager module.",
-"enabled": true
+			$table->integer('user_id');
+			$table->integer('employee_type_id')->nullable();
+			$table->string('department_id',100)->nullable();
+			$table->integer('position_id')->nullable();
+			$table->integer('secondary_position_id')->nullable();
+			$table->integer('job_title_id')->nullable();
+			$table->integer('secondary_job_title_id')->nullable();
+
+			$table->integer('isTeacher')->nullable();
+
+			$table->integer('supervisor_id')->nullable();
+			$table->integer('isSupervisior')->default(0);
+
+			$table->integer('status_id')->default(1);
+
+			$table->text('notes')->nullable();
 */
 	protected $fillable = [
 		'id',

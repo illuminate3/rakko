@@ -1,12 +1,12 @@
 <?php
 namespace App\Modules\Gakko\Http\Controllers;
 
-use App\Modules\Gakko\Http\Domain\Models\Profile;
-use App\Modules\Gakko\Http\Domain\Repositories\ProfileRepository;
+use App\Modules\Gakko\Http\Domain\Models\Employee;
+use App\Modules\Gakko\Http\Domain\Repositories\EmployeeRepository;
 
 use Illuminate\Http\Request;
-use App\Modules\Gakko\Http\Requests\ProfileCreateRequest;
-use App\Modules\Gakko\Http\Requests\ProfileUpdateRequest;
+use App\Modules\Gakko\Http\Requests\EmployeeCreateRequest;
+use App\Modules\Gakko\Http\Requests\EmployeeUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
 //use Datatable;
@@ -14,20 +14,20 @@ use Datatables;
 //use Bootstrap;
 use Flash;
 
-class ProfilesController extends GakkoController {
+class EmployeesController extends GakkoController {
 
 	/**
-	 * Profile Repository
+	 * Employee Repository
 	 *
-	 * @var Profile
+	 * @var Employee
 	 */
-	protected $profile;
+	protected $employee;
 
 	public function __construct(
-			ProfileRepository $profile
+			EmployeeRepository $employee
 		)
 	{
-		$this->profile = $profile;
+		$this->employee = $employee;
 
 //		$this->middleware('admin');
 	}
@@ -39,7 +39,7 @@ class ProfilesController extends GakkoController {
 	 */
 	public function index()
 	{
-		return View('gakko::profiles.index');
+		return View('gakko::employees.index');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class ProfilesController extends GakkoController {
 	 */
 	public function create()
 	{
-		return view('gakko::profiles.create',  $this->profile->create());
+		return view('gakko::employees.create',  $this->employee->create());
 	}
 
 	/**
@@ -58,13 +58,13 @@ class ProfilesController extends GakkoController {
 	 * @return Response
 	 */
 	public function store(
-		ProfileCreateRequest $request
+		EmployeeCreateRequest $request
 		)
 	{
-		$this->profile->store($request->all());
+		$this->employee->store($request->all());
 
-		Flash::success( trans('kotoba::hr.success.profile_create') );
-		return redirect('profiles');
+		Flash::success( trans('kotoba::hr.success.employee_create') );
+		return redirect('employees');
 	}
 
 	/**
@@ -75,9 +75,9 @@ class ProfilesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$profile = $this->profile->findOrFail($id);
+		$employee = $this->employee->findOrFail($id);
 
-		return View::make('HR::profiles.show', compact('profile'));
+		return View::make('HR::employees.show', compact('employee'));
 	}
 
 	/**
@@ -88,7 +88,7 @@ class ProfilesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::profiles.edit',  $this->profile->edit($id));
+		return View('gakko::employees.edit',  $this->employee->edit($id));
 	}
 
 	/**
@@ -98,15 +98,15 @@ class ProfilesController extends GakkoController {
 	 * @return Response
 	 */
 	public function update(
-		ProfileUpdateRequest $request,
+		EmployeeUpdateRequest $request,
 		$id
 		)
 	{
 //dd("update");
-		$this->profile->update($request->all(), $id);
+		$this->employee->update($request->all(), $id);
 
-		Flash::success( trans('kotoba::hr.success.profile_update') );
-		return redirect('profiles');
+		Flash::success( trans('kotoba::hr.success.employee_update') );
+		return redirect('employees');
 	}
 
 	/**
@@ -117,9 +117,9 @@ class ProfilesController extends GakkoController {
 	 */
 	public function destroy($id)
 	{
-		$this->profile->find($id)->delete();
+		$this->employee->find($id)->delete();
 
-		return Redirect::route('admin.profiles.index');
+		return Redirect::route('admin.employees.index');
 	}
 
 
@@ -131,11 +131,11 @@ class ProfilesController extends GakkoController {
 	public function data()
 	{
 //dd("loaded");
-		$profiles = Profile::select(array('profiles.id','profiles.name','profiles.description'))
-			->orderBy('profiles.name', 'ASC');
-//dd($profiles);
+		$employees = Employee::select(array('employees.id','employees.name','employees.description'))
+			->orderBy('employees.name', 'ASC');
+//dd($employees);
 
-		return Datatables::of($profiles)
+		return Datatables::of($employees)
 /*
 			-> edit_column(
 				'confirmed',
@@ -144,7 +144,7 @@ class ProfilesController extends GakkoController {
 */
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'profiles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'<a href="{{ URL::to(\'employees/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')

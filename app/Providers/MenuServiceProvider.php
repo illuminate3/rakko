@@ -20,6 +20,7 @@ class MenuServiceProvider extends ServiceProvider {
 			$menu->add('Profiles', 'profiles');
 			$menu->add('Module Manager', 'module_manager');
 
+			$menu->add('Employees', 'employees');
 			$menu->add('Departments', 'departments');
 			$menu->add('Grades', 'grades');
 			$menu->add('Divisions', 'divisions');
