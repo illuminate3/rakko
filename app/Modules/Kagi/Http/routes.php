@@ -34,12 +34,10 @@ Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 */
 
-Route::get('welcome/kagi', 'KagiController@welcome');
-/*
-Route::group(['prefix' => 'kagi'], function() {
-//	Route::get('home', 'KagiController@index');
-});
-*/
+Route::get('welcome/kagi', array(
+	'uses'=>'KagiController@welcome'
+	));
+
 
 // Login a user with GitHub (or any provider).
 Route::get('social/login', 'SocialAuthController@login');

@@ -12,7 +12,7 @@
 */
 
 Route::get('welcome/module_manager', array(
-	'uses'=>'MMController@welcome'
+	'uses'=>'ModuleManagerController@welcome'
 	));
 
 /*

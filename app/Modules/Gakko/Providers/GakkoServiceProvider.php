@@ -31,8 +31,8 @@ class GakkoServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-		Lang::addNamespace('Gakko', __DIR__.'/../Resources/Lang/');
-//		View::addNamespace('Gakko', __DIR__.'/../Resources/Views/');
+//		Lang::addNamespace('Gakko', __DIR__.'/../Resources/Lang/');
+		View::addNamespace('Gakko', __DIR__.'/../Resources/Views/');
 	}
 
 	/**

@@ -26,5 +26,16 @@ abstract class ProfileController extends BaseController {
 
 	}
 
+	/**
+	 * Display Welcome
+	 *
+	 * @return Response
+	 */
+	public function welcome()
+	{
+//dd("loaded");
+		return View('profiles::profiles');
+	}
+
 
 }

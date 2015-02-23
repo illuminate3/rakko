@@ -40,17 +40,6 @@ class MMController extends ModuleManagerController {
 	}
 
 	/**
-	 * Display Welcome
-	 *
-	 * @return Response
-	 */
-	public function welcome()
-	{
-//dd("loaded");
-		return View('module_manager::module_manager');
-	}
-
-	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response

@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('welcome/gakko', 'GakkoController@welcome');
+Route::get('welcome/gakko', array(
+	'uses'=>'GakkoController@welcome'
+	));
 
 /*
 Route::group(array(

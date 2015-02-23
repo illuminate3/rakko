@@ -12,7 +12,7 @@
 */
 
 Route::get('welcome/profiles', array(
-	'uses'=>'ProfilesController@welcome'
+	'uses'=>'ProfileController@welcome'
 	));
 
 /*

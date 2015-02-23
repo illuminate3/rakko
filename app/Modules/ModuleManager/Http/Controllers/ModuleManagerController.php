@@ -28,5 +28,15 @@ class ModuleManagerController extends Controller
 
 	}
 
+	/**
+	 * Display Welcome
+	 *
+	 * @return Response
+	 */
+	public function welcome()
+	{
+//dd("loaded");
+		return View('module_manager::module_manager');
+	}
 
 }
