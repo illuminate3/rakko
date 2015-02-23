@@ -2,7 +2,7 @@
 namespace App\Modules\Profiles\Providers;
 
 use Illuminate\Routing\Router;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Caffeinated\Modules\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
