@@ -86,7 +86,6 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('api/permissions', array(
 	//	'as'=>'api.users',
 		'uses'=>'PermissionsController@data'
-//		'uses'=>'PermissionsController@getDatatable'
 		));
 
 

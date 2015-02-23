@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Profiles\Database\Seeds;
+namespace App\Modules\Gakko\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 Use DB, Eloquent, Model, Schema;
