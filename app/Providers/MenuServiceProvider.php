@@ -19,6 +19,19 @@ class MenuServiceProvider extends ServiceProvider {
 			$menu->add('Rakko', 'welcome/kagi');
 			$menu->add('Profiles', 'profiles');
 			$menu->add('Module Manager', 'module_manager');
+
+			$menu->add('Departments', 'departments');
+			$menu->add('Grades', 'grades');
+			$menu->add('Divisions', 'divisions');
+			$menu->add('Positions', 'positions');
+			$menu->add('Subjects', 'subjects');
+			$menu->add('Employee Types', 'employee_types');
+			$menu->add('Job Titles', 'job_titles');
+			$menu->add('Statuses', 'statuses');
+			$menu->add('Sites', 'sites');
+			$menu->add('Rooms', 'rooms');
+
+
 // 			$menu->add('View Profile', 'profiles/'.Auth::user()->id);
 // 			$menu->add('view profile', 'profiles'. Auth::user()->id );
 		});

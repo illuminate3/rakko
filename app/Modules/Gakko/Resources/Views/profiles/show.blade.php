@@ -3,7 +3,7 @@
 @section('title')
 @parent
 	{{ Config::get('vedette.vedette_html.separator') }}
-	{{ trans('lingos::account.profile') }}
+	{{ trans('lingos::hr.department') }}
 @stop
 
 @section('styles')
@@ -24,246 +24,73 @@ var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
 <h1>
 	<p class="pull-right">
 	{{ Bootstrap::linkIcon(
-		'profiles.index',
+		'admin.departments.index',
 		trans('lingos::button.back'),
 		'chevron-left fa-fw',
 		array('class' => 'btn btn-default')
 	) }}
-
-
-@if (Auth::check())
-@if ( (Auth::user()->id == $profile->id ) || (Auth::user()->hasRoleWithName('Admin')) )
-		{{ Bootstrap::linkRouteIcon(
-			'profiles.edit',
-			trans('lingos::button.edit'),
-			'edit fa-fw',
-			array($profile->id),
-			array(
-				'class' => 'btn btn-success form-group',
-				'title' => trans('lingos::account.command.edit')
-			)
-		) }}
-
-@endif
-@endif
-
 	</p>
-	<i class="fa fa-user fa-lg"></i>
-	{{{ $profile->prefix }}}&nbsp;{{{ $profile->first_name }}}&nbsp;{{{ $profile->middle_initial }}}&nbsp;{{{ $profile->last_name }}}&nbsp;{{{ $profile->suffix }}}
+	<i class="fa fa-tag fa-lg"></i>
+	{{ $department->name }}
 	<hr>
 </h1>
 </div>
 
 <div class="row">
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ trans('lingos::hr.employment_information') }}:
-		</h3>
-	</div>
-	<div class="panel-body">
-		<div class="row">
-@if ( $_ENV['APP_TYPE'] == 'HR' )
-			<div class="col-xs-12 col-md-8">
-				<strong>
-					{{ trans('lingos::hr.department') }}:
-				</strong>
-				<br>
-{{-- dd($departments) --}}
-				{{{ $profile->present()->departments() }}}
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::hr.position') }}:
-				</strong>
-				<br>
-{{-- dd($positions) --}}
+<div class="table-responsive">
+<table class="table table-striped table-hover" id="DataTable">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>{{ trans('lingos::table.name') }}</th>
+			<th>{{ trans('lingos::table.description') }}</th>
+			<th>{{ trans('lingos::table.actions') }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ $department->id }}</td>
+			<td>{{{ $department->name }}}</td>
+			<td>{{{ $department->description }}}</td>
+			<td width="25%">
+				{{ Form::open(array(
+					'route' => array('admin.departments.destroy', $department->id),
+					'role' => 'form',
+					'method' => 'delete',
+					'class' => 'form-inline'
+				)) }}
 
-@if ( isset($profile->position_id ) )
-				{{-- $profile->present()->positions($profile->position_id) --}}
-				{{{ $profile->position->name }}}
-@endif
+					{{ Bootstrap::linkRouteIcon(
+						'admin.departments.edit',
+						trans('lingos::button.edit'),
+						'edit fa-fw',
+						array($department->id),
+						array(
+							'class' => 'btn btn-success form-group',
+							'title' => trans('lingos::account.command.edit')
+						)
+					) }}
 
+					{{ Bootstrap::linkRouteIcon(
+						'admin.departments.destroy',
+						trans('lingos::button.delete'),
+						'trash-o fa-fw',
+						array($department->id),
+						array(
+							'class' => 'btn btn-danger form-group action_confirm',
+							'data-method' => 'delete',
+							'title' => trans('lingos::account.command.delete')
+						)
+					) }}
 
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::hr.job_title') }}:
-				</strong>
-				<br>
-@if ( isset($profile->jobTitle->name ) )
-				{{{ $profile->jobTitle->name }}}
-@endif
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::hr.employee_type') }}:
-				</strong>
-				<br>
-@if ( isset($profile->employee_type->name ) )
-				{{{ $profile->employee_type->name }}}
-@endif
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::general.contact') }}:
-				</strong>
-				<br>
-				{{-- $profile->supervisor_id --}}
-@if ( isset($profile->supervisor) )
-				{{{ $supervisor->prefix }}}&nbsp;{{{ $supervisor->first_name }}}&nbsp;{{{ $supervisor->middle_initial }}}&nbsp;{{{ $supervisor->last_name }}}&nbsp;{{{ $supervisor->suffix }}}
-@endif
-			</div>
-@endif
-			<div class="col-xs-6 col-md-4">
-				{{-- $site->picture --}}
-				@if($picture)
-					<img src="{{ $picture }}" class="img-circle profile">
+				{{ Form::close() }}
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div><!-- ./responsive -->
 
-{{--
-					<img src="{{ Request::root() . $picture['thumb'] }}" class="img-circle profile">
-
-
-				@if ( isset($picture['thumb']) )
-					<img
-						src="{{ asset('/uploads/logos/'. $profile->picture) }}"
-						alt="{{ Auth::user()->email }}"
-						class="img-circle profile"
-					/>
-
-					<img src="{{ Request::root() . $picture['thumb'] }}" class="logo">
-				@elseif  ( isset($picture) )
-					<img src="{{ $picture }}" class="logo">
---}}
-				@else
-					{{ trans('lingos::account.error.logo') }}
-				@endif
-			</div>
-		</div>
-	</div>
-	<div class="panel-body">
-		<strong>
-			{{ trans('lingos::general.introduction') }}:
-		</strong>
-		<br>
-		{{{ $profile->notes }}}
-	</div>
-</div>
-
-@if ( $_ENV['APP_TYPE'] == 'HR' )
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ trans('lingos::hr.job_information') }}:
-		</h3>
-	</div>
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-12">
-				<strong>
-					{{ trans('lingos::hr.site') }}:
-				</strong>
-				<br>
-				{{ $profile->present()->sitesShow() }}
-@if ( $profile->present()->grades() )
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::hr.grades') }}:
-				</strong>
-				<br>
-				{{ $profile->present()->grades() }}
-@endif
-@if ( $profile->present()->subjects() )
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::hr.subjects') }}:
-				</strong>
-				<br>
-				@if ( isset($profile->subject->name ) )
-					{{{ $profile->subject->name }}}
-					{{ $profile->present()->subjects() }}
-				@endif
-				{{ $profile->present()->subjects() }}
-@endif
-
-
-			</div>
-{{--
-			<div class="col-md-6">
-				<strong>
-					{{ trans('lingos::account.primary_email') }}:
-				</strong>
-				<br>
-				{{{ $profile->email }}}
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::account.secondary_email') }}:
-				</strong>
-				<br>
-				{{{ $profile->secondary_email }}}
-			</div>
---}}
-
-		</div>
-	</div>
-</div>
-@endif
-
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ trans('lingos::hr.contact_information') }}:
-		</h3>
-	</div>
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-6">
-				<strong>
-					{{ trans('lingos::account.primary_phone') }}:
-				</strong>
-				<br>
-				{{{ $profile->primary_phone }}}
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::account.secondary_phone') }}:
-				</strong>
-				<br>
-				{{{ $profile->secondary_phone }}}
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::account.address') }}:
-				</strong>
-				<br>
-				{{{ $profile->address }}}
-				<br>
-@if ( !empty($profile->city ) )
-				{{{ $profile->city }}},&nbsp;
-@endif
-				{{{ $profile->state }}}&nbsp;&nbsp;&nbsp;{{{ $profile->zipcode }}}
-			</div>
-			<div class="col-md-6">
-				<strong>
-					{{ trans('lingos::account.primary_email') }}:
-				</strong>
-				<br>
-				{{{ $profile->email }}}
-				<br>
-				<br>
-				<strong>
-					{{ trans('lingos::account.secondary_email') }}:
-				</strong>
-				<br>
-				{{{ $profile->secondary_email }}}
-			</div>
-		</div>
-	</div>
 </div>
 
 @stop

@@ -39,9 +39,7 @@ class DepartmentsController extends GakkoController {
 	 */
 	public function index()
 	{
-		$departments = $this->department->all();
-
-		return View::make('HR::departments.index', compact('departments'));
+		return View('gakko::departments.index');
 	}
 
 	/**
@@ -51,7 +49,7 @@ class DepartmentsController extends GakkoController {
 	 */
 	public function create()
 	{
-		return View::make('HR::departments.create');
+		return view('gakko::departments.create',  $this->department->create());
 	}
 
 	/**
@@ -59,22 +57,14 @@ class DepartmentsController extends GakkoController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(
+		DepartmentCreateRequest $request
+		)
 	{
-		$input = Input::all();
-		$validation = Validator::make($input, Department::$rules);
+		$this->department->store($request->all());
 
-		if ($validation->passes())
-		{
-			$this->department->create($input);
-
-			return Redirect::route('admin.departments.index');
-		}
-
-		return Redirect::route('admin.departments.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
+		Flash::success( trans('kotoba::hr.success.department_create') );
+		return redirect('departments');
 	}
 
 	/**
@@ -98,14 +88,7 @@ class DepartmentsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		$department = $this->department->find($id);
-
-		if (is_null($department))
-		{
-			return Redirect::route('admin.departments.index');
-		}
-
-		return View::make('HR::departments.edit', compact('department'));
+		return View('gakko::departments.edit',  $this->department->edit($id));
 	}
 
 	/**
@@ -114,24 +97,16 @@ class DepartmentsController extends GakkoController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(
+		DepartmentUpdateRequest $request,
+		$id
+		)
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Department::$rulesUpdate);
+//dd("update");
+		$this->department->update($request->all(), $id);
 
-		if ($validation->passes())
-		{
-			$department = $this->department->find($id);
-			$department->update($input);
-
-			return Redirect::route('admin.departments.show', $id);
-		}
-
-		return Redirect::route('admin.departments.edit', $id)
-			->withInput()
-			->withErrors($validation)
-//			->with('message', 'There were validation errors.');
-			->withMessage(Bootstrap::danger( trans('lingos::general.error.update'), true, true));
+		Flash::success( trans('kotoba::hr.success.department_update') );
+		return redirect('departments');
 	}
 
 	/**
@@ -146,5 +121,43 @@ class DepartmentsController extends GakkoController {
 
 		return Redirect::route('admin.departments.index');
 	}
+
+
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//dd("loaded");
+		$departments = Department::select(array('departments.id','departments.name','departments.description'))
+			->orderBy('departments.name', 'ASC');
+//dd($departments);
+
+		return Datatables::of($departments)
+/*
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+*/
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'departments/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				')
+/*
+				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+*/
+
+				->remove_column('id')
+
+				->make();
+	}
+
 
 }

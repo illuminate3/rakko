@@ -3,7 +3,7 @@
 @section('title')
 @parent
 	{{ Config::get('vedette.vedette_html.separator') }}
-	{{ trans('lingos::hr.job_title') }}
+	{{ trans('lingos::hr.department') }}
 @stop
 
 @section('styles')
@@ -24,14 +24,14 @@ var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
 <h1>
 	<p class="pull-right">
 	{{ Bootstrap::linkIcon(
-		'admin.job_titles.index',
+		'admin.departments.index',
 		trans('lingos::button.back'),
 		'chevron-left fa-fw',
 		array('class' => 'btn btn-default')
 	) }}
 	</p>
 	<i class="fa fa-tag fa-lg"></i>
-	{{ $job_title->name }}
+	{{ $department->name }}
 	<hr>
 </h1>
 </div>
@@ -50,22 +50,22 @@ var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
 	</thead>
 	<tbody>
 		<tr>
-			<td>{{ $job_title->id }}</td>
-			<td>{{{ $job_title->name }}}</td>
-			<td>{{{ $job_title->description }}}</td>
+			<td>{{ $department->id }}</td>
+			<td>{{{ $department->name }}}</td>
+			<td>{{{ $department->description }}}</td>
 			<td width="25%">
 				{{ Form::open(array(
-					'route' => array('admin.job_titles.destroy', $job_title->id),
+					'route' => array('admin.departments.destroy', $department->id),
 					'role' => 'form',
 					'method' => 'delete',
 					'class' => 'form-inline'
 				)) }}
 
 					{{ Bootstrap::linkRouteIcon(
-						'admin.job_titles.edit',
+						'admin.departments.edit',
 						trans('lingos::button.edit'),
 						'edit fa-fw',
-						array($job_title->id),
+						array($department->id),
 						array(
 							'class' => 'btn btn-success form-group',
 							'title' => trans('lingos::account.command.edit')
@@ -73,10 +73,10 @@ var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
 					) }}
 
 					{{ Bootstrap::linkRouteIcon(
-						'admin.job_titles.destroy',
+						'admin.departments.destroy',
 						trans('lingos::button.delete'),
 						'trash-o fa-fw',
-						array($job_title->id),
+						array($department->id),
 						array(
 							'class' => 'btn btn-danger form-group action_confirm',
 							'data-method' => 'delete',

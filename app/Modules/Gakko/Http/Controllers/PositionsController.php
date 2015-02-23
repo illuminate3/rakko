@@ -39,9 +39,7 @@ class PositionsController extends GakkoController {
 	 */
 	public function index()
 	{
-		$positions = $this->position->all();
-
-		return View::make('HR::positions.index', compact('positions'));
+		return View('gakko::positions.index');
 	}
 
 	/**
@@ -51,7 +49,7 @@ class PositionsController extends GakkoController {
 	 */
 	public function create()
 	{
-		return View::make('HR::positions.create');
+		return view('gakko::positions.create',  $this->position->create());
 	}
 
 	/**
@@ -59,22 +57,14 @@ class PositionsController extends GakkoController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(
+		PositionCreateRequest $request
+		)
 	{
-		$input = Input::all();
-		$validation = Validator::make($input, Position::$rules);
+		$this->position->store($request->all());
 
-		if ($validation->passes())
-		{
-			$this->position->create($input);
-
-			return Redirect::route('admin.positions.index');
-		}
-
-		return Redirect::route('admin.positions.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
+		Flash::success( trans('kotoba::hr.success.position_create') );
+		return redirect('positions');
 	}
 
 	/**
@@ -98,14 +88,7 @@ class PositionsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		$position = $this->position->find($id);
-
-		if (is_null($position))
-		{
-			return Redirect::route('admin.positions.index');
-		}
-
-		return View::make('HR::positions.edit', compact('position'));
+		return View('gakko::positions.edit',  $this->position->edit($id));
 	}
 
 	/**
@@ -114,24 +97,16 @@ class PositionsController extends GakkoController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(
+		PositionUpdateRequest $request,
+		$id
+		)
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Position::$rulesUpdate);
+//dd("update");
+		$this->position->update($request->all(), $id);
 
-		if ($validation->passes())
-		{
-			$position = $this->position->find($id);
-			$position->update($input);
-
-			return Redirect::route('admin.positions.show', $id);
-		}
-
-		return Redirect::route('admin.positions.edit', $id)
-			->withInput()
-			->withErrors($validation)
-//			->with('message', 'There were validation errors.');
-			->withMessage(Bootstrap::danger( trans('lingos::general.error.update'), true, true));
+		Flash::success( trans('kotoba::hr.success.position_update') );
+		return redirect('positions');
 	}
 
 	/**
@@ -146,5 +121,43 @@ class PositionsController extends GakkoController {
 
 		return Redirect::route('admin.positions.index');
 	}
+
+
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//dd("loaded");
+		$positions = Position::select(array('positions.id','positions.name','positions.description'))
+			->orderBy('positions.name', 'ASC');
+//dd($positions);
+
+		return Datatables::of($positions)
+/*
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+*/
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'positions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				')
+/*
+				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+*/
+
+				->remove_column('id')
+
+				->make();
+	}
+
 
 }

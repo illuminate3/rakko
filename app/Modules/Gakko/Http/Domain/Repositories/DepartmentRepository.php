@@ -31,6 +31,19 @@ class DepartmentRepository extends BaseRepository {
 	}
 
 	/**
+	 * Get role collection.
+	 *
+	 * @return Illuminate\Support\Collection
+	 */
+	public function create()
+	{
+//		$allPermissions =  $this->permission->all()->lists('name', 'id');
+//dd($allPermissions);
+
+		return compact('');
+	}
+
+	/**
 	 * Get user collection.
 	 *
 	 * @param  string  $slug
@@ -38,10 +51,10 @@ class DepartmentRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$module = $this->module->find($id);
+		$department = $this->model->find($id);
 //dd($module);
 
-		return compact('module');
+		return compact('department');
 	}
 
 	/**
@@ -52,10 +65,10 @@ class DepartmentRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$module = $this->module->find($id);
+		$department = $this->model->find($id);
 //dd($module);
 
-		return compact('module');
+		return compact('department');
 	}
 
 	/**
@@ -66,7 +79,7 @@ class DepartmentRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-		$this->model = new User;
+		$this->model = new Department;
 		$this->model->create($input);
 	}
 
@@ -80,19 +93,8 @@ class DepartmentRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input['enabled']);
-		$module = Module::find($id);
-//dd($module->name);
-
-		if ($input['enabled'] == 0 ) {
-			$module->enabled = 0;
-			ModuleFacade::disable($module->name);
-		} else {
-			$module->enabled = 1;
-			ModuleFacade::enable($module->name);
-//ModuleFacade::setProperty($module->name . '::enabled', true);
-		}
-
-		return $module->update();
+		$department = Department::find($id);
+		$department->update($input);
 	}
 
 

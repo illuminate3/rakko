@@ -15,6 +15,16 @@ Route::get('welcome/gakko', array(
 	'uses'=>'GakkoController@welcome'
 	));
 
+Route::resource('departments', 'DepartmentsController');
+Route::resource('grades', 'GradesController');
+Route::resource('divisions', 'DivisionsController');
+Route::resource('positions', 'PositionsController');
+Route::resource('subjects', 'SubjectsController');
+Route::resource('employee_types', 'EmployeeTypesController');
+Route::resource('job_titles', 'JobTitlesController');
+Route::resource('statuses', 'StatusesController');
+Route::resource('sites', 'SitesController');
+Route::resource('rooms', 'RoomsController');
 /*
 Route::group(array(
 //	'prefix' => Config::get('vedette::vedette_settings.prefix_auth')),
@@ -22,14 +32,6 @@ Route::group(array(
 	'before' => 'auth'),
 	function()
 {
-	Route::resource('departments', 'HR\controllers\DepartmentsController');
-	Route::resource('grades', 'HR\controllers\GradesController');
-	Route::resource('divisions', 'HR\controllers\DivisionsController');
-	Route::resource('positions', 'HR\controllers\PositionsController');
-	Route::resource('subjects', 'HR\controllers\SubjectsController');
-	Route::resource('employee_types', 'HR\controllers\EmployeeTypesController');
-	Route::resource('job_titles', 'HR\controllers\JobTitlesController');
-	Route::resource('statuses', 'HR\controllers\StatusesController');
 });
 */
 
@@ -58,7 +60,7 @@ Route::group(array(
 // API DATA
 	Route::get('api/departments', array(
 	//	'as'=>'api.departments',
-		'uses'=>'departments@data'
+		'uses'=>'DepartmentsController@data'
 		));
 	Route::get('api/grades', array(
 	//	'as'=>'api.grades',
@@ -87,6 +89,14 @@ Route::group(array(
 	Route::get('api/statuses', array(
 	//	'as'=>'api.statuses',
 		'uses'=>'StatusesController@data'
+		));
+	Route::get('api/sites', array(
+	//	'as'=>'api.sites',
+		'uses'=>'SitesController@data'
+		));
+	Route::get('api/rooms', array(
+	//	'as'=>'api.sites',
+		'uses'=>'RoomsController@data'
 		));
 
 /*

@@ -39,9 +39,7 @@ class DivisionsController extends GakkoController {
 	 */
 	public function index()
 	{
-		$divisions = $this->division->all();
-
-		return View::make('HR::divisions.index', compact('divisions'));
+		return View('gakko::divisions.index');
 	}
 
 	/**
@@ -51,7 +49,7 @@ class DivisionsController extends GakkoController {
 	 */
 	public function create()
 	{
-		return View::make('HR::divisions.create');
+		return view('gakko::divisions.create',  $this->division->create());
 	}
 
 	/**
@@ -59,22 +57,14 @@ class DivisionsController extends GakkoController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(
+		DivisionCreateRequest $request
+		)
 	{
-		$input = Input::all();
-		$validation = Validator::make($input, Division::$rules);
+		$this->division->store($request->all());
 
-		if ($validation->passes())
-		{
-			$this->division->create($input);
-
-			return Redirect::route('admin.divisions.index');
-		}
-
-		return Redirect::route('admin.divisions.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
+		Flash::success( trans('kotoba::hr.success.division_create') );
+		return redirect('divisions');
 	}
 
 	/**
@@ -98,14 +88,7 @@ class DivisionsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		$division = $this->division->find($id);
-
-		if (is_null($division))
-		{
-			return Redirect::route('admin.divisions.index');
-		}
-
-		return View::make('HR::divisions.edit', compact('division'));
+		return View('gakko::divisions.edit',  $this->division->edit($id));
 	}
 
 	/**
@@ -114,24 +97,16 @@ class DivisionsController extends GakkoController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(
+		DivisionUpdateRequest $request,
+		$id
+		)
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Division::$rulesUpdate);
+//dd("update");
+		$this->division->update($request->all(), $id);
 
-		if ($validation->passes())
-		{
-			$division = $this->division->find($id);
-			$division->update($input);
-
-			return Redirect::route('admin.divisions.show', $id);
-		}
-
-		return Redirect::route('admin.divisions.edit', $id)
-			->withInput()
-			->withErrors($validation)
-//			->with('message', 'There were validation errors.');
-			->withMessage(Bootstrap::danger( trans('lingos::general.error.update'), true, true));
+		Flash::success( trans('kotoba::hr.success.division_update') );
+		return redirect('divisions');
 	}
 
 	/**
@@ -146,5 +121,43 @@ class DivisionsController extends GakkoController {
 
 		return Redirect::route('admin.divisions.index');
 	}
+
+
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//dd("loaded");
+		$divisions = Division::select(array('divisions.id','divisions.name','divisions.description'))
+			->orderBy('divisions.name', 'ASC');
+//dd($divisions);
+
+		return Datatables::of($divisions)
+/*
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+*/
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'divisions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				')
+/*
+				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+*/
+
+				->remove_column('id')
+
+				->make();
+	}
+
 
 }

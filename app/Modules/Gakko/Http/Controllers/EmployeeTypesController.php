@@ -39,9 +39,7 @@ class EmployeeTypesController extends GakkoController {
 	 */
 	public function index()
 	{
-		$employee_types = $this->employee_type->all();
-
-		return View::make('HR::employee_types.index', compact('employee_types'));
+		return View('gakko::employee_types.index');
 	}
 
 	/**
@@ -51,7 +49,7 @@ class EmployeeTypesController extends GakkoController {
 	 */
 	public function create()
 	{
-		return View::make('HR::employee_types.create');
+		return view('gakko::employee_types.create',  $this->employee_type->create());
 	}
 
 	/**
@@ -59,22 +57,14 @@ class EmployeeTypesController extends GakkoController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(
+		EmployeeTypeCreateRequest $request
+		)
 	{
-		$input = Input::all();
-		$validation = Validator::make($input, EmployeeType::$rules);
+		$this->employee_type->store($request->all());
 
-		if ($validation->passes())
-		{
-			$this->employee_type->create($input);
-
-			return Redirect::route('admin.employee_types.index');
-		}
-
-		return Redirect::route('admin.employee_types.create')
-			->withInput()
-			->withErrors($validation)
-			->with('message', 'There were validation errors.');
+		Flash::success( trans('kotoba::hr.success.employee_type_create') );
+		return redirect('employee_types');
 	}
 
 	/**
@@ -98,14 +88,7 @@ class EmployeeTypesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		$employee_type = $this->employee_type->find($id);
-
-		if (is_null($employee_type))
-		{
-			return Redirect::route('admin.employee_types.index');
-		}
-
-		return View::make('HR::employee_types.edit', compact('employee_type'));
+		return View('gakko::employee_types.edit',  $this->employee_type->edit($id));
 	}
 
 	/**
@@ -114,24 +97,16 @@ class EmployeeTypesController extends GakkoController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(
+		EmployeeTypeUpdateRequest $request,
+		$id
+		)
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, EmployeeType::$rulesUpdate);
+//dd("update");
+		$this->employee_type->update($request->all(), $id);
 
-		if ($validation->passes())
-		{
-			$employee_type = $this->employee_type->find($id);
-			$employee_type->update($input);
-
-			return Redirect::route('admin.employee_types.show', $id);
-		}
-
-		return Redirect::route('admin.employee_types.edit', $id)
-			->withInput()
-			->withErrors($validation)
-//			->with('message', 'There were validation errors.');
-			->withMessage(Bootstrap::danger( trans('lingos::general.error.update'), true, true));
+		Flash::success( trans('kotoba::hr.success.employee_type_update') );
+		return redirect('employee_types');
 	}
 
 	/**
@@ -146,5 +121,43 @@ class EmployeeTypesController extends GakkoController {
 
 		return Redirect::route('admin.employee_types.index');
 	}
+
+
+	/**
+	* Show a list of all the languages posts formatted for Datatables.
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//dd("loaded");
+		$employee_types = EmployeeType::select(array('employee_types.id','employee_types.name','employee_types.description'))
+			->orderBy('employee_types.name', 'ASC');
+//dd($employee_types);
+
+		return Datatables::of($employee_types)
+/*
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
+				)
+*/
+			->add_column(
+				'actions',
+				'<a href="{{ URL::to(\'employee_types/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+				</a>
+				')
+/*
+				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
+					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
+				</a>
+*/
+
+				->remove_column('id')
+
+				->make();
+	}
+
 
 }
