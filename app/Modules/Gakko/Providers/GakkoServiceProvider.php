@@ -21,6 +21,10 @@ class GakkoServiceProvider extends ServiceProvider
 		// methods or service providers to keep the code more focused and granular.
 		App::register('App\Modules\Gakko\Providers\RouteServiceProvider');
 
+		$this->mergeConfigFrom(
+			__DIR__.'/../Config/gakko.php', 'gakko'
+		);
+
 		$this->registerNamespaces();
 	}
 
@@ -31,8 +35,8 @@ class GakkoServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-//		Lang::addNamespace('Gakko', __DIR__.'/../Resources/Lang/');
-		View::addNamespace('Gakko', __DIR__.'/../Resources/Views/');
+//		Lang::addNamespace('gakko', __DIR__.'/../Resources/Lang/');
+		View::addNamespace('gakko', __DIR__.'/../Resources/Views/');
 	}
 
 	/**
