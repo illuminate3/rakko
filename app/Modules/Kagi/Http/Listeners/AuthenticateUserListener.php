@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Listeners;
+<?php
+namespace App\Modules\Kagi\Http\Listeners;
 
 interface AuthenticateUserListener {
 

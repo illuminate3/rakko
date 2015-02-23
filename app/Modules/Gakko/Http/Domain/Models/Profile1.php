@@ -1,11 +1,12 @@
-<?php namespace App\Modules\Profiles\Http\Domain\Models;
+<?php
+namespace App\Modules\Gakko\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Modules\Kagi\Http\Domain\Models\User;
 
 use Laracasts\Presenter\PresentableTrait;
 
-class Profile extends Model {
+class Profile1 extends Model {
 
 	use PresentableTrait;
 
@@ -25,6 +26,7 @@ class Profile extends Model {
 	 */
 //	protected $hidden = ['password', 'remember_token'];
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = [
 		'user_id',
 		'first_name',
@@ -43,7 +45,6 @@ class Profile extends Model {
 		'prefix',
 		'notes'
 		];
-
 
 // DEFINE Relationships --------------------------------------------------
 	public function user()

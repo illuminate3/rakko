@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Domain\Models;
+<?php
+namespace App\Modules\Kagi\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +20,11 @@ class Permission extends Model {
 
 //	protected $hidden = ['_token'];
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = ['name', 'slug', 'description'];
+
+
+// DEFINE Relationships --------------------------------------------------
 
 
 }

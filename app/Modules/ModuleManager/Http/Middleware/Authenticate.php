@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Middleware;
+<?php
+namespace App\Modules\ModuleManager\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

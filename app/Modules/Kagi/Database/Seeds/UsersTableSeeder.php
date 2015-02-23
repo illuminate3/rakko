@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Database\Seeds;
+<?php
+namespace App\Modules\Kagi\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 Use Auth, Config, DB, Eloquent, Model;

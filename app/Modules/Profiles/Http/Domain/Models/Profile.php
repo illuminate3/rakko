@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Profiles\Http\Domain\Models;
+<?php
+namespace App\Modules\Profiles\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Modules\Kagi\Http\Domain\Models\User;
@@ -25,6 +26,7 @@ class Profile extends Model {
 	 */
 //	protected $hidden = ['password', 'remember_token'];
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = [
 		'user_id',
 		'first_name',
@@ -50,7 +52,6 @@ class Profile extends Model {
 	{
 		return $this->belongsTo('App\Modules\Kagi\Http\Domain\Models\User');
 	}
-
 
 
 }

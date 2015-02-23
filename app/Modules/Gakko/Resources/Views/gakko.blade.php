@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<title>Kagi</title>
+		<title>Gakko</title>
 		<style>
 			body {
 				margin: 0;
@@ -39,9 +39,13 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Profiles</div>
+				<div class="title">Gakko</div>
 				<div class="quote">
-					Profiles is a Rakko module that extends the ability to add User Profiles
+					学校 : Gakko [gah-koh]
+					<br>
+					noun - school, can also refer to generic educational centers
+					<br>
+					Gakko is a Rakko module for School Management
 				</div>
 			</div>
 		</div>

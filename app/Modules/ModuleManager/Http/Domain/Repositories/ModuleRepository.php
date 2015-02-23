@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Domain\Repositories;
+<?php
+namespace App\Modules\ModuleManager\Http\Domain\Repositories;
 
 use App\Modules\ModuleManager\Http\Domain\Models\Module;
 

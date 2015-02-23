@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Services\Exceptions;
+<?php
+namespace App\Modules\ModuleManager\Services\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

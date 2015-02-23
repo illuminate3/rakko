@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Domain\Models;
+<?php
+namespace App\Modules\Kagi\Http\Domain\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = [
 		'name',
 		'email',
@@ -44,7 +46,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
 // DEFINE Relationships --------------------------------------------------
-
 	public function roles()
 	{
 		return $this->belongsToMany('App\Modules\Kagi\Http\Domain\Models\Role');

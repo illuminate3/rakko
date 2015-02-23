@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Profiles\Http\Domain\Repositories;
+<?php
+namespace App\Modules\Profiles\Http\Domain\Repositories;
 
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Profiles\Http\Domain\Models\Profile;

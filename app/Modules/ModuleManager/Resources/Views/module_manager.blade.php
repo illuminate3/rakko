@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<title>Kagi</title>
+		<title>Module Management</title>
 		<style>
 			body {
 				margin: 0;

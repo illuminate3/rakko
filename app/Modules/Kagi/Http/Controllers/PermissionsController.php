@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Controllers;
+<?php
+namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Modules\Kagi\Http\Domain\Models\Permission;
 use App\Modules\Kagi\Http\Domain\Repositories\PermissionRepository;

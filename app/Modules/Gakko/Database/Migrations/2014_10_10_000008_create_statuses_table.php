@@ -5,6 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateStatusesTable extends Migration
 {
+
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('gakko.gakko_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,16 +19,19 @@ class CreateStatusesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('statuses', function(Blueprint $table) {
+		Schema::create($this->prefix . 'statuses', function(Blueprint $table) {
+
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 
-			$table->string('name',100);
+
+			$table->string('name',100)->index();
 			$table->string('description')->nullable();
+
 
 			$table->softDeletes();
 			$table->timestamps();
 
-			$table->engine = 'InnoDB';
 		});
 	}
 
@@ -32,7 +42,7 @@ class CreateStatusesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('statuses');
+		Schema::drop($this->prefix . 'statuses');
 	}
 
 }

@@ -1,6 +1,8 @@
-<?php namespace HR\helpers\presenters\presenter;
+<?php
+namespace App\modules\Gakko\Http\Presenters;
 
-use HR\helpers\presenters\Presenter;
+use Laracasts\Presenter\Presenter;
+
 use DB;
 
 class Profile extends Presenter {

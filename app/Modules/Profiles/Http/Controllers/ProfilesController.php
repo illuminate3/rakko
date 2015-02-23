@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Profiles\Http\Controllers;
+<?php
+namespace App\Modules\Profiles\Http\Controllers;
 
 use App\Modules\Profiles\Http\Domain\Models\Profile;
 use App\Modules\Profiles\Http\Domain\Repositories\ProfileRepository;

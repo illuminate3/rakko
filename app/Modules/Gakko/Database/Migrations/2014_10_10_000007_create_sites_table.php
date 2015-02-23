@@ -5,6 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateSitesTable extends Migration
 {
+
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('gakko.gakko_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,13 +19,16 @@ class CreateSitesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('sites', function(Blueprint $table) {
+		Schema::create($this->prefix . 'sites', function(Blueprint $table) {
+
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 
-			$table->string('name',100);
+
+			$table->string('name',100)->index();
 			$table->string('email',100)->nullable();
-			$table->string('primary_phone',20)->nullable();
-			$table->string('secondary_phone',20)->nullable();
+			$table->string('phone_1',20)->nullable();
+			$table->string('phone_2',20)->nullable();
 			$table->string('website',100)->nullable();
 			$table->string('address',100)->nullable();
 			$table->string('city',100)->nullable();
@@ -35,10 +45,10 @@ class CreateSitesTable extends Migration
 
 			$table->text('notes')->nullable();
 
+
 			$table->softDeletes();
 			$table->timestamps();
 
-			$table->engine = 'InnoDB';
 		});
 	}
 
@@ -49,7 +59,7 @@ class CreateSitesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('sites');
+		Schema::drop($this->prefix . 'sites');
 	}
 
 }

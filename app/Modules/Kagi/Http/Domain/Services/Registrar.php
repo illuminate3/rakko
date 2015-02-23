@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Domain\Services;
+<?php
+namespace App\Modules\Kagi\Http\Domain\Services;
 
 //use App\User;
 use App\Modules\Kagi\Http\Domain\Models\User as User;

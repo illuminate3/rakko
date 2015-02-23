@@ -5,6 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateDepartmentsTable extends Migration
 {
+
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('gakko.gakko_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,15 +19,19 @@ class CreateDepartmentsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('departments', function(Blueprint $table) {
+		Schema::create($this->prefix . 'departments', function(Blueprint $table) {
+
+			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('name',100);
+
+
+			$table->string('name',100)->index();
 			$table->string('description')->nullable();
+
 
 			$table->softDeletes();
 			$table->timestamps();
 
-			$table->engine = 'InnoDB';
 		});
 	}
 
@@ -31,7 +42,7 @@ class CreateDepartmentsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('departments');
+		Schema::drop($this->prefix . 'departments');
 	}
 
 }

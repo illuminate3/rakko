@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Subject as Subject;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Subject;
+use App\Modules\Gakko\Http\Domain\Repositories\SubjectRepository;
 
-class SubjectsController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\SubjectCreateRequest;
+use App\Modules\Gakko\Http\Requests\SubjectUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class SubjectsController extends GakkoController {
 
 	/**
 	 * Subject Repository
@@ -13,9 +23,13 @@ class SubjectsController extends \BaseController {
 	 */
 	protected $subject;
 
-	public function __construct(Subject $subject)
+	public function __construct(
+			SubjectRepository $subject
+		)
 	{
 		$this->subject = $subject;
+
+//		$this->middleware('admin');
 	}
 
 	/**

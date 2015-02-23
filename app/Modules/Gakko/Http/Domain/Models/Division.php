@@ -1,10 +1,12 @@
-<?php namespace HR\models;
+<?php
+namespace App\Modules\Gakko\Http\Domain\Models;
 
-use Eloquent;
-use DB;
+use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
+class Division extends Model {
 
-class Division extends Eloquent {
+	use PresentableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -13,38 +15,35 @@ class Division extends Eloquent {
 	 */
 	protected $table = 'divisions';
 
+	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array();
+//	protected $hidden = ['password', 'remember_token'];
 
-	protected $guarded = array();
+// DEFINE Fillable -------------------------------------------------------
+/*
+			$table->string('name',100)->index();
+			$table->string('description')->nullable();
+*/
 
 
-// DEFINE Rules --------------------------------------------------
-	public static $rules = [
-		'name' => 'required|unique:divisions,name'
-	];
-
-	public static $rulesUpdate = [
-		'name' => 'required'
-	];
-
-// DEFINE Fillable --------------------------------------------------
-	protected $fillable = array(
-		'name', 'description'
-	);
+	protected $fillable = [
+		'id',
+		'name',
+		'description'
+		];
 
 
 // DEFINE Relationships --------------------------------------------------
 
 public function sites()
 {
-	return $this->hasMany('HR\models\Site');
+	return $this->hasMany('App\Modules\Gakko\Http\Domain\Models\Site');
 }
 
-// Functions --------------------------------------------------
 
 }

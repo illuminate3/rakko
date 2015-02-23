@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Providers;
+<?php
+namespace App\Modules\Kagi\Providers;
 
 use App;
 use Config;
@@ -90,7 +91,7 @@ class KagiServiceProvider extends ServiceProvider
 	protected function registerInstallCommand()
 	{
 // 		$this->app->bindShared('kagi.install', function() {
-// 			return new App\Modules\Kagi\Console\Commands\kagiCommand;
+// 			return new App\Modules\Kagi\Console\Commands\KagiCommand;
 // 		});
 	}
 

@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http;
+<?php
+namespace App\Modules\ModuleManager\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

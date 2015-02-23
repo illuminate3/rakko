@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Controllers;
+<?php
+namespace App\Modules\ModuleManager\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;

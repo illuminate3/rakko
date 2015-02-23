@@ -1,14 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Profile as Profile;
-//use HR\models\User as User;
-use View, Input, Validator, Redirect, Auth, Form, DB, Config, Session;
-use User;
-use Image;
-use Bootstrap;
-use Datatable;
+use App\Modules\Gakko\Http\Domain\Models\Profile;
+use App\Modules\Gakko\Http\Domain\Repositories\ProfileRepository;
 
-class ProfilesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\ProfileCreateRequest;
+use App\Modules\Gakko\Http\Requests\ProfileUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class ProfilesController extends GakkoController {
 
 	/**
 	 * Profile Repository
@@ -17,13 +23,13 @@ class ProfilesController extends \BaseController {
 	 */
 	protected $profile;
 
-	public function __construct(Profile $profile, User $user)
+	public function __construct(
+			ProfileRepository $profile
+		)
 	{
-		parent::__construct();
-		$this->beforeFilter('currentUser', array('only' => 'edit', 'update', 'destroy'));
-
 		$this->profile = $profile;
-		$this->user = $user;
+
+//		$this->middleware('admin');
 	}
 
 	/**
@@ -94,7 +100,7 @@ $supervisors = array('' => trans('lingos::general.command.select_a') . '&nbsp;' 
 	public function store()
 	{
 
-		if ( !Auth::User()->hasRoleWithName('Admin') ) {
+		if ( !Auth::User()->hasProfileWithName('Admin') ) {
 			return Redirect::to('/')
 				->withMessage(Bootstrap::danger( trans('lingos::general.error.forbidden'), true, true));
 		}
@@ -311,8 +317,8 @@ $profile['grade_id'] =  unserialize( $profile['grade_id'] );
 //dd($id);
 //dd(Auth::user()->id);
 
-		if ( (Auth::user()->id == $id ) || (Auth::user()->hasRoleWithName('Admin')) ) {
-//		if ( !Auth::User()->hasRoleWithName('Admin') ) {
+		if ( (Auth::user()->id == $id ) || (Auth::user()->hasProfileWithName('Admin')) ) {
+//		if ( !Auth::User()->hasProfileWithName('Admin') ) {
 //			return Redirect::to('/')
 //				->withMessage(Bootstrap::danger( trans('lingos::general.error.forbidden'), true, true));
 		} else {
@@ -337,7 +343,7 @@ $profile['grade_id'] =  unserialize( $profile['grade_id'] );
 
 			$profile = Profile::findOrFail($id);
 
-if ( (Auth::user()->hasRoleWithName('Admin')) ) {
+if ( (Auth::user()->hasProfileWithName('Admin')) ) {
 
 			if ( (Input::get('sites')) !='') {
 				$profile->sites()->sync(Input::get('sites'));
@@ -578,7 +584,7 @@ $actions =
 					'<a href="/profiles/' . $model->id . '" class="btn btn-primary form-group" title="' . trans('lingos::general.view') . '"><i class="fa fa-chevron-right fa-fw"></i></a>&nbsp;';
 
 if ( Auth::check() ) {
-	if (Auth::user()->hasRoleWithName('Admin')) {
+	if (Auth::user()->hasProfileWithName('Admin')) {
 
 		$actions .=
 			'<a href="/profiles/' . $model->id . '/edit" class="btn btn-success form-group" title="' . trans(

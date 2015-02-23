@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Position as Position;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Position;
+use App\Modules\Gakko\Http\Domain\Repositories\PositionRepository;
 
-class PositionsController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\PositionCreateRequest;
+use App\Modules\Gakko\Http\Requests\PositionUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class PositionsController extends GakkoController {
 
 	/**
 	 * Position Repository
@@ -13,9 +23,13 @@ class PositionsController extends \BaseController {
 	 */
 	protected $position;
 
-	public function __construct(Position $position)
+	public function __construct(
+			PositionRepository $position
+		)
 	{
 		$this->position = $position;
+
+//		$this->middleware('admin');
 	}
 
 	/**

@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Requests;
+<?php
+namespace App\Modules\ModuleManager\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Config;

@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Profiles\Database\Seeds;
+<?php
+namespace App\Modules\Profiles\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 Use DB, Eloquent, Model, Schema;
@@ -10,10 +11,10 @@ class ModuleSeeder extends Seeder {
 
 // Module Information
 		$module = array(
-			'name'					=> 'Profiles',
-			'slug'					=> 'profiles',
+			'name'					=> 'Gakko',
+			'slug'					=> 'gakko',
 			'version'				=> '1.0',
-			'description'			=> 'Profiles is a Rakko module that provides the ability to add User Profiles',
+			'description'			=> 'School Management System for Rakko',
 			'enabled'				=> 1
 		);
 
@@ -28,9 +29,9 @@ class ModuleSeeder extends Seeder {
 // Permission Information
 		$permissions = array(
 			[
-				'name'				=> 'Manage Profiles',
-				'slug'				=> 'manage_profiles',
-				'description'		=> 'Give permission to user to access the Profiles area.'
+				'name'				=> 'Manage School',
+				'slug'				=> 'manage_gakko',
+				'description'		=> 'Give permission to user to manage the School Managment System'
 			],
 		 );
 

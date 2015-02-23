@@ -1,6 +1,8 @@
 <?php
+namespace App\Modules\Gakko\Database\Seeds;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+Use DB, Eloquent, Model, Schema;
 
 class UserTableSeeder extends Seeder {
 

@@ -1,10 +1,12 @@
-<?php namespace HR\models;
+<?php
+namespace App\Modules\Gakko\Http\Domain\Models;
 
-use Eloquent;
-use DB;
+use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
+class EmployeeType extends Model {
 
-class EmployeeType extends Eloquent {
+	use PresentableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -13,38 +15,32 @@ class EmployeeType extends Eloquent {
 	 */
 	protected $table = 'employee_types';
 
+	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array();
+//	protected $hidden = ['password', 'remember_token'];
 
-	protected $guarded = array();
-
-
-// DEFINE Rules --------------------------------------------------
-	public static $rules = [
-		'name' => 'required|unique:employee_types,name'
-	];
-
-	public static $rulesUpdate = [
-		'name' => 'required'
-	];
-
-// DEFINE Fillable --------------------------------------------------
-	protected $fillable = array(
-		'name', 'description'
-	);
+// DEFINE Fillable -------------------------------------------------------
+/*
+			$table->string('name',100)->index();
+			$table->string('description')->nullable();
+*/
+	protected $fillable = [
+		'id',
+		'name',
+		'description'
+		];
 
 
 // DEFINE Relationships --------------------------------------------------
-
 public function profile()
 {
-	return $this->hasMany('HR\models\Profile');
+	return $this->hasMany('App\Modules\Gakko\Http\Domain\Models\Profile');
 }
 
-// Functions --------------------------------------------------
 
 }

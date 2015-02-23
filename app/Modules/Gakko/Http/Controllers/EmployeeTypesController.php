@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\EmployeeType as EmployeeType;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\EmployeeType;
+use App\Modules\Gakko\Http\Domain\Repositories\EmployeeTypeRepository;
 
-class EmployeeTypesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\EmployeeTypeCreateRequest;
+use App\Modules\Gakko\Http\Requests\EmployeeTypeUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class EmployeeTypesController extends GakkoController {
 
 	/**
 	 * EmployeeType Repository
@@ -13,9 +23,13 @@ class EmployeeTypesController extends \BaseController {
 	 */
 	protected $employee_type;
 
-	public function __construct(EmployeeType $employee_type)
+	public function __construct(
+			EmployeeTypeRepository $employee_type
+		)
 	{
 		$this->employee_type = $employee_type;
+
+//		$this->middleware('admin');
 	}
 
 	/**

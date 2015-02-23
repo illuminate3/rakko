@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Listeners;
+<?php
+namespace App\Modules\ModuleManager\Http\Listeners;
 
 interface MMAuthenticateUserListener {
 

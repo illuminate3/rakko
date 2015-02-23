@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Console;
+<?php
+namespace App\Modules\ModuleManager\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

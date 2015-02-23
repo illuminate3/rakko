@@ -32,7 +32,20 @@ class GakkoServiceProvider extends ServiceProvider
 	protected function registerNamespaces()
 	{
 		Lang::addNamespace('Gakko', __DIR__.'/../Resources/Lang/');
-
-		View::addNamespace('Gakko', __DIR__.'/../Resources/Views/');
+//		View::addNamespace('Gakko', __DIR__.'/../Resources/Views/');
 	}
+
+	/**
+	 * Boot the service provider.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->publishes([
+			__DIR__.'/../Config/gakko.php' => config_path('gakko.php'),
+		]);
+	}
+
+
 }

@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Requests\Auth;
+<?php
+namespace App\Modules\Kagi\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 

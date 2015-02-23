@@ -1,9 +1,10 @@
-<?php namespace App\Modules\Kagi\Console\Commands;
+<?php
+namespace App\Modules\Kagi\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
-class kagiCommand extends Command
+class KagiCommand extends Command
 {
 	/**
 	 * The console command name.

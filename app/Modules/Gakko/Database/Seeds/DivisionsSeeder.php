@@ -1,4 +1,8 @@
 <?php
+namespace App\Modules\Gakko\Database\Seeds;
+
+use Illuminate\Database\Seeder;
+Use DB, Eloquent, Model, Schema;
 
 class DivisionsSeeder extends Seeder {
 

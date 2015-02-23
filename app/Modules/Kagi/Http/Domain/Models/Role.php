@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Domain\Models;
+<?php
+namespace App\Modules\Kagi\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,7 @@ class Role extends Model {
 	 */
 //	protected $hidden = ['password', 'remember_token'];
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = ['name', 'slug', 'description'];
 
 
@@ -33,7 +35,6 @@ class Role extends Model {
 	{
 		return $this->hasMany('App\Modules\Kagi\Http\Domain\Models\User');
 	}
-
 
 
 }

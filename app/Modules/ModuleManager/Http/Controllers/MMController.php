@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Http\Controllers;
+<?php
+namespace App\Modules\ModuleManager\Http\Controllers;
 
 use App\Modules\ModuleManager\Http\Domain\Models\Module;
 use App\Modules\ModuleManager\Http\Domain\Repositories\ModuleRepository;

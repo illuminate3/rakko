@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Profiles\Http\Domain\Repositories;
+<?php
+namespace App\Modules\Profiles\Http\Domain\Repositories;
 
 abstract class BaseRepository {
 

@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Grade as Grade;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Grade;
+use App\Modules\Gakko\Http\Domain\Repositories\GradeRepository;
 
-class GradesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\GradeCreateRequest;
+use App\Modules\Gakko\Http\Requests\GradeUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class GradesController extends GakkoController {
 
 	/**
 	 * Grade Repository
@@ -13,9 +23,13 @@ class GradesController extends \BaseController {
 	 */
 	protected $grade;
 
-	public function __construct(Grade $grade)
+	public function __construct(
+			GradeRepository $grade
+		)
 	{
 		$this->grade = $grade;
+
+//		$this->middleware('admin');
 	}
 
 	/**

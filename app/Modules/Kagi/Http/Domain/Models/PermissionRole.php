@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http\Domain\Models;
+<?php
+namespace App\Modules\Kagi\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,7 +18,11 @@ class PermissionRole extends Model {
 
 //	protected $presenter = 'App\modules\Kagi\Http\Presenters\Role';
 
+// DEFINE Fillable -------------------------------------------------------
 	protected $fillable = [];
+
+
+// DEFINE Relationships --------------------------------------------------
 
 
 }

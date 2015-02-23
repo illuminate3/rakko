@@ -5,6 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreatePositionsTable extends Migration
 {
+
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('gakko.gakko_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,15 +19,19 @@ class CreatePositionsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('positions', function(Blueprint $table) {
+		Schema::create($this->prefix . 'positions', function(Blueprint $table) {
+
+			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('name',100);
+
+
+			$table->string('name',100)->index();
 			$table->string('description')->nullable();
+
 
 			$table->softDeletes();
 			$table->timestamps();
 
-			$table->engine = 'InnoDB';
 		});
 	}
 
@@ -31,7 +42,7 @@ class CreatePositionsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('positions');
+		Schema::drop($this->prefix . 'positions');
 	}
 
 }

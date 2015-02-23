@@ -9,8 +9,7 @@ class CreateProfileSubjectTable extends Migration
 	public function __construct()
 	{
 		// Get the prefix
-//		$this->prefix = Config::get('vedette::vedette_db.prefix', '');
-		$this->prefix = Config::get('vedette.vedette_db.prefix', '');
+		$this->prefix = Config::get('gakko.gakko_db.prefix', '');
 	}
 
 	/**
@@ -20,15 +19,21 @@ class CreateProfileSubjectTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create($this->prefix.'profile_subject', function(Blueprint $table)
+		Schema::create($this->prefix . 'profile_subject', function(Blueprint $table)
 		{
+
 			$table->engine = 'InnoDB';
+
 
 			$table->integer('profile_id')->unsigned()->index();
 			$table->integer('subject_id')->unsigned()->index();
 
 			$table->foreign('profile_id')->references('id')->on($this->prefix.'profiles')->onDelete('cascade');
 			$table->foreign('subject_id')->references('id')->on($this->prefix.'subjects')->onDelete('cascade');
+
+
+// 			$table->softDeletes();
+// 			$table->timestamps();
 
 		});
 	}
@@ -40,7 +45,7 @@ class CreateProfileSubjectTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix.'profile_subject');
+		Schema::drop($this->prefix . 'profile_subject');
 	}
 
 }

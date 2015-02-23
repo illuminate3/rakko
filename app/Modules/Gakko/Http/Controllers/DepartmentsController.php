@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Department as Department;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Department;
+use App\Modules\Gakko\Http\Domain\Repositories\DepartmentRepository;
 
-class DepartmentsController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\DepartmentCreateRequest;
+use App\Modules\Gakko\Http\Requests\DepartmentUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class DepartmentsController extends GakkoController {
 
 	/**
 	 * Department Repository
@@ -13,9 +23,13 @@ class DepartmentsController extends \BaseController {
 	 */
 	protected $department;
 
-	public function __construct(Department $department)
+	public function __construct(
+			DepartmentRepository $department
+		)
 	{
 		$this->department = $department;
+
+//		$this->middleware('admin');
 	}
 
 	/**

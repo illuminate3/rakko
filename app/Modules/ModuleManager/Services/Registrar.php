@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Services;
+<?php
+namespace App\Modules\ModuleManager\Services;
 
 use App\User;
 use Validator;

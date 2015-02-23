@@ -1,4 +1,5 @@
-<?php namespace App\modules\Kagi\Http\Presenters;
+<?php
+namespace App\modules\Kagi\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 

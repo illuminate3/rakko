@@ -1,11 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Site as Site;
-use View, Input, Validator, Redirect;
-use Bootstrap;
-use Image;
+use App\Modules\Gakko\Http\Domain\Models\Site;
+use App\Modules\Gakko\Http\Domain\Repositories\SiteRepository;
 
-class SitesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\SiteCreateRequest;
+use App\Modules\Gakko\Http\Requests\SiteUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class SitesController extends GakkoController {
 
 	/**
 	 * Site Repository
@@ -14,9 +23,13 @@ class SitesController extends \BaseController {
 	 */
 	protected $sites;
 
-	public function __construct(Site $site)
+	public function __construct(
+			SiteRepository $site
+		)
 	{
 		$this->site = $site;
+
+//		$this->middleware('admin');
 	}
 
 	/**
@@ -114,8 +127,8 @@ $statuses = array('' => trans('lingos::general.command.select_a') . '&nbsp;' . t
 $contact = $this->site->getContactUser($site->user_id);
 //dd($contact);
 
-//$user = User::with('roles')->find($id);//eager loading
-//$expiredRoles = array();
+//$user = User::with('sites')->find($id);//eager loading
+//$expiredSites = array();
 
 /*
 foreach($site->profiles as $profile){//allready loaded
@@ -264,9 +277,9 @@ $statuses = array('' => trans('lingos::general.command.select_a') . '&nbsp;' . t
 					return $model->present()->email();
 				})
 
-			->addColumn('roles',
+			->addColumn('sites',
 				function($model) {
-					return $model->present()->roles();
+					return $model->present()->sites();
 				})
 
 			->addColumn('actions',

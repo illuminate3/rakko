@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Division as Division;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Division;
+use App\Modules\Gakko\Http\Domain\Repositories\DivisionRepository;
 
-class DivisionsController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\DivisionCreateRequest;
+use App\Modules\Gakko\Http\Requests\DivisionUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class DivisionsController extends GakkoController {
 
 	/**
 	 * Division Repository
@@ -13,9 +23,13 @@ class DivisionsController extends \BaseController {
 	 */
 	protected $division;
 
-	public function __construct(Division $division)
+	public function __construct(
+			DivisionRepository $division
+		)
 	{
 		$this->division = $division;
+
+//		$this->middleware('admin');
 	}
 
 	/**

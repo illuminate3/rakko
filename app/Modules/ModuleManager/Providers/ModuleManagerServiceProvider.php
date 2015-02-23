@@ -1,4 +1,5 @@
-<?php namespace App\Modules\ModuleManager\Providers;
+<?php
+namespace App\Modules\ModuleManager\Providers;
 
 use App;
 use Config;
@@ -30,7 +31,7 @@ class ModuleManagerServiceProvider extends ServiceProvider
 	}
 
 	/**
-	 * Register the Kagi module resource namespaces.
+	 * Register the module manager resource namespaces.
 	 *
 	 * @return void
 	 */

@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\JobTitle as JobTitle;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\JobTitle;
+use App\Modules\Gakko\Http\Domain\Repositories\JobTitleRepository;
 
-class JobTitlesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\JobTitleCreateRequest;
+use App\Modules\Gakko\Http\Requests\JobTitleUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class JobTitlesController extends GakkoController {
 
 	/**
 	 * JobTitle Repository
@@ -13,9 +23,13 @@ class JobTitlesController extends \BaseController {
 	 */
 	protected $job_title;
 
-	public function __construct(JobTitle $job_title)
+	public function __construct(
+			JobTitleRepository $job_title
+		)
 	{
 		$this->job_title = $job_title;
+
+//		$this->middleware('admin');
 	}
 
 	/**

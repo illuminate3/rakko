@@ -1,10 +1,11 @@
-<?php namespace App\modules\Profiles\Http\Presenters;
+<?php
+namespace App\modules\Gakko\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
 use DB;
 
-class Profile extends Presenter {
+class School extends Presenter {
 
 //dd('loaded');
 

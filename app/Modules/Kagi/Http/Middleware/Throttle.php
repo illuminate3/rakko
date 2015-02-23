@@ -1,4 +1,5 @@
-<?php namespace App\modules\Kagi\Http\Middleware;
+<?php
+namespace App\modules\Kagi\Http\Middleware;
 
 use Closure;
 use GrahamCampbell\Throttle\Facades\Throttle;

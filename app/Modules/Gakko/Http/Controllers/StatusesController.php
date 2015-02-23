@@ -1,10 +1,20 @@
-<?php namespace HR\controllers;
+<?php
+namespace App\Modules\Gakko\Http\Controllers;
 
-use HR\models\Status as Status;
-use View, Input, Validator, Redirect;
-use Bootstrap;
+use App\Modules\Gakko\Http\Domain\Models\Status;
+use App\Modules\Gakko\Http\Domain\Repositories\StatusRepository;
 
-class StatusesController extends \BaseController {
+use Illuminate\Http\Request;
+use App\Modules\Gakko\Http\Requests\StatusCreateRequest;
+use App\Modules\Gakko\Http\Requests\StatusUpdateRequest;
+use App\Modules\Gakko\Http\Requests\DeleteRequest;
+
+//use Datatable;
+use Datatables;
+//use Bootstrap;
+use Flash;
+
+class StatusesController extends GakkoController {
 
 	/**
 	 * Status Repository
@@ -13,9 +23,13 @@ class StatusesController extends \BaseController {
 	 */
 	protected $status;
 
-	public function __construct(Status $status)
+	public function __construct(
+			StatusRepository $status
+		)
 	{
 		$this->status = $status;
+
+//		$this->middleware('admin');
 	}
 
 	/**

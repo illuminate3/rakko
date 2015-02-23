@@ -34,4 +34,18 @@ class ProfilesServiceProvider extends ServiceProvider
 //		Lang::addNamespace('profiles', __DIR__.'/../Resources/Lang/');
 		View::addNamespace('profiles', __DIR__.'/../Resources/Views/');
 	}
+
+	/**
+	 * Boot the service provider.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->publishes([
+			__DIR__.'/../Config/profiles.php' => config_path('profiles.php'),
+		]);
+	}
+
+
 }

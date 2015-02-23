@@ -1,7 +1,7 @@
 {
 	"name": "Gakko",
-	"slug": "Gakko",
+	"slug": "gakko",
 	"version": "1.0",
-	"description": "This is the description for the Gakko module.",
+	"description": "School Management System for Rakko",
 	"enabled": true
 }

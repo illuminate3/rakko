@@ -1,10 +1,12 @@
-<?php namespace HR\models;
+<?php
+namespace App\Modules\Gakko\Http\Domain\Models;
 
-use Eloquent;
-use DB;
+use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
+class Subject extends Model {
 
-class Subject extends Eloquent {
+	use PresentableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -13,43 +15,36 @@ class Subject extends Eloquent {
 	 */
 	protected $table = 'subjects';
 
+	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array();
+//	protected $hidden = ['password', 'remember_token'];
 
-	protected $guarded = array();
-
-
-// DEFINE Rules --------------------------------------------------
-	public static $rules = [
-		'name' => 'required|unique:subjects,name'
-	];
-
-	public static $rulesUpdate = [
-		'name' => 'required'
-	];
-
-// DEFINE Fillable --------------------------------------------------
-	protected $fillable = array(
-		'name', 'description'
-	);
-
+// DEFINE Fillable -------------------------------------------------------
+/*
+			$table->string('name',100)->index();
+			$table->string('description')->nullable();
+*/
+	protected $fillable = [
+		'id',
+		'name',
+		'description'
+		];
 
 // DEFINE Relationships --------------------------------------------------
-
 public function profiles()
 {
-	return $this->hasMany('HR\models\Profile');
+	return $this->hasMany('App\Modules\Gakko\Http\Domain\Models\Profile');
 }
 
 public function profile()
 {
-	return $this->belongsTo('HR\models\Profile');
+	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\Profile');
 }
 
-// Functions --------------------------------------------------
 
 }

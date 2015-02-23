@@ -1,4 +1,5 @@
-<?php namespace App\modules\ModuleManager\Http\Presenters;
+<?php
+namespace App\modules\ModuleManager\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 

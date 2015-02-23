@@ -1,4 +1,5 @@
-<?php namespace App\Modules\Kagi\Http;
+<?php
+namespace App\Modules\Kagi\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 //use app\Http\Kernel as Kernel;
