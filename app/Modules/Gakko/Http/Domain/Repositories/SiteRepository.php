@@ -37,14 +37,14 @@ class SiteRepository extends BaseRepository {
 	 */
 	public function create()
 	{
-$divisions = $this->getDivisions();
-$divisions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.division', 1)) + $divisions;
+		$divisions = $this->getDivisions();
+		$divisions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.division', 1)) + $divisions;
 
-$contacts = $this->getContacts();
-$contacts = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.contact')) + $contacts;
+		$contacts = $this->getContacts();
+		$contacts = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.contact')) + $contacts;
 
-$statuses = $this->getStatuses();
-$statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.status')) + $statuses;
+		$statuses = $this->getStatuses();
+		$statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.status')) + $statuses;
 
 		return compact('divisions', 'contacts', 'statuses');
 	}
@@ -74,7 +74,16 @@ $statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . t
 		$site = $this->model->find($id);
 //dd($module);
 
-		return compact('site');
+		$divisions = $this->getDivisions();
+		$divisions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.division', 1)) + $divisions;
+
+		$contacts = $this->getContacts();
+		$contacts = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.contact')) + $contacts;
+
+		$statuses = $this->getStatuses();
+		$statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.status')) + $statuses;
+
+		return compact('site', 'divisions', 'contacts', 'statuses');
 	}
 
 	/**
@@ -86,7 +95,18 @@ $statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . t
 	{
 //dd($input);
 		$this->model = new Site;
+
+// 			$logo = Input::file('logo');
+// 			if ($logo) {
+// 				$input['logo'] = Image::upload($logo);
+// 			} else {
+// 				$input['logo'] = '';
+// 			}
+
+
 		$this->model->create($input);
+
+
 	}
 
 	/**
@@ -114,7 +134,7 @@ $statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . t
 
 	public function getContacts()
 	{
-		$contacts = DB::table('users')->lists('email', 'id');
+		$contacts = DB::table('users')->lists('name', 'id');
 //		$contacts = DB::table('profiles')->lists('email', 'user_id');
 //		$contacts = DB::table('profiles')->lists('first_name' . '&nbsp;' . 'last_name', 'user_id');
 // 		if ( empty($contacts) ) {
