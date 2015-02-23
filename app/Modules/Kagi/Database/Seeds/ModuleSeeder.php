@@ -24,6 +24,9 @@ class ModuleSeeder extends Seeder {
 			DB::table('modules')->insert( $module );
 		}
 
+// Permissions are in the Users Table Seeder
+
+
 	} // run
 
 

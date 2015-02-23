@@ -6,25 +6,13 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
 @stop
 
 @section('inline-scripts')
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
-	jQuery(document).ready(function($) {
-		$('#my-select').multiSelect(
-			{
-				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
-				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
-			}
-		)
-	});
 @stop
 
 
@@ -61,7 +49,7 @@
 
 <div class="form-group">
 <div class="input-group">
-	<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
+	<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
 		<input type="text" id="name" name="name" value="{{ $division->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
 </div>
 </div>
@@ -69,7 +57,7 @@
 
 <div class="form-group">
 <div class="input-group">
-	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
+	<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
 		<input type="text" id="description" name="description" value="{{ $division->description }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>

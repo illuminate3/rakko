@@ -59,6 +59,7 @@ class Site extends Model {
 		'zipcode',
 		'logo',
 		'user_id',
+		'division_id',
 		'ad_code',
 		'bld_number',
 		'status_id',

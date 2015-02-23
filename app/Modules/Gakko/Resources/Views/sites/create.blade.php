@@ -6,22 +6,17 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
 	jQuery(document).ready(function($) {
-		$('#my-select').multiSelect(
-			{
-				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
-				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
-			}
-		)
+		$(".chosen-select").chosen();
 	});
 @stop
 
@@ -61,13 +56,119 @@
 </div>
 </div>
 
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-road fa-fw"></i></span>
+		<input type="text" id="address" name="address" placeholder="{{ trans('kotoba::account.address') }}" class="form-control">
+</div>
+</div>
 
 <div class="form-group">
 <div class="input-group">
-	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
-		<input type="text" id="description" name="description" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
+	<span class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+		<input type="text" id="city" name="city" placeholder="{{ trans('kotoba::account.city') }}" class="form-control">
 </div>
 </div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-star fa-fw"></i></span>
+		<input type="text" id="state" name="state" placeholder="{{ trans('kotoba::account.state') }}" class="form-control">
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-paper-plane fa-fw"></i></span>
+		<input type="text" id="zipcode" name="zipcode" placeholder="{{ trans('kotoba::account.zipcode') }}" class="form-control">
+</div>
+</div>
+
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputDivision" class="col-sm-1 control-label">{{ Lang::choice('kotoba::hr.division', 1) }}:</label>
+	<div class="col-sm-11">
+		{!!
+			Form::select(
+				'division_id',
+				$divisions,
+				Input::old('division_id'),
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputContact" class="col-sm-1 control-label">{{ trans('kotoba::general.contact') }}:</label>
+	<div class="col-sm-11">
+		{!!
+			Form::select(
+				'user_id',
+				$contacts,
+				Input::old('user_id'),
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputStatus" class="col-sm-1 control-label">{{ trans('kotoba::general.status') }}:</label>
+	<div class="col-sm-11">
+		{!!
+			Form::select(
+				'status_id',
+				$statuses,
+				Input::old('status_id'),
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
+
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+		<input type="text" id="phone_1" name="phone_1" placeholder="{{ trans('kotoba::account.phone_1') }}" class="form-control">
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-fax fa-fw"></i></span>
+		<input type="text" id="phone_2" name="phone_2" placeholder="{{ trans('kotoba::account.phone_2') }}" class="form-control">
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-link fa-fw"></i></span>
+		<input type="text" id="website" name="website" placeholder="{{ trans('kotoba::account.website') }}" class="form-control">
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-at fa-fw"></i></span>
+		<input type="text" id="email" name="email" placeholder="{{ trans('kotoba::general.email') }}" class="form-control">
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+	<span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+		<textarea id="notes" name="notes" placeholder="{{ trans('kotoba::general.notes') }}" class="form-control" rows="5"></textarea>
+</div>
+</div>
+
 
 
 <hr>

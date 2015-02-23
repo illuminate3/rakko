@@ -38,9 +38,9 @@ class UsersTableSeeder extends Seeder {
 
 		$permissions = array(
 			[
-				'name'				=> 'Manage Admin',
-				'slug'				=> 'manage_admin',
-				'description'		=> 'Give permission to user to access the admin area.'
+				'name'				=> 'Manage Authorization',
+				'slug'				=> 'manage_auth',
+				'description'		=> 'Give permission to user to manage Users, Roles and Permissions'
 			],
 		 );
 

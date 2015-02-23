@@ -3,7 +3,7 @@ namespace App\Modules\Gakko\Http\Domain\Repositories;
 
 use App\Modules\Gakko\Http\Domain\Models\Site;
 
-use DB;
+use DB, Lang;
 //use Hash, DB, Auth;
 //use DateTime;
 //use File, Auth;
@@ -37,10 +37,16 @@ class SiteRepository extends BaseRepository {
 	 */
 	public function create()
 	{
-//		$allPermissions =  $this->permission->all()->lists('name', 'id');
-//dd($allPermissions);
+$divisions = $this->getDivisions();
+$divisions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.division', 1)) + $divisions;
 
-		return compact('');
+$contacts = $this->getContacts();
+$contacts = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.contact')) + $contacts;
+
+$statuses = $this->getStatuses();
+$statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.status')) + $statuses;
+
+		return compact('divisions', 'contacts', 'statuses');
 	}
 
 	/**
@@ -97,5 +103,38 @@ class SiteRepository extends BaseRepository {
 		$site->update($input);
 	}
 
+
+// Functions --------------------------------------------------
+
+	public function getDivisions()
+	{
+		$divisions = DB::table('divisions')->lists('name', 'id');
+		return $divisions;
+	}
+
+	public function getContacts()
+	{
+		$contacts = DB::table('users')->lists('email', 'id');
+//		$contacts = DB::table('profiles')->lists('email', 'user_id');
+//		$contacts = DB::table('profiles')->lists('first_name' . '&nbsp;' . 'last_name', 'user_id');
+// 		if ( empty($contacts) ) {
+// 			$contacts = DB::table('users')->lists('email', 'id');
+// 		}
+		return $contacts;
+	}
+
+	public function getStatuses()
+	{
+		$statuses = DB::table('statuses')->lists('name', 'id');
+		return $statuses;
+	}
+
+	public function getContactUser($id)
+	{
+		$user = DB::table('profiles')
+			->where('user_id', '=', $id)
+			->first();
+		return $user;
+	}
 
 }
