@@ -110,15 +110,17 @@
 
 		</div>
 		<div class="col-md-4">
-			{{ $site->logo }}
-{{ Request::root() . $logo['thumb'] }}
-{{--
-			@if($site->logo)
-				<img src="{{ Request::root() . $logo['thumb'] }}" class="logo">
+			{{-- $logo --}}
+{{-- public_path() --}}
+
+<img src="{!! Image::make('uploads/uni.png')->response('png') !!}" class="logo">
+
+			@if($logo != NULL)
+				<img src="{{ $logo }}" class="logo">
 			@else
 				{{ trans('kotoba::account.error.logo') }}
 			@endif
---}}
+
 		</div>
 	</div><!-- ./row -->
 	</div><!-- ./panel-body -->

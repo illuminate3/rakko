@@ -171,6 +171,7 @@ return [
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 //'Chumper\Datatable\DatatableServiceProvider',
+'Intervention\Image\ImageServiceProvider',
 
 	],
 
@@ -238,7 +239,7 @@ return [
 //'Datatable'			=> 'Chumper\Datatable\Facades\DatatableFacade',
 //'Datatable' => 'Chumper\Datatable\Facades\Datatable',
 'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
-
+'Image'			=> 'Intervention\Image\Facades\Image',
 
 /*
  * DEV Package Alias

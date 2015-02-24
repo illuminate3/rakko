@@ -7,6 +7,7 @@ use DB, Lang;
 //use Hash, DB, Auth;
 //use DateTime;
 //use File, Auth;
+use Image;
 
 class SiteRepository extends BaseRepository {
 
@@ -58,15 +59,18 @@ class SiteRepository extends BaseRepository {
 	public function show($id)
 	{
 		$site = $this->model->find($id);
-//dd($site->);
+//dd($site->logo);
+//dd(Image::make(public_path() . '/uploads/uni.png')->response());
 
-		if ($site->logo) {
-			$logo = Image::getPaths($site->logo);
+		if ($site->logo != NULL) {
+//			$logo = Image::getPaths($site->logo);
+			$logo = Image::make('uploads/logos/'. $site->logo);
 		} else {
 			$logo = null;
 		}
+//dd($logo);
 
-		return compact('site');
+		return compact('site', 'logo');
 	}
 
 	/**
