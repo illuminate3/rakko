@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lightspeed Systems - Web Access</title>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="PuEN7dIdWfEp20NyCj2oYNIzSzS2vUKqLWTi+PzTSy8=" name="csrf-token" />
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0, user-scalable = yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="icon" type="image/png" href="/assets/favicon_16x16.png">
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link href="/assets/access-c4791d8ce27ccf7ac68c071e0a389834.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/access_default-2ddc1d145b9b71cf57704e1e56328ee3.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    I18n.defaultLocale = "en";
+    I18n.locale = navigator.language || navigator.userLanguage;
+    I18n.fallbacks = true;
+  </script>
+
+  <script src="/access/web/data.js?1395461427"></script>
+
+  <script>loadRedirInfo();</script>
+
+  <style>
+    .hidden { display: none; }
+
+      div.entry {
+      text-align:left;
+      margin-bottom:15px;
+    }
+    div.entry input {
+      width:200px;
+      font-size:12px;
+      padding:7px;
+      border:1px solid #666;
+    }
+    div.entry textarea {
+      height:150px;
+      width:200px;
+      font-size:12px;
+      padding:7px;
+      margin:0;
+      resize:none;
+    }
+    div.entry p {
+      text-align:left;
+    }
+
+    #submit_for_review_dialog {
+      display: none;
+    }
+
+    #customBtn {
+      display: inline-block;
+      background: #dd4b39;
+      color: white;
+      width: 115px;
+      border-radius: 5px;
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+    #customBtn:hover {
+      background: #e74b37;
+      cursor: hand;
+    }
+    span.label {
+      font-weight: bold;
+    }
+    span.icon {
+      background: url('/assets/access/btn_red_32.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 35px;
+      height: 30px;
+      border-right: #bb3f30 1px solid;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 10px;
+      padding-right: 35px;
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Roboto',arial,sans-serif;
+      color: #ffffff;
+    }
+
+    a.goog { 
+      color: #fff; 
+    }
+  </style>
+</head>
+
+<body class="access default" style="overflow:hidden;">
+  <div id="header">
+    <div id="auth_info" class="hidden"></div>
+
+    <h1 class="custom-title hidden"></h1>
+  </div>
+
+  <div class="header-image hidden"></div>
+
+  <div id="stage">
+    <div class="message dead_end">
+      <div id="column_container">
+        <noscript>
+          <div id="site_not_accessible" class="col single"></div>
+        </noscript>
+      </div>
+
+      <div id="submit_for_review_dialog">
+        <form accept-charset="UTF-8" action="/access/web/review.js" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="PuEN7dIdWfEp20NyCj2oYNIzSzS2vUKqLWTi+PzTSy8=" /></div>
+          <div class="errors"></div>
+
+          <input id="review_submission_require_review_reason" name="review_submission[require_review_reason]" type="hidden" value="false" />
+          <input id="redir" name="redir" type="hidden" value="" />
+
+          <div class="entry">
+            <p>Email Address<span class="optional-text"> (optional)</span>:</p>
+            <input id="review_submission_email" name="review_submission[email]" size="30" type="text" />
+          </div>
+
+          <div class="entry">
+            <p>Reason for review<span class="optional-text"> (optional)</span>:</p>
+            <textarea cols="40" id="review_submission_reason" name="review_submission[reason]" rows="20">
+</textarea>
+          </div>
+</form>      </div>
+    </div>
+  </div>
+
+  <div class="custom-text hidden"></div>
+
+  <div class="footer-custom" id="footer-custom"></div>
+
+  <div id="footer" class="showcase">
+    <!--<a id="logo" href="http://lightspeedsystems.com" target="_blank">
+      <span class="icon"></span>
+      <span class="name"></span>
+    </a>-->
+
+    <!--<a href="#" id="big_campus_ad"></a>
+
+    <div id="details">
+      <div class="ad">
+        <a href="http://www.lightspeedsystems.com/landingpage/overblocked" target="_blank">
+          <img src="/assets/access/ad_big_campus.png" alt="" border="0" />
+        </a>
+      </div>
+    </div>-->
+  </div>
+
+  <input id="ad-state" type="hidden" />
+  <div id="review_modal" class="modal"></div>
+</body>
+</html>

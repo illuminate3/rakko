@@ -58,7 +58,13 @@ class SiteRepository extends BaseRepository {
 	public function show($id)
 	{
 		$site = $this->model->find($id);
-//dd($module);
+//dd($site->);
+
+		if ($site->logo) {
+			$logo = Image::getPaths($site->logo);
+		} else {
+			$logo = null;
+		}
 
 		return compact('site');
 	}

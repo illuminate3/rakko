@@ -4,8 +4,6 @@ namespace App\Modules\Gakko\Database\Seeds;
 use Illuminate\Database\Seeder;
 Use DB, Eloquent, Model, Schema;
 
-use Illuminate\Support\Facades\DB;
-
 class SitesSeeder extends Seeder {
 
 	public function run()
@@ -26,16 +24,16 @@ class SitesSeeder extends Seeder {
 			}
 
 			$c = array();
-			$c['ad_code']		= $line[0];
-			$c['name']			= $line[1];
-			$c['address']		= $line[2];
-			$c['primary_phone']	= $line[3];
-			$c['division_id']	= $line[4];
-			$c['bld_number']	= $line[5];
-			$c['website']		= $line[6];
-			$c['logo']			= $line[7];
-			$c['city']			= $line[8];
-			$c['state']			= $line[9];
+			$c['ad_code']				= $line[0];
+			$c['name']					= $line[1];
+			$c['address']				= $line[2];
+			$c['phone_1']				= $line[3];
+			$c['division_id']			= $line[4];
+			$c['bld_number']			= $line[5];
+			$c['website']				= $line[6];
+			$c['logo']					= $line[7];
+			$c['city']					= $line[8];
+			$c['state']					= $line[9];
 
 			DB::table('sites')->insert($c);
 		}

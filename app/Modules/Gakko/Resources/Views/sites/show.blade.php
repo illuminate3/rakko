@@ -110,12 +110,15 @@
 
 		</div>
 		<div class="col-md-4">
-			{{-- $site->logo --}}
+			{{ $site->logo }}
+{{ Request::root() . $logo['thumb'] }}
+{{--
 			@if($site->logo)
 				<img src="{{ Request::root() . $logo['thumb'] }}" class="logo">
 			@else
 				{{ trans('kotoba::account.error.logo') }}
 			@endif
+--}}
 		</div>
 	</div><!-- ./row -->
 	</div><!-- ./panel-body -->
