@@ -36,15 +36,6 @@
 
 
 <div class="row">
-{!! Form::model(
-	$profile,
-	[
-		'route' => ['profiles.update', $profile->id],
-		'method' => 'PATCH',
-		'class' => 'form'
-	]
-) !!}
-
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -140,23 +131,20 @@
 
 <hr>
 
-<div class="form-group">
-	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
-</div>
-
-{!! Form::close() !!}
-
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
-		<i class="fa fa-times fa-fw"></i>
-		{{ trans('kotoba::button.cancel') }}
+	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
+		<i class="fa fa-chevron-left fa-fw"></i>
+		{{ trans('kotoba::button.back') }}
 	</a>
 </div>
 
 <div class="col-sm-4">
-	<input class="btn btn-default btn-block" type="reset" value="{{ trans('kotoba::button.reset') }}">
+	<a href="/profiles/{{ $profile->id }}/edit" class="btn btn-default btn-block" title="{{ trans('kotoba::button.edit') }}">
+		<i class="fa fa-pencil fa-fw"></i>
+		{{ trans('kotoba::button.edit') }}
+	</a>
 </div>
 
 <div class="col-sm-4">

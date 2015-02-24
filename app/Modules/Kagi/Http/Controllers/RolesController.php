@@ -146,7 +146,7 @@ dd("show");
 	public function data()
 	{
 //dd("loaded");
-		$roles = Role::select(array('roles.id','roles.name','roles.slug','roles.description', 'roles.created_at'))
+		$roles = Role::select(array('roles.id','roles.name','roles.slug','roles.description', 'roles.updated_at'))
 			->orderBy('roles.name', 'ASC');
 //dd($roles);
 

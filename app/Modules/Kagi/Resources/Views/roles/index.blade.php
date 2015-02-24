@@ -57,7 +57,7 @@
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.slug') }}</th>
 			<th>{{ trans('kotoba::table.description') }}</th>
-			<th>{{ trans('kotoba::table.created_at') }}</th>
+			<th>{{ trans('kotoba::table.updated_at') }}</th>
 
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>

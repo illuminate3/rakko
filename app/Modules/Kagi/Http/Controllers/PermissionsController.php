@@ -202,7 +202,7 @@ dd("destroy");
 //dd($query);
 
 		return Datatable::query($query)
-			->showColumns('id', 'name', 'slug', 'description', 'created_at')
+			->showColumns('id', 'name', 'slug', 'description', 'updated_at')
 //			->showColumns('id', 'name')
 
 /*

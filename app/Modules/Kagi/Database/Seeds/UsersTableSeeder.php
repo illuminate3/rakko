@@ -29,6 +29,7 @@ class UsersTableSeeder extends Seeder {
 			'email'					=> 'admin@admin.com',
 			'password'				=> bcrypt('kagiadmin'),
 			'activated_at'			=> date("Y-m-d H:i:s"),
+			'created_at'			=> date("Y-m-d H:i:s"),
 			'blocked'				=> 0,
 			'banned'				=> 0,
 			'confirmed'				=> 1,
