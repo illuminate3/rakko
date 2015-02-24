@@ -17,7 +17,7 @@ class Profile extends Model {
 	 */
 	protected $table = 'profiles';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\Profile';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Profile';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

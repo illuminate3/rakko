@@ -17,7 +17,7 @@ class Role extends Model {
 	 */
 	protected $table = 'roles';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\Role';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Role';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

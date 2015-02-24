@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $table = 'users';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\User';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\User';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

@@ -15,7 +15,7 @@ class Subject extends Model {
 	 */
 	protected $table = 'subjects';
 
-	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+	protected $presenter = 'App\Modules\Gakko\Http\Presenters\School';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

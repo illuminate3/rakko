@@ -15,7 +15,7 @@ class Grade extends Model {
 	 */
 	protected $table = 'grades';
 
-	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+	protected $presenter = 'App\Modules\Gakko\Http\Presenters\School';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

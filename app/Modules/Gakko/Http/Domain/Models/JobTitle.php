@@ -15,7 +15,7 @@ class JobTitle extends Model {
 	 */
 	protected $table = 'job_titles';
 
-	protected $presenter = 'App\modules\Gakko\Http\Presenters\School';
+	protected $presenter = 'App\Modules\Gakko\Http\Presenters\School';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

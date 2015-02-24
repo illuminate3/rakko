@@ -1,5 +1,5 @@
 <?php
-namespace App\modules\Gakko\Http\Presenters;
+namespace App\Modules\Gakko\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\modules\Profiles\Http\Presenters;
+namespace App\Modules\Profiles\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 

@@ -16,7 +16,7 @@ class PermissionRole extends Model {
 	 */
 	protected $table = 'permission_role';
 
-//	protected $presenter = 'App\modules\Kagi\Http\Presenters\Role';
+//	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Role';
 
 // DEFINE Fillable -------------------------------------------------------
 	protected $fillable = [];

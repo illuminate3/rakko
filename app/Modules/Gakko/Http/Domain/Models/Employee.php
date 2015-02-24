@@ -15,7 +15,7 @@ class Employee extends Model {
 	 */
 	protected $table = 'employees';
 
-	protected $presenter = 'App\modules\Gakko\Http\Presenters\Employee';
+	protected $presenter = 'App\Modules\Gakko\Http\Presenters\Employee';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

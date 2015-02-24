@@ -15,7 +15,7 @@ class Module extends Model {
 	 */
 	protected $table = 'modules';
 
-	protected $presenter = 'App\modules\ModuleManager\Http\Presenters\Module';
+	protected $presenter = 'App\Modules\ModuleManager\Http\Presenters\Module';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

@@ -16,7 +16,7 @@ class Permission extends Model {
 	 */
 	protected $table = 'permissions';
 
-	protected $presenter = 'App\modules\Kagi\Http\Presenters\Permission';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Permission';
 
 //	protected $hidden = ['_token'];
 
