@@ -2,16 +2,54 @@
 namespace App\Modules\Gakko\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-Use DB, Eloquent, Model, Schema;
+Use DB, Eloquent, Model;
 
-class ProfileTableSeeder extends Seeder {
+class EmployeesSeeder extends Seeder {
 
-	/**
-	 * Run the seeder.
-	 *
-	 * @return void
-	 */
 	public function run()
+	{
+
+/*
+			$table->integer('user_id');
+			$table->integer('employee_type_id')->nullable();
+			$table->string('department_id',100)->nullable();
+			$table->integer('position_id')->nullable();
+			$table->integer('secondary_position_id')->nullable();
+			$table->integer('job_title_id')->nullable();
+			$table->integer('secondary_job_title_id')->nullable();
+
+			$table->integer('isTeacher')->nullable();
+
+			$table->integer('supervisor_id')->nullable();
+			$table->integer('isSupervisior')->default(0);
+
+			$table->integer('status_id')->default(1);
+
+			$table->text('notes')->nullable();
+*/
+
+// Create Profiles
+		DB::table('employees')->delete();
+			$statement = "ALTER TABLE employees AUTO_INCREMENT = 1;";
+			DB::unprepared($statement);
+
+		$users = DB::table('users')->get();
+
+		foreach ($users as $user)
+		{
+
+			$employees = array(
+				'user_id'				=> $user->id
+			);
+
+			DB::table('employees')->insert( $employees );
+
+		}
+
+	} // run
+
+
+	public function runner()
 	{
 
 DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
@@ -106,4 +144,6 @@ DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 DB::statement('SET FOREIGN_KEY_CHECKS = 1'); // enable foreign key constraints
 
 	}
+
+
 }

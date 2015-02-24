@@ -6,24 +6,17 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 	jQuery(document).ready(function($) {
-		$('#my-select').multiSelect(
-			{
-				selectableFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.available') }}</div>",
-				selectionFooter: "<div class='bg-primary padding-md'>{{ trans('kotoba::general.assigned') }}</div>"
-			}
-		)
+		$(".chosen-select").chosen();
 	});
 @stop
 

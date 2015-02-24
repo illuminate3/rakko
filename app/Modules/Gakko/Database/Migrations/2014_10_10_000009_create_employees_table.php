@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateStatusesTable extends Migration
+class CreateEmployeesTable extends Migration
 {
 
 	public function __construct()

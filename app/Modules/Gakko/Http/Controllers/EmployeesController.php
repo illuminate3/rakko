@@ -130,9 +130,27 @@ class EmployeesController extends GakkoController {
 	*/
 	public function data()
 	{
+/*
+			$table->integer('user_id');
+			$table->integer('employee_type_id')->nullable();
+			$table->string('department_id',100)->nullable();
+			$table->integer('position_id')->nullable();
+			$table->integer('secondary_position_id')->nullable();
+			$table->integer('job_title_id')->nullable();
+			$table->integer('secondary_job_title_id')->nullable();
+
+			$table->integer('isTeacher')->nullable();
+
+			$table->integer('supervisor_id')->nullable();
+			$table->integer('isSupervisior')->default(0);
+
+			$table->integer('status_id')->default(1);
+
+			$table->text('notes')->nullable();
+*/
 //dd("loaded");
-		$employees = Employee::select(array('employees.id','employees.name','employees.description'))
-			->orderBy('employees.name', 'ASC');
+		$employees = Employee::select(array('employees.id','employees.user_id','employees.employee_type_id'))
+			->orderBy('employees.user_id', 'ASC');
 //dd($employees);
 
 		return Datatables::of($employees)

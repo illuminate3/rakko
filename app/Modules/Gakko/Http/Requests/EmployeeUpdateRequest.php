@@ -4,7 +4,7 @@ namespace App\Modules\Gakko\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Config;
 
-class ProfileUpdateRequest extends FormRequest {
+class EmployeeUpdateRequest extends FormRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -42,8 +42,8 @@ class ProfileUpdateRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'name'						=> 'required',
-			'description'				=> 'required'
+			'user_id'					=> 'required',
+			'employee_type_id'			=> 'required'
 		];
 	}
 

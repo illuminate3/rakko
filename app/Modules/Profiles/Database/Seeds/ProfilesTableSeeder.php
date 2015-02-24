@@ -4,9 +4,6 @@ namespace App\Modules\Profiles\Database\Seeds;
 use Illuminate\Database\Seeder;
 Use DB, Eloquent, Model;
 
-use Caffeinated\Shinobi\Models\Role as Role;
-use App\Modules\Kagi\Http\Domain\Models\User as User;
-
 class ProfilesTableSeeder extends Seeder {
 
 	public function run()

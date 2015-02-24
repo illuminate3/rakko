@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobtitleProfileTable extends Migration
+class CreateEmployeeJobtitleTable extends Migration
 {
 
 	public function __construct()
@@ -19,17 +19,17 @@ class CreateJobtitleProfileTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create($this->prefix . 'jobtitle_profile', function(Blueprint $table)
+		Schema::create($this->prefix . 'employee_jobtitle', function(Blueprint $table)
 		{
 
 			$table->engine = 'InnoDB';
 
 
+			$table->integer('employee_id')->unsigned()->index();
 			$table->integer('jobtitle_id')->unsigned()->index();
-			$table->integer('profile_id')->unsigned()->index();
 
+			$table->foreign('employee_id')->references('id')->on($this->prefix.'employees')->onDelete('cascade');
 			$table->foreign('jobtitle_id')->references('id')->on($this->prefix.'job_titles')->onDelete('cascade');
-			$table->foreign('profile_id')->references('id')->on($this->prefix.'profiles')->onDelete('cascade');
 
 
 // 			$table->softDeletes();
@@ -46,7 +46,7 @@ class CreateJobtitleProfileTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'jobtitle_profile');
+		Schema::drop($this->prefix . 'employee_jobtitle');
 	}
 
 }

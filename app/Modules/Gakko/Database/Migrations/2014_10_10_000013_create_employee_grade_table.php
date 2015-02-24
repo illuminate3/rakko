@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileSiteTable extends Migration
+class CreateEmployeeGradeTable extends Migration
 {
 
 	public function __construct()
@@ -19,17 +19,17 @@ class CreateProfileSiteTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create($this->prefix . 'profile_site', function(Blueprint $table)
+		Schema::create($this->prefix . 'employee_grade', function(Blueprint $table)
 		{
 
 			$table->engine = 'InnoDB';
 
 
-			$table->integer('profile_id')->unsigned()->index();
-			$table->integer('site_id')->unsigned()->index();
+			$table->integer('employee_id')->unsigned()->index();
+			$table->integer('grade_id')->unsigned()->index();
 
-			$table->foreign('profile_id')->references('id')->on($this->prefix.'profiles')->onDelete('cascade');
-			$table->foreign('site_id')->references('id')->on($this->prefix.'sites')->onDelete('cascade');
+			$table->foreign('employee_id')->references('id')->on($this->prefix.'employees')->onDelete('cascade');
+			$table->foreign('grade_id')->references('id')->on($this->prefix.'grades')->onDelete('cascade');
 
 
 // 			$table->softDeletes();
@@ -45,7 +45,7 @@ class CreateProfileSiteTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'profile_site');
+		Schema::drop($this->prefix . 'employee_grade');
 	}
 
 }

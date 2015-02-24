@@ -63,41 +63,45 @@ Route::group(array(
 	//	'as'=>'api.departments',
 		'uses'=>'DepartmentsController@data'
 		));
-	Route::get('api/grades', array(
-	//	'as'=>'api.grades',
-		'uses'=>'GradesController@data'
-		));
 	Route::get('api/divisions', array(
 	//	'as'=>'api.divisions',
 		'uses'=>'DivisionsController@data'
-		));
-	Route::get('api/positions', array(
-	//	'as'=>'api.positions',
-		'uses'=>'PositionsController@data'
-		));
-	Route::get('api/subjects', array(
-	//	'as'=>'api.subjects',
-		'uses'=>'SubjectsController@data'
 		));
 	Route::get('api/employee_types', array(
 	//	'as'=>'api.employee_types',
 		'uses'=>'EmployeeTypesController@data'
 		));
+	Route::get('api/employees', array(
+	//	'as'=>'api.employees',
+		'uses'=>'EmployeesController@data'
+		));
+	Route::get('api/grades', array(
+	//	'as'=>'api.grades',
+		'uses'=>'GradesController@data'
+		));
 	Route::get('api/job_titles', array(
 	//	'as'=>'api.job_titles',
 		'uses'=>'JobTitlesController@data'
 		));
-	Route::get('api/statuses', array(
-	//	'as'=>'api.statuses',
-		'uses'=>'StatusesController@data'
+	Route::get('api/positions', array(
+	//	'as'=>'api.positions',
+		'uses'=>'PositionsController@data'
+		));
+	Route::get('api/rooms', array(
+	//	'as'=>'api.sites',
+		'uses'=>'RoomsController@data'
 		));
 	Route::get('api/sites', array(
 	//	'as'=>'api.sites',
 		'uses'=>'SitesController@data'
 		));
-	Route::get('api/rooms', array(
-	//	'as'=>'api.sites',
-		'uses'=>'RoomsController@data'
+	Route::get('api/statuses', array(
+	//	'as'=>'api.statuses',
+		'uses'=>'StatusesController@data'
+		));
+	Route::get('api/subjects', array(
+	//	'as'=>'api.subjects',
+		'uses'=>'SubjectsController@data'
 		));
 
 /*

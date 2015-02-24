@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{ Lang::choice('kotoba::hr.profile', 2) }} :: @parent
+{{ Lang::choice('kotoba::hr.employee', 2) }} :: @parent
 @stop
 
 @section('styles')
@@ -24,7 +24,7 @@
 			"sPaginationType" : "bootstrap",
 			"bProcessing" : true,
 			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('api/profiles') }}",
+			"sAjaxSource" : "{{ URL::to('api/employees') }}",
 		});
 	});
 @stop
@@ -37,13 +37,13 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/profiles/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+	<a href="/employees/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
 		<i class="fa fa-plus fa-fw"></i>
 		{{ trans('kotoba::button.new') }}
 	</a>
 	</p>
 	<i class="fa fa-angle-double-right fa-lg"></i>
-		{{ Lang::choice('kotoba::hr.profile', 2) }}
+		{{ Lang::choice('kotoba::hr.employee', 2) }}
 	<hr>
 </h1>
 </div>

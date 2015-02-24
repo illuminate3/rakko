@@ -145,6 +145,33 @@
 </div>
 
 
+{{--
+<div class="form-group">
+	<label for="inputLogo" class="col-sm-2 control-label">{{ trans('lingos::account.picture') }}:</label>
+	<div class="col-sm-4">
+		<div class="logo-container">
+			@if ($picture)
+				{{ Form::hidden('picture', $profile->picture) }}
+
+				<img
+						src="{{ $profile->picture }}"
+					alt="{{ Auth::user()->email }}"
+					class="img-circle profile"
+				/>
+
+			@else
+				<span class="logo-alt">{{ trans('lingos::account.error.logo') }}</span>
+			@endif
+		</div>
+	</div>
+	<div class="col-sm-6">
+		{{ Form::file('picture') }}
+	</div>
+</div>
+--}}
+
+
+
 <hr>
 
 <div class="form-group">

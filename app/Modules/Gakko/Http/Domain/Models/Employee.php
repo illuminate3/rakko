@@ -15,7 +15,7 @@ class Employee extends Model {
 	 */
 	protected $table = 'employees';
 
-	protected $presenter = 'App\modules\ModuleManager\Http\Presenters\Module';
+	protected $presenter = 'App\modules\Gakko\Http\Presenters\Employee';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -45,11 +45,18 @@ class Employee extends Model {
 */
 	protected $fillable = [
 		'id',
-		'name',
-		'slug',
-		'version',
-		'description',
-		'enabled'
+		'user_id',
+		'employee_type_id',
+		'department_id',
+		'position_id',
+		'secondary_position_id',
+		'job_title_id',
+		'secondary_job_title_id',
+		'isTeacher',
+		'supervisor_id',
+		'isSupervisior',
+		'status_id',
+		'notes'
 		];
 
 // DEFINE Relationships --------------------------------------------------
