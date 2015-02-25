@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7adc49728fede6f2e2a8775634042119",
+    "hash": "cb85d53b89d5a585b3e16d3b51cec500",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/modules.git",
-                "reference": "7a895f7ac6fb31f5563df71cc2cfd9db77961654"
+                "reference": "6abe079769c39f6a73c689a202fecd8abc67dfa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/modules/zipball/7a895f7ac6fb31f5563df71cc2cfd9db77961654",
-                "reference": "7a895f7ac6fb31f5563df71cc2cfd9db77961654",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/6abe079769c39f6a73c689a202fecd8abc67dfa2",
+                "reference": "6abe079769c39f6a73c689a202fecd8abc67dfa2",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 "laravel",
                 "modules"
             ],
-            "time": "2015-02-22 07:23:41"
+            "time": "2015-02-23 22:55:47"
         },
         {
             "name": "caffeinated/shinobi",
@@ -851,12 +851,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "553c017ba519cc0932906fae39e4bd26c0eb948c"
+                "reference": "9d051a493d88dcd5722e920889734123a7080b03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/553c017ba519cc0932906fae39e4bd26c0eb948c",
-                "reference": "553c017ba519cc0932906fae39e4bd26c0eb948c",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/9d051a493d88dcd5722e920889734123a7080b03",
+                "reference": "9d051a493d88dcd5722e920889734123a7080b03",
                 "shasum": ""
             },
             "require": {
@@ -887,7 +887,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-23 05:08:03"
+            "time": "2015-02-24 05:49:24"
         },
         {
             "name": "intervention/image",
@@ -1357,16 +1357,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "5ecfde2b908f99d21545a1be385fbd6f78e6444c"
+                "reference": "4ca0e2868fdfd3156c02c0d5c5612cbd8fa9b124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/5ecfde2b908f99d21545a1be385fbd6f78e6444c",
-                "reference": "5ecfde2b908f99d21545a1be385fbd6f78e6444c",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/4ca0e2868fdfd3156c02c0d5c5612cbd8fa9b124",
+                "reference": "4ca0e2868fdfd3156c02c0d5c5612cbd8fa9b124",
                 "shasum": ""
             },
             "require": {
@@ -1407,7 +1407,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-02-20 20:07:14"
+            "time": "2015-02-24 20:20:48"
         },
         {
             "name": "laravelcollective/html",
