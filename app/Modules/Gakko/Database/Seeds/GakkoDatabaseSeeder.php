@@ -15,8 +15,9 @@ class GakkoDatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		$this->call('App\Modules\Gakko\Database\Seeds\ModuleSeeder');
+//		$this->call('App\Modules\Gakko\Database\Seeds\ModuleSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\EmployeesSeeder');
+		$this->call('App\Modules\Gakko\Database\Seeds\EmployeeTypesSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\DivisionsSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\StatusesSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\SitesSeeder');

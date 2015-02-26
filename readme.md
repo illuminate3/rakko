@@ -1,11 +1,11 @@
 1.
-pa module:migrate ModuleManager
+pa module:migrate Manager
 
 2.
 pa module:migrate Kagi
 
 3.
-pa module:seed ModuleManager
+pa module:seed Manager
 pa module:seed Kagi
 
 4.

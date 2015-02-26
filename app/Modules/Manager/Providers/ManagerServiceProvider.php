@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\ModuleManager\Providers;
+namespace App\Modules\Manager\Providers;
 
 use App;
 use Config;
@@ -7,7 +7,7 @@ use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
 
-class ModuleManagerServiceProvider extends ServiceProvider
+class ManagerServiceProvider extends ServiceProvider
 {
 	/**
 	 * Register the Kagi module service provider.
@@ -17,10 +17,10 @@ class ModuleManagerServiceProvider extends ServiceProvider
 	public function register()
 	{
 
-		App::register('App\Modules\ModuleManager\Providers\RouteServiceProvider');
+		App::register('App\Modules\Manager\Providers\RouteServiceProvider');
 
 		$this->mergeConfigFrom(
-			__DIR__.'/../Config/module_manager.php', 'module_manager'
+			__DIR__.'/../Config/manager.php', 'manager'
 		);
 
 		$this->registerNamespaces();
@@ -37,8 +37,8 @@ class ModuleManagerServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-//		Lang::addNamespace('module_manager', __DIR__.'/../Resources/Lang/');
-		View::addNamespace('module_manager', __DIR__.'/../Resources/Views/');
+//		Lang::addNamespace('manager', __DIR__.'/../Resources/Lang/');
+		View::addNamespace('manager', __DIR__.'/../Resources/Views/');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class ModuleManagerServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__.'/../Config/module_manager.php' => config_path('module_manager.php'),
+			__DIR__.'/../Config/manager.php' => config_path('manager.php'),
 		]);
 	}
 
@@ -61,7 +61,7 @@ class ModuleManagerServiceProvider extends ServiceProvider
 /*
 	public function provides()
 	{
-		return ['module_manager'];
+		return ['manager'];
 	}
 */
 	/**
@@ -75,7 +75,7 @@ class ModuleManagerServiceProvider extends ServiceProvider
 		$this->registerInstallCommand();
 
 		$this->commands([
-			'module_manager.install'
+			'manager.install'
 		]);
 	}
 */
@@ -88,8 +88,8 @@ class ModuleManagerServiceProvider extends ServiceProvider
 /*
 	protected function registerInstallCommand()
 	{
-		$this->app->bindShared('module_manager.install', function() {
-			return new App\Modules\ModuleManager\Console\Commands\ModuleManagerCommand;
+		$this->app->bindShared('manager.install', function() {
+			return new App\Modules\Manager\Console\Commands\ManagerCommand;
 		});
 	}
 */

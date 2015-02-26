@@ -39,7 +39,8 @@ class EmployeesSeeder extends Seeder {
 		{
 
 			$employees = array(
-				'user_id'				=> $user->id
+				'user_id'				=> $user->id,
+				'profile_id'			=> $user->id
 			);
 
 			DB::table('employees')->insert( $employees );

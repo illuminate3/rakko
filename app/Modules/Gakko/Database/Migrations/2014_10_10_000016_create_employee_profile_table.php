@@ -19,6 +19,7 @@ class CreateEmployeeProfileTable extends Migration
 	 */
 	public function up()
 	{
+/*
 		Schema::create($this->prefix . 'employee_profile', function(Blueprint $table)
 		{
 
@@ -36,8 +37,8 @@ class CreateEmployeeProfileTable extends Migration
 // 			$table->timestamps();
 
 		});
+*/
 	}
-
 	/**
 	 * Reverse the migrations.
 	 *

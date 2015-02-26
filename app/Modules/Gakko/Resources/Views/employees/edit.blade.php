@@ -51,7 +51,7 @@
 		'class' => 'form'
 	]
 ) !!}
-{!! Form::hidden('picture', $employee->user_id) !!}
+{!! Form::hidden('user_id', $employee->user_id) !!}
 
 
 <div class="form-group padding-bottom-xl">
