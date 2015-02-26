@@ -12,7 +12,9 @@ use App\Modules\Gakko\Http\Requests\DeleteRequest;
 //use Datatable;
 use Datatables;
 //use Bootstrap;
-use Flash;
+use Flash, Image;
+
+use Config;
 
 class SitesController extends GakkoController {
 
@@ -21,12 +23,15 @@ class SitesController extends GakkoController {
 	 *
 	 * @var Site
 	 */
+	protected $request;
 	protected $site;
 
 	public function __construct(
+			Request $request,
 			SiteRepository $site
 		)
 	{
+		$this->request = $request;
 		$this->site = $site;
 
 //		$this->middleware('admin');
@@ -61,7 +66,30 @@ class SitesController extends GakkoController {
 		SiteCreateRequest $request
 		)
 	{
-		$this->site->store($request->all());
+		$save_path =  Config::get('general.image.logo_save');
+		$show_path =  Config::get('general.image.logo_show');
+		$resize_width =  Config::get('general.image.resize_width');
+		$resize_height =  Config::get('general.image.resize_height');
+
+		$file = time() . '-' . $request->file('newImage')->getClientOriginalName();
+
+		$request->file('newImage')->move($save_path, $file);;
+
+		$width = Image::make($save_path . $file)->width();
+//dd($width);
+		if ($width < $resize_width ) {
+			$image = Image::make($save_path . $file)->resize($resize_width, $resize_height)->encode('data-url');
+		} else {
+// 			$image = Image::make($save_path . $file)->resize($resize_width, $resize_height, function ($constraint) {
+// 					$constraint->aspectRatio();
+// 				});
+			$image = Image::make($save_path . $file)->fit($resize_height, $resize_width)->encode('data-url');
+		}
+
+		$image->save($save_path . $file);
+
+		$this->site->update($request->all(), $id, $file, $show_path);
+		$this->site->store($request->all(), $file, $show_path);
 
 		Flash::success( trans('kotoba::hr.success.site_create') );
 		return redirect('sites');
@@ -101,7 +129,29 @@ class SitesController extends GakkoController {
 		)
 	{
 //dd("update");
-		$this->site->update($request->all(), $id);
+		$save_path =  Config::get('general.image.logo_save');
+		$show_path =  Config::get('general.image.logo_show');
+		$resize_width =  Config::get('general.image.resize_width');
+		$resize_height =  Config::get('general.image.resize_height');
+
+		$file = time() . '-' . $request->file('newImage')->getClientOriginalName();
+
+		$request->file('newImage')->move($save_path, $file);;
+
+		$width = Image::make($save_path . $file)->width();
+//dd($width);
+		if ($width < $resize_width ) {
+			$image = Image::make($save_path . $file)->resize($resize_width, $resize_height)->encode('data-url');
+		} else {
+// 			$image = Image::make($save_path . $file)->resize($resize_width, $resize_height, function ($constraint) {
+// 					$constraint->aspectRatio();
+// 				});
+			$image = Image::make($save_path . $file)->fit($resize_height, $resize_width)->encode('data-url');
+		}
+
+		$image->save($save_path . $file);
+
+		$this->site->update($request->all(), $id, $file, $show_path);
 
 		Flash::success( trans('kotoba::hr.success.site_update') );
 		return redirect('sites');

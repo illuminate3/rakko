@@ -98,8 +98,10 @@ class EmployeeRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$employee = $this->model->find($id);
-//dd($module);
+//		$employee = $this->model->with('employeeProfile')->find($id);
+		$employee = $this->model->with('profile')->find($id);
+//		$employee = $this->model->with('user')->find($id);
+//dd($employee);
 
 		$employeeTypes = $this->getEmployeeTypes();
 		$employeeTypes = array('' => trans('kotoba::general.command.select_an') . '&nbsp;' . Lang::choice('kotoba::hr.employee_type', 2)) + $employeeTypes;

@@ -60,6 +60,18 @@ class Employee extends Model {
 		];
 
 // DEFINE Relationships --------------------------------------------------
+
+public function user()
+{
+	return $this->belongsTo('App\Modules\Kagi\Http\Domain\Models\User');
+}
+
+public function profile()
+{
+	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\EmployeeProfile');
+}
+
+
 /*
 public function site()
 {
@@ -126,11 +138,6 @@ public function jobTitles()
 	return $this->belongsToMany('App\Modules\Gakko\Http\Domain\Models\JobTitle');
 }
 
-
-public function user()
-{
-	return $this->belongsTo('User');
-}
 
 
 }

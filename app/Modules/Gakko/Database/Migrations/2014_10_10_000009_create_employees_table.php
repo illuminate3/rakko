@@ -25,7 +25,8 @@ class CreateEmployeesTable extends Migration
 			$table->increments('id');
 
 
-			$table->integer('user_id');
+			$table->integer('user_id')->index();
+			$table->integer('profile_id')->index();
 			$table->integer('employee_type_id')->nullable();
 			$table->string('department_id',100)->nullable();
 			$table->integer('position_id')->nullable();

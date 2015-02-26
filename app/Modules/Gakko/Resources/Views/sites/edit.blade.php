@@ -47,6 +47,7 @@
 	[
 		'route' => ['sites.update', $site->id],
 		'method' => 'PATCH',
+		'files' => 'true',
 		'class' => 'form'
 	]
 ) !!}
@@ -136,6 +137,30 @@
 	</div>
 </div>
 
+<div class="form-group padding-bottom-xl">
+	<label for="inputLogo" class="col-sm-1 control-label">{{ trans('kotoba::account.logo') }}:</label>
+	<div class="col-sm-11">
+		<div class="row margin-bottom-lg">
+		<div class="col-sm-8">
+
+			@if($logo != NULL)
+				{!! Form::hidden('logo', $site->logo) !!}
+				{!! Html::image($logo, '', ['class' => 'img-thumbnail']) !!}
+			@else
+				<div class="alert alert-danger">
+					{{ trans('kotoba::account.error.logo') }}
+				</div>
+			@endif
+
+		</div>
+
+		<div class="col-sm-4">
+			{!! Form::file('newImage') !!}
+		</div>
+
+		</div>
+	</div>
+</div>
 
 <div class="form-group">
 <div class="input-group">
@@ -171,8 +196,6 @@
 		<textarea id="notes" name="notes" value="{{ $site->notes }}" placeholder="{{ trans('kotoba::general.notes') }}" class="form-control" rows="5"></textarea>
 </div>
 </div>
-
-
 
 
 <hr>

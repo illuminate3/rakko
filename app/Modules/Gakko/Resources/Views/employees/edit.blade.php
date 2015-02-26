@@ -35,7 +35,8 @@
 	</a>
 	</p>
 	<i class="fa fa-edit fa-lg"></i>
-	{{ trans('kotoba::general.command.edit') }}
+	{{-- trans('kotoba::general.command.edit') --}}
+	{{{ $employee->profile->prefix }}}&nbsp;{{{ $employee->profile->first_name }}}&nbsp;{{{ $employee->profile->middle_initial }}}&nbsp;{{{ $employee->profile->last_name }}}&nbsp;{{{ $employee->profile->suffix }}}
 	<hr>
 </h1>
 </div>

@@ -3,8 +3,8 @@ namespace App\Modules\Gakko\Http\Domain\Repositories;
 
 use App\Modules\Gakko\Http\Domain\Models\Site;
 
-use Config, DB, Lang;
-//use Hash, DB, Auth;
+use Config, DB, Input, Lang, Request;
+//use Hash, Auth;
 //use DateTime;
 //use File, Auth;
 use Image;
@@ -59,30 +59,14 @@ class SiteRepository extends BaseRepository {
 	public function show($id)
 	{
 		$site = $this->model->find($id);
-//dd($site->logo);
-//dd(Image::make(public_path() . '/uploads/uni.png')->response());
-//dd(time());
-//dd( Config::get('general.image.logo_show') );
-
 
 		if ($site->logo != NULL) {
-//			$logo = Image::getPaths($site->logo);
-// 			$logo = Image::make('uploads/logos/'. $site->logo)->encode('data-url');
 			$logo = $site->logo;
 		} else {
 			$logo = null;
 		}
-//dd($logo);
-/*
-$url = 'uploads/logos/'. $site->logo;
-$img = Image::cache(function($image) use ($url) {
-    return $image->make($url)->fit(350, 300)->encode('data-url');
-},10, false);
-//dd($img);
-*/
-//$img =  Image::make('uploads/uni.png')->resize(300, 200)->greyscale();
-$img = '';
-		return compact('site', 'logo', 'img');
+
+		return compact('site', 'logo');
 	}
 
 	/**
@@ -105,7 +89,13 @@ $img = '';
 		$statuses = $this->getStatuses();
 		$statuses = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::general.status')) + $statuses;
 
-		return compact('site', 'divisions', 'contacts', 'statuses');
+		if ($site->logo != NULL) {
+			$logo = $site->logo;
+		} else {
+			$logo = null;
+		}
+
+		return compact('site', 'divisions', 'contacts', 'statuses', 'logo');
 	}
 
 	/**
@@ -113,22 +103,17 @@ $img = '';
 	 *
 	 * @return Illuminate\Support\Collection
 	 */
-	public function store($input)
+	public function store($input, $file, $show_path)
 	{
-//dd($input);
+//dd($file);
+
 		$this->model = new Site;
 
-// 			$logo = Input::file('logo');
-// 			if ($logo) {
-// 				$input['logo'] = Image::upload($logo);
-// 			} else {
-// 				$input['logo'] = '';
-// 			}
-
+		if ($file != NULL) {
+			$input['logo'] = $show_path . $file;
+		}
 
 		$this->model->create($input);
-
-
 	}
 
 	/**
@@ -138,10 +123,15 @@ $img = '';
 	 * @param  int    $id
 	 * @return void
 	 */
-	public function update($input, $id)
+	public function update($input, $id, $file, $show_path)
 	{
-//dd($input['enabled']);
+//dd($file);
 		$site = Site::find($id);
+
+		if ($file != NULL) {
+			$input['logo'] = $show_path . $file;
+		}
+
 		$site->update($input);
 	}
 

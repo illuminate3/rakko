@@ -40,7 +40,7 @@ class CreateProfilesTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
 
-			$table->integer('user_id');
+			$table->integer('user_id')->index();
 			$table->string('first_name',100)->nullable();
 			$table->string('middle_initial',4)->nullable();
 			$table->string('last_name',100)->nullable();

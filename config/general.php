@@ -21,10 +21,14 @@ return [
 |--------------------------------------------------------------------------
 */
 	'image' => [
-		'logo_save'						=> storage_path('app/images/logos/'),
-		'user_save'						=> storage_path('app/images/logos/'),
-		'logo_show'						=> public_path('images/logos/'),
-		'user_show'						=> public_path('app/images/logos/'),
+// 		'logo_save'						=> storage_path('app/images/logos/'),
+ //		'user_save'						=> storage_path('app/images/users/'),
+		'logo_save'						=> public_path('images/logos/'),
+		'user_save'						=> public_path('images/users/'),
+ 		'logo_show'						=> 'images/logos/',
+// 		'user_show'						=> public_path('images/users/'),
+		'resize_width'					=> '220',
+		'resize_height'					=> '350',
 	],
 
 

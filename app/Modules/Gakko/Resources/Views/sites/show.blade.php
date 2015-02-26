@@ -93,7 +93,7 @@
 			<br>
 			<br>
 			<strong>
-				{{ trans('kotoba::hr.division') }}:
+				{{ Lang::choice('kotoba::hr.division', 2) }}:
 			</strong>
 			<br>
 			{{{ $site->division_id }}}
@@ -111,7 +111,7 @@
 		</div>
 		<div class="col-md-4">
 			@if($logo != NULL)
-				{!! Html::image($logo, '', ['class' => 'logo']) !!}
+				{!! Html::image($logo, '', ['class' => 'img-thumbnail']) !!}
 			@else
 				{{ trans('kotoba::account.error.logo') }}
 			@endif
@@ -130,36 +130,6 @@
 	<div class="panel-body">
 		{{{ $site->notes }}}
 	</div>
-</div>
-
-
-<hr>
-
-<div class="form-group">
-	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
-</div>
-
-{!! Form::close() !!}
-
-
-<div class="row">
-<div class="col-sm-4">
-	<a href="/sites" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
-		<i class="fa fa-times fa-fw"></i>
-		{{ trans('kotoba::button.cancel') }}
-	</a>
-</div>
-
-<div class="col-sm-4">
-	<input class="btn btn-default btn-block" type="reset" value="{{ trans('kotoba::button.reset') }}">
-</div>
-
-<div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
-</div>
 </div>
 
 </div> <!-- ./ row -->
