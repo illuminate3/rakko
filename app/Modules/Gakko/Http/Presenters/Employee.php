@@ -2,6 +2,7 @@
 namespace App\Modules\Gakko\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
+use App\Modules\Gakko\Http\Domain\Models\Department;
 
 use DB;
 
@@ -238,6 +239,39 @@ class Employee extends Presenter {
 
 //		return trim($return, ',&nbsp;');
 	}
+
+
+
+	public function hasDepartment($id)
+	{
+dd( Department->with('departments')->get() );
+//dd($this->departments);
+		foreach (Department::All() as $department)
+		{
+			if ($department->id == $id)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function selectedDepartments($id)
+	{
+
+//dd($this->departments);
+		foreach (App\Modules\Gakko\Http\Domain\Models\Department::All() as $department)
+		{
+			if ($department->id == $id)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 
 
 }

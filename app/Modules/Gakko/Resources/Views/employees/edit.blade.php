@@ -75,9 +75,10 @@
 	<div class="col-sm-10">
 		{!!
 			Form::select(
-				'department_id',
+				'departments[]',
 				$departments,
 				$employee->department_id,
+//				$employee->hasDepartments($employee->department_id),
 				array(
 					'class' => 'form-control chosen-select',
 					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.department', 2),
@@ -87,26 +88,26 @@
 		!!}
 	</div>
 </div>
-{{--
+
 <div class="form-group padding-bottom-xl">
 	<label for="inputDepartments" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.department',2 ) }}:</label>
 	<div class="col-sm-10">
-		@foreach (Department::All() as $department)
+		@foreach (App\Modules\Gakko\Http\Domain\Models\Department::All() as $department)
 			<label class="checkbox-inline">
-				{{ Form::checkbox('departments[]', $department->id, $employee->hasDepartment($department->id)) }}
+				{!! Form::checkbox('departments[]', $department->id, $employee->present()->hasDepartment($department->id)) !!}
 				{{ $department->name }}
 			</label>
 		@endforeach
 	</div>
 </div>
---}}
+
 
 <div class="form-group padding-bottom-xl">
 	<label for="inputJobTitle1" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.job_title', 1) }}:</label>
 	<div class="col-sm-10">
 		{!!
 			Form::select(
-				'job_title_id',
+				'jobtitles[]',
 				$jobTitles,
 				$employee->job_title_id,
 				array(
@@ -172,7 +173,7 @@
 	<div class="col-sm-10">
 		{!!
 			Form::select(
-				'grade_id[]',
+				'grades[]',
 				$grades,
 				$employee->grade_id,
 				array(
@@ -203,7 +204,7 @@
 	<div class="col-sm-10">
 		{!!
 			Form::select(
-				'subject_id',
+				'subjects[]',
 				$subjects,
 				$employee->subject_id,
 				array(
@@ -228,7 +229,7 @@
 	</div>
 </div>
 --}}
-
+{{--
 <div class="form-group padding-bottom-xl">
 	<label for="inputPosition" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.position', 1) }}:</label>
 	<div class="col-sm-10">
@@ -244,6 +245,7 @@
 		!!}
 	</div>
 </div>
+--}}
 
 <div class="form-group padding-bottom-xl">
 	<label for="inputSite" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.site', 2) }}:</label>

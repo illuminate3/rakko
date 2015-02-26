@@ -4,8 +4,6 @@ namespace App\Modules\Gakko\Database\Seeds;
 use Illuminate\Database\Seeder;
 Use DB, Eloquent, Model, Schema;
 
-use Illuminate\Support\Facades\DB;
-
 class JobTitlesSeeder extends Seeder {
 
 	public function run()

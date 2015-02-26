@@ -48,7 +48,7 @@ class Employee extends Model {
 		'user_id',
 		'employee_type_id',
 		'department_id',
-		'position_id',
+//		'position_id',
 		'secondary_position_id',
 		'job_title_id',
 		'secondary_job_title_id',
@@ -71,17 +71,16 @@ public function profile()
 	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\EmployeeProfile');
 }
 
-
+public function sites()
+{
+	return $this->belongsToMany('App\Modules\Gakko\Http\Domain\Models\Site');
+}
 /*
 public function site()
 {
 	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\Site');
 }
 */
-public function sites()
-{
-	return $this->belongsToMany('App\Modules\Gakko\Http\Domain\Models\Site');
-}
 
 
 public function grades()

@@ -103,6 +103,9 @@ class EmployeeRepository extends BaseRepository {
 //		$employee = $this->model->with('user')->find($id);
 //dd($employee);
 
+		$emDees = $this->model->with('departments')->find($id);
+dd($emDees);
+
 		$employeeTypes = $this->getEmployeeTypes();
 		$employeeTypes = array('' => trans('kotoba::general.command.select_an') . '&nbsp;' . Lang::choice('kotoba::hr.employee_type', 2)) + $employeeTypes;
 
@@ -162,8 +165,40 @@ class EmployeeRepository extends BaseRepository {
 	 */
 	public function update($input, $id)
 	{
-//dd($input['enabled']);
+//dd($input);
 		$employee = Employee::find($id);
+
+			if ( $input['sites'] != NULL ) {
+				$employee->sites()->sync($input['sites']);
+			}
+			if ( $input['departments'] != NULL) {
+				$employee->departments()->sync($input['departments']);
+			}
+			if ( $input['grades'] != NULL) {
+				$employee->grades()->sync($input['grades']);
+			}
+			if ( $input['subjects'] != NULL ) {
+				$employee->subjects()->sync($input['subjects']);
+			}
+// 			if ( $input['jobtitles'] != NULL ) {
+// 				$employee->jobtitles()->sync($input['jobtitles']);
+// 			}
+//dd("loaded");
+/*
+			if ( $input['employee_type_id'] == NULL ) {
+				$input['employee_type_id'] = NULL;
+			}
+			if ( $input['job_title_id'] == '' ) {
+				$input['job_title_id'] = NULL;
+			}
+			if ( $input['supervisor_id'] == '' ) {
+				$input['supervisor_id'] = NULL;
+			}
+			if ( $input['position_id'] == '' ) {
+				$input['position_id'] = NULL;
+			}
+*/
+
 		$employee->update($input);
 	}
 
@@ -200,7 +235,7 @@ class EmployeeRepository extends BaseRepository {
 
 	public function getGrades()
 	{
-		$grades = DB::table('grades')->lists('name', 'id');
+		$grades = DB::table('grades')->orderBy('id')->lists('name', 'id');
 		return $grades;
 	}
 

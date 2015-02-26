@@ -26,8 +26,8 @@ class CreateDepartmentEmployeeTable extends Migration
 			$table->engine = 'InnoDB';
 
 
-			$table->integer('department_id')->unsigned()->index();
 			$table->integer('employee_id')->unsigned()->index();
+			$table->integer('department_id')->unsigned()->index();
 
 			$table->foreign('department_id')->references('id')->on($this->prefix.'departments')->onDelete('cascade');
 			$table->foreign('employee_id')->references('id')->on($this->prefix.'employees')->onDelete('cascade');
