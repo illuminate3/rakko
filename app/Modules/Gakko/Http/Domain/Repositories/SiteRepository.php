@@ -3,7 +3,7 @@ namespace App\Modules\Gakko\Http\Domain\Repositories;
 
 use App\Modules\Gakko\Http\Domain\Models\Site;
 
-use DB, Lang;
+use Config, DB, Lang;
 //use Hash, DB, Auth;
 //use DateTime;
 //use File, Auth;
@@ -61,16 +61,28 @@ class SiteRepository extends BaseRepository {
 		$site = $this->model->find($id);
 //dd($site->logo);
 //dd(Image::make(public_path() . '/uploads/uni.png')->response());
+//dd(time());
+//dd( Config::get('general.image.logo_show') );
+
 
 		if ($site->logo != NULL) {
 //			$logo = Image::getPaths($site->logo);
-			$logo = Image::make('uploads/logos/'. $site->logo);
+// 			$logo = Image::make('uploads/logos/'. $site->logo)->encode('data-url');
+			$logo = $site->logo;
 		} else {
 			$logo = null;
 		}
 //dd($logo);
-
-		return compact('site', 'logo');
+/*
+$url = 'uploads/logos/'. $site->logo;
+$img = Image::cache(function($image) use ($url) {
+    return $image->make($url)->fit(350, 300)->encode('data-url');
+},10, false);
+//dd($img);
+*/
+//$img =  Image::make('uploads/uni.png')->resize(300, 200)->greyscale();
+$img = '';
+		return compact('site', 'logo', 'img');
 	}
 
 	/**

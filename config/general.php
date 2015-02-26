@@ -17,15 +17,33 @@ return [
 
 /*
 |--------------------------------------------------------------------------
-| db settings
+| Image Paths
 |--------------------------------------------------------------------------
 */
+	'image' => [
+		'logo_save'						=> storage_path('app/images/logos/'),
+		'user_save'						=> storage_path('app/images/logos/'),
+		'logo_show'						=> public_path('images/logos/'),
+		'user_show'						=> public_path('app/images/logos/'),
+	],
+
 
 /*
 |--------------------------------------------------------------------------
-| auth settings
+| Image Settings
 |--------------------------------------------------------------------------
 */
+	'templates' => array(
+		'small' => function($image) {
+			return $image->fit(120, 90);
+		},
+		'medium' => function($image) {
+			return $image->fit(240, 180);
+		},
+		'large' => function($image) {
+			return $image->fit(480, 360);
+		}
+	),
 
 
 /*
