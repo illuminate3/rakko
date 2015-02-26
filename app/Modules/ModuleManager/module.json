@@ -1,6 +1,6 @@
 {
 	"name": "ModuleManager",
-	"slug": "ModuleManager",
+	"slug": "module_manager",
 	"version": "1.0",
 	"description": "Module Management for Rakko",
 	"enabled": true

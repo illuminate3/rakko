@@ -1,6 +1,6 @@
 {
     "name": "Profiles",
-    "slug": "Profiles",
+    "slug": "profiles",
     "version": "1.0",
     "description": "Profiles for Rakko",
     "enabled": true

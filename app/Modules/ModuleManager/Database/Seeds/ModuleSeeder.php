@@ -11,7 +11,7 @@ class ModuleSeeder extends Seeder {
 
 // Module Information
 		$module = array(
-			'name'					=> 'Module Manager',
+			'name'					=> 'ModuleManager',
 			'slug'					=> 'module_manager',
 			'version'				=> '1.0',
 			'description'			=> 'Module Manager is a Rakko module that provides simple Module Managent ability',

@@ -2,6 +2,6 @@
 	"name": "Kagi",
 	"slug": "kagi",
 	"version": "1.0",
-	"description": "This is the description for the Kagi module.",
+	"description": "Authentification and Authorization by Kagi",
 	"enabled": true
 }
