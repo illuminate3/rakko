@@ -2,6 +2,10 @@
 namespace App\Modules\Gakko\Http\Domain\Repositories;
 
 use App\Modules\Gakko\Http\Domain\Models\Employee;
+use App\Modules\Gakko\Http\Domain\Models\Department;
+use App\Modules\Gakko\Http\Domain\Models\Grade;
+use App\Modules\Gakko\Http\Domain\Models\Subject;
+use App\Modules\Gakko\Http\Domain\Models\Site;
 
 use DB, Lang;
 //use Hash, DB, Auth;
@@ -24,9 +28,17 @@ class EmployeeRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
+		Department $department,
+		Grade $grade,
+		Subject $subject,
+		Site $site,
 		Employee $employee
 		)
 	{
+		$this->department = $department;
+		$this->grade = $grade;
+		$this->subject = $subject;
+		$this->site = $site;
 		$this->model = $employee;
 	}
 
@@ -103,9 +115,6 @@ class EmployeeRepository extends BaseRepository {
 //		$employee = $this->model->with('user')->find($id);
 //dd($employee);
 
-		$emDees = $this->model->with('departments')->find($id);
-dd($emDees);
-
 		$employeeTypes = $this->getEmployeeTypes();
 		$employeeTypes = array('' => trans('kotoba::general.command.select_an') . '&nbsp;' . Lang::choice('kotoba::hr.employee_type', 2)) + $employeeTypes;
 
@@ -131,6 +140,22 @@ dd($emDees);
 //		$sites = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.site', 2)) + $sites;
 
 
+		$allDepartments =  $this->department->all()->lists('name', 'id');
+//		$allDepartments = $this->getDepartments();
+
+		$allGrades =  $this->grade->all()->lists('name', 'id');
+//		$allGrades = $this->getGrades();
+
+//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
+//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
+		$allSubjects = $this->getSubjects();
+
+
+//		$allSites =  $this->sites->all()->lists('name', 'id');
+		$allSites = $this->getSites();
+//dd($allSites);
+
+
 		return compact(
 			'employee',
 			'employeeTypes',
@@ -140,7 +165,11 @@ dd($emDees);
 			'grades',
 			'subjects',
 			'positions',
-			'sites'
+			'sites',
+			'allDepartments',
+			'allGrades',
+			'allSubjects',
+			'allSites'
 			);
 	}
 

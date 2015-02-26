@@ -3,6 +3,7 @@ namespace App\Modules\Gakko\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 use App\Modules\Gakko\Http\Domain\Models\Department;
+//use App\Modules\Gakko\Http\Domain\Models\Employee;
 
 use DB;
 
@@ -242,34 +243,46 @@ class Employee extends Presenter {
 
 
 
-	public function hasDepartment($id)
+	public function checkBoxDepartments($id)
 	{
-dd( Department->with('departments')->get() );
-//dd($this->departments);
-		foreach (Department::All() as $department)
+		$departments = $this->entity->departments;
+		$departments->toArray();
+//echo $id;
+		$checkBoxValue = '';
+
+		foreach ($departments as $department)
 		{
-			if ($department->id == $id)
-			{
-				return true;
+
+			if ($department['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
 			}
 		}
 
-		return false;
+//echo $checkBoxValue;
+ 		return $checkBoxValue;
 	}
 
 	public function selectedDepartments($id)
 	{
+		$departments = $this->entity->departments;
+		$departments->toArray();
+//echo $id;
+		$selectOption = '';
 
-//dd($this->departments);
-		foreach (App\Modules\Gakko\Http\Domain\Models\Department::All() as $department)
+		foreach ($departments as $department)
 		{
-			if ($department->id == $id)
-			{
-				return true;
+
+			if ($department['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
 			}
 		}
 
-		return false;
+//echo $checkBoxValue;
+ 		return $selectOption;
 	}
 
 
