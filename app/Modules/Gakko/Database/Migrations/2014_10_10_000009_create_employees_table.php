@@ -30,10 +30,10 @@ class CreateEmployeesTable extends Migration
 			$table->integer('employee_type_id')->nullable();
 
 
-			$table->string('department_id',100)->nullable();
+//			$table->string('department_id',100)->nullable();
 			$table->integer('position_id')->nullable();
 			$table->integer('secondary_position_id')->nullable();
-			$table->integer('job_title_id')->nullable();
+//			$table->integer('job_title_id')->nullable();
 			$table->integer('secondary_job_title_id')->nullable();
 
 

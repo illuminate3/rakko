@@ -128,13 +128,13 @@ public function employeeType()
 	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\EmployeeType');
 }
 
-public function jobTitle()
-{
-	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\JobTitle');
-}
 public function jobTitles()
 {
 	return $this->belongsToMany('App\Modules\Gakko\Http\Domain\Models\JobTitle');
+}
+public function jobTitle()
+{
+	return $this->belongsTo('App\Modules\Gakko\Http\Domain\Models\JobTitle');
 }
 
 

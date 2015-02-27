@@ -259,10 +259,94 @@ class Employee extends Presenter {
 				break;
 			}
 		}
+//echo $checkBoxValue;
+ 		return $checkBoxValue;
+	}
+
+	public function checkBoxGrades($id)
+	{
+		$grades = $this->entity->grades;
+		$grades->toArray();
+//echo $id;
+		$checkBoxValue = '';
+
+		foreach ($grades as $grade)
+		{
+
+			if ($grade['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
 
 //echo $checkBoxValue;
  		return $checkBoxValue;
 	}
+
+	public function checkBoxSubjects($id)
+	{
+		$subjects = $this->entity->subjects;
+		$subjects->toArray();
+//echo $id;
+		$checkBoxValue = '';
+
+		foreach ($subjects as $subject)
+		{
+
+			if ($subject['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+
+//echo $checkBoxValue;
+ 		return $checkBoxValue;
+	}
+
+	public function checkBoxPositions($id)
+	{
+		$positions = $this->entity->positions;
+		$positions->toArray();
+//echo $id;
+		$checkBoxValue = '';
+
+		foreach ($positions as $position)
+		{
+
+			if ($position['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+
+//echo $checkBoxValue;
+ 		return $checkBoxValue;
+	}
+
+	public function checkBoxSites($id)
+	{
+		$sites = $this->entity->sites;
+		$sites->toArray();
+//echo $id;
+		$checkBoxValue = '';
+
+		foreach ($sites as $site)
+		{
+
+			if ($site['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+
+//echo $checkBoxValue;
+ 		return $checkBoxValue;
+	}
+
 
 	public function selectedDepartments($id)
 	{
@@ -281,6 +365,107 @@ class Employee extends Presenter {
 			}
 		}
 
+//echo $checkBoxValue;
+ 		return $selectOption;
+	}
+
+	public function selectedJobTitles($id)
+	{
+		$jobTitles = $this->entity->jobtitles;
+		$jobTitles->toArray();
+//echo $id;
+		$selectOption = '';
+
+		foreach ($jobTitles as $jobTitle)
+		{
+
+			if ($jobTitle['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+
+//echo $checkBoxValue;
+ 		return $selectOption;
+	}
+
+	public function selectedGrades($id)
+	{
+		$grades = $this->entity->grades;
+		$grades->toArray();
+//echo $id;
+		$selectOption = '';
+
+		foreach ($grades as $grade)
+		{
+
+			if ($grade['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+//echo $checkBoxValue;
+ 		return $selectOption;
+	}
+
+	public function selectedSubjects($id)
+	{
+		$subjects = $this->entity->subjects;
+		$subjects->toArray();
+//echo $id;
+		$selectOption = '';
+
+		foreach ($subjects as $subject)
+		{
+
+			if ($subject['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+//echo $checkBoxValue;
+ 		return $selectOption;
+	}
+
+	public function selectedPositions($id)
+	{
+		$positions = $this->entity->positions;
+		$positions->toArray();
+//echo $id;
+		$selectOption = '';
+
+		foreach ($positions as $position)
+		{
+
+			if ($position['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+//echo $checkBoxValue;
+ 		return $selectOption;
+	}
+
+	public function selectedSites($id)
+	{
+		$sites = $this->entity->sites;
+		$sites->toArray();
+//echo $id;
+		$selectOption = '';
+
+		foreach ($sites as $site)
+		{
+
+			if ($site['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
 //echo $checkBoxValue;
  		return $selectOption;
 	}

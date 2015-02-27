@@ -1,11 +1,12 @@
 <?php
 namespace App\Modules\Gakko\Http\Domain\Repositories;
 
-use App\Modules\Gakko\Http\Domain\Models\Employee;
 use App\Modules\Gakko\Http\Domain\Models\Department;
+use App\Modules\Gakko\Http\Domain\Models\Employee;
 use App\Modules\Gakko\Http\Domain\Models\Grade;
-use App\Modules\Gakko\Http\Domain\Models\Subject;
+use App\Modules\Gakko\Http\Domain\Models\JobTitle;
 use App\Modules\Gakko\Http\Domain\Models\Site;
+use App\Modules\Gakko\Http\Domain\Models\Subject;
 
 use DB, Lang;
 //use Hash, DB, Auth;
@@ -28,18 +29,20 @@ class EmployeeRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
+		Employee $employee,
 		Department $department,
 		Grade $grade,
-		Subject $subject,
+		JobTitle $jobTitle,
 		Site $site,
-		Employee $employee
+		Subject $subject
 		)
 	{
+		$this->model = $employee;
 		$this->department = $department;
 		$this->grade = $grade;
-		$this->subject = $subject;
+		$this->jobTitle = $jobTitle;
 		$this->site = $site;
-		$this->model = $employee;
+		$this->subject = $subject;
 	}
 
 	/**
@@ -120,39 +123,35 @@ class EmployeeRepository extends BaseRepository {
 
 		$departments = $this->getDepartments();
 //		$departments = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.department', 2)) + $departments;
-
-		$jobTitles = $this->getJobTitles();
-		$jobTitles = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.job_title', 1)) + $jobTitles;
-
-		$supervisors = $this->getSupervisors();
-		$supervisors = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::hr.supervisor')) + $supervisors;
+//		$allDepartments =  $this->department->all()->lists('name', 'id');
+//		$allDepartments = $this->getDepartments();
 
 		$grades = $this->getGrades();
 //		$grades = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.grade', 2)) + $grades;
+//		$allGrades =  $this->grade->all()->lists('name', 'id');
+//		$allGrades = $this->getGrades();
 
-		$subjects = $this->getSubjects();
-//		$subjects = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.subject', 2)) + $subjects;
+		$jobTitles = $this->getJobTitles();
+//		$jobTitles = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.job_title', 1)) + $jobTitles;
+//		$allJobTitles = $this->jobTitle->all()->lists('name', 'id');
+//		$allJobTitles = $this->getJobTitles();
 
-		$positions = $this->getPositions();
-		$positions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.position', 1)) + $positions;
+//		$positions = $this->getPositions();
+//		$positions = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::hr.position', 1)) + $positions;
 
 		$sites = $this->getSites();
 //		$sites = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.site', 2)) + $sites;
-
-
-		$allDepartments =  $this->department->all()->lists('name', 'id');
-//		$allDepartments = $this->getDepartments();
-
-		$allGrades =  $this->grade->all()->lists('name', 'id');
-//		$allGrades = $this->getGrades();
-
-//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
-//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
-		$allSubjects = $this->getSubjects();
-
-
 //		$allSites =  $this->sites->all()->lists('name', 'id');
-		$allSites = $this->getSites();
+//		$allSites = $this->getSites();
+
+		$subjects = $this->getSubjects();
+//		$subjects = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.subject', 2)) + $subjects;
+//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
+//		$allSubjects =  $this->subjects->all()->lists('name', 'id');
+//		$allSubjects = $this->getSubjects();
+
+		$supervisors = $this->getSupervisors();
+		$supervisors = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . trans('kotoba::hr.supervisor')) + $supervisors;
 //dd($allSites);
 
 
@@ -160,16 +159,17 @@ class EmployeeRepository extends BaseRepository {
 			'employee',
 			'employeeTypes',
 			'departments',
-			'jobTitles',
-			'supervisors',
 			'grades',
-			'subjects',
-			'positions',
+			'jobTitles',
+//			'positions',
 			'sites',
-			'allDepartments',
-			'allGrades',
-			'allSubjects',
-			'allSites'
+			'supervisors',
+			'subjects'
+//			'allDepartments',
+//			'allGrades',
+//			'allJobTitles',
+//			'allSites',
+//			'allSubjects'
 			);
 	}
 

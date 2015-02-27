@@ -74,29 +74,25 @@
 	<label for="inputDepartment" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.department',2 ) }}:</label>
 	<div class="col-sm-10">
 		<select multiple="multiple" id="departments" name="departments[]" class="form-control chosen-select">
-		@foreach ($departments as $department)
-				<option value='{!! $department->id !!}' selected>{!! $department->name  !!}</option>
+		@foreach ($departments as $key => $value)
+			<option value='{!! $key !!}' {{ $employee->present()->selectedDepartments($key) }}>{{ $value  }}</option>
 		@endforeach
 		</select>
-	</div>
-</div>
-{{--
-<div class="form-group padding-bottom-xl">
-	<label for="inputDepartments" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.department',2 ) }}:</label>
-	<div class="col-sm-10">
+<!--
 		@foreach (App\Modules\Gakko\Http\Domain\Models\Department::All() as $department)
 			<label class="checkbox-inline">
 				<input type="checkbox" name="departments[]" value="{{ $department->id }}" {{ $employee->present()->checkBoxDepartments($department->id) }}>
 				{{ $department->name }}
 			</label>
 		@endforeach
+-->
 	</div>
 </div>
---}}
 
 <div class="form-group padding-bottom-xl">
 	<label for="inputJobTitle1" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.job_title', 1) }}:</label>
 	<div class="col-sm-10">
+<!--
 		{!!
 			Form::select(
 				'jobtitles[]',
@@ -107,11 +103,140 @@
 				)
 			)
 		!!}
+-->
+		<select multiple="multiple" id="jobtitles" name="jobtitles[]" class="form-control chosen-select">
+		@foreach ($jobTitles as $key => $value)
+			<option value='{!! $key !!}' {{ $employee->present()->selectedJobTitles($key) }}>{{ $value  }}</option>
+		@endforeach
+		</select>
+	</div>
+</div>
+
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputGrades" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.grade', 2) }}:</label>
+	<div class="col-sm-10">
+<!--
+		{!!
+			Form::select(
+				'grades[]',
+				$grades,
+				$employee->grade_id,
+				array(
+					'class' => 'form-control chosen-select',
+					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.grade', 2),
+					'multiple' => true
+				)
+			)
+		!!}
+-->
+<!--
+		<select multiple="multiple" id="departments" name="departments[]" class="form-control chosen-select">
+		@foreach ($grades as $key => $value)
+			<option value='{!! $key !!}' {{ $employee->present()->selectedGrades($key) }}>{{ $value  }}</option>
+		@endforeach
+		</select>
+-->
+		@foreach (App\Modules\Gakko\Http\Domain\Models\Grade::All() as $grade)
+			<label class="checkbox-inline">
+				<input type="checkbox" name="grades[]" value="{{ $grade->id }}" {{ $employee->present()->checkBoxGrades($grade->id) }}>
+				{{ $grade->name }}
+			</label>
+		@endforeach
 	</div>
 </div>
 
 <div class="form-group padding-bottom-xl">
-	<label for="inputIsSupervisior" class="col-sm-2 control-label">{{ trans('kotoba::hr.ask.isSupervisior') }}:</label>
+	<label for="inputSubject" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.subject', 2) }}:</label>
+	<div class="col-sm-10">
+<!--
+		{!!
+			Form::select(
+				'subjects[]',
+				$subjects,
+				$employee->subject_id,
+				array(
+					'class' => 'form-control chosen-select',
+					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.subject', 2),
+					'multiple' => true
+				)
+			)
+		!!}
+-->
+		<select multiple="multiple" id="subjects" name="subjects[]" class="form-control chosen-select">
+		@foreach ($subjects as $key => $value)
+			<option value='{!! $key !!}' {{ $employee->present()->selectedSubjects($key) }}>{{ $value  }}</option>
+		@endforeach
+		</select>
+<!--
+		@foreach (App\Modules\Gakko\Http\Domain\Models\Subject::All() as $subject)
+			<label class="checkbox-inline">
+				<input type="checkbox" name="subjects[]" value="{{ $subject->id }}" {{ $employee->present()->checkBoxSubjects($subject->id) }}>
+				{{ $subject->name }}
+			</label>
+		@endforeach
+-->
+	</div>
+</div>
+
+
+{{--
+<div class="form-group padding-bottom-xl">
+	<label for="inputPosition" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.position', 1) }}:</label>
+	<div class="col-sm-10">
+		{!!
+			Form::select(
+				'position_id',
+				$positions,
+				$employee->position_id,
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
+--}}
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputSite" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.site', 2) }}:</label>
+	<div class="col-sm-10">
+<!--
+		{!!
+			Form::select(
+				'sites[]',
+				$sites,
+				$employee->site_id,
+				array(
+					'class' => 'form-control chosen-select',
+					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.site', 2),
+					'multiple' => true
+				)
+			)
+		!!}
+-->
+		<select multiple="multiple" id="sites" name="sites[]" class="form-control chosen-select">
+		@foreach ($sites as $key => $value)
+			<option value='{!! $key !!}' {{ $employee->present()->selectedSites($key) }}>{{ $value  }}</option>
+		@endforeach
+		</select>
+<!--
+		@foreach (App\Modules\Gakko\Http\Domain\Models\Site::All() as $site)
+			<label class="checkbox-inline">
+				<input type="checkbox" name="sites[]" value="{{ $site->id }}" {{ $employee->present()->checkBoxSites($site->id) }}>
+				{{ $site->name }}
+			</label>
+		@endforeach
+-->
+	</div>
+</div>
+
+
+<hr>
+
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputIsSupervisior" class="col-sm-2 control-label">{{ trans('kotoba::hr.ask.isSupervisior') }}</label>
 	<div class="col-sm-10">
 		<label class="radio-inline">
 			{!!
@@ -142,7 +267,6 @@
 	</div>
 </div>
 
-@if ($employee->isSupervisior != '1')
 <div class="form-group padding-bottom-xl">
 	<label for="inputSupervisor" class="col-sm-2 control-label">{{ trans('kotoba::hr.supervisor') }}:</label>
 	<div class="col-sm-10">
@@ -158,149 +282,9 @@
 		!!}
 	</div>
 </div>
-@endif
-
-<div class="form-group padding-bottom-xl">
-	<label for="inputGrades" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.grade', 2) }}:</label>
-	<div class="col-sm-10">
-		{{--
-			Form::select(
-				'grades[]',
-				$grades,
-				$employee->grade_id,
-				array(
-					'class' => 'form-control chosen-select',
-					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.grade', 2),
-					'multiple' => true
-				)
-			)
-		--}}
-		<select multiple="multiple" id="grades" name="grades[]" class="form-control chosen-select">
-		@foreach ($allGrades as $key => $value)
-			@if (isset($grades[$key]) )
-				<option value='{{ $key }}' selected>{{ $value }}</option>
-			@else
-				<option value='{{ $key }}'>{{ $value }}</option>
-			@endif
-		@endforeach
-		</select>
-	</div>
-</div>
-{{--
-<div class="form-group padding-bottom-xl">
-	<label for="inputGrades" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.grade', 2) }}:</label>
-	<div class="col-sm-10">
-		@foreach (Grade::All() as $grade)
-			<label class="checkbox-inline">
-				{{ Form::checkbox('grades[]', $grade->id, $profile->hasGrade($grade->id)) }}
-				{{ $grade->name }}
-			</label>
-		@endforeach
-	</div>
-</div>
---}}
-
-<div class="form-group padding-bottom-xl">
-	<label for="inputSubject" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.subject', 2) }}:</label>
-	<div class="col-sm-10">
-		{{--
-			Form::select(
-				'subjects[]',
-				$subjects,
-				$employee->subject_id,
-				array(
-					'class' => 'form-control chosen-select',
-					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.subject', 2),
-					'multiple' => true
-				)
-			)
-		--}}
-		<select multiple="multiple" id="subjects" name="subjects[]" class="form-control chosen-select">
-		@foreach ($allSubjects as $key => $value)
-			@if (isset($subjects[$key]) )
-				<option value='{{ $key }}' selected>{{ $value }}</option>
-			@else
-				<option value='{{ $key }}'>{{ $value }}</option>
-			@endif
-		@endforeach
-		</select>
-	</div>
-</div>
-{{--
-<div class="form-group padding-bottom-xl">
-	<label for="inputSubjects" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.subject', 2) }}:</label>
-	<div class="col-sm-10">
-		@foreach (Subject::All() as $subject)
-			<label class="checkbox-inline">
-				{{ Form::checkbox('subjects[]', $subject->id, $profile->hasSubject($subject->id)) }}
-				{{ $subject->name }}
-			</label>
-		@endforeach
-	</div>
-</div>
---}}
-{{--
-<div class="form-group padding-bottom-xl">
-	<label for="inputPosition" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.position', 1) }}:</label>
-	<div class="col-sm-10">
-		{!!
-			Form::select(
-				'position_id',
-				$positions,
-				$employee->position_id,
-				array(
-					'class' => 'form-control chosen-select'
-				)
-			)
-		!!}
-	</div>
-</div>
---}}
-
-<div class="form-group padding-bottom-xl">
-	<label for="inputSite" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.site', 2) }}:</label>
-	<div class="col-sm-10">
-		{{--
-			Form::select(
-				'sites[]',
-				$sites,
-				$employee->site_id,
-//				$employee->hasSite($site->id),
-				array(
-					'class' => 'form-control chosen-select',
-					'data-placeholder' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.site', 2),
-					'multiple' => true
-				)
-			)
-		--}}
-		<select multiple="multiple" id="sites" name="sites[]" class="form-control chosen-select">
-		@foreach ($allSites as $key => $value)
-			@if (isset($sites[$key]) )
-				<option value='{{ $key }}' selected>{{ $value }}</option>
-			@else
-				<option value='{{ $key }}'>{{ $value }}</option>
-			@endif
-		@endforeach
-		</select>
-	</div>
-</div>
-{{--
-<div class="form-group padding-bottom-xl">
-	<label for="inputSites" class="col-sm-2 control-label">{{ Lang::choice('kotoba::hr.site', 2) }}:</label>
-	<div class="col-sm-10">
-		@foreach (Site::All() as $site)
-			<label class="checkbox-inline">
-				{{ Form::checkbox('sites[]', $site->id, $profile->hasSite($site->id)) }}
-				{{ $site->name }}
-			</label>
-		@endforeach
-	</div>
-</div>
---}}
 
 
 <hr>
-
 
 <div class="form-group">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
