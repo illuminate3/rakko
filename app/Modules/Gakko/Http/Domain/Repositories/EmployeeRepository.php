@@ -99,10 +99,32 @@ class EmployeeRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$employee = $this->model->find($id);
+//		$employee = $this->model->find($id);
 //dd($module);
+		$employee = $this->model->with('profile')->find($id);
+//		$employee = $this->model->with('user')->find($id);
+//dd($employee);
 
-		return compact('employee');
+		$departments = $this->getDepartments();
+		$employeeTypes = $this->getEmployeeTypes();
+		$grades = $this->getGrades();
+		$jobTitles = $this->getJobTitles();
+		$sites = $this->getSites();
+		$subjects = $this->getSubjects();
+		$supervisors = $this->getSupervisors();
+//dd($allSites);
+
+
+		return compact(
+			'employee',
+			'employeeTypes',
+			'departments',
+			'grades',
+			'jobTitles',
+			'sites',
+			'supervisors',
+			'subjects'
+			);
 	}
 
 	/**
@@ -118,13 +140,13 @@ class EmployeeRepository extends BaseRepository {
 //		$employee = $this->model->with('user')->find($id);
 //dd($employee);
 
-		$employeeTypes = $this->getEmployeeTypes();
-		$employeeTypes = array('' => trans('kotoba::general.command.select_an') . '&nbsp;' . Lang::choice('kotoba::hr.employee_type', 2)) + $employeeTypes;
-
 		$departments = $this->getDepartments();
 //		$departments = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.department', 2)) + $departments;
 //		$allDepartments =  $this->department->all()->lists('name', 'id');
 //		$allDepartments = $this->getDepartments();
+
+		$employeeTypes = $this->getEmployeeTypes();
+		$employeeTypes = array('' => trans('kotoba::general.command.select_an') . '&nbsp;' . Lang::choice('kotoba::hr.employee_type', 2)) + $employeeTypes;
 
 		$grades = $this->getGrades();
 //		$grades = array('' => trans('kotoba::general.command.select') . '&nbsp;' . Lang::choice('kotoba::hr.grade', 2)) + $grades;

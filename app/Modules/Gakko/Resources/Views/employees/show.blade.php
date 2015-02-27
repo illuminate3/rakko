@@ -1,96 +1,146 @@
-@extends(Config::get('vedette.vedette_views.layout'))
+@extends('app')
 
+{{-- Web site Title --}}
 @section('title')
-@parent
-	{{ Config::get('vedette.vedette_html.separator') }}
-	{{ trans('lingos::hr.employee') }}
+{{ Lang::choice('kotoba::hr.employee', 2) }} :: @parent
 @stop
 
 @section('styles')
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.0.0/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
-	<script src="{{ asset('packages/illuminate3/vedette/assets/js/restfulizer.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-
-var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
-
+	jQuery(document).ready(function($) {
+		$(".chosen-select").chosen();
+	});
 @stop
 
+
+{{-- Content --}}
 @section('content')
+
+<div id="wrap" class="container">
+
 <div class="row">
 <h1>
 	<p class="pull-right">
-	{{ Bootstrap::linkIcon(
-		'admin.employees.index',
-		trans('lingos::button.back'),
-		'chevron-left fa-fw',
-		array('class' => 'btn btn-default')
-	) }}
+	<a href="/employees" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+		<i class="fa fa-chevron-left fa-fw"></i>
+		{{ trans('kotoba::button.back') }}
+	</a>
 	</p>
-	<i class="fa fa-tag fa-lg"></i>
-	{{ $employee->name }}
+	<i class="fa fa-user fa-lg"></i>
+	{{-- trans('kotoba::general.command.edit') --}}
+	{{{ $employee->profile->prefix }}}&nbsp;{{{ $employee->profile->first_name }}}&nbsp;{{{ $employee->profile->middle_initial }}}&nbsp;{{{ $employee->profile->last_name }}}&nbsp;{{{ $employee->profile->suffix }}}
 	<hr>
 </h1>
 </div>
 
+
 <div class="row">
 
 <div class="table-responsive">
-<table class="table table-striped table-hover" id="DataTable">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>{{ trans('lingos::table.name') }}</th>
-			<th>{{ trans('lingos::table.description') }}</th>
-			<th>{{ trans('lingos::table.actions') }}</th>
-		</tr>
-	</thead>
+<table class="table table-striped table-hover">
 	<tbody>
 		<tr>
-			<td>{{ $employee->id }}</td>
-			<td>{{{ $employee->name }}}</td>
-			<td>{{{ $employee->description }}}</td>
-			<td width="25%">
-				{{ Form::open(array(
-					'route' => array('admin.employees.destroy', $employee->id),
-					'role' => 'form',
-					'method' => 'delete',
-					'class' => 'form-inline'
-				)) }}
-
-					{{ Bootstrap::linkRouteIcon(
-						'admin.employees.edit',
-						trans('lingos::button.edit'),
-						'edit fa-fw',
-						array($employee->id),
-						array(
-							'class' => 'btn btn-success form-group',
-							'title' => trans('lingos::account.command.edit')
-						)
-					) }}
-
-					{{ Bootstrap::linkRouteIcon(
-						'admin.employees.destroy',
-						trans('lingos::button.delete'),
-						'trash-o fa-fw',
-						array($employee->id),
-						array(
-							'class' => 'btn btn-danger form-group action_confirm',
-							'data-method' => 'delete',
-							'title' => trans('lingos::account.command.delete')
-						)
-					) }}
-
-				{{ Form::close() }}
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.employee_type', 1) }}
+			</td>
+			<td class="col-sm-10">
+				{{ $employee->employee_type_id }}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.department', 2) }}
+			</td>
+			<td class="col-sm-10">
+				{!! $employee->present()->departments !!}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.job_title', 2) }}
+			</td>
+			<td class="col-sm-10">
+				{{-- $employee->jobtitles --}}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.grade', 2) }}
+			</td>
+			<td class="col-sm-10">
+				{!! $employee->present()->grades !!}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.subject', 2) }}
+			</td>
+			<td class="col-sm-10">
+				{!! $employee->present()->subjects !!}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ Lang::choice('kotoba::hr.site', 2) }}
+			</td>
+			<td class="col-sm-10">
+				{!! $employee->present()->sites !!}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ trans('kotoba::hr.ask.isSupervisior') }}
+			</td>
+			<td class="col-sm-10">
+				{{ $employee->present()->isSupervisior }}
+			</td>
+		</tr>
+		<tr>
+			<td class="col-sm-2">
+				{{ trans('kotoba::hr.supervisor') }}
+			</td>
+			<td class="col-sm-10">
+				{{ $employee->present()->getSupervisior($employee->supervisor_id) }}
 			</td>
 		</tr>
 	</tbody>
 </table>
 </div><!-- ./responsive -->
 
+
+
+<hr>
+
+<div class="row">
+	<div class="col-sm-4">
+		<a href="/employees" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
+			<i class="fa fa-chevron-left fa-fw"></i>
+			{{ trans('kotoba::button.back') }}
+		</a>
+	</div>
+	<div class="col-sm-4">
+		<a href="/employees/{{ $employee->id }}/edit" class="btn btn-success btn-block" title="{{ trans('kotoba::button.edit') }}">
+			<i class="fa fa-pencil fa-fw"></i>
+			{{ trans('kotoba::button.edit') }}
+		</a>
+	</div>
+	<div class="col-sm-4">
+		<a class="btn btn-danger btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+			<i class="fa fa-trash-o fa-fw"></i>
+			{{ trans('kotoba::general.command.delete') }}
+		</a>
+	</div>
 </div>
 
+
+</div> <!-- ./ row -->
+</div> <!-- ./ wrap/container -->
 @stop

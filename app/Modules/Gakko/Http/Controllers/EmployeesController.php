@@ -75,9 +75,7 @@ class EmployeesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$employee = $this->employee->findOrFail($id);
-
-		return View::make('HR::employees.show', compact('employee'));
+		return View('gakko::employees.show',  $this->employee->show($id));
 	}
 
 	/**
@@ -149,9 +147,13 @@ class EmployeesController extends GakkoController {
 			$table->text('notes')->nullable();
 */
 //dd("loaded");
-		$employees = Employee::select(array('employees.id','employees.user_id','employees.employee_type_id'))
-			->orderBy('employees.user_id', 'ASC');
+// 		$employees = Employee::select(array('employees.id','employees.user_id','employees.employee_type_id'))
+// 			->orderBy('employees.user_id', 'ASC');
 //dd($employees);
+
+		$employees = Employee::join('profiles','employees.user_id','=','profiles.id')
+				->select(array('employees.id','profiles.first_name','profiles.middle_initial','profiles.last_name','profiles.email_1'));
+
 
 		return Datatables::of($employees)
 /*
@@ -161,8 +163,11 @@ class EmployeesController extends GakkoController {
 				)
 */
 			->add_column(
-				'actions',
-				'<a href="{{ URL::to(\'employees/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'actions', '
+				<a href="{{ URL::to(\'employees/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+				</a>
+				<a href="{{ URL::to(\'employees/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')

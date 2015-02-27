@@ -54,8 +54,10 @@
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.name') }}</th>
-			<th>{{ trans('kotoba::table.description') }}</th>
+			<th>{{ trans('kotoba::table.first_name') }}</th>
+			<th>{{ trans('kotoba::table.middle_initial') }}</th>
+			<th>{{ trans('kotoba::table.last_name') }}</th>
+			<th>{{ trans('kotoba::table.email') }}</th>
 
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>

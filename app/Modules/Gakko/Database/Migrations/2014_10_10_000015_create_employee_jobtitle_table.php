@@ -19,7 +19,7 @@ class CreateEmployeeJobtitleTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create($this->prefix . 'employee_jobtitle', function(Blueprint $table)
+		Schema::create($this->prefix . 'employee_job_title', function(Blueprint $table)
 		{
 
 			$table->engine = 'InnoDB';
@@ -46,7 +46,7 @@ class CreateEmployeeJobtitleTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'employee_jobtitle');
+		Schema::drop($this->prefix . 'employee_job_title');
 	}
 
 }
