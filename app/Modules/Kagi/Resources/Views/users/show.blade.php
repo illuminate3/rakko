@@ -107,11 +107,24 @@
 				</legend>
 			</h2>
 
-			<div class="panel panel-default">
-				<div class="panel-body">
-					{{ $user->present()->roles() }}
-				</div>
-			</div>
+			{{-- $user->present()->roles() --}}
+			@if (count($roles))
+				<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<tbody>
+						@foreach ($roles as $key => $value)
+							<tr>
+								</td>
+								{{ $value }}
+								</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
+				</div><!-- ./responsive -->
+			@else
+				{{ trans('lingos::general.none') }}
+			@endif
 
 		</fieldset>
 

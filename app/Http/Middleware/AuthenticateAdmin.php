@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Kagi\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Auth;
 use Closure;
