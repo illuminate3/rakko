@@ -4,6 +4,7 @@ namespace App\Modules\Kagi\Http\Domain\Repositories;
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
+//use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
 use Hash, DB, Auth, Config, Eloquent;
 use DateTime;
@@ -51,11 +52,14 @@ class UserRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$user = $this->user->with('roles')->findOrFail($id);
+//		$user = $this->user->with('roles')->findOrFail($id);
+		$user = $this->user->findOrFail($id);
 //		$user = $this->getById($id);
 //dd($user);
+$roles = $this->getRoles();
+//dd($roles);
 
-		return compact('user');
+		return compact('user', 'roles');
 	}
 
 	/**
@@ -139,6 +143,19 @@ class UserRepository extends BaseRepository {
 		$user->update();
 
 		$user->syncRoles($input['roles']);
+	}
+
+
+// Functions --------------------------------------------------
+
+	public function getRoles()
+	{
+//		$roles = $this->role->all();
+		if (! is_null($this->shinobiRole)) {
+			return $this->shinobiRole->lists('name');
+		}
+
+		return null;
 	}
 
 

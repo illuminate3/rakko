@@ -3,5 +3,6 @@
 	"slug": "manager",
 	"version": "1.0",
 	"description": "Module Management for Rakko",
-	"enabled": true
+	"enabled": true,
+	"order": 1
 }

@@ -38,6 +38,7 @@ class CreateModulesTable extends Migration {
 			$table->string('version')->nullable()->index();
 			$table->text('description')->nullable();
 			$table->boolean('enabled')->nullable()->default('1');
+			$table->smallInteger('order')->nullable();
 
 
 			$table->softDeletes();

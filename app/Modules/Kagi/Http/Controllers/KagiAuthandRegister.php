@@ -80,14 +80,14 @@ trait KagiAuthandRegister {
 		$throttler = Throttle::get($request, Config::get('kagi.throttle', '3'), Config::get('kagi.time_out', '2'));
 //dd($throttler);
 
-//*
+/*
 // check if we've gone over the limit
 		var_dump($throttler->check());
 // implement Countable
 		var_dump($throttler->count());
 // the attempt function will hit the throttle, then return check
 		var_dump(Throttle::attempt($request));
-//*/
+*/
 
 // Check throttle, return with error
 		if (!Throttle::attempt($request, 5)) {
@@ -105,7 +105,6 @@ trait KagiAuthandRegister {
 	 */
 	public function postLogin(
 		LoginRegistrar $loginRegistrar,
-//		Request $request
 		LoginRequest $request
 		)
 	{

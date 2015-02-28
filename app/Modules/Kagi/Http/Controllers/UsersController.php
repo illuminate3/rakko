@@ -46,8 +46,8 @@ class UsersController extends KagiController {
 		$this->user = $user;
 		$this->role = $role;
 
+// middleware
 		$this->middleware('admin');
-//		$this->middleware('ajax', ['only' => 'updateSeen']);
 	}
 
 	/**
@@ -57,8 +57,6 @@ class UsersController extends KagiController {
 	 */
 	public function index()
 	{
-//$users = User::all();
-//dd($users);
 		return View('kagi::users.index');
 	}
 
@@ -69,8 +67,6 @@ class UsersController extends KagiController {
 	 */
 	public function create()
 	{
-//dd("create");
-//		return view('kagi::users.create', $this->user->create());
 		return view('kagi::users.create');
 	}
 
@@ -154,26 +150,28 @@ dd("store");
 	 *
 	 * @return Response
 	 */
+/*
 	public function getRoles()
 	{
 		$roles = $this->role->all();
 
 		return view('back.users.roles', compact('roles'));
 	}
-
+*/
 	/**
 	 * Update roles
 	 *
 	 * @param  App\requests\RoleRequest $request
 	 * @return Response
 	 */
+/*
 	public function postRoles(RoleRequest $request)
 	{
 		$this->role->update($request->except('_token'));
 
 		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
 	}
-
+*/
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
 	*

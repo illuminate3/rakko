@@ -35,8 +35,8 @@ class RolesController extends KagiController {
 	{
 		$this->role = $role;
 
+// middleware
 		$this->middleware('admin');
-//		$this->middleware('ajax', ['only' => 'updateSeen']);
 	}
 
 	/**
@@ -95,11 +95,7 @@ dd("show");
 	 */
 	public function edit($id)
 	{
-//dd("edit");
-//		$role = $this->role->edit($id);
-
 		return View('kagi::roles.edit',  $this->role->edit($id));
-//		return view('kagi::roles.edit', compact('role'));
 	}
 
 	/**

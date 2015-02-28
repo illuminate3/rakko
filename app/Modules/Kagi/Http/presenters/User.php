@@ -112,7 +112,7 @@ class User extends Presenter {
 		if ( $banned == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
-			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';
 		}
 
 		return $return;
@@ -132,7 +132,7 @@ class User extends Presenter {
 		if ( $blocked == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
-			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';
 		}
 
 		return $return;
@@ -152,7 +152,7 @@ class User extends Presenter {
 		if ( $confirmed == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
-			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';
 		}
 
 		return $return;
@@ -172,7 +172,7 @@ class User extends Presenter {
 		if ( $activated == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
-			$return = '<span class=\'glyphicon glyphicon-remove text-danger\'></span>';
+			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';
 		}
 
 		return $return;

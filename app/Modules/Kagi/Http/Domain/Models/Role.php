@@ -31,10 +31,10 @@ class Role extends Model {
 
 
 // DEFINE Relationships --------------------------------------------------
-	public function user()
-	{
-		return $this->hasMany('App\Modules\Kagi\Http\Domain\Models\User');
-	}
+// 	public function user()
+// 	{
+// 		return $this->hasMany('App\Modules\Kagi\Http\Domain\Models\User');
+// 	}
 
 
 }

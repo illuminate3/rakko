@@ -8,7 +8,7 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="/">
+	<a class="navbar-brand" href="/welcome">
 		{{ Config::get('general.brand_title') }}
 	</a>
 </div>

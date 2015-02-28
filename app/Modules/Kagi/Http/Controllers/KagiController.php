@@ -24,9 +24,8 @@ class KagiController extends Controller
 		$this->middleware('csrf');
 		$this->middleware('auth');
 */
-//		$this->middleware('guest');
+// middleware
 		$this->middleware('admin');
-
 	}
 
 

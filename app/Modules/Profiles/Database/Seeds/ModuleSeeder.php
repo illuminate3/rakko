@@ -15,7 +15,8 @@ class ModuleSeeder extends Seeder {
 			'slug'					=> 'profiles',
 			'version'				=> '1.0',
 			'description'			=> 'Profiles is a Rakko module that provides the ability to add User Profiles',
-			'enabled'				=> 1
+			'enabled'				=> 1,
+			'order'					=> 3,
 		);
 
 // Insert Module Information

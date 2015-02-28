@@ -37,6 +37,7 @@ class PermissionsController extends KagiController {
 		)
 	{
 		$this->permission = $permission;
+
 // middleware
 		$this->middleware('admin');
 	}
@@ -48,8 +49,6 @@ class PermissionsController extends KagiController {
 	 */
 	public function index()
 	{
-//$permissions = User::all();
-//dd($permissions);
 		return View('kagi::permissions.index');
 	}
 
@@ -60,8 +59,6 @@ class PermissionsController extends KagiController {
 	 */
 	public function create()
 	{
-//dd("create");
-//		return view('kagi::permissions.create', $this->permission->create());
 		return view('kagi::permissions.create');
 	}
 
@@ -79,7 +76,6 @@ class PermissionsController extends KagiController {
 		$this->permission->store($request->all());
 
 		Flash::success( trans('kotoba::permission.success.create') );
-//		return redirect('admin/permissions')->with('ok', trans('kotoba.permissions.created'));
 		return redirect('admin/permissions');
 	}
 
@@ -123,7 +119,6 @@ dd("show");
 		$this->permission->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::permission.success.update') );
-//		return redirect('permission')->with('ok', trans('back/permissions.updated'));
 		return redirect('admin/permissions');
 	}
 

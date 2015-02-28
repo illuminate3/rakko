@@ -153,9 +153,9 @@ return [
 /*
  * DEV Package Service Providers
  */
-'Barryvdh\Debugbar\ServiceProvider',
 ///'Way\Generators\GeneratorsServiceProvider',
-'App\Providers\ErrorServiceProvider',
+//'App\Providers\ErrorServiceProvider',
+'Barryvdh\Debugbar\ServiceProvider',
 /*
  * Package Service Providers
  */

@@ -1,0 +1,7 @@
+{
+	"name": "Installer",
+	"slug": "installer",
+	"version": "1.0",
+	"description": "Installer module for Rakko",
+	"enabled": true
+}

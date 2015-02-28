@@ -13,17 +13,3 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('welcome', 'WelcomeController@index');
-/*
-Route::get('/', function()
-{
-    $img = Image::make('uploads/logos/admin.JPG')->resize(300, 200)->greyscale();
-
-    return $img->response('png');
-});
-*/
-/*
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-*/
