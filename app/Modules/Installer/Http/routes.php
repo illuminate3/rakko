@@ -26,7 +26,7 @@ Route::group(
 		}
 		Route::get('/','InstallerController@getIndex');
 		Route::get('/artisan','InstallerController@getArtisan');
-// 		Route::get('/database','InstallController@getDatabase');
+		Route::get('/settings','InstallController@getSettings');
 // 		Route::post('/database','InstallController@postDatabase');
 // 		Route::post('/timezone','InstallController@postTimeZone');
 // 		Route::post('/adminaccount','InstallController@postAdminAccount');

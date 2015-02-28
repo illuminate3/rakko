@@ -68,7 +68,7 @@
 						@else
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
-									<a href="{{url('install/database')}}" class="btn btn-success btn-block" title="{{ trans('installer::button.next') }}">
+									<a href="{{url('install/settings')}}" class="btn btn-success btn-block" title="{{ trans('installer::button.next') }}">
 										<i class="fa fa-play fa-fw"></i>
 										{{ trans('installer::button.next') }}
 									</a>

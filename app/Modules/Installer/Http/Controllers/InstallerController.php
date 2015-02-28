@@ -68,33 +68,14 @@ class InstallerController extends Controller
 	}
 
 
-
-
-
-
 	/**
-	* Run database calls
+	* settings
 	*/
-	public function getDatabase()
+	public function getSettings()
 	{
-//dd('db');
-			return View('installer::database');
+		return View::make('install.settings');
 	}
-	public function postDatabase()
-	{
-		$data = Input::all();
-		$newDbConfig = new NewConfig;
-		$newDbConfig->toFile(app_path().'/config/database.php', [
-              'connections.mysql.host' =>$data['host'],
-              'connections.mysql.database' =>$data['database'],
-              'connections.mysql.username' =>$data['username'],
-              'connections.mysql.password' =>$data['password']
-            ]);
 
-		DB::unprepared(file_get_contents(public_path().'/92fiveapp.sql'));
-
-		return View::make('install.timezone');
-	}
 	public function postTimeZone()
 	{
 		$timeZone = Input::get('timezone');
@@ -111,24 +92,7 @@ class InstallerController extends Controller
 
 		try
         {
-            $user = Sentry:: createUser(array(
-                'email'=> $data['email'],
-                'password'=>$data['password'],
-                'activated'=>true,
-                'first_name'=>$data['first_name'],
-                'last_name'=>$data['last_name'],
-                ));
-            $group = Sentry::findGroupByName('admin');
-            $user->addGroup($group);
-            $quicknote = new \Quicknote;
-            $quicknote->user_id = $user->id;
-            $quicknote->save();
-            $userProfile = new \UserProfile;
-            $userProfile->id = $user->id;
-            $userProfile->save();
-            $imageResult = App::make('AuthController')->{'createUserImage'}($user->id,$data['first_name'][0],$data['last_name'][0]);
-            $installationDate = date('Y-m-d H:i:s');
-            $installationHost = Request::server('PATH_INFO');
+
             $new92fiveConfig = new NewConfig;
 			$new92fiveConfig->toFile(app_path().'/config/92five.php', [
               'install'=> true,
