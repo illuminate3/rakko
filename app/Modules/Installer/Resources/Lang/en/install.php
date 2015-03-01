@@ -7,6 +7,8 @@ return [
 
 	'artisan_commands'				=> 'Installation: Artisan Commands',
 	'install_check'					=> 'Installation: Check',
+	'settings'						=> 'Installation: Settings',
+	'time_zone'						=> 'Time Zone:',
 	'title'							=> 'Rakko Installer',
 
 	'ask' => [
@@ -39,13 +41,16 @@ return [
 		'pdo'						=> 'PDO is not Enabled',
 		'migrate'					=> 'The Tables were not Migrated',
 		'mcrypt'					=> 'Mcrypt Extension is not Enabled',
+		'rakko_config'				=> 'Error Occured: Rakko config file.',
 		'seed'						=> 'The Tables were not Seeded',
 		'storage'					=> '/storage Directory is not Writable',
+		'timeZone'					=> 'Error Occured: app time zone setting',
 	],
 
 	'button' => [
 		'next'						=> 'Next',
 		'retry'						=> 'Retry',
+		'submit'					=> 'Submit',
 	],
 
 ];

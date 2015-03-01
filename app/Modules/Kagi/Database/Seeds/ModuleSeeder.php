@@ -15,7 +15,7 @@ class ModuleSeeder extends Seeder {
 			'version'				=> '1.0',
 			'description'			=> 'Kagi is a module for Laravel 5 Authentification and Authorization',
 			'enabled'				=> 1,
-			'order'					=> 2,
+			'order'					=> 1
 		);
 
 

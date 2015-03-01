@@ -4,5 +4,5 @@
 	"version": "1.0",
 	"description": "Authentification and Authorization by Kagi",
 	"enabled": true,
-	"order": 2
+	"order": 1
 }

@@ -21,13 +21,11 @@ Route::group(
 		if ( Config::get('rakko.install') ) {
 			Flash::warning(trans('installer::install.error.installed'));
 			return redirect('/');
-// 		} else {
-// 		dd("ready to install");
 		}
+
 		Route::get('/','InstallerController@getIndex');
 		Route::get('/artisan','InstallerController@getArtisan');
-		Route::get('/settings','InstallController@getSettings');
-// 		Route::post('/database','InstallController@postDatabase');
-// 		Route::post('/timezone','InstallController@postTimeZone');
-// 		Route::post('/adminaccount','InstallController@postAdminAccount');
+		Route::get('/settings','InstallerController@getSettings');
+		Route::post('/settings','InstallerController@postSettings');
+
 	});

@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rakko - Installation - Check Application Requirements</title>
+<title>Rakko - Installation - Run Artisan Commands</title>
 
 <!-- Font -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -26,11 +26,11 @@
 <div class="container-fluid">
 <div class="row centered">
 
-	<div class="col-sm-4 col-sm-offset-4">
+	<div class="col-sm-5 col-sm-offset-2">
 
 		<div class="panel panel-default">
 			<div class="panel-heading title_panel">
-				{{ trans('installer::install.install_check') }}
+				{{ trans('installer::install.artisan_commands') }}
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 
@@ -68,9 +68,9 @@
 						@else
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
-									<a href="{{url('install/settings')}}" class="btn btn-success btn-block" title="{{ trans('installer::button.next') }}">
+									<a href="{{url('install/settings')}}" class="btn btn-success btn-block" title="{{ trans('installer::install.button.next') }}">
 										<i class="fa fa-play fa-fw"></i>
-										{{ trans('installer::button.next') }}
+										{{ trans('installer::install.button.next') }}
 									</a>
 								</div>
 							</div>

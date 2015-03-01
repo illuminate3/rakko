@@ -16,7 +16,7 @@ class ModuleSeeder extends Seeder {
 			'version'				=> '1.0',
 			'description'			=> 'Module Manager is a Rakko module that provides simple Module Managent ability',
 			'enabled'				=> 1,
-			'order'					=> 1,
+			'order'					=> 0
 		);
 
 // Insert Module Information

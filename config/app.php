@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => env('APP_DEBUG', false),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,8 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+//	'url' => 'http://localhost',
+	'url' => env('APP_URL', 'http://localhost'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -149,6 +150,7 @@ return [
  * Extend Application Service Providers...
  */
 'App\Providers\MenuServiceProvider',
+//'App\Providers\ConfigWriterServiceProvider',
 
 /*
  * DEV Package Service Providers

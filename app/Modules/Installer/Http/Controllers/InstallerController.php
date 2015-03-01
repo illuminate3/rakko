@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Artisan;
 use Config;
 use Flash;
+use Input;
+use File;
 
 class InstallerController extends Controller
 {
@@ -20,15 +22,12 @@ class InstallerController extends Controller
 	public function getIndex()
 	{
 //dd('start');
-		if(Config::get('rakko.install'))
+		if ( Config::get('rakko.install') == true)
 		{
 			Flash::warning(trans('installer::install.error.installed'));
 			return redirect('/');
 		}
-		else
-		{
-			return View('installer::check');
-		}
+		return View('installer::check');
 	}
 
 
@@ -37,26 +36,30 @@ class InstallerController extends Controller
 	*/
 	public function getArtisan()
 	{
-//dd('artisan');
+dd('artisan');
 //$test = Artisan::call('db:seed', array('--path' => 'App/Modules/Installer/Database/Seeds/InstallerDatabaseSeeder'));
 
 		try {
+//Artisan::call('module:seed', ['module' => 'manager']);
 			Artisan::call('module:migrate', [
 				''
 				]);
 			$flag1 = true;
 		} catch (Exception $e) {
 			$flag1 = false;
+			Log::error( trans('installer::install.error.migrate') . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
 		try {
+//Artisan::call('module:seed', ['module' => 'manager']);
 			Artisan::call('module:seed', [
 				''
 				]);
 			$flag2 = true;
 		} catch (Exception $e) {
 			$flag2 = false;
+			Log::error( trans('installer::install.error.seed') . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
@@ -69,43 +72,96 @@ class InstallerController extends Controller
 
 
 	/**
-	* settings
+	* get settings
 	*/
 	public function getSettings()
 	{
-		return View::make('install.settings');
+//dd('get settings');
+// work around until config::write can be solved
+		$version = '1.0.0';
+
+$file = base_path() . '/config/' . 'rakko.php';
+$contents = "hello";
+
+dd(File::isWritable($file));
+
+
+$bytes_written = File::put($file, $contents);
+if ($bytes_written === false)
+{
+    die("Error writing to file");
+}
+
+// rakko app information
+if ( Storage::disk('local')->exists('/../../config/rakko.php') ) {
+dd('get settings');
+
+
+}
+
+
+		return View('installer::settings_show');
+
+
+		try {
+/*
+			Config::set('rakko.installed', false);
+			Config::set('rakko.version', $version);
+			Config::set('rakko.install_date', date('YmdHis'));
+*/
+			$rakko_config = true;
+		} catch (Exception $e) {
+			$rakko_config = false;
+			Log::error( trans('installer::install.error.rakko_config') . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+//		return View('installer::final');
+
+
+
+		return View('installer::settings_show');
 	}
 
-	public function postTimeZone()
+
+	/**
+	* write settings
+	*/
+	public function postSettings()
 	{
-		$timeZone = Input::get('timezone');
-		$newAppConfig = new NewConfig;
-		$newAppConfig->toFile(app_path().'/config/app.php', [
-              'timezone'=> $timeZone
-            ]);
-		return View::make('install.adminaccount');
-	}
-	public function postAdminAccount()
-	{
-		$data = Input::all();
-		//return View::make('install.done');
+/*
+//dd('post settings');
+		$input = Input::all();
+		$timezone = Input::get('timezone');
+		$version = '1.0.0';
 
-		try
-        {
+// app.timezone
+//dd($timezone);
+		try {
+			Config::write('app.timezone', $timezone);
+			$time_zone = true;
+dd(Config::write('app.timezone', $timezone));
+		} catch (Exception $e) {
+			$timeZone = false;
+			Log::error( trans('installer::install.error.timeZone') . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
 
-            $new92fiveConfig = new NewConfig;
-			$new92fiveConfig->toFile(app_path().'/config/92five.php', [
-              'install'=> true,
-              'version' => '1.0',
-              'installationDate'=>$installationDate,
-              'installationHost' =>$installationHost
-            ]);
-            return View::make('install.done');
-        }
-        catch(Exception $e)
-        {
-            Log::error('Something Went Wrong in Install Controller Repository - addUserWithDetails():'. $e->getMessage());
-            throw new Exception ('Something Went Wrong in Install Controller Repository - addUserWithDetails()');
-        }
+// rakko app information
+		try {
+			Config::set('rakko.installed', false);
+			Config::set('rakko.version', $version);
+			Config::set('rakko.install_date', date('YmdHis'));
+			$rakko_config = true;
+		} catch (Exception $e) {
+			$rakko_config = false;
+			Log::error( trans('installer::install.error.rakko_config') . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+		return View('installer::final');
+*/
 	}
+
+
 }

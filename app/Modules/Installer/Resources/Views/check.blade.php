@@ -26,11 +26,11 @@
 <div class="container-fluid">
 <div class="row centered">
 
-	<div class="col-sm-4 col-sm-offset-4">
+	<div class="col-sm-5 col-sm-offset-2">
 
 		<div class="panel panel-default">
 			<div class="panel-heading title_panel">
-				{{ trans('installer::install.artisan_commands') }}
+				{{ trans('installer::install.install_check') }}
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 
@@ -109,15 +109,15 @@
 						@if ( $flag === false )
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
-									<input type="submit" class="btn btn-success btn-block" onClick="location.reload(true)" value="{{ trans('installer::button.retry') }}"/>
+									<input type="submit" class="btn btn-success btn-block" onClick="location.reload(true)" value="{{ trans('installer::install.button.retry') }}"/>
 								</div>
 							</div>
 						@else
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
-									<a href="{{url('install/artisan')}}" class="btn btn-success btn-block" title="{{ trans('installer::install.next') }}">
+									<a href="{{url('install/artisan')}}" class="btn btn-success btn-block" title="{{ trans('installer::install.button.next') }}">
 										<i class="fa fa-play fa-fw"></i>
-										{{ trans('installer::button.next') }}
+										{{ trans('installer::install.button.next') }}
 									</a>
 								</div>
 							</div>
