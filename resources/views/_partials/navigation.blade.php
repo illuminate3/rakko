@@ -49,7 +49,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/module_manager">
+						<a href="/admin/manager">
 							{{ trans('kotoba::module.manager') }}
 						</a>
 					</li>

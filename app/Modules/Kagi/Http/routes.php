@@ -54,16 +54,7 @@ Route::group(['prefix' => 'auth'], function() {
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id', '[0-9]+');
-//	Route::pattern('id2', '[0-9]+');
 
-	#Users
-/*
-	Route::resource('users', 'UsersController',
-		[
-//			'before' => 'csrf'
-//			'except' => array('show')
-		]);
-*/
 # Users
 	Route::resource('users', 'UsersController');
 # Roles
