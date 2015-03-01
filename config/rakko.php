@@ -2,8 +2,8 @@
 
 return [
 
-	'installed' => false,
-	'version' => '',
+	'installed' => true,
+	'version' => '1.0.0',
 	'install_date' => ''
 
 ];

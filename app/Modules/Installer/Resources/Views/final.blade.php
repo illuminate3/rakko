@@ -30,24 +30,43 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading title_panel">
-				{{ trans('installer::install.settings') }}
+				{{ trans('installer::install.install_final') }}
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 
 
+				<ul>
 
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="span12 reset_title">Done</div>
-        <div class="reset_form installtzform">
-            <div class="row-fluid">
-            <div class="reset_text donetext">That's it. All settings have been saved. Good to go !<br/>Please login with your username and password.</div>
+					<li>
+						<h3>
+							{{ trans('installer::install.final.congratualaitons') }}
+						</h3>
+					</li>
 
-              <div class="submit_button_main">
-              <a href="{{url('login')}}"> Login </a>
-            </div>
+					<li>
+						{{ trans('installer::install.final.login') }}&nbsp;admin@admin.com
+					</li>
 
+					<li>
+						{{ trans('installer::install.final.password') }}&nbsp;kagiadmin
+					</li>
 
+					<li>
+						<h4>
+							{{ trans('installer::install.final.social_login') }}
+						</h4>
+					</li>
+
+				</ul>
+
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 hide" id="button">
+						<a href="{{url('auth/login')}}" class="btn btn-success btn-block" title="{{ trans('installer::install.button.login') }}">
+							<i class="fa fa-play fa-fw"></i>
+							{{ trans('installer::install.button.login') }}
+						</a>
+					</div>
+				</div>
 
 
 			</div><!-- ./panel-body -->
@@ -69,5 +88,22 @@
 
 </section>
 
+<script>
+$(document).ready(function() {
+	fade_in_next();
+});
+var i = 0;
+function fade_in_next()
+{
+	$("ul li:hidden:first").fadeIn("slow", function()
+	{
+		i=i+1;
+		var result = setTimeout(fade_in_next, 500);
+		if(i==8) {
+			$('#button').removeClass('hide');
+		}
+	});
+}
+</script>
 </body>
 </html>

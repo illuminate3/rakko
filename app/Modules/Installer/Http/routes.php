@@ -27,5 +27,6 @@ Route::group(
 		Route::get('/artisan','InstallerController@getArtisan');
 		Route::get('/settings','InstallerController@getSettings');
 		Route::post('/settings','InstallerController@postSettings');
+		Route::get('/final','InstallerController@getFinal');
 
 	});

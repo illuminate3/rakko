@@ -30,7 +30,7 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading title_panel">
-				{{ trans('installer::install.artisan_commands') }}
+				{{ trans('installer::install.install_artisan') }}
 			</div><!-- ./panel-heading -->
 			<div class="panel-body">
 
@@ -40,26 +40,26 @@
 					<ul>
 
 						<li>
-						@if ( $flag1 === true )
+						@if ( $module_migrate === true )
 							<span class="glyphicon glyphicon-ok text-success"></span>
 							{{ trans('installer::install.success.migrate') }}
 						@else
 							<span class="glyphicon glyphicon-remove text-danger"></span>
-							{{ trans('installer::install.error.migrate') }}
+							{{ trans('installer::install.error.migrations') }}
 						@endif
 						</li>
 
 						<li>
-						@if ( $flag2 === true )
+						@if ( $module_seed === true )
 							<span class="glyphicon glyphicon-ok text-success"></span>
 							{{ trans('installer::install.success.seed') }}
 						@else
 							<span class="glyphicon glyphicon-remove text-danger"></span>
-							{{ trans('installer::install.error.seed') }}
+							{{ trans('installer::install.error.seeds') }}
 						@endif
 						</li>
 
-						@if ( ($flag1 === false) || ($flag2 === false) )
+						@if ( ($module_migrate === false) || ($module_seed === false) )
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
 									{{ trans('installer::install.error.db_seed') }}

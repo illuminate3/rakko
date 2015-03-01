@@ -12,6 +12,9 @@
 			</div>
 			<div class="panel-body">
 
+@include('flash::message')
+
+
 				@if (count($errors) > 0)
 					@include('kagi::_partials.errors')
 				@endif

@@ -30,7 +30,7 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading title_panel">
-				{{ trans('installer::install.settings') }}
+				{{ trans('installer::install.install_settings') }}
 			</div><!-- ./panel-heading -->
 			<div class="panel-body body_panel">
 

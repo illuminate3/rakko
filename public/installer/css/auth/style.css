@@ -72,6 +72,16 @@ ul li {
 	display: none;
 }
 
+ul.plain {
+}
+ul li.plain {
+	list-style: none;
+	margin-left: -40px !important;
+	width: 100%;
+	display: none;
+}
+
+
 .btn-success {
 	margin: 30px 0 0 0 !important;
 	background: #2e3641 !important;

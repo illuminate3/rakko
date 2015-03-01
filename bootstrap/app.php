@@ -42,6 +42,9 @@ $app->singleton(
 	'App\Exceptions\Handler'
 );
 
+//require app_path().'/Helpers/ConfigWriter/Rewrite.php';
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

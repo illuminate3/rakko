@@ -4,12 +4,12 @@ namespace App\Modules\Installer\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
-//use Illuminate\Foundation\Validation\ValidatesRequests;
 //use October\Rain\Config\Rewrite as NewConfig;
+//use app\Helpers\ConfigWriter\Rewrite as NewConfig;
 
 use Artisan;
 use Config;
-use Flash;
+use Caffeinated\Flash\Facades\Flash as Flash;
 use Input;
 use File;
 
@@ -22,11 +22,12 @@ class InstallerController extends Controller
 	public function getIndex()
 	{
 //dd('start');
-		if ( Config::get('rakko.install') == true)
+		if ( Config::get('rakko.installed') === true)
 		{
 			Flash::warning(trans('installer::install.error.installed'));
 			return redirect('/');
 		}
+
 		return View('installer::check');
 	}
 
@@ -36,38 +37,85 @@ class InstallerController extends Controller
 	*/
 	public function getArtisan()
 	{
-dd('artisan');
-//$test = Artisan::call('db:seed', array('--path' => 'App/Modules/Installer/Database/Seeds/InstallerDatabaseSeeder'));
+//dd('artisan');
 
+// Migrate: manager
 		try {
-//Artisan::call('module:seed', ['module' => 'manager']);
 			Artisan::call('module:migrate', [
-				''
+				'module' => 'manager'
 				]);
-			$flag1 = true;
+			$module_migrate = true;
 		} catch (Exception $e) {
-			$flag1 = false;
-			Log::error( trans('installer::install.error.migrate') . $e->getMessage() );
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'manager']) . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
+// Migrate: kagi
 		try {
-//Artisan::call('module:seed', ['module' => 'manager']);
-			Artisan::call('module:seed', [
-				''
+			Artisan::call('module:migrate', [
+				'module' => 'kagi'
 				]);
-			$flag2 = true;
+			$module_migrate = true;
 		} catch (Exception $e) {
-			$flag2 = false;
-			Log::error( trans('installer::install.error.seed') . $e->getMessage() );
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'kagi']) . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
-			return View('installer::artisan',
-				compact(
-					'flag1',
-					'flag2'
-				));
+// Migrate: profiles
+		try {
+			Artisan::call('module:migrate', [
+				'module' => 'profiles'
+				]);
+			$module_migrate = true;
+		} catch (Exception $e) {
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'profiles']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: manager
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'manager'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'manager']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: kagi
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'kagi'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'kagi']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: profiles
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'profiles'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'profiles']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+		return View('installer::artisan',
+			compact(
+				'module_migrate',
+				'module_seed'
+			));
 	}
 
 
@@ -78,12 +126,51 @@ dd('artisan');
 	{
 //dd('get settings');
 // work around until config::write can be solved
+
+		$config_installed = Config::get('rakko.installed');
+		$config_timezone = Config::get('app.timezone');
+//dd($config_installed);
+
+		return View('installer::settings_show',
+			compact(
+				'config_installed',
+				'config_timezone'
+			));
+
+
+/*
 		$version = '1.0.0';
+
+Artisan::call(
+	'vendor:publish',
+	[
+		'--force'=> true,
+		'--provider' => 'App\Modules\Installer\Providers\InstallerServiceProvider'
+	]);
+
+dd(Artisan::call(
+	'vendor:publish',
+	[
+		'--force'=> true,
+		'--provider' => 'App\Modules\Installer\Providers\InstallerServiceProvider'
+	]));
+
+//vendor:publish --provider="App\Modules\Installer\Providers\InstallerServiceProvider" --tag="rakko" --force
+
 
 $file = base_path() . '/config/' . 'rakko.php';
 $contents = "hello";
 
-dd(File::isWritable($file));
+//dd(File::isWritable($file));
+if (!is_writable($file)) {
+	$results = chmod($file, '0777');  //this gives true
+}
+dd($results);
+
+$newAppConfig = new NewConfig;
+$newAppConfig->toFile($file, [
+	'installed'=> '564654654'
+	]);
 
 
 $bytes_written = File::put($file, $contents);
@@ -100,15 +187,12 @@ dd('get settings');
 }
 
 
-		return View('installer::settings_show');
-
-
 		try {
-/*
-			Config::set('rakko.installed', false);
-			Config::set('rakko.version', $version);
-			Config::set('rakko.install_date', date('YmdHis'));
-*/
+
+// 			Config::set('rakko.installed', false);
+// 			Config::set('rakko.version', $version);
+// 			Config::set('rakko.install_date', date('YmdHis'));
+
 			$rakko_config = true;
 		} catch (Exception $e) {
 			$rakko_config = false;
@@ -119,8 +203,8 @@ dd('get settings');
 //		return View('installer::final');
 
 
-
 		return View('installer::settings_show');
+*/
 	}
 
 
@@ -164,4 +248,12 @@ dd(Config::write('app.timezone', $timezone));
 	}
 
 
+	/**
+	* final
+	*/
+	public function getFinal()
+	{
+//dd('final');
+		return View('installer::final');
+	}
 }
