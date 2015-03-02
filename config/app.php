@@ -155,7 +155,7 @@ return [
 /*
  * DEV Package Service Providers
  */
-///'Way\Generators\GeneratorsServiceProvider',
+'Laracasts\Generators\GeneratorsServiceProvider',
 //'App\Providers\ErrorServiceProvider',
 'Barryvdh\Debugbar\ServiceProvider',
 /*

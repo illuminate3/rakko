@@ -43,6 +43,11 @@ class UsersTableSeeder extends Seeder {
 				'slug'				=> 'manage_admin',
 				'description'		=> 'Give permission to user to access the admin area.'
 			],
+			[
+				'name'				=> 'User',
+				'slug'				=> 'user',
+				'description'		=> 'Only front end permissions'
+			],
 		 );
 
 		$roles = array(
@@ -50,6 +55,11 @@ class UsersTableSeeder extends Seeder {
 				'name'				=> 'Admin',
 				'slug'				=> 'admin',
 				'description'		=> 'Give user full permission to site functions.'
+			],
+			[
+				'name'				=> 'User',
+				'slug'				=> 'user',
+				'description'		=> 'Standard User'
 			],
 		 );
 

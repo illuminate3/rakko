@@ -2,7 +2,7 @@
 
 return [
 
-	'installed' => false,
+	'installed' => true,
 	'version' => '1.0.0',
 	'install_date' => ''
 
