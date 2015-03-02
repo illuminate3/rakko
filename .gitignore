@@ -7,3 +7,5 @@ Thumbs.db
 /storage
 /node_modules
 /vendor
+/app/Modules/Gakko
+/app/Modules/Shisan
