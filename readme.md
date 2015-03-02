@@ -15,6 +15,15 @@ Rakko essentially uses translations based on the Kotoba package that is listed i
 However, full multilingual ability still needs to be implemented.
 
 
+# Help
+I'm still a basic user regarding github and git.
+So I could use some help with splitting the modules into their own repositories.
+The same goes for tagging.
+
+
+I would also appreciate issues and pull requests.
+
+
 ## Version
 1.0.0
 Will move to full 1.0 after more testing and finalizing the core modules that are included.
@@ -24,6 +33,12 @@ This is still beta since I haven't had a full chance to vet the full application
 I am also planning to add tests to ensure quality.
 However, even with tests things still break due to the nature of programing.
 I do use this as my base code on a daily basis so expect progression and vetting.
+
+
+# Future
+* screenshots -- will up them soon
+* website
+* demo site or video
 
 
 ## Modules
@@ -68,7 +83,7 @@ These are packages that are included with Rakko.
 1. Down load and upload to the server
 2. Run composer install
 3. Create the database
-4. copy paste the .env information and set to your specific server
+4. copy paste the .env information and set to your specific server (provide below)
 5. go to http://name-of-your-site/install
 6. log in with the login and password provided at the last screen
 
@@ -78,7 +93,7 @@ These are packages that are included with Rakko.
 1. Down load and upload to the server
 2. Run composer install
 3. Create the database
-4. Copy paste the .env information and set to your specific server
+4. Copy paste the .env information and set to your specific server (provide below)
 5. Run the following:
 
 a.
