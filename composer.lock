@@ -852,12 +852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "9d051a493d88dcd5722e920889734123a7080b03"
+                "reference": "75ba1abdfe60c2d1a098a1278f84fe4448c05346"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/9d051a493d88dcd5722e920889734123a7080b03",
-                "reference": "9d051a493d88dcd5722e920889734123a7080b03",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/75ba1abdfe60c2d1a098a1278f84fe4448c05346",
+                "reference": "75ba1abdfe60c2d1a098a1278f84fe4448c05346",
                 "shasum": ""
             },
             "require": {
@@ -888,7 +888,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-02-24 05:49:24"
+            "time": "2015-03-02 00:03:12"
         },
         {
             "name": "intervention/image",
