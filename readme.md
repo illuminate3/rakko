@@ -36,10 +36,11 @@ I do use this as my base code on a daily basis so expect progression and vetting
 
 
 # Future
-* screenshots -- will up them soon
-* website
-* demo site or video
-
+- [ ] screenshots -- will up them soon
+- [ ] website
+- [ ] demo site or video
+- [ ] clean up code
+- [ ] fix deletes in the modules
 
 ## Modules
 * Installer - a simple installer for Rakko
@@ -80,7 +81,7 @@ These are packages that are included with Rakko.
 
 ## Easy Install
 
-1. Down load and upload to the server
+1. Down load and upload to server
 2. Run composer install
 3. Create the database
 4. copy paste the .env information and set to your specific server (provide below)
@@ -88,9 +89,12 @@ These are packages that are included with Rakko.
 6. log in with the login and password provided at the last screen
 
 
+* This might fail since the installer is actually still in development.
+
+
 ## Manual Install
 
-1. Down load and upload to the server
+1. Down load and upload to server
 2. Run composer install
 3. Create the database
 4. Copy paste the .env information and set to your specific server (provide below)
@@ -119,6 +123,10 @@ e.
 php artisan module:migrate Gakko
 php artisan module:seed Gakko
 ```
+
+6. login at http://yoursite/auth/login
+	login:		admin@admin.com
+	password:	kagiadmin
 
 
 # .env file
@@ -169,3 +177,9 @@ I also should mention the 2 starter kits for L4. Without them I would never have
 Also, to Laravel. Besides being a "y'all" know a killer framework from Arkansas,
 but also for making me have to drive on the opposite side of the road again ... or if you rather say,
 the correct side of the road.
+
+
+# License
+The MIT License (MIT)
+
+Because I'm a rebel at heart ...
