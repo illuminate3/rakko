@@ -9240,7 +9240,7 @@
 	
 		/**
 		 * Flag to indicate if HTML5 data attributes should be used as the data
-		 * source for filtering or sorting. True is either are.
+		 * source for filtering or sorting. true is either are.
 		 *  @type boolean
 		 *  @default false
 		 *  @private
@@ -10403,7 +10403,7 @@
 		 * the full draw occurring).
 		 *  @type function
 		 *  @param {object} settings DataTables settings object
-		 *  @returns {boolean} False will cancel the draw, anything else (including no
+		 *  @returns {boolean} false will cancel the draw, anything else (including no
 		 *    return) will allow it to complete.
 		 *
 		 *  @dtopt Callbacks

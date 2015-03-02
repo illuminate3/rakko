@@ -80,7 +80,7 @@
 
 <hr>
 
-@if ($allPermissions != NULL)
+@if ($allPermissions != null)
 	<h3>
 		<i class="fa fa-gavel fa-fw"></i>
 		{{ Lang::choice('kotoba::role.role', 2) }}

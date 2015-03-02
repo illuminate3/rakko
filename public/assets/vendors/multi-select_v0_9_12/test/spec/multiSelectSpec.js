@@ -153,7 +153,7 @@ describe("multiSelect", function() {
         it ('should do nothing when clicking on optgroup', function(){
           var clickedOptGroupLabel = optgroupLabels.first();
           clickedOptGroupLabel.trigger('click');
-          expect(optgroupSelect.val()).toBeNull();
+          expect(optgroupSelect.val()).toBenull();
         });
       });
 

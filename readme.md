@@ -1,10 +1,9 @@
 # Rakko
-=======
 
 > Rakko | ラッコ | 'rah-ck-oh'
 > noun
 > Japanese for Sea Otter
-> Rakko is the name of a river in Hokkaido, Japan. (http://ja.wikipedia.org/wiki/楽古川)
+> Rakko is the name of a river in Hokkaido, Japan. ( http://ja.wikipedia.org/wiki/楽古川 )
 
 
 ## About
@@ -28,10 +27,10 @@ I do use this as my base code on a daily basis so expect progression and vetting
 
 
 ## Modules
-Installer - a simple installer for Rakko
-Manager - a simple module manager
-Kagi - authentification and Authorization
-Profiles - basic profiles to extend Kagi
+* Installer - a simple installer for Rakko
+* Manager - a simple module manager
+* Kagi - authentification and Authorization
+* Profiles - basic profiles to extend Kagi
 
 
 ## Front End Requirements
@@ -66,21 +65,21 @@ These are packages that are included with Rakko.
 
 ## Easy Install
 
-1.) Down load and upload to the server
-2.) Run composer install
-3.) Create the database
-4.) copy paste the .env information and set to your specific server
-5.) go to http://name-of-your-site/install
-6.) log in with the login and password provided at the last screen
+1. Down load and upload to the server
+2. Run composer install
+3. Create the database
+4. copy paste the .env information and set to your specific server
+5. go to http://name-of-your-site/install
+6. log in with the login and password provided at the last screen
 
 
 ## Manual Install
 
-1.) Down load and upload to the server
-2.) Run composer install
-3.) Create the database
-4.) Copy paste the .env information and set to your specific server
-5.) Run the following:
+1. Down load and upload to the server
+2. Run composer install
+3. Create the database
+4. Copy paste the .env information and set to your specific server
+5. Run the following:
 
 a.
 ```
@@ -107,8 +106,47 @@ php artisan module:seed Gakko
 ```
 
 
+# .env file
+```
+APP_ENV=local
+APP_DEBUG=false
+APP_KEY=whatevergetsgenerated
+APP_URL=http://localhost
+
+DB_HOST=127.0.0.1
+DB_DATABASE=databasename
+DB_USERNAME=mysqlusername
+DB_PASSWORD=mysqlpassword
+
+EMAIL_HOST=localhost
+EMAIL_PORT=1025
+EMAIL_FROM_ADDRESS=email@email.com
+EMAIL_FROM_NAME=fromname
+EMAIL_ENCRYPTION=null
+
+GITHUB_CLIENT_ID=githubid
+GITHUB_CLIENT_SECRET=githubsecret
+GOOGLE_CLIENT_ID=thatreallylonggoogleclientid
+GOOGLE_CLIENT_SECRET=nosolongsecret
+
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+```
+
+# Coding Standards
+I've been trying my best to confirm ro PSR-0-4 standards.
+
+However, you will note that I do use tabs. I'm addicted to them since I use BBEdit. Also,
+because, I've spent years of dealing with code that is mixed tabs and spaces.
+I will not go into the horrors of line endings or file encoding.
+
+Want me to kick my addiction to tabs, well, yeah, try.
+I promise you that it'll take more than a few beers!
+
+
 ## Mentions
-A very special thanks and arigatou! to Kai over at (https://github.com/caffeinated)
+A very special thanks and arigatou! to Kai over at ( https://github.com/caffeinated )
 Thanks for your patience and help!
 
 I also should mention the 2 starter kits for L4. Without them I would never have gotten this far with Laravel.

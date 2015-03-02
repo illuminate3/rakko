@@ -113,10 +113,10 @@ class Registrar implements RegistrarContract {
 			->first();
 //dd('loaded');
 
-		if ( $confirmation != NULL) {
+		if ( $confirmation != null) {
 			return $confirmation;
 		} else {
-			return False;
+			return false;
 		}
 	}
 
@@ -134,10 +134,10 @@ class Registrar implements RegistrarContract {
 			->first();
 //dd('loaded');
 
-		if ( $user != NULL ) {
+		if ( $user != null ) {
 			return $user;
 		} else {
-			return False;
+			return false;
 		}
 
 	}
@@ -170,7 +170,7 @@ class Registrar implements RegistrarContract {
 //dd($user);
 		$user = User::find($user->id);
 
-		if ($user != NULL) {
+		if ($user != null) {
 			$user->activated = 1;
 			$user->activated_at = date("Y-m-d H:i:s");
 			return $user->update();

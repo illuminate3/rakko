@@ -212,7 +212,7 @@ trait KagiAuthandRegister {
 //dd($code);
 		$user = $this->registrar->confirmEmail($request->email);
 
-		if ( $user != NULL) {
+		if ( $user != null) {
 			$this->registrar->confirmUser($user);
 			$this->registrar->activateUser($user);
 

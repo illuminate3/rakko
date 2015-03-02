@@ -125,7 +125,7 @@
 
 <hr>
 
-@if ($allRoles != NULL)
+@if ($allRoles != null)
 	<h3>
 		<i class="fa fa-gavel fa-fw"></i>
 		{{ Lang::choice('kotoba::role.role', 2) }}

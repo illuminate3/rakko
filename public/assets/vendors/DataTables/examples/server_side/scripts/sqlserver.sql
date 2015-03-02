@@ -1,16 +1,16 @@
 --
 -- DataTables Ajax and server-side processing database (SQL Server)
 --
-IF OBJECT_ID('dbo.datatables_demo', 'U') IS NOT NULL
+IF OBJECT_ID('dbo.datatables_demo', 'U') IS NOT null
   DROP TABLE dbo.datatables_demo;
 
 CREATE TABLE datatables_demo (
-	id         int NOT NULL identity,
-	first_name varchar(250) NOT NULL default '',
-	last_name  varchar(250) NOT NULL default '',
-	position   varchar(250) NOT NULL default '',
-	email      varchar(250) NOT NULL default '',
-	office     varchar(250) NOT NULL default '',
+	id         int NOT null identity,
+	first_name varchar(250) NOT null default '',
+	last_name  varchar(250) NOT null default '',
+	position   varchar(250) NOT null default '',
+	email      varchar(250) NOT null default '',
+	office     varchar(250) NOT null default '',
 	start_date datetime DEFAULT GETDATE(),
 	age        int,
 	salary     int,

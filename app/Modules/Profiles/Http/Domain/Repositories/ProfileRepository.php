@@ -104,7 +104,7 @@ class ProfileRepository extends BaseRepository {
 			$user->email = $input['email'];
 		}
 
-		if ( $input['password'] != NULL ) {
+		if ( $input['password'] != null ) {
 			$user->password = Hash::make($input['password']);
 		}
 
@@ -133,7 +133,7 @@ class ProfileRepository extends BaseRepository {
 
 		} else {
 			$user->activated = 0;
-			$user->activated_at = NULL;
+			$user->activated_at = null;
 		}
 //dd($user);
 

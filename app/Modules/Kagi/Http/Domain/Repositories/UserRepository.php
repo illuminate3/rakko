@@ -111,7 +111,7 @@ $roles = $this->getRoles();
 			$user->email = $input['email'];
 		}
 
-		if ( $input['password'] != NULL ) {
+		if ( $input['password'] != null ) {
 			$user->password = Hash::make($input['password']);
 		}
 
@@ -136,7 +136,7 @@ $roles = $this->getRoles();
 
 		} else {
 			$user->activated = 0;
-			$user->activated_at = NULL;
+			$user->activated_at = null;
 		}
 //dd($user);
 
@@ -194,16 +194,16 @@ $roles = $this->getRoles();
 //dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
 
-		if ($userData->name == NULL) {
+		if ($userData->name == null) {
 			$name = $userData->nickname;
 		}
-		if ($userData->email == NULL) {
+		if ($userData->email == null) {
 			$email = $userData->nickname;
 		}
 		$date = date("Y-m-d H:i:s");
 
 		$check = $this->checkUserExists($name, $email);
-		if ($check == NULL) {
+		if ($check == null) {
 			return User::create([
 				'name'					=> $name,
 				'email'					=> $email,

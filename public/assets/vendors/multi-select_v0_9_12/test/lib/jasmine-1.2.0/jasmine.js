@@ -1277,7 +1277,7 @@ jasmine.Matchers.prototype.toBeUndefined = function() {
 /**
  * Matcher that compares the actual to null.
  */
-jasmine.Matchers.prototype.toBeNull = function() {
+jasmine.Matchers.prototype.toBenull = function() {
   return (this.actual === null);
 };
 
@@ -1822,7 +1822,7 @@ jasmine.NestedResults.prototype.addResult = function(result) {
 };
 
 /**
- * @returns {Boolean} True if <b>everything</b> below passed
+ * @returns {Boolean} true if <b>everything</b> below passed
  */
 jasmine.NestedResults.prototype.passed = function() {
   return this.passedCount === this.totalCount;

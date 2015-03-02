@@ -5,11 +5,11 @@ DROP TABLE IF EXISTS datatables_demo;
 
 CREATE TABLE datatables_demo (
 	id         integer primary key,
-	first_name text NOT NULL default '',
-	last_name  text NOT NULL default '',
-	position   text NOT NULL default '',
-	email      text NOT NULL default '',
-	office     text NOT NULL default '',
+	first_name text NOT null default '',
+	last_name  text NOT null default '',
+	position   text NOT null default '',
+	email      text NOT null default '',
+	office     text NOT null default '',
 	start_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
 	age        integer,
 	salary     integer,
