@@ -8,12 +8,12 @@
 <title>Rakko - Installation - Run Artisan Commands</title>
 
 <!-- Font -->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
 <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-3.3.2/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/font-awesome-4.3.0/css/font-awesome.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('installer/css/auth/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/installer/css/installer.css') }}">
 
 <!--  JS -->
 	<script type="text/javascript" src="{{ asset('assets/vendors/jquery/jquery-2.1.3.min.js') }}"></script>

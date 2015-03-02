@@ -41,7 +41,7 @@
 {!! Form::model(
 	$module,
 	[
-		'route' => ['manager.update', $module->id],
+		'route' => ['admin.manager.update', $module->id],
 		'method' => 'PATCH',
 		'class' => 'form'
 	]

@@ -1,0 +1,95 @@
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0 30px 0 30px;
+}
+body {
+/* Margin bottom by footer height */
+	margin-top: 60px;
+	margin-bottom: 80px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	background: url(../../../assets/images/rakko.jpg) center top no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-attachment: fixed;
+}
+.footer {
+	position: absolute;
+	margin: 0 auto 0;
+	bottom: 0;
+	width: 100%;
+	font-size: 18px !important;
+	line-height: 29px !important;
+	color: #fff;
+	text-align: center;
+/* Set the fixed height of the footer here */
+	height: 80px;
+}
+
+section {
+}
+
+a {
+	outline: none !important;
+}
+
+ul {
+}
+ul li {
+	list-style: none;
+	float: left;
+	margin-left: 10px;
+	font-size: 18px !important;
+	line-height: 29px !important;
+	margin-top: 10px;
+	width: 100%;
+	display: none;
+}
+
+ul.plain {
+}
+ul li.plain {
+	list-style: none;
+	margin-left: -40px !important;
+	width: 100%;
+	display: none;
+}
+
+.centered {
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	top: 40%; left: 60%;
+	-webkit-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+}
+
+.title_panel {
+	background: #2e3641 !important;
+	color: #1bdcff !important;
+	text-align: center;
+	font-size: 28px;
+	line-height: 45px;
+}
+
+.body_panel {
+	padding: 40px 0 40px 40px;
+}
+
+.btn-success {
+	margin: 30px 0 0 0 !important;
+	background: #2e3641 !important;
+	font-size: 20px !important;
+	line-height: 32px !important;
+	border: none !important;
+	color: #ffffff !important;
+}
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active {
+	color: #1bdcff !important;
+}

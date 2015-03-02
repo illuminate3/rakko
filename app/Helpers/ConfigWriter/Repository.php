@@ -7,7 +7,7 @@ use Illuminate\Config\Repository as RepositoryBase;
 /*
 https://github.com/daftspunk/laravel-config-writer
 author: daftspunk ( Samuel Georges )
-license: unknown, available on github -- October CMS is under MIT
+license: available on github -- issue #6 put's under MIT
 */
 
 class Repository extends RepositoryBase

@@ -24,7 +24,7 @@ class InstallerController extends Controller
 //dd('start');
 		if ( Config::get('rakko.installed') === true)
 		{
-			Flash::warning(trans('installer::install.error.installed'));
+			Flash::error(trans('installer::install.error.installed'));
 			return redirect('/');
 		}
 

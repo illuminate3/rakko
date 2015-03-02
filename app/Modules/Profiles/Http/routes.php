@@ -19,6 +19,8 @@ Route::get('welcome/profiles', array(
 Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id', '[0-9]+');
 
+});
+
 # main controller
 	Route::resource('profiles', 'ProfilesController');
 
@@ -28,5 +30,3 @@ Route::group(['prefix' => 'admin'], function() {
 	//	'as'=>'api.users',
 		'uses'=>'ProfilesController@data'
 		));
-
-});

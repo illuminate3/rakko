@@ -27,7 +27,7 @@ $(document).ready(function() {
 		"sPaginationType" : "bootstrap",
 		"bProcessing" : true,
 		"bServerSide" : true,
-		"sAjaxSource" : "{{ URL::to('api/manager') }}",
+		"sAjaxSource" : "{{ URL::to('admin/api/manager') }}",
 	});
 });
 @stop
@@ -62,6 +62,7 @@ $(document).ready(function() {
 			<th>{{ trans('kotoba::table.version') }}</th>
 			<th>{{ trans('kotoba::table.description') }}</th>
 			<th>{{ trans('kotoba::table.enabled') }}</th>
+			<th>{{ trans('kotoba::table.order') }}</th>
 
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>

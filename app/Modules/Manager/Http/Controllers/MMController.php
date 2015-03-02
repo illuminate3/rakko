@@ -178,7 +178,7 @@ dd("store");
 			$table->text('description')->nullable();
 			$table->boolean('enabled')->nullable()->default('true');
 */
-		$modules = Module::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled'))
+		$modules = Module::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled','modules.order'))
 			->orderBy('modules.name', 'ASC');
 //dd($profiles);
 
@@ -186,7 +186,7 @@ dd("store");
 
 			->add_column(
 				'actions',
-				'<a href="{{ URL::to(\'manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+				'<a href="{{ URL::to(\'admin/manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				<a href="{{ URL::to(\'welcome/\' . $slug . \'/\' ) }}" class="btn btn-info btn-sm" >

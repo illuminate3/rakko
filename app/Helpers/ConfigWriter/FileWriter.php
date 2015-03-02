@@ -6,7 +6,7 @@ use Illuminate\Config\LoaderInterface;
 /*
 https://github.com/daftspunk/laravel-config-writer
 author: daftspunk ( Samuel Georges )
-license: unknown, available on github -- October CMS is under MIT
+license: available on github -- issue #6 put's under MIT
 */
 
 class FileWriter
