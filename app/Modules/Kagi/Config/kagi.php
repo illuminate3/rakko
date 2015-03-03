@@ -39,5 +39,6 @@ return [
 |
 */
 'kagi_social'					=> 'github',
+'kagi_avatar'					=> 'assets/images/usr.png',
 
 ];

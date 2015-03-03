@@ -200,6 +200,9 @@ $roles = $this->getRoles();
 		if ($userData->email == null) {
 			$email = $userData->nickname;
 		}
+		if ($userData->avatar == null) {
+			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
 		$date = date("Y-m-d H:i:s");
 
 		$check = $this->checkUserExists($name, $email);
@@ -207,7 +210,7 @@ $roles = $this->getRoles();
 			return User::create([
 				'name'					=> $name,
 				'email'					=> $email,
-//				'avatar'				=> $userData->avatar,
+				'avatar'				=> $avatar,
 				'blocked'				=> 0,
 				'banned'				=> 0,
 				'confirmed'				=> 1,
@@ -223,6 +226,9 @@ $roles = $this->getRoles();
 				'name'					=> $name,
 				'email'					=> $email,
 			]);
+
+$response = Event::fire(new PodcastWasPurchased($podcast));
+
 		}
 
 	}
@@ -231,17 +237,39 @@ $roles = $this->getRoles();
 	{
 //dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
-		return User::firstOrCreate([
-			'name'					=> $userData->name,
-			'email'					=> $userData->email,
-//			'avatar'				=> $userData->avatar,
-			'activated_at'			=> date("Y-m-d H:i:s"),
-			'blocked'				=> 0,
-			'banned'				=> 0,
-			'confirmed'				=> 1,
-			'activated'				=> 1,
-			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
-		]);
+
+		if ($userData->name == null) {
+			$name = $userData->nickname;
+		}
+		if ($userData->email == null) {
+			$email = $userData->nickname;
+		}
+		if ($userData->avatar == null) {
+			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+		$date = date("Y-m-d H:i:s");
+
+		$check = $this->checkUserExists($name, $email);
+		if ($check == null) {
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+				'avatar'				=> $avatar,
+				'activated_at'			=> date("Y-m-d H:i:s"),
+				'blocked'				=> 0,
+				'banned'				=> 0,
+				'confirmed'				=> 1,
+				'activated'				=> 1,
+				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+			]);
+		} else {
+//dd($check->id);
+			$this->touchLastLogin($check->id);
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+		}
 	}
 
 

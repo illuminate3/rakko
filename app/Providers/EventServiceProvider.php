@@ -28,6 +28,13 @@ class EventServiceProvider extends ServiceProvider {
 		parent::boot($events);
 
 		//
+
+
+Event::listen('App\Events\PodcastWasPurchased', function($event)
+{
+    // Handle the event...
+});
+
 	}
 
 }
