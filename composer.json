@@ -1,6 +1,6 @@
 {
 	"name": "illuminate3/rakko",
-	"description": "Rakko is the start of a platform to be used with Laravel 5. At the moment, however, Rakko is more of a bootstrap starter kit than a platform.",
+	"description": "Rakko, Laravel 5 module based platform, stater / boostraper kit.",
 	"keywords": ["laravel 5", "modules", "platform", "starter kit", "bootstrap", "multi-lingual"],
 	"license": "MIT",
 	"type": "project",
