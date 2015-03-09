@@ -1,10 +1,15 @@
 <?php
-namespace App\Providers;
+namespace App\Modules\Profiles\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider {
+use App\Providers\EventServiceProvider;
+
+use App\Modules\Profiles\Events\PodcastWasPurchased;
+use App\Modules\Profiles\Handlers\Events\SendPurchaseConfirmation;
+
+class ProfileEventServiceProvider extends EventServiceProvider {
 
 	/**
 	 * The event handler mappings for the application.
@@ -15,6 +20,11 @@ class EventServiceProvider extends ServiceProvider {
 		'event.name' => [
 			'EventListener',
 		],
+
+PodcastWasPurchased::class => [
+	SendPurchaseConfirmation::class,
+],
+
 	];
 
 
@@ -30,5 +40,6 @@ class EventServiceProvider extends ServiceProvider {
 
 		//
 	}
+
 
 }

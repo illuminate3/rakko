@@ -1,6 +1,7 @@
-<?php namespace App\Events;
+<?php
+namespace App\Modules\Profiles\Events;
 
-use App\Events\Event;
+use App\Modules\Profiles\Events\Event;
 
 use Illuminate\Queue\SerializesModels;
 
@@ -8,28 +9,20 @@ class PodcastWasPurchased extends Event {
 
 	use SerializesModels;
 
+public $userID;
+public $podCastID;
+
 	/**
 	 * Create a new event instance.
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct($userID, $podCastID)
 	{
 		//
+$this->userID = $userID;
+$this->podCastID = $podCastID;
+
 	}
 
 }
-
-
-// php artisan make:event PodcastWasPurchased
-
-/*
-edit providers/eventserviceprovider with
-```
-protected $listen = [
-    'App\Events\PodcastWasPurchased' => [
-        'App\Handlers\Events\EmailPurchaseConfirmation',
-    ],
-];
-```
-*/

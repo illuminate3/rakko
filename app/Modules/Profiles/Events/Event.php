@@ -1,5 +1,5 @@
 <?php
-namespace App\Events;
+namespace App\Modules\Profiles\Events;
 
 abstract class Event {
 

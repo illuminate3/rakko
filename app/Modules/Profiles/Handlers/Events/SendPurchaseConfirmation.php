@@ -1,11 +1,12 @@
-<?php namespace App\Handlers\Events;
+<?php
+namespace App\Modules\Profiles\Handlers\Events;
 
-use App\Events\PodcastWasPurchased;
+use App\Modules\Profiles\Events\PodcastWasPurchased;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class EmailPurchaseConfirmation {
+class SendPurchaseConfirmation {
 
 	/**
 	 * Create the event handler.
@@ -26,10 +27,7 @@ class EmailPurchaseConfirmation {
 	public function handle(PodcastWasPurchased $event)
 	{
 		//
+dd($event);
 	}
 
 }
-
-
-
-// php artisan handler:event EmailPurchaseConfirmation --event=PodcastWasPurchased
