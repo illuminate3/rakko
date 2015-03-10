@@ -9,20 +9,31 @@ class PodcastWasPurchased extends Event {
 
 	use SerializesModels;
 
-public $userID;
-public $podCastID;
+// public $userID;
+// public $podCastID;
 
 	/**
 	 * Create a new event instance.
 	 *
 	 * @return void
 	 */
-	public function __construct($userID, $podCastID)
-	{
-		//
-$this->userID = $userID;
-$this->podCastID = $podCastID;
+// 	public function __construct($userID, $podCastID)
+// 	{
+// 		//
+// $this->userID = $userID;
+// $this->podCastID = $podCastID;
+//
+// 	}
 
+
+
+	public $data;
+
+	public function __construct($data)
+	{
+dd($data);
+		$this->$data = $data;
 	}
+
 
 }

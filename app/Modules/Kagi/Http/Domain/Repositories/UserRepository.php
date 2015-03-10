@@ -227,7 +227,8 @@ $roles = $this->getRoles();
 				'email'					=> $email,
 			]);
 
-$response = Event::fire(new PodcastWasPurchased($podcast));
+//$response = Event::fire(new PodcastWasPurchased($podcast));
+\Event::fire(new PodcastWasPurchased($check));
 
 		}
 
