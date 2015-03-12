@@ -32,7 +32,7 @@
 						</a>
 					</li>
 				<li class="divider"></li>
-{{-- @if (Auth::user()->can('manage_admin')) --}}
+@if (Auth::user()->can('manage_admin'))
 					<li>
 						<a href="/admin/users">
 							{{ Lang::choice('kotoba::account.user', 2) }}
@@ -54,7 +54,7 @@
 						</a>
 					</li>
 				<li class="divider"></li>
-{{-- @endif --}}
+@endif
 					<li>
 						<a href="/auth/logout">
 							{{ trans('kotoba::auth.log_out') }}

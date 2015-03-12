@@ -38,7 +38,7 @@ class HomeController extends Controller {
 
 $data = Auth::user();
 
-\Event::fire(new PodcastWasPurchased($data));
+// \Event::fire(new PodcastWasPurchased($data));
 
 		return view('home');
 	}

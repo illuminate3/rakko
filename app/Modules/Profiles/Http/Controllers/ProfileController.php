@@ -21,11 +21,9 @@ class ProfileController extends Controller
 	{
 /*
 		parent::__construct();
-		$this->middleware('csrf');
-		$this->middleware('auth');
 */
-//		$this->middleware('guest');
-		$this->middleware('admin');
+		$this->middleware('guest');
+//		$this->middleware('admin');
 
 	}
 

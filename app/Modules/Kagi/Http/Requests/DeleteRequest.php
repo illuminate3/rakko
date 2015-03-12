@@ -2,6 +2,7 @@
 namespace App\Modules\Kagi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 
 class DeleteRequest extends FormRequest {
 
@@ -12,7 +13,9 @@ class DeleteRequest extends FormRequest {
 	 */
 	public function authorize()
 	{
-		return true;
+		if (Auth::user()->can('manage_admin')) {
+			return true;
+		}
 	}
 
 	/**
@@ -23,7 +26,7 @@ class DeleteRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'id' => 'required|integer',
+//			'id' => 'required|integer',
 		];
 	}
 

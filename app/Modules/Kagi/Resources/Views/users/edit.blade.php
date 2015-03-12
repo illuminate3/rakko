@@ -121,8 +121,6 @@
 </div>
 
 
-
-
 <hr>
 
 @if ($allRoles != null)
@@ -174,7 +172,8 @@
 </div>
 
 <div class="col-sm-4">
-	<a class="btn btn-danger btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+<!-- Button trigger modal -->
+	<a data-toggle="modal" data-target="#myModal" class="btn btn-default btn-block" title="{{ trans('kotoba::button.delete') }}">
 		<i class="fa fa-trash-o fa-fw"></i>
 		{{ trans('kotoba::general.command.delete') }}
 	</a>
@@ -183,5 +182,12 @@
 
 </div> <!-- ./ row -->
 </div> <!-- ./ wrap/container -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	@include('_partials.modal')
+</div>
+
 
 @stop

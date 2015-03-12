@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 # Users
 	Route::resource('users', 'UsersController');
+	Route::get('getDelete/{id}', 'UsersController@getDelete');
 # Roles
 	Route::resource('roles', 'RolesController');
 # Permissions

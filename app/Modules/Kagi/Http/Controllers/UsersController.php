@@ -108,7 +108,19 @@ dd("store");
 	public function edit($id)
 	{
 //dd("edit");
-		return View('kagi::users.edit',  $this->user->edit($id));
+		$modal_title = trans('kotoba::account.command.delete');
+		$modal_body = trans('kotoba::account.ask.delete');
+		$modal_route = 'admin.users.destroy';
+		$modal_id = $id;
+
+		return View('kagi::users.edit',
+			$this->user->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id'
+			));
 	}
 
 	/**
@@ -140,10 +152,14 @@ dd("store");
 		$id
 		)
 	{
-		$this->user->destroy($id);
+		$user= User::find($id);
+		$user->roles()->detach();
+		$user->delete();
 
-		return redirect('user')->with('ok', trans('back/users.destroyed'));
+		Flash::success( trans('kotoba::account.success.delete') );
+		return redirect('admin/users');
 	}
+
 
 	/**
 	 * Display the roles form
