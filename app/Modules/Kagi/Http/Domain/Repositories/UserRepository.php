@@ -191,8 +191,8 @@ $roles = $this->getRoles();
 	 */
 	public function findByUsernameOrCreateGithub($userData)
 	{
-//dd($userData);
-//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
+//dd($userData->avatar);
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated', "avatar'];
 
 		if ($userData->name == null) {
 			$name = $userData->nickname;
@@ -202,6 +202,8 @@ $roles = $this->getRoles();
 		}
 		if ($userData->avatar == null) {
 			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		} else {
+			$avatar = $userData->avatar;
 		}
 		$date = date("Y-m-d H:i:s");
 
@@ -217,19 +219,22 @@ $roles = $this->getRoles();
 				'activated'				=> 1,
 				'activated_at'			=> $date,
 				'last_login'			=> $date,
+				'avatar'				=> $avatar,
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
+
+\Event::fire(new PodcastWasPurchased($check));
+
 		} else {
-//dd($check->id);
+//dd($check);
 			$this->touchLastLogin($check->id);
+
+\Event::fire(new \PodcastWasPurchased($check));
+
 			return User::firstOrCreate([
 				'name'					=> $name,
 				'email'					=> $email,
 			]);
-
-//$response = Event::fire(new PodcastWasPurchased($podcast));
-\Event::fire(new PodcastWasPurchased($check));
-
 		}
 
 	}
@@ -247,6 +252,8 @@ $roles = $this->getRoles();
 		}
 		if ($userData->avatar == null) {
 			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		} else {
+			$avatar = $userData->avatar;
 		}
 		$date = date("Y-m-d H:i:s");
 
@@ -261,6 +268,9 @@ $roles = $this->getRoles();
 				'banned'				=> 0,
 				'confirmed'				=> 1,
 				'activated'				=> 1,
+				'activated_at'			=> $date,
+				'last_login'			=> $date,
+				'avatar'				=> $avatar,
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
 		} else {

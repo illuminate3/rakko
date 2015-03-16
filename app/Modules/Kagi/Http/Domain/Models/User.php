@@ -41,6 +41,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		'activated',
 		'activated_at',
 		'last_login',
+		'avatar',
 		'confirmation_code'
 		];
 

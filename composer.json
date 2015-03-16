@@ -26,7 +26,7 @@
 		"phpspec/phpspec": "~2.1",
 		"filp/whoops": "~1.1",
 		"barryvdh/laravel-debugbar": "~2.0",
-		"way/generators": "3.0.1"
+		"laracasts/generators": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
