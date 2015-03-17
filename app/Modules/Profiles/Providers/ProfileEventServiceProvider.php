@@ -9,6 +9,8 @@ use App\Providers\EventServiceProvider;
 use App\Modules\Profiles\Events\PodcastWasPurchased;
 use App\Modules\Profiles\Handlers\Events\SendPurchaseConfirmation;
 
+use App;
+
 class ProfileEventServiceProvider extends EventServiceProvider {
 
 	/**
@@ -37,8 +39,14 @@ PodcastWasPurchased::class => [
 	public function boot(DispatcherContract $events)
 	{
 		parent::boot($events);
-
 		//
+	}
+
+	public function register()
+	{
+		$this->app->bind('PodcastWasPurchased', function () {
+			return new  App\Modules\Profiles\Events\PodcastWasPurchased();
+		});
 	}
 
 
