@@ -29,6 +29,9 @@ PodcastWasPurchased::class => [
 
 	];
 
+private $providers = [
+'PodcastWasPurchased' => 'App\Modules\Profiles\Events\PodcastWasPurchased'
+];
 
 	/**
 	 * Register any other events for your application.
@@ -44,9 +47,24 @@ PodcastWasPurchased::class => [
 
 	public function register()
 	{
-		$this->app->bind('PodcastWasPurchased', function () {
+
+/*
+		App::bind('PodcastWasPurchased', function ($app) {
 			return new  App\Modules\Profiles\Events\PodcastWasPurchased();
 		});
+
+	foreach ($this->providers as $provider) {
+//	foreach($this->providers as $key => $value)
+//dd($key);
+		$app['config']->push('app.aliases', $provider);
+	}
+*/
+
+//$this->app->register('App\Modules\Profiles\Events\PodcastWasPurchased');
+App::bind(
+	'App\Modules\Profiles\Events\PodcastWasPurchased'
+);
+
 	}
 
 

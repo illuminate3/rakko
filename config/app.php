@@ -242,7 +242,7 @@ return [
 //'Datatable' => 'Chumper\Datatable\Facades\Datatable',
 'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
 'Image'			=> 'Intervention\Image\Facades\Image',
-
+//'PodcastWasPurchased' => 'App\Modules\Profiles\Events\PodcastWasPurchased',
 /*
  * DEV Package Alias
  */
