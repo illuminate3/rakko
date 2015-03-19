@@ -9,7 +9,9 @@ use App\Providers\EventServiceProvider;
 use App\Modules\Profiles\Events\PodcastWasPurchased;
 use App\Modules\Profiles\Handlers\Events\SendPurchaseConfirmation;
 
+//use Illuminate\Foundation\Application;
 use App;
+use Event;
 
 class ProfileEventServiceProvider extends EventServiceProvider {
 
@@ -29,9 +31,6 @@ PodcastWasPurchased::class => [
 
 	];
 
-private $providers = [
-'PodcastWasPurchased' => 'App\Modules\Profiles\Events\PodcastWasPurchased'
-];
 
 	/**
 	 * Register any other events for your application.
@@ -43,27 +42,16 @@ private $providers = [
 	{
 		parent::boot($events);
 		//
+Event::listen('PodcastWasPurchased', 'SendPurchaseConfirmation');
 	}
 
 	public function register()
 	{
-
 /*
-		App::bind('PodcastWasPurchased', function ($app) {
-			return new  App\Modules\Profiles\Events\PodcastWasPurchased();
+		App::bind('PodcastWasPurchased', function () {
+			return new  \App\Modules\Profiles\Events\PodcastWasPurchased();
 		});
-
-	foreach ($this->providers as $provider) {
-//	foreach($this->providers as $key => $value)
-//dd($key);
-		$app['config']->push('app.aliases', $provider);
-	}
 */
-
-//$this->app->register('App\Modules\Profiles\Events\PodcastWasPurchased');
-App::bind(
-	'App\Modules\Profiles\Events\PodcastWasPurchased'
-);
 
 	}
 
