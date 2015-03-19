@@ -223,13 +223,13 @@ $roles = $this->getRoles();
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
 
-\Event::fire(new PodcastWasPurchased($check));
+			\Event::fire(new \ProfileWasCreated($check));
 
 		} else {
 //dd($check);
 			$this->touchLastLogin($check->id);
 
-\Event::fire(new \PodcastWasPurchased($check));
+			\Event::fire(new \ProfileWasCreated($check));
 
 			return User::firstOrCreate([
 				'name'					=> $name,

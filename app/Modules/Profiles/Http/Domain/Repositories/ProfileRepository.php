@@ -143,4 +143,33 @@ class ProfileRepository extends BaseRepository {
 	}
 
 
+	public function checkProfileExists($email)
+	{
+//dd($email);
+		$profile = DB::table('profiles')
+			->where('email_1', '=', $email)
+			->first();
+//dd($profile);
+
+		return $profile;
+	}
+
+	/**
+	 * @param $userData
+	 * @return static
+	 */
+	public function findOrCreateProfile($data)
+	{
+//dd($data);
+		$check = $this->checkProfileExists($data->email);
+		if ($check == null) {
+//dd($data->id);
+			return Profile::create([
+				'user_id'						=> $data->id,
+				'email_1'						=> $data->email
+			]);
+		}
+
+	}
+
 }

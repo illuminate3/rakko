@@ -6,8 +6,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 use App\Providers\EventServiceProvider;
 
-use App\Modules\Profiles\Events\PodcastWasPurchased;
-use App\Modules\Profiles\Handlers\Events\SendPurchaseConfirmation;
+use App\Modules\Profiles\Events\ProfileWasCreated;
+use App\Modules\Profiles\Handlers\Events\CreateProfile;
 
 //use Illuminate\Foundation\Application;
 use App;
@@ -21,13 +21,13 @@ class ProfileEventServiceProvider extends EventServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
-		],
+// 		'event.name' => [
+// 			'EventListener',
+// 		],
 
-PodcastWasPurchased::class => [
-	SendPurchaseConfirmation::class,
-],
+		ProfileWasCreated::class => [
+			CreateProfile::class,
+		],
 
 	];
 
@@ -42,16 +42,13 @@ PodcastWasPurchased::class => [
 	{
 		parent::boot($events);
 		//
-Event::listen('PodcastWasPurchased', 'SendPurchaseConfirmation');
 	}
 
 	public function register()
 	{
-/*
-		App::bind('PodcastWasPurchased', function () {
-			return new  \App\Modules\Profiles\Events\PodcastWasPurchased();
-		});
-*/
+
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		$loader->alias('ProfileWasCreated', 'App\Modules\Profiles\Events\ProfileWasCreated');
 
 	}
 

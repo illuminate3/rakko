@@ -1,10 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Modules\Profiles\Events\PodcastWasPurchased;
-
-use Auth;
-
 class HomeController extends Controller {
 
 	/*
@@ -35,11 +31,6 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-
-$data = Auth::user();
-
-//\Event::fire(new PodcastWasPurchased($data));
-
 		return view('home');
 	}
 
