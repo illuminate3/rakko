@@ -15,6 +15,10 @@ Route::get('welcome/gakko', array(
 	'uses'=>'GakkoController@welcome'
 	));
 
+Route::get('school', array(
+	'uses'=>'GakkoController@index'
+	));
+
 Route::resource('departments', 'DepartmentsController');
 Route::resource('divisions', 'DivisionsController');
 Route::resource('employee_types', 'EmployeeTypesController');

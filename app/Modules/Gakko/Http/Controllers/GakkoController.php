@@ -25,8 +25,18 @@ class GakkoController extends Controller
 		$this->middleware('auth');
 */
 //		$this->middleware('guest');
-		$this->middleware('admin');
+//		$this->middleware('admin');
 
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return View('gakko::school');
 	}
 
 

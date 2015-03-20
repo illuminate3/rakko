@@ -15,14 +15,17 @@ class MenuServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		Menu::make('public', function($menu) {
-			$menu->add('Profiles', 'profiles');
-/*
-			$menu->add('Module Manager', 'admin/manager');
-			$menu->add('View Profile', 'profiles/'.Auth::user()->id);
-			$menu->add('view profile', 'profiles'. Auth::user()->id );
-*/
+
+// navbar menu
+		Menu::make('navbar', function($menu) {
+			//
 		});
+
+// right side drop down
+		Menu::make('admin', function($menu) {
+			//
+		});
+
 	}
 
 	/**

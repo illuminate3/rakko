@@ -22,6 +22,7 @@ class GakkoServiceProvider extends ServiceProvider
 		// services in the IoC container. If you wish, you may make additional
 		// methods or service providers to keep the code more focused and granular.
 		App::register('App\Modules\Gakko\Providers\RouteServiceProvider');
+		App::register('App\Modules\Gakko\Providers\GakkoMenuProvider');
 
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/gakko.php', 'gakko'
@@ -51,22 +52,6 @@ class GakkoServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../Config/gakko.php' => config_path('gakko.php'),
 		]);
-/*
-		Menu::make('public', function($menu) {
-			$menu->add('Welcome', 'welcome');
-			$menu->welcome->add('Employees', 'employees');
-			$menu->welcome->add('Departments', 'departments');
-			$menu->welcome->add('Grades', 'grades');
-			$menu->welcome->add('Divisions', 'divisions');
-			$menu->welcome->add('Positions', 'positions');
-			$menu->welcome->add('Subjects', 'subjects');
-			$menu->welcome->add('Employee Types', 'employee_types');
-			$menu->welcome->add('Job Titles', 'job_titles');
-			$menu->welcome->add('Statuses', 'statuses');
-			$menu->welcome->add('Sites', 'sites');
-			$menu->welcome->add('Rooms', 'rooms');
-		});
-*/
 	}
 
 

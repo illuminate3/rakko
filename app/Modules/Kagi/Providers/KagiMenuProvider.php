@@ -1,12 +1,12 @@
 <?php
-namespace App\Modules\Profiles\Providers;
+namespace App\Modules\Kagi\Providers;
 
 use App\Providers\MenuServiceProvider;
 
 use Auth;
 use Menu;
 
-class ProfileMenuProvider extends MenuServiceProvider {
+class KagiMenuProvider extends MenuServiceProvider {
 
 	/**
 	 * Bootstrap any application services.
@@ -17,11 +17,10 @@ class ProfileMenuProvider extends MenuServiceProvider {
 	{
 
 // navbar menu
-		$menu = Menu::get('navbar');
-		$menu->add('Profiles', 'profiles');
+//		$menu = Menu::get('navbar');
 
 // right side drop down
-		$menu = Menu::get('admin');
+//		$menu = Menu::get('admin');
 
 	}
 

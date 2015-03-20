@@ -20,6 +20,7 @@ class ShisanServiceProvider extends ServiceProvider
 		// services in the IoC container. If you wish, you may make additional
 		// methods or service providers to keep the code more focused and granular.
 		App::register('App\Modules\Shisan\Providers\RouteServiceProvider');
+		App::register('App\Modules\Shisan\Providers\ShisanMenuProvider');
 
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/shisan.php', 'shisan'

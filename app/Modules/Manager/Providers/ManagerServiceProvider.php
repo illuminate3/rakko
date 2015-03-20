@@ -18,6 +18,7 @@ class ManagerServiceProvider extends ServiceProvider
 	{
 
 		App::register('App\Modules\Manager\Providers\RouteServiceProvider');
+		App::register('App\Modules\Manager\Providers\ManagerMenuProvider');
 
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/manager.php', 'manager'
