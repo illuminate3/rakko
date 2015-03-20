@@ -16,7 +16,7 @@
 "chumper/datatable": "dev-master",
 "laravelcollective/html": "~5.0",
 "laracasts/presenter": "dev-master",
-"yajra/laravel-datatables-oracle" : ">=v4.0.1",
+"yajra/laravel-datatables-oracle" : "~4.0",
 "graham-campbell/throttle": "~3.0",
 "intervention/image": "~2.1",
 "intervention/imagecache": "~2.1"
