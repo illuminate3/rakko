@@ -1,12 +1,12 @@
 <?php
-namespace App\Providers;
+namespace App\Modules\Profiles\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Providers\MenuServiceProvider;
 
 use Auth;
 use Menu;
 
-class MenuServiceProvider extends ServiceProvider {
+class ProfileMenuProvider extends MenuServiceProvider {
 
 	/**
 	 * Bootstrap any application services.

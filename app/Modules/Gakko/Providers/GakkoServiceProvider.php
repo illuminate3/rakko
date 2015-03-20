@@ -1,11 +1,13 @@
 <?php
 namespace App\Modules\Gakko\Providers;
 
+use Illuminate\Support\ServiceProvider;
+
 use App;
 use Config;
 use Lang;
+use Menu;
 use View;
-use Illuminate\Support\ServiceProvider;
 
 class GakkoServiceProvider extends ServiceProvider
 {
@@ -49,6 +51,22 @@ class GakkoServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../Config/gakko.php' => config_path('gakko.php'),
 		]);
+/*
+		Menu::make('public', function($menu) {
+			$menu->add('Welcome', 'welcome');
+			$menu->welcome->add('Employees', 'employees');
+			$menu->welcome->add('Departments', 'departments');
+			$menu->welcome->add('Grades', 'grades');
+			$menu->welcome->add('Divisions', 'divisions');
+			$menu->welcome->add('Positions', 'positions');
+			$menu->welcome->add('Subjects', 'subjects');
+			$menu->welcome->add('Employee Types', 'employee_types');
+			$menu->welcome->add('Job Titles', 'job_titles');
+			$menu->welcome->add('Statuses', 'statuses');
+			$menu->welcome->add('Sites', 'sites');
+			$menu->welcome->add('Rooms', 'rooms');
+		});
+*/
 	}
 
 
