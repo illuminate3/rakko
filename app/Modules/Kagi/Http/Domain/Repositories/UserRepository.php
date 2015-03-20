@@ -1,14 +1,16 @@
 <?php
 namespace App\Modules\Kagi\Http\Domain\Repositories;
 
-use App\Modules\Kagi\Http\Domain\Models\User;
-use App\Modules\Kagi\Http\Domain\Models\Role;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
-//use Caffeinated\Shinobi\Traits\ShinobiTrait;
+use App\Modules\Kagi\Http\Domain\Models\Role;
+use App\Modules\Kagi\Http\Domain\Models\User;
 
-use Hash, DB, Auth, Config, Eloquent;
+use Auth;
+use Config;
 use DateTime;
-//use File, Auth;
+use DB;
+use Eloquent;
+use Hash;
 
 class UserRepository extends BaseRepository {
 
@@ -29,19 +31,19 @@ class UserRepository extends BaseRepository {
 	/**
 	 * Create a new UserRepository instance.
 	 *
-   	 * @param  App\Modules\Kagi\Http\Domain\Models\User $user
 	 * @param  App\Modules\Kagi\Http\Domain\Models\Role $role
+	 * @param  App\Modules\Kagi\Http\Domain\Models\User $user
 	 * @return void
 	 */
 	public function __construct(
-		User $user,
 		Role $role,
-		shinobiRole $shinobiRole
+		shinobiRole $shinobiRole,
+		User $user
 		)
 	{
-		$this->user = $user;
 		$this->role = $role;
 		$this->shinobiRole = $shinobiRole;
+		$this->user = $user;
 	}
 
 	/**
@@ -52,11 +54,9 @@ class UserRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-//		$user = $this->user->with('roles')->findOrFail($id);
 		$user = $this->user->findOrFail($id);
-//		$user = $this->getById($id);
 //dd($user);
-$roles = $this->getRoles();
+		$roles = $this->getRoles();
 //dd($roles);
 
 		return compact('user', 'roles');
@@ -72,12 +72,11 @@ $roles = $this->getRoles();
 	{
 		$user = $this->user->find($id);
 //dd($user);
-
-		$userRoles = User::find($id)->roles;
-		$roles = $this->shinobiRole->lists('name', 'id');
+		$roles = $user->roles->lists('name', 'id');
+//		$roles = $this->shinobiRole->lists('name', 'id');
 		$allRoles =  $this->role->all()->lists('name', 'id');
-
-		return compact('user', 'roles', 'allRoles', 'userRoles');
+//dd($roles);
+		return compact('user', 'roles', 'allRoles');
 	}
 
 	/**
@@ -191,25 +190,28 @@ $roles = $this->getRoles();
 	 */
 	public function findByUsernameOrCreateGithub($userData)
 	{
-//dd($userData->avatar);
+//dd($userData);
 //	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated', "avatar'];
+//dd($userData->email);
 
 		if ($userData->name == null) {
-			$name = $userData->nickname;
+			$userData->name = $userData->nickname;
 		}
 		if ($userData->email == null) {
-			$email = $userData->nickname;
+			$userData->email = $userData->nickname;
 		}
 		if ($userData->avatar == null) {
-			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
-		} else {
-			$avatar = $userData->avatar;
+			$userData->avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
 		}
 		$date = date("Y-m-d H:i:s");
 
+		$name							= $userData->name;
+		$email							= $userData->email;
+		$avatar							= $userData->avatar;
+
 		$check = $this->checkUserExists($name, $email);
 		if ($check == null) {
-			return User::create([
+			User::create([
 				'name'					=> $name,
 				'email'					=> $email,
 				'avatar'				=> $avatar,
@@ -223,13 +225,18 @@ $roles = $this->getRoles();
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
 
-			\Event::fire(new \ProfileWasCreated($check));
+			$check_again = $this->checkUserExists($name, $email);
+//dd($check_again->id);
+			$user = $this->user->find($check_again->id);
+			$user->syncRoles([Config::get('kagi.default_role')]);
+
+			\Event::fire(new \ProfileWasCreated($check_again));
+
+			return $user;
 
 		} else {
 //dd($check);
 			$this->touchLastLogin($check->id);
-
-			\Event::fire(new \ProfileWasCreated($check));
 
 			return User::firstOrCreate([
 				'name'					=> $name,
@@ -245,17 +252,19 @@ $roles = $this->getRoles();
 //	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
 
 		if ($userData->name == null) {
-			$name = $userData->nickname;
+			$userData->name = $userData->nickname;
 		}
 		if ($userData->email == null) {
-			$email = $userData->nickname;
+			$userData->email = $userData->nickname;
 		}
 		if ($userData->avatar == null) {
-			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
-		} else {
-			$avatar = $userData->avatar;
+			$userData->avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
 		}
 		$date = date("Y-m-d H:i:s");
+
+		$name							= $userData->name;
+		$email							= $userData->email;
+		$avatar							= $userData->avatar;
 
 		$check = $this->checkUserExists($name, $email);
 		if ($check == null) {
@@ -273,9 +282,13 @@ $roles = $this->getRoles();
 				'avatar'				=> $avatar,
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
+
+			\Event::fire(new \ProfileWasCreated($check));
+
 		} else {
-//dd($check->id);
+//dd($check);
 			$this->touchLastLogin($check->id);
+
 			return User::firstOrCreate([
 				'name'					=> $name,
 				'email'					=> $email,

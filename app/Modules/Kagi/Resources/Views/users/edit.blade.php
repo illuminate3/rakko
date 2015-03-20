@@ -129,19 +129,13 @@
 		{{ Lang::choice('kotoba::role.role', 2) }}
 	</h3>
 	<select multiple="multiple" id="my-select" name="roles[]">
-	@foreach ($allRoles as $key => $value)
-
-		@if ($userRoles->count())
+		@foreach ($allRoles as $key => $value)
 			@if (isset($roles[$key]) )
 				<option value='{{ $key }}' selected>{{ $value }}</option>
 			@else
 				<option value='{{ $key }}'>{{ $value }}</option>
 			@endif
-		@else
-			<option value='{{ $key }}'>{{ $value }}</option>
-		@endif
-
-	@endforeach
+		@endforeach
 	</select>
 @else
 	<div class="alert alert-danger" role="alert">

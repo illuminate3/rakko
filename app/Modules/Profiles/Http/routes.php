@@ -15,18 +15,19 @@ Route::get('welcome/profiles', array(
 	'uses'=>'ProfileController@welcome'
 	));
 
-
+/*
 Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id', '[0-9]+');
-
 });
+*/
+Route::pattern('id', '[0-9]+');
 
 # main controller
-	Route::resource('profiles', 'ProfilesController');
+Route::resource('profiles', 'ProfilesController');
 
 
 # API data
-	Route::get('api/profiles', array(
-	//	'as'=>'api.users',
-		'uses'=>'ProfilesController@data'
-		));
+Route::get('api/profiles', array(
+//	'as'=>'api.users',
+	'uses'=>'ProfilesController@data'
+	));

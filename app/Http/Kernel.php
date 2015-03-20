@@ -25,12 +25,12 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'App\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+		'auth'						=> 'App\Http\Middleware\Authenticate',
+		'auth.basic'				=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest'						=> 'App\Http\Middleware\RedirectIfAuthenticated',
 // module middleware
-		'admin' => 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
-		'throttle' => 'App\Modules\Kagi\Http\Middleware\Throttle',
+		'admin'						=> 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
+		'throttle'					=> 'App\Modules\Kagi\Http\Middleware\Throttle',
 	];
 
 }

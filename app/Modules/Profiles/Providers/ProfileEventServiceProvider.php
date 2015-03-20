@@ -9,7 +9,6 @@ use App\Providers\EventServiceProvider;
 use App\Modules\Profiles\Events\ProfileWasCreated;
 use App\Modules\Profiles\Handlers\Events\CreateProfile;
 
-//use Illuminate\Foundation\Application;
 use App;
 use Event;
 
@@ -21,12 +20,13 @@ class ProfileEventServiceProvider extends EventServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-// 		'event.name' => [
-// 			'EventListener',
-// 		],
 
 		ProfileWasCreated::class => [
 			CreateProfile::class,
+		],
+
+		ProfileWasDeleted::class => [
+			DeleteProfile::class,
 		],
 
 	];
@@ -49,6 +49,9 @@ class ProfileEventServiceProvider extends EventServiceProvider {
 
 		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 		$loader->alias('ProfileWasCreated', 'App\Modules\Profiles\Events\ProfileWasCreated');
+
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		$loader->alias('ProfileWasDeleted', 'App\Modules\Profiles\Events\ProfileWasDeleted');
 
 	}
 

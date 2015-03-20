@@ -4,7 +4,7 @@ namespace App\Modules\Profiles\Events;
 use App\Modules\Profiles\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
-class ProfileWasCreated extends Event {
+class ProfileWasDeleted extends Event {
 
 	use SerializesModels;
 

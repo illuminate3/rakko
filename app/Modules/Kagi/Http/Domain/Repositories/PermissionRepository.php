@@ -51,10 +51,7 @@ class PermissionRepository extends BaseRepository {
 	public function edit($id)
 	{
 		$permission = $this->getById($id);
-
-//		$select = $this->role->all()->lists('title', 'id');
-
-		return compact('permission', 'select');
+		return compact('permission');
 	}
 
 	/**

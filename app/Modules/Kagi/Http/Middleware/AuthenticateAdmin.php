@@ -21,7 +21,7 @@ class AuthenticateAdmin implements Middleware
 //dd($request);
 
 		if (! Auth::user()->can('manage_admin')) {
-			Flash::error('Sorry, you do not have the proper permissions.');
+			Flash::error(trans('kotoba::auth.error.permission'));
 
 			return new RedirectResponse(url('/'));
 		}

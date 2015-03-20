@@ -38,6 +38,12 @@ body {
 	width: 100% !important
 }
 
+.nav-profile {
+	width: auto;
+	height: 40px;
+	display: block;
+	margin: 10% auto;
+}
 
 /*
 .navbar-brand {

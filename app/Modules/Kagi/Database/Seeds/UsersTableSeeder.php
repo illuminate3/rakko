@@ -44,9 +44,9 @@ class UsersTableSeeder extends Seeder {
 				'description'		=> 'Give permission to user to access the admin area.'
 			],
 			[
-				'name'				=> 'User',
-				'slug'				=> 'user',
-				'description'		=> 'Only front end permissions'
+				'name'				=> 'Manage Own Data',
+				'slug'				=> 'manage_own',
+				'description'		=> 'Allow users to manage their own data.'
 			],
 		 );
 
@@ -93,6 +93,8 @@ class UsersTableSeeder extends Seeder {
 // Attach permission to role
 		$role = $this->role->find(1);
 		$role->syncPermissions([1]);
+		$role = $this->role->find(2);
+		$role->syncPermissions([2]);
 
 // Attach role to user
 		$user = User::find(1);

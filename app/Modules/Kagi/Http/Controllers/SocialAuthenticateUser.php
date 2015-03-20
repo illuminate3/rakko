@@ -71,6 +71,8 @@ class SocialAuthenticateUser {
 //dd($user);
 		$this->auth->login($user, true);
 
+
+
 		return $listener->userHasLoggedIn($user);
 	}
 

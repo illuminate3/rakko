@@ -11,6 +11,7 @@ use App\Modules\Profile\Http\Requests\ProfileCreateRequest;
 use App\Modules\Profile\Http\Requests\ProfileUpdateRequest;
 use App\Modules\Profile\Http\Requests\DeleteRequest;
 
+use Auth;
 //use Datatable;
 use Datatables;
 //use Bootstrap;
@@ -47,7 +48,7 @@ class ProfilesController extends ProfileController {
 		$this->user = $user;
 		$this->profile = $profile;
 
-		$this->middleware('admin');
+		$this->middleware('admin', ['only' => 'destroy']);
 //		$this->middleware('ajax', ['only' => 'updateSeen']);
 	}
 
@@ -111,8 +112,13 @@ dd("store");
 	 */
 	public function edit($id)
 	{
-//dd("edit");
-		return View('profiles::profiles.edit',  $this->profile->edit($id));
+//dd($id);
+//dd(Auth::id());
+		if (Auth::id() == $id) {
+			return View('profiles::profiles.edit',  $this->profile->edit($id));
+		} else {
+			return View('profiles::profiles.index');
+		}
 	}
 
 	/**
@@ -145,6 +151,7 @@ dd("store");
 		)
 	{
 		$this->user->destroy($id);
+//		$this->user->destroy($id);
 
 		return redirect('user')->with('ok', trans('back/users.destroyed'));
 	}

@@ -49,8 +49,11 @@ class ProfileRepository extends BaseRepository {
 	public function show($id)
 	{
 		$profile = $this->profile->with('user')->find($id);
+/*
+		$profile = $this->getProfile($id)->with('user');
+		$profile = $this->getProfile($id);
+*/
 //dd($profile);
-
 		return compact('profile');
 	}
 
@@ -65,11 +68,6 @@ class ProfileRepository extends BaseRepository {
 		$profile = $this->profile->find($id);
 //dd($profile);
 
-// 		$userRoles = User::find($id)->roles;
-// 		$roles = $this->shinobiRole->lists('name', 'id');
-// 		$allRoles =  $this->role->all()->lists('name', 'id');
-
-// 		return compact('user', 'roles', 'allRoles', 'userRoles');
 		return compact('profile');
 	}
 
@@ -155,7 +153,7 @@ class ProfileRepository extends BaseRepository {
 	}
 
 	/**
-	 * @param $userData
+	 * @param $data
 	 * @return static
 	 */
 	public function findOrCreateProfile($data)
@@ -169,7 +167,32 @@ class ProfileRepository extends BaseRepository {
 				'email_1'						=> $data->email
 			]);
 		}
+	}
+
+	/**
+	 * @param $data
+	 * @return static
+	 */
+	public function DeleteProfile($data)
+	{
+//dd($data);
+		$check = $this->checkProfileExists($data->email);
+		if ($check != null) {
+//dd($data->id);
+			return Profile::delete($data->id);
+		}
 
 	}
+
+	public function getProfile($id)
+	{
+		$profile = DB::table('profiles')
+			->where('user_id', '=', $id)
+			->get();
+//dd($profile);
+
+		return $profile;
+	}
+
 
 }

@@ -90,24 +90,12 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-				@if($profile->avatar)
-					<img src="{{ $avatar }}" class="img-rounded profile">
-
-{{--
-					<img src="{{ Request::root() . $avatar['thumb'] }}" class="img-circle profile">
-
-
-				@if ( isset($picture['thumb']) )
+				@if($profile->user->avatar)
 					<img
-						src="{{ asset('/uploads/logos/'. $profile->avatar) }}"
-						alt="{{ Auth::user()->email }}"
-						class="img-circle profile"
+						src="{{ asset($profile->user->avatar) }}"
+						alt="{{ $profile->email_1 }}"
+						class="img-thumbnail profile"
 					/>
-
-					<img src="{{ Request::root() . $avatar['thumb'] }}" class="logo">
-				@elseif  ( isset(avatar) )
-					<img src="{{ $avatar }}" class="logo">
---}}
 				@else
 					<img
 						src="{{ asset('/assets/images/usr.png') }}"
@@ -133,26 +121,49 @@
 
 
 <div class="row">
-<div class="col-sm-4">
-	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
-		<i class="fa fa-chevron-left fa-fw"></i>
-		{{ trans('kotoba::button.back') }}
-	</a>
-</div>
+@if (Auth::user()->can('manage_profiles'))
+	<div class="col-sm-4">
+		<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
+			<i class="fa fa-chevron-left fa-fw"></i>
+			{{ trans('kotoba::button.back') }}
+		</a>
+	</div>
 
-<div class="col-sm-4">
-	<a href="/profiles/{{ $profile->id }}/edit" class="btn btn-default btn-block" title="{{ trans('kotoba::button.edit') }}">
-		<i class="fa fa-pencil fa-fw"></i>
-		{{ trans('kotoba::button.edit') }}
-	</a>
-</div>
+	<div class="col-sm-4">
+		<a href="/profiles/{{ $profile->id }}/edit" class="btn btn-default btn-block" title="{{ trans('kotoba::button.edit') }}">
+			<i class="fa fa-pencil fa-fw"></i>
+			{{ trans('kotoba::button.edit') }}
+		</a>
+	</div>
 
-<div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
-</div>
+	<div class="col-sm-4">
+	<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+		<i class="fa fa-trash-o fa-fw"></i>
+		{{ trans('kotoba::general.command.delete') }}
+	</a>
+	</div>
+@elseif (Auth::user()->can('manage_own'))
+	<div class="col-sm-6">
+		<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
+			<i class="fa fa-chevron-left fa-fw"></i>
+			{{ trans('kotoba::button.back') }}
+		</a>
+	</div>
+
+	<div class="col-sm-6">
+		<a href="/profiles/{{ $profile->id }}/edit" class="btn btn-default btn-block" title="{{ trans('kotoba::button.edit') }}">
+			<i class="fa fa-pencil fa-fw"></i>
+			{{ trans('kotoba::button.edit') }}
+		</a>
+	</div>
+@else
+	<div class="col-sm-12">
+		<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.back') }}">
+			<i class="fa fa-chevron-left fa-fw"></i>
+			{{ trans('kotoba::button.back') }}
+		</a>
+	</div>
+@endif
 </div>
 
 </div> <!-- ./ row -->
