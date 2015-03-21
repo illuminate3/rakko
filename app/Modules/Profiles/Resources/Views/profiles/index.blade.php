@@ -22,10 +22,11 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('api/profiles') }}",
 		"columns": [
-			{data: 'name', name: 'name'},
-			{data: 'email', name: 'email'},
-			{data: 'created_at', name: 'created_at'},
-			{data: 'action', name: 'actions'}
+			{data: 'first_name', name: 'first_name'},
+			{data: 'last_name', name: 'last_name'},
+			{data: 'email_1', name: 'email_1'},
+			{data: 'email_2', name: 'email_2'},
+			{data: 'actions', name: 'actions'}
 		]
 	});
 });

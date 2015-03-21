@@ -188,34 +188,26 @@ dd("store");
 	*/
 	public function data()
 	{
-$users = User::select('name', 'email', 'created_at');
-//dd($users);
-return Datatables::of($users)
-	->addColumn('action', 'action here')
-	->make(true);
-
-/*
-//dd("loaded");
-		$profiles = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
+//		$profiles = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
+//			->orderBy('profiles.last_name', 'ASC');
+		$profiles = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
 			->orderBy('profiles.last_name', 'ASC');
-//dd($profiles);
+		//dd($profiles);
 
 		return Datatables::of($profiles)
-
-			->add_column(
+			->remove_column('id')
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'profiles/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
-					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
-				</a>
-				<a href="{{ URL::to(\'profiles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-
-				->remove_column('id')
-
-				->make();
-*/
+				'
+					<a href="{{ URL::to(\'profiles/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+						<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+					</a>
+					<a href="{{ URL::to(\'profiles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+			->make(true);
 	}
 
 }
