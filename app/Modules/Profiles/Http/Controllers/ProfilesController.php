@@ -188,13 +188,14 @@ dd("store");
 	*/
 	public function data()
 	{
-//dd("loaded");
+$users = User::select('name', 'email', 'created_at');
+//dd($users);
+return Datatables::of($users)
+	->addColumn('action', 'action here')
+	->make(true);
+
 /*
-			<th>{{ trans('kotoba::general.verified') }}</th>
-			<th>{{ trans('kotoba::general.banned') }}</th>
-			<th>{{ trans('kotoba::general.confirmed') }}</th>
-			<th>{{ trans('kotoba::general.activated') }}</th>
-*/
+//dd("loaded");
 		$profiles = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
 			->orderBy('profiles.last_name', 'ASC');
 //dd($profiles);
@@ -210,14 +211,11 @@ dd("store");
 					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 				</a>
 				')
-/*				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
 
 				->remove_column('id')
 
 				->make();
+*/
 	}
 
 }

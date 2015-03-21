@@ -6,28 +6,27 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/admin/css/jquery.dataTables.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/admin/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/dataTables.bootstrap.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/bootstrap-dataTables-paging.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
-
-var oTable;
 $(document).ready(function() {
-	oTable = $('#table').dataTable({
-		"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-		"sPaginationType" : "bootstrap",
-		"bProcessing" : true,
-		"bServerSide" : true,
-		"sAjaxSource" : "{{ URL::to('api/profiles') }}",
+oTable =
+	$('#table').DataTable({
+		"processing": true,
+		"serverSide": true,
+		"ajax": "{{ URL::to('api/profiles') }}",
+		"columns": [
+			{data: 'name', name: 'name'},
+			{data: 'email', name: 'email'},
+			{data: 'created_at', name: 'created_at'},
+			{data: 'action', name: 'actions'}
+		]
 	});
 });
 @stop
@@ -53,9 +52,6 @@ $(document).ready(function() {
 
 
 <div class="row">
-
-"dom" : "T<'clear'>lfrtip",
-
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -70,8 +66,6 @@ $(document).ready(function() {
 	</thead>
 	<tbody></tbody>
 </table>
-
 </div>
 
 @stop
-
