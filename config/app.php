@@ -172,7 +172,6 @@ return [
 'Collective\Html\HtmlServiceProvider',
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
-//'Chumper\Datatable\DatatableServiceProvider',
 'Intervention\Image\ImageServiceProvider',
 
 	],
@@ -237,10 +236,6 @@ return [
 'Html'			=> 'Collective\Html\HtmlFacade',
 'Throttle'		=> 'GrahamCampbell\Throttle\Facades\Throttle',
 'Datatables'	=> 'yajra\Datatables\Datatables',
-//'Datatable'		=> 'Chumper\Datatable\Facades\DatatableFacade',
-//'Datatable'			=> 'Chumper\Datatable\Facades\DatatableFacade',
-//'Datatable' => 'Chumper\Datatable\Facades\Datatable',
-'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
 'Image'			=> 'Intervention\Image\Facades\Image',
 
 /*

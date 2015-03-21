@@ -13,7 +13,6 @@
 "caffeinated/shinobi": "dev-master",
 "caffeinated/menus": "~1.0@dev",
 "laravel/socialite": "~2.0",
-"chumper/datatable": "dev-master",
 "laravelcollective/html": "~5.0",
 "laracasts/presenter": "dev-master",
 "yajra/laravel-datatables-oracle" : "~4.0",
