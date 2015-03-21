@@ -66,9 +66,9 @@ class ModuleRepository extends BaseRepository {
 	 */
 	public function store($input)
 	{
-//dd($input);
-		$this->model = new User;
-		$this->model->create($input);
+dd('store');
+// 		$this->model = new User;
+// 		$this->model->create($input);
 	}
 
 	/**

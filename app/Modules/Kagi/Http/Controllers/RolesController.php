@@ -143,8 +143,9 @@ dd("destroy");
 	{
 //		$query = Role::select(array('roles.id','roles.name','roles.slug','roles.description','roles.updated_at'))
 //			->orderBy('roles.name', 'ASC');
-		$query = Role::select('id', 'name', 'slug', 'description', 'updated_at')
-			->orderBy('name', 'ASC');
+//		$query = Role::select('id', 'name', 'slug', 'description', 'updated_at')
+//			->orderBy('name', 'ASC');
+		$query = Role::select('id', 'name', 'slug', 'description', 'updated_at');
 //dd($query);
 
 		return Datatables::of($query)

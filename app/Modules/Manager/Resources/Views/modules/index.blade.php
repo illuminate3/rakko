@@ -6,28 +6,30 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/admin/css/jquery.dataTables.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/admin/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/dataTables.bootstrap.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/bootstrap-dataTables-paging.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
-
-var oTable;
 $(document).ready(function() {
-	oTable = $('#table').dataTable({
-		"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-		"sPaginationType" : "bootstrap",
-		"bProcessing" : true,
-		"bServerSide" : true,
-		"sAjaxSource" : "{{ URL::to('admin/api/manager') }}",
+oTable =
+	$('#table').DataTable({
+		"processing": true,
+		"serverSide": true,
+		"ajax": "{{ URL::to('admin/api/manager') }}",
+		"columns": [
+			{data: 'name', name: 'name'},
+			{data: 'slug', name: 'slug'},
+			{data: 'version', name: 'version'},
+			{data: 'description', name: 'description'},
+			{data: 'enabled', name: 'enabled'},
+			{data: 'order', name: 'order'},
+			{data: 'actions', name: 'actions'}
+		]
 	});
 });
 @stop
@@ -39,12 +41,6 @@ $(document).ready(function() {
 
 <div class="row">
 <h1>
-	<p class="pull-right">
-	<a href="/profiles/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
-		<i class="fa fa-plus fa-fw"></i>
-		{{ trans('kotoba::button.new') }}
-	</a>
-	</p>
 	<i class="fa fa-gears fa-lg"></i>
 		{{ Lang::choice('kotoba::module.module', 2) }}
 	<hr>

@@ -9,9 +9,7 @@ use App\Modules\Manager\Http\Requests\ModuleCreateRequest;
 use App\Modules\Manager\Http\Requests\ModuleUpdateRequest;
 use App\Modules\Manager\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class MMController extends ManagerController {
@@ -26,8 +24,7 @@ class MMController extends ManagerController {
 	/**
 	 * Create a new UserController instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Repositories\UserRepository $user
-	 * @param  App\Modules\Profiles\Http\Domain\Repositories\ProfileRepository $profile
+	 * @param  App\Modules\Kagi\Http\Domain\Repositories\ModuleRepository $module
 	 * @return void
 	 */
 	public function __construct(
@@ -57,9 +54,9 @@ class MMController extends ManagerController {
 	 */
 	public function create()
 	{
-//dd("create");
+dd("create");
 //		return view('kagi::users.create', $this->user->create());
-		return view('profiles::profiles.create');
+		return view('manager::modules.create');
 	}
 
 	/**
@@ -133,75 +130,48 @@ dd("store");
 		$id
 		)
 	{
+dd("destroy");
 		$this->user->destroy($id);
 
 		return redirect('user')->with('ok', trans('back/users.destroyed'));
 	}
 
 	/**
-	 * Display the roles form
-	 *
-	 * @return Response
-	 */
-	public function getRoles()
-	{
-		$roles = $this->role->all();
-
-		return view('back.users.roles', compact('roles'));
-	}
-
-	/**
-	 * Update roles
-	 *
-	 * @param  App\requests\RoleRequest $request
-	 * @return Response
-	 */
-	public function postRoles(RoleRequest $request)
-	{
-		$this->role->update($request->except('_token'));
-
-		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
-	}
-
-	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-/*
-			$table->string('name')->unique()->index();
-			$table->string('slug')->unique()->index();
-			$table->string('version')->nullable()->index();
-			$table->text('description')->nullable();
-			$table->boolean('enabled')->nullable()->default('true');
-*/
-		$modules = Module::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled','modules.order'))
-			->orderBy('modules.name', 'ASC');
-//dd($profiles);
+//		$query = Module::select(array('modules.id','modules.name','modules.slug','modules.version','modules.description','modules.enabled','modules.order'))
+//			->orderBy('modules.name', 'ASC');
+//		$query = Module::select('id', 'name', 'slug', 'version', 'description', 'enabled', 'order')
+//			->orderBy('name', 'ASC');
+		$query = Module::select('id', 'name', 'slug', 'version', 'description', 'enabled', 'order');
+//dd($query);
 
-		return Datatables::of($modules)
+		return Datatables::of($query)
+			->remove_column('id')
 
-			->add_column(
+			-> edit_column(
+				'enabled',
+				'@if ($enabled=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'admin/manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				<a href="{{ URL::to(\'welcome/\' . $slug . \'/\' ) }}" class="btn btn-info btn-sm" >
-					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/manager/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+					<a href="{{ URL::to(\'welcome/\' . $slug . \'/\' ) }}" class="btn btn-info btn-sm" >
+						<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
+
 
 }

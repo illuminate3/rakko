@@ -170,8 +170,9 @@ dd("store");
 	{
 //		$query = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
 //			->orderBy('users.email', 'ASC');
-		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
-			->orderBy('name', 'ASC');
+//		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
+//			->orderBy('name', 'ASC');
+		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at');
 //dd($query);
 
 		return Datatables::of($query)

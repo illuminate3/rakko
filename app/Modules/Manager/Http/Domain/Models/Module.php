@@ -33,12 +33,12 @@ class Module extends Model {
 "enabled": true
 */
 	protected $fillable = [
-		'id',
 		'name',
 		'slug',
 		'version',
 		'description',
-		'enabled'
+		'enabled',
+		'order'
 		];
 
 

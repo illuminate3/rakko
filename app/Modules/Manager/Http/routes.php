@@ -15,16 +15,17 @@ Route::get('welcome/manager', array(
 	'uses'=>'ManagerController@welcome'
 	));
 
-
+//Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::group(['prefix' => 'admin'], function() {
+
 	Route::pattern('id', '[0-9]+');
 
 # main controller
 	Route::resource('manager', 'MMController');
 
-
-# API data
+// API DATA
 	Route::get('api/manager', array(
+	//	'as'=>'api.manager',
 		'uses'=>'MMController@data'
 		));
 

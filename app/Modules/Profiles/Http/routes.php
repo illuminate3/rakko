@@ -28,6 +28,6 @@ Route::resource('profiles', 'ProfilesController');
 
 # API data
 Route::get('api/profiles', array(
-//	'as'=>'api.users',
+//	'as'=>'api.profiles',
 	'uses'=>'ProfilesController@data'
 	));

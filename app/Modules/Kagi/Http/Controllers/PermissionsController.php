@@ -148,8 +148,9 @@ dd("destroy");
 	{
 //		$query = Permission::select(array('permissions.id','permissions.name','permissions.slug','permissions.description','permissions.updated_at'))
 //			->orderBy('permissions.name', 'ASC');
-		$query = Permission::select('id', 'name', 'slug', 'description', 'updated_at')
-			->orderBy('name', 'ASC');
+//		$query = Permission::select('id', 'name', 'slug', 'description', 'updated_at')
+//			->orderBy('name', 'ASC');
+		$query = Permission::select('id', 'name', 'slug', 'description', 'updated_at');
 //dd($query);
 
 		return Datatables::of($query)

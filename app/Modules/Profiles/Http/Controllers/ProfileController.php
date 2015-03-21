@@ -22,8 +22,8 @@ class ProfileController extends Controller
 /*
 		parent::__construct();
 */
-		$this->middleware('guest');
-//		$this->middleware('admin');
+//		$this->middleware('guest');
+		$this->middleware('admin');
 
 	}
 

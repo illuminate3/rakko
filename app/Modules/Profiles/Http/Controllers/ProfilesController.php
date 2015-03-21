@@ -12,9 +12,7 @@ use App\Modules\Profile\Http\Requests\ProfileUpdateRequest;
 use App\Modules\Profile\Http\Requests\DeleteRequest;
 
 use Auth;
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class ProfilesController extends ProfileController {
@@ -190,8 +188,9 @@ dd("store");
 	{
 //		$query = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
 //			->orderBy('profiles.last_name', 'ASC');
-		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
-			->orderBy('last_name', 'ASC');
+//		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
+//			->orderBy('last_name', 'ASC');
+		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2');
 //dd($query);
 
 		return Datatables::of($query)

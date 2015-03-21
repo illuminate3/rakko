@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Manager\Services;
+namespace App\Modules\Manager\Http\Domain\Services;
 
 use App\User;
 use Validator;

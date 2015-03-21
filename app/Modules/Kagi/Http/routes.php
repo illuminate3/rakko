@@ -70,20 +70,12 @@ Route::group(['prefix' => 'admin'], function() {
 		'uses'=>'UsersController@data'
 		));
 	Route::get('api/roles', array(
-	//	'as'=>'api.users',
+	//	'as'=>'api.roles',
 		'uses'=>'RolesController@data'
 		));
 	Route::get('api/permissions', array(
-	//	'as'=>'api.users',
+	//	'as'=>'api.permissions',
 		'uses'=>'PermissionsController@data'
 		));
 
-
 });
-
-
-/*
-|--------------------------------------------------------------------------
-| Chumper Datatables API
-|--------------------------------------------------------------------------
-*/
