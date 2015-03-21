@@ -58,7 +58,6 @@ oTable =
 		<tr>
 			<th>{{ trans('kotoba::account.first_name') }}</th>
 			<th>{{ trans('kotoba::account.last_name') }}</th>
-
 			<th>{{ trans('kotoba::account.primary_email') }}</th>
 			<th>{{ trans('kotoba::account.email_2') }}</th>
 

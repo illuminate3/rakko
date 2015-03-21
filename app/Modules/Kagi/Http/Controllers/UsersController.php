@@ -161,40 +161,60 @@ dd("store");
 		return redirect('admin/users');
 	}
 
-
 	/**
-	 * Display the roles form
-	 *
-	 * @return Response
-	 */
-/*
-	public function getRoles()
+	* Datatables data
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
 	{
-		$roles = $this->role->all();
+//		$query = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
+//			->orderBy('users.email', 'ASC');
+		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
+			->orderBy('name', 'ASC');
+//dd($query);
 
-		return view('back.users.roles', compact('roles'));
-	}
-*/
-	/**
-	 * Update roles
-	 *
-	 * @param  App\requests\RoleRequest $request
-	 * @return Response
-	 */
-/*
-	public function postRoles(RoleRequest $request)
-	{
-		$this->role->update($request->except('_token'));
+		return Datatables::of($query)
+			->remove_column('id')
 
-		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
+			-> edit_column(
+				'blocked',
+				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+			-> edit_column(
+				'banned',
+				'@if ($banned=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+			-> edit_column(
+				'confirmed',
+				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+			-> edit_column(
+				'activated',
+				'@if ($activated=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+						<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+					</a>
+					<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+
+			->make(true);
 	}
-*/
+
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
 	*
 	* @return Datatables JSON
 	*/
-	public function data()
+	public function data1()
 	{
 //dd("loaded");
 /*

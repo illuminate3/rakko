@@ -182,20 +182,21 @@ dd("store");
 	}
 
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//		$profiles = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
+//		$query = Profile::select(array('profiles.id','profiles.first_name','profiles.last_name','profiles.email_1','profiles.email_2'))
 //			->orderBy('profiles.last_name', 'ASC');
-		$profiles = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
-			->orderBy('profiles.last_name', 'ASC');
-		//dd($profiles);
+		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
+			->orderBy('last_name', 'ASC');
+//dd($query);
 
-		return Datatables::of($profiles)
+		return Datatables::of($query)
 			->remove_column('id')
+
 			->addColumn(
 				'actions',
 				'
@@ -207,6 +208,7 @@ dd("store");
 					</a>
 				'
 				)
+
 			->make(true);
 	}
 

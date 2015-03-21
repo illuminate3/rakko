@@ -139,105 +139,33 @@ dd("destroy");
 		return redirect('permission')->with('ok', trans('back/permissions.destroyed'));
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$permissions = Permission::select(array('permissions.id','permissions.name','permissions.slug','permissions.description', 'permissions.created_at'))
-			->orderBy('permissions.name', 'ASC');
-//dd($permissions);
-
-		return Datatables::of($permissions)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
-				'actions',
-				'<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
-
-				->remove_column('id')
-
-				->make();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getDatatable()
-	{
-//dd('loaded');
-
-/*
-  `id` int(10) unsigned NOT null AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT null,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT null,
-  `description` text COLLATE utf8_unicode_ci,
-  `created_at` timestamp NOT null DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT null DEFAULT '0000-00-00 00:00:00',
-*/
-
-//		$query = DB::table('permissions')->remember(10);
-		$query = DB::table('permissions');
+//		$query = Permission::select(array('permissions.id','permissions.name','permissions.slug','permissions.description','permissions.updated_at'))
+//			->orderBy('permissions.name', 'ASC');
+		$query = Permission::select('id', 'name', 'slug', 'description', 'updated_at')
+			->orderBy('name', 'ASC');
 //dd($query);
 
-		return Datatable::query($query)
-			->showColumns('id', 'name', 'slug', 'description', 'updated_at')
-//			->showColumns('id', 'name')
+		return Datatables::of($query)
+			->remove_column('id')
 
-/*
-			->addColumn('actions',
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'admin/permissions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				function($model) {
-
-				$modal =
-					'<div class="modal fade" id="delete-Record-'.$model->id.'">
-						'.Form::open(array("route" => array("admin.permissions.destroy", $model->id), "method" => "delete")).'
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' . trans('lingos::general.close') . '</span></button>
-										<h4 class="modal-title">' . trans('lingos::account.ask.delete') . '</h4>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal">' . trans('lingos::button.no') . '</button>
-										<button type="submit" class="btn btn-success" name="deleteRecord">' . trans('lingos::button.yes') . '</button>
-									</div>
-								</div><!-- /.modal-content -->
-							</div><!-- /.modal-dialog -->
-						'.Form::close().'
-					</div><!-- /.modal -->';
-				return
-					'<a href="/admin.permissions/' . $model->id . '" class="btn btn-primary form-group" title="' . trans('lingos::general.view') . '"><i class="fa fa-chevron-right fa-fw"></i>' . trans('lingos::button.view') . '</a>&nbsp;'
-					. '<a href="/admin.permissions/' . $model->id . '/edit" class="btn btn-success form-group" title="' . trans('lingos::account.command.edit') . '"><i class="fa fa-edit fa-fw"></i>' . trans('lingos::button.edit') . '</a>&nbsp;'
-					. Form::button('<span class="glyphicon glyphicon-trash"></span> ' . trans('lingos::button.delete'), array('name'=>'deleteRecord', 'class' => 'btn btn-danger', 'type' => 'button',  'data-toggle' => 'modal', 'data-target' => '#delete-Record-'.$model->id))
-					. $modal;
-				})
-
-			->searchColumns('name')
-			->orderColumns('id', 'name')
-*/
-			->searchColumns('name', 'slug', 'description')
-			->orderColumns('id', 'name', 'slug', 'description', 'created_at')
-
-			->make();
+			->make(true);
 	}
-
 
 
 }

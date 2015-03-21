@@ -128,46 +128,39 @@ dd("show");
 		$id
 		)
 	{
+dd("destroy");
 		$this->role->destroy($id);
 
 		return redirect('role')->with('ok', trans('back/roles.destroyed'));
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$roles = Role::select(array('roles.id','roles.name','roles.slug','roles.description', 'roles.updated_at'))
-			->orderBy('roles.name', 'ASC');
-//dd($roles);
+//		$query = Role::select(array('roles.id','roles.name','roles.slug','roles.description','roles.updated_at'))
+//			->orderBy('roles.name', 'ASC');
+		$query = Role::select('id', 'name', 'slug', 'description', 'updated_at')
+			->orderBy('name', 'ASC');
+//dd($query);
 
-		return Datatables::of($roles)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'admin/roles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/roles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
+
 
 }
