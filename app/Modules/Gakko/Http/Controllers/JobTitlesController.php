@@ -64,7 +64,7 @@ class JobTitlesController extends GakkoController {
 		$this->job_title->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.job_title_create') );
-		return redirect('job_titles');
+		return redirect('admin/job_titles');
 	}
 
 	/**
@@ -88,7 +88,22 @@ class JobTitlesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::job_titles.edit',  $this->job_title->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.employee_types.destroy';
+		$modal_id = $id;
+		$model = '$job_title';
+
+		return View('gakko::job_titles.edit',
+			$this->job_title->show($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::job_titles.edit',  $this->job_title->edit($id));
 	}
 
 	/**
@@ -106,7 +121,7 @@ class JobTitlesController extends GakkoController {
 		$this->job_title->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.job_title_update') );
-		return redirect('job_titles');
+		return redirect('admin/job_titles');
 	}
 
 	/**
@@ -119,7 +134,36 @@ class JobTitlesController extends GakkoController {
 	{
 		$this->job_title->find($id)->delete();
 
-		return Redirect::route('admin.job_titles.index');
+		return Redirect::route('admin.admin.job_titles.index');
+	}
+
+	/**
+	* Datatables data
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//		$query = JobTitle::select(array('job_titles.id','job_titles.name','job_titles.description'))
+//			->orderBy('job_titles.name', 'ASC');
+//		$query = JobTitle::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = JobTitle::select('id', 'name', 'description', 'updated_at');
+//dd($query);
+
+		return Datatables::of($query)
+			->remove_column('id')
+
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'admin/job_titles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+
+			->make(true);
 	}
 
 
@@ -128,7 +172,7 @@ class JobTitlesController extends GakkoController {
 	*
 	* @return Datatables JSON
 	*/
-	public function data()
+	public function data1()
 	{
 //dd("loaded");
 		$job_titles = JobTitle::select(array('job_titles.id','job_titles.name','job_titles.description'))

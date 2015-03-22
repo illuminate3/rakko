@@ -17,7 +17,7 @@
 
 
 {!! Form::model(
-	$user,
+	$model,
 	[
 		'route' => [$modal_route, $modal_id],
 		'method' => 'DELETE',

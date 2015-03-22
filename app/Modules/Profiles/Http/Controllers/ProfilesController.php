@@ -46,6 +46,7 @@ class ProfilesController extends ProfileController {
 		$this->user = $user;
 		$this->profile = $profile;
 
+//		$this->middleware('admin');
 		$this->middleware('admin', ['only' => 'destroy']);
 //		$this->middleware('ajax', ['only' => 'updateSeen']);
 	}
@@ -99,7 +100,22 @@ dd("store");
 	public function show($id)
 	{
 //dd("show");
-		return View('profiles::profiles.show',  $this->profile->show($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'profiles.destroy';
+		$modal_id = $id;
+		$model = '$profile';
+
+		return View('profiles::profiles.show',
+			$this->profile->show($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('profiles::profiles.show',  $this->profile->show($id));
 	}
 
 	/**
@@ -113,7 +129,23 @@ dd("store");
 //dd($id);
 //dd(Auth::id());
 		if (Auth::id() == $id) {
-			return View('profiles::profiles.edit',  $this->profile->edit($id));
+//dd("edit");
+			$modal_title = trans('kotoba::general.command.delete');
+			$modal_body = trans('kotoba::general.ask.delete');
+			$modal_route = 'profiles.destroy';
+			$modal_id = $id;
+			$model = '$profile';
+
+			return View('profiles::profiles.edit',
+				$this->profile->edit($id),
+					compact(
+						'modal_title',
+						'modal_body',
+						'modal_route',
+						'modal_id',
+						'model'
+				));
+//			return View('profiles::profiles.edit',  $this->profile->edit($id));
 		} else {
 			return View('profiles::profiles.index');
 		}

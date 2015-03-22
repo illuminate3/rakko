@@ -15,11 +15,6 @@ Route::get('welcome/profiles', array(
 	'uses'=>'ProfileController@welcome'
 	));
 
-/*
-Route::group(['prefix' => 'admin'], function() {
-	Route::pattern('id', '[0-9]+');
-});
-*/
 Route::pattern('id', '[0-9]+');
 
 # main controller
@@ -31,3 +26,14 @@ Route::get('api/profiles', array(
 //	'as'=>'api.profiles',
 	'uses'=>'ProfilesController@data'
 	));
+
+Route::group(['prefix' => 'admin'], function() {
+	Route::pattern('id', '[0-9]+');
+
+// AAdmin
+	Route::get('profiles.destroy', array(
+	//	'as'=>'api.users',
+		'uses'=>'ProfilesController@destroy'
+		));
+
+});

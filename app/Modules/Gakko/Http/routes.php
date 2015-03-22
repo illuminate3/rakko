@@ -29,11 +29,16 @@ Route::group(['prefix' => 'admin'], function() {
 
 # Controllers
 Route::resource('employee_types', 'EmployeeTypesController');
+Route::resource('job_titles', 'JobTitlesController');
 
 // API DATA
 	Route::get('api/employee_types', array(
 	//	'as'=>'api.employee_types',
 		'uses'=>'EmployeeTypesController@data'
+		));
+	Route::get('api/job_titles', array(
+	//	'as'=>'api.job_titles',
+		'uses'=>'JobTitlesController@data'
 		));
 
 });
@@ -42,7 +47,6 @@ Route::resource('departments', 'DepartmentsController');
 Route::resource('divisions', 'DivisionsController');
 Route::resource('employees', 'EmployeesController');
 Route::resource('grades', 'GradesController');
-Route::resource('job_titles', 'JobTitlesController');
 Route::resource('positions', 'PositionsController');
 Route::resource('rooms', 'RoomsController');
 Route::resource('sites', 'SitesController');
@@ -96,10 +100,6 @@ Route::group(array(
 	Route::get('api/grades', array(
 	//	'as'=>'api.grades',
 		'uses'=>'GradesController@data'
-		));
-	Route::get('api/job_titles', array(
-	//	'as'=>'api.job_titles',
-		'uses'=>'JobTitlesController@data'
 		));
 	Route::get('api/positions', array(
 	//	'as'=>'api.positions',

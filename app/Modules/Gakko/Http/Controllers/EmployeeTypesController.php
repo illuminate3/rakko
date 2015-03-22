@@ -64,7 +64,7 @@ class EmployeeTypesController extends GakkoController {
 		$this->employee_type->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.employee_type_create') );
-		return redirect('employee_types');
+		return redirect('admin/employee_types');
 	}
 
 	/**
@@ -88,7 +88,22 @@ class EmployeeTypesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::employee_types.edit',  $this->employee_type->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.employee_types.destroy';
+		$modal_id = $id;
+		$model = '$employee_type';
+
+		return View('gakko::employee_types.edit',
+			$this->employee_type->show($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::employee_types.edit',  $this->employee_type->edit($id));
 	}
 
 	/**
@@ -106,7 +121,7 @@ class EmployeeTypesController extends GakkoController {
 		$this->employee_type->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.employee_type_update') );
-		return redirect('employee_types');
+		return redirect('admin/employee_types');
 	}
 
 	/**
@@ -149,43 +164,6 @@ class EmployeeTypesController extends GakkoController {
 				)
 
 			->make(true);
-	}
-
-
-	/**
-	* Show a list of all the languages posts formatted for Datatables.
-	*
-	* @return Datatables JSON
-	*/
-	public function data1()
-	{
-//dd("loaded");
-		$employee_types = EmployeeType::select(array('employee_types.id','employee_types.name','employee_types.description'))
-			->orderBy('employee_types.name', 'ASC');
-//dd($employee_types);
-
-		return Datatables::of($employee_types)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
-				'actions',
-				'<a href="{{ URL::to(\'employee_types/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
-
-				->remove_column('id')
-
-				->make();
 	}
 
 

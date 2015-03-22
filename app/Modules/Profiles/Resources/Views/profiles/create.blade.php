@@ -182,22 +182,15 @@
 
 
 <div class="row">
-<div class="col-sm-4">
+<div class="col-sm-6">
 	<a href="/profiles" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>
 </div>
 
-<div class="col-sm-4">
+<div class="col-sm-6">
 	<input class="btn btn-default btn-block" type="reset" value="{{ trans('kotoba::button.reset') }}">
-</div>
-
-<div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
 </div>
 </div>
 

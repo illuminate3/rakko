@@ -110,6 +110,7 @@ dd("store");
 		$modal_body = trans('kotoba::account.ask.delete');
 		$modal_route = 'admin.users.destroy';
 		$modal_id = $id;
+		$model = '$user';
 
 		return View('kagi::users.edit',
 			$this->user->edit($id),
@@ -117,7 +118,8 @@ dd("store");
 					'modal_title',
 					'modal_body',
 					'modal_route',
-					'modal_id'
+					'modal_id',
+					'model'
 			));
 	}
 
@@ -208,60 +210,5 @@ dd("store");
 			->make(true);
 	}
 
-	/**
-	* Show a list of all the languages posts formatted for Datatables.
-	*
-	* @return Datatables JSON
-	*/
-	public function data1()
-	{
-//dd("loaded");
-/*
-			<th>{{ trans('kotoba::general.verified') }}</th>
-			<th>{{ trans('kotoba::general.banned') }}</th>
-			<th>{{ trans('kotoba::general.confirmed') }}</th>
-			<th>{{ trans('kotoba::general.activated') }}</th>
-*/
-		$users = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
-			->orderBy('users.email', 'ASC');
-//dd($users);
-
-		return Datatables::of($users)
-
-			-> edit_column(
-				'blocked',
-				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'banned',
-				'@if ($banned=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-			-> edit_column(
-				'activated',
-				'@if ($activated=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
-				)
-
-			->add_column(
-				'actions',
-				'<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
-					<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
-				</a>
-				<a href="{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*				<a href="{{ URL::to(\'admin/users/\' . $id . \'/\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
-
-				->remove_column('id')
-
-				->make();
-	}
 
 }
