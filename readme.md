@@ -118,11 +118,6 @@ d.
 php artisan module:migrate Profiles
 php artisan module:seed Profiles
 ```
-e.
-```
-php artisan module:migrate Gakko
-php artisan module:seed Gakko
-```
 
 6. login at http://yoursite/auth/login
 	login:		admin@admin.com

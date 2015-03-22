@@ -10,9 +10,7 @@ use App\Modules\Kagi\Http\Requests\UserCreateRequest;
 use App\Modules\Kagi\Http\Requests\UserUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class UsersController extends KagiController {

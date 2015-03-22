@@ -9,9 +9,7 @@ use App\Modules\Kagi\Http\Requests\RoleCreateRequest;
 use App\Modules\Kagi\Http\Requests\RoleUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class RolesController extends KagiController {

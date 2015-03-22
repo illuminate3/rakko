@@ -15,13 +15,31 @@ Route::get('welcome/gakko', array(
 	'uses'=>'GakkoController@welcome'
 	));
 
+//Route::get('/', Config::get('general.home_controller'));
+Route::get('/', 'GakkoController@index');
+
 Route::get('school', array(
-	'uses'=>'GakkoController@index'
+	'uses'=>'GakkoController@school'
 	));
+
+//Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function() {
+
+	Route::pattern('id', '[0-9]+');
+
+# Controllers
+Route::resource('employee_types', 'EmployeeTypesController');
+
+// API DATA
+	Route::get('api/employee_types', array(
+	//	'as'=>'api.employee_types',
+		'uses'=>'EmployeeTypesController@data'
+		));
+
+});
 
 Route::resource('departments', 'DepartmentsController');
 Route::resource('divisions', 'DivisionsController');
-Route::resource('employee_types', 'EmployeeTypesController');
 Route::resource('employees', 'EmployeesController');
 Route::resource('grades', 'GradesController');
 Route::resource('job_titles', 'JobTitlesController');
@@ -70,10 +88,6 @@ Route::group(array(
 	Route::get('api/divisions', array(
 	//	'as'=>'api.divisions',
 		'uses'=>'DivisionsController@data'
-		));
-	Route::get('api/employee_types', array(
-	//	'as'=>'api.employee_types',
-		'uses'=>'EmployeeTypesController@data'
 		));
 	Route::get('api/employees', array(
 	//	'as'=>'api.employees',

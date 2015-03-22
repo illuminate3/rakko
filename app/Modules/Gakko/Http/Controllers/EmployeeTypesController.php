@@ -29,7 +29,7 @@ class EmployeeTypesController extends GakkoController {
 	{
 		$this->employee_type = $employee_type;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -122,13 +122,42 @@ class EmployeeTypesController extends GakkoController {
 		return Redirect::route('admin.employee_types.index');
 	}
 
+	/**
+	* Datatables data
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//		$query = EmployeeType::select(array('employee_types.id','employee_types.name','employee_types.description'))
+//			->orderBy('employee_types.name', 'ASC');
+//		$query = EmployeeType::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = EmployeeType::select('id', 'name', 'description', 'updated_at');
+//dd($query);
+
+		return Datatables::of($query)
+			->remove_column('id')
+
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'admin/employee_types/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+
+			->make(true);
+	}
+
 
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
 	*
 	* @return Datatables JSON
 	*/
-	public function data()
+	public function data1()
 	{
 //dd("loaded");
 		$employee_types = EmployeeType::select(array('employee_types.id','employee_types.name','employee_types.description'))

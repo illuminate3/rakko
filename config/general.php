@@ -13,9 +13,6 @@ return [
 	'description'					=> 'Rakko is a Larvael 5 based app that allows you to build with modules',
 	'footer'						=> 'Rakko © 2015 - github.com/illuminate3',
 	'separator'						=> ':',
-	'installed' => false,
-	'version' => '',
-	'install_date' => '',
 
 
 /*
@@ -58,7 +55,7 @@ return [
 | Package settings
 |--------------------------------------------------------------------------
 */
-
+//	'home_controller'					=> 'Controller@index',
 /*
 |--------------------------------------------------------------------------
 | routes

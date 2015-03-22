@@ -24,7 +24,7 @@
 			"sPaginationType" : "bootstrap",
 			"bProcessing" : true,
 			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('api/employees') }}",
+			"sAjaxSource" : "{{ URL::to('api/employee_types') }}",
 		});
 	});
 @stop

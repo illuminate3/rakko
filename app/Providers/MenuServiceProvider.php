@@ -19,12 +19,12 @@ class MenuServiceProvider extends ServiceProvider {
 // navbar menu
 		Menu::make('navbar', function($menu) {
 			//
-		});
+		})->sortBy('order');
 
 // right side drop down
 		Menu::make('admin', function($menu) {
 			//
-		});
+		})->sortBy('order');
 
 	}
 

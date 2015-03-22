@@ -14,10 +14,11 @@
 </div>
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<!--
 	<ul class="nav navbar-nav">
 		<li><a href="/">{{ trans('kotoba::general.home') }}</a></li>
 	</ul>
-
+-->
 	<ul class="nav navbar-nav">
 		@include('_partials.menu', ['items'=> $menu_navbar->roots()])
 	</ul>

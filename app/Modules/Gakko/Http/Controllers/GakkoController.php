@@ -39,6 +39,16 @@ class GakkoController extends Controller
 		return View('gakko::school');
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function school()
+	{
+		return View('gakko::school');
+	}
+
 
 	/**
 	 * Show the application welcome screen to the user.

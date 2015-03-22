@@ -148,35 +148,11 @@ dd("store");
 		$id
 		)
 	{
+dd('destroy');
 		$this->user->destroy($id);
 //		$this->user->destroy($id);
 
 		return redirect('user')->with('ok', trans('back/users.destroyed'));
-	}
-
-	/**
-	 * Display the roles form
-	 *
-	 * @return Response
-	 */
-	public function getRoles()
-	{
-		$roles = $this->role->all();
-
-		return view('back.users.roles', compact('roles'));
-	}
-
-	/**
-	 * Update roles
-	 *
-	 * @param  App\requests\RoleRequest $request
-	 * @return Response
-	 */
-	public function postRoles(RoleRequest $request)
-	{
-		$this->role->update($request->except('_token'));
-
-		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
 	}
 
 	/**

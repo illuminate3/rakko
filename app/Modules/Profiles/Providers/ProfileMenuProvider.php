@@ -18,7 +18,7 @@ class ProfileMenuProvider extends MenuServiceProvider {
 
 // navbar menu
 		$menu = Menu::get('navbar');
-		$menu->add('Profiles', 'profiles');
+		$menu->add('Profiles', 'profiles')->data('order', 3);
 
 // right side drop down
 		$menu = Menu::get('admin');

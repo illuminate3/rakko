@@ -24,7 +24,7 @@ var text_confirm_message = '{{ trans('lingos::general.ask.delete') }}';
 <h1>
 	<p class="pull-right">
 	{{ Bootstrap::linkIcon(
-		'admin.departments.index',
+		'admin.employee_types.index',
 		trans('lingos::button.back'),
 		'chevron-left fa-fw',
 		array('class' => 'btn btn-default')
