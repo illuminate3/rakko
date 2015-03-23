@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\DepartmentCreateRequest;
 use App\Modules\Gakko\Http\Requests\DepartmentUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class DepartmentsController extends GakkoController {
@@ -103,7 +101,7 @@ class DepartmentsController extends GakkoController {
 					'modal_id',
 					'model'
 			));
-		return View('gakko::departments.edit',  $this->department->edit($id));
+//		return View('gakko::departments.edit',  $this->department->edit($id));
 	}
 
 	/**

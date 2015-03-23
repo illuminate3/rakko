@@ -20,6 +20,28 @@ class School extends Presenter {
 	}
 
 	/**
+	 * Present the $departments
+	 *
+	 * @return string
+	 */
+	public function divisionName($division_id)
+	{
+		$return = '';
+		$division = DB::table('divisions')
+			->where('id', '=', $division_id)
+			->pluck('name');
+		return $division;
+	}
+
+
+
+
+
+
+
+
+
+	/**
 	 * Present the sites
 	 *
 	 * @return string
@@ -43,12 +65,6 @@ class School extends Presenter {
 
 		return trim($return, ',<br>');
 	}
-
-
-
-
-
-
 
 
 	/**

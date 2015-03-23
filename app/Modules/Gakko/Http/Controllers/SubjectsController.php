@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\SubjectCreateRequest;
 use App\Modules\Gakko\Http\Requests\SubjectUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class SubjectsController extends GakkoController {
@@ -29,7 +27,7 @@ class SubjectsController extends GakkoController {
 	{
 		$this->subject = $subject;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +62,7 @@ class SubjectsController extends GakkoController {
 		$this->subject->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.subject_create') );
-		return redirect('subjects');
+		return redirect('admin/subjects');
 	}
 
 	/**
@@ -75,9 +73,9 @@ class SubjectsController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$subject = $this->subject->findOrFail($id);
-
-		return View::make('HR::subjects.show', compact('subject'));
+// 		$subject = $this->subject->findOrFail($id);
+//
+// 		return View::make('HR::subjects.show', compact('subject'));
 	}
 
 	/**
@@ -88,7 +86,22 @@ class SubjectsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::subjects.edit',  $this->subject->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.subjects.destroy';
+		$modal_id = $id;
+		$model = '$subject';
+
+		return View('gakko::subjects.edit',
+			$this->subject->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::subjects.edit',  $this->subject->edit($id));
 	}
 
 	/**
@@ -106,7 +119,7 @@ class SubjectsController extends GakkoController {
 		$this->subject->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.subject_update') );
-		return redirect('subjects');
+		return redirect('admin/subjects');
 	}
 
 	/**
@@ -122,41 +135,33 @@ class SubjectsController extends GakkoController {
 		return Redirect::route('admin.subjects.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$subjects = Subject::select(array('subjects.id','subjects.name','subjects.description'))
-			->orderBy('subjects.name', 'ASC');
-//dd($subjects);
+//		$query = Subject::select(array('subjects.id','subjects.name','subjects.description'))
+//			->orderBy('subjects.name', 'ASC');
+//		$query = Subject::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Subject::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($subjects)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'subjects/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/subjects/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

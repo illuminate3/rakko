@@ -68,7 +68,7 @@
 				{{ trans('kotoba::account.primary_phone') }}:
 			</strong>
 			<br>
-			{{{ $site->primary_phone }}}
+			{{{ $site->phone_1 }}}
 
 
 			<br>
@@ -77,7 +77,7 @@
 				{{ trans('kotoba::account.secondary_phone') }}:
 			</strong>
 			<br>
-			{{{ $site->secondary_phone }}}
+			{{{ $site->phone_2 }}}
 
 
 		</div>
@@ -86,14 +86,13 @@
 				{{ trans('kotoba::general.contact') }}:
 			</strong>
 			<br>
-			{{-- $contact->last_name --}},&nbsp;{{-- $contact->first_name --}}
 			{{{ $site->user_id }}}
 
 
 			<br>
 			<br>
 			<strong>
-				{{ Lang::choice('kotoba::hr.division', 2) }}:
+				{{ Lang::choice('kotoba::hr.division', 1) }}:
 			</strong>
 			<br>
 			{{{ $site->division_id }}}
@@ -134,4 +133,5 @@
 
 </div> <!-- ./ row -->
 </div> <!-- ./ wrap/container -->
+
 @stop

@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\DivisionCreateRequest;
 use App\Modules\Gakko\Http\Requests\DivisionUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class DivisionsController extends GakkoController {
@@ -29,7 +27,7 @@ class DivisionsController extends GakkoController {
 	{
 		$this->division = $division;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +62,7 @@ class DivisionsController extends GakkoController {
 		$this->division->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.division_create') );
-		return redirect('divisions');
+		return redirect('admin/divisions');
 	}
 
 	/**
@@ -75,9 +73,9 @@ class DivisionsController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$division = $this->division->findOrFail($id);
-
-		return View::make('HR::divisions.show', compact('division'));
+// 		$division = $this->division->findOrFail($id);
+//
+// 		return View::make('HR::divisions.show', compact('division'));
 	}
 
 	/**
@@ -88,7 +86,22 @@ class DivisionsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::divisions.edit',  $this->division->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.divisions.destroy';
+		$modal_id = $id;
+		$model = '$division';
+
+		return View('gakko::divisions.edit',
+			$this->division->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::divisions.edit',  $this->division->edit($id));
 	}
 
 	/**
@@ -106,7 +119,7 @@ class DivisionsController extends GakkoController {
 		$this->division->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.division_update') );
-		return redirect('divisions');
+		return redirect('admin/divisions');
 	}
 
 	/**
@@ -122,41 +135,33 @@ class DivisionsController extends GakkoController {
 		return Redirect::route('admin.divisions.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$divisions = Division::select(array('divisions.id','divisions.name','divisions.description'))
-			->orderBy('divisions.name', 'ASC');
-//dd($divisions);
+//		$query = Division::select(array('divisions.id','divisions.name','divisions.description'))
+//			->orderBy('divisions.name', 'ASC');
+//		$query = Division::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Division::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($divisions)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'divisions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/divisions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

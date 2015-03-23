@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\GradeCreateRequest;
 use App\Modules\Gakko\Http\Requests\GradeUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class GradesController extends GakkoController {
@@ -29,7 +27,7 @@ class GradesController extends GakkoController {
 	{
 		$this->grade = $grade;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +62,7 @@ class GradesController extends GakkoController {
 		$this->grade->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.grade_create') );
-		return redirect('grades');
+		return redirect('admin/grades');
 	}
 
 	/**
@@ -75,9 +73,9 @@ class GradesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$grade = $this->grade->findOrFail($id);
-
-		return View::make('HR::grades.show', compact('grade'));
+// 		$grade = $this->grade->findOrFail($id);
+//
+// 		return View::make('HR::grades.show', compact('grade'));
 	}
 
 	/**
@@ -88,7 +86,22 @@ class GradesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::grades.edit',  $this->grade->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.grades.destroy';
+		$modal_id = $id;
+		$model = '$grade';
+
+		return View('gakko::grades.edit',
+			$this->grade->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::grades.edit',  $this->grade->edit($id));
 	}
 
 	/**
@@ -106,7 +119,7 @@ class GradesController extends GakkoController {
 		$this->grade->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.grade_update') );
-		return redirect('grades');
+		return redirect('admin/grades');
 	}
 
 	/**
@@ -122,41 +135,33 @@ class GradesController extends GakkoController {
 		return Redirect::route('admin.grades.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$grades = Grade::select(array('grades.id','grades.name','grades.description'))
-			->orderBy('grades.name', 'ASC');
-//dd($grades);
+//		$query = Grade::select(array('grades.id','grades.name','grades.description'))
+//			->orderBy('grades.name', 'ASC');
+//		$query = Grade::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Grade::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($grades)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'grades/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/grades/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\RoomCreateRequest;
 use App\Modules\Gakko\Http\Requests\RoomUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class RoomsController extends GakkoController {

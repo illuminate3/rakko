@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\EmployeeTypeCreateRequest;
 use App\Modules\Gakko\Http\Requests\EmployeeTypeUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class EmployeeTypesController extends GakkoController {

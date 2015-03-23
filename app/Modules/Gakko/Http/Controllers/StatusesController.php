@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\StatusCreateRequest;
 use App\Modules\Gakko\Http\Requests\StatusUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class StatusesController extends GakkoController {

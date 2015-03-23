@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\PositionCreateRequest;
 use App\Modules\Gakko\Http\Requests\PositionUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class PositionsController extends GakkoController {
@@ -29,7 +27,7 @@ class PositionsController extends GakkoController {
 	{
 		$this->position = $position;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +62,7 @@ class PositionsController extends GakkoController {
 		$this->position->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.position_create') );
-		return redirect('positions');
+		return redirect('admin/positions');
 	}
 
 	/**
@@ -75,9 +73,9 @@ class PositionsController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$position = $this->position->findOrFail($id);
-
-		return View::make('HR::positions.show', compact('position'));
+// 		$position = $this->position->findOrFail($id);
+//
+// 		return View::make('HR::positions.show', compact('position'));
 	}
 
 	/**
@@ -88,7 +86,22 @@ class PositionsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::positions.edit',  $this->position->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.positions.destroy';
+		$modal_id = $id;
+		$model = '$position';
+
+		return View('gakko::positions.edit',
+			$this->position->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::positions.edit',  $this->position->edit($id));
 	}
 
 	/**
@@ -106,7 +119,7 @@ class PositionsController extends GakkoController {
 		$this->position->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.position_update') );
-		return redirect('positions');
+		return redirect('admin/positions');
 	}
 
 	/**
@@ -122,41 +135,33 @@ class PositionsController extends GakkoController {
 		return Redirect::route('admin.positions.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$positions = Position::select(array('positions.id','positions.name','positions.description'))
-			->orderBy('positions.name', 'ASC');
-//dd($positions);
+//		$query = Position::select(array('positions.id','positions.name','positions.description'))
+//			->orderBy('positions.name', 'ASC');
+//		$query = Position::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Position::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($positions)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'positions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/positions/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

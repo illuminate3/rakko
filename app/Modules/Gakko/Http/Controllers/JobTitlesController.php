@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\JobTitleCreateRequest;
 use App\Modules\Gakko\Http\Requests\JobTitleUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class JobTitlesController extends GakkoController {

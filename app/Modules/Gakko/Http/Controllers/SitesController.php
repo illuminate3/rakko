@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\SiteCreateRequest;
 use App\Modules\Gakko\Http\Requests\SiteUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash, Image;
 
 use Config;
@@ -34,6 +32,7 @@ class SitesController extends GakkoController {
 		$this->request = $request;
 		$this->site = $site;
 
+		$this->middleware('admin', ['only' => 'destroy']);
 //		$this->middleware('admin');
 	}
 
@@ -114,7 +113,22 @@ class SitesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::sites.edit',  $this->site->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'sites.destroy';
+		$modal_id = $id;
+		$model = '$site';
+
+		return View('gakko::sites.edit',
+			$this->site->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::sites.edit',  $this->site->edit($id));
 	}
 
 	/**
@@ -170,13 +184,50 @@ class SitesController extends GakkoController {
 		return Redirect::route('admin.sites.index');
 	}
 
+	/**
+	* Datatables data
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+//		$query = Site::select(array('sites.id','sites.name','sites.description'))
+//			->orderBy('sites.name', 'ASC');
+//		$query = Site::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Site::select('id', 'name', 'division_id', 'website', 'user_id');
+//dd($query);
+
+		return Datatables::of($query)
+//			->remove_column('id')
+
+// 			-> edit_column(
+// 				'division_id',
+// 				'{{ $query->present()->divisionName(division_id) }}'
+// 				)
+
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'sites/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+						<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+					</a>
+					<a href="{{ URL::to(\'/sites/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+
+			->make(true);
+	}
+
 
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
 	*
 	* @return Datatables JSON
 	*/
-	public function data()
+	public function data1()
 	{
 //dd("loaded");
 /*
