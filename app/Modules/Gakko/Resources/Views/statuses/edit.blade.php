@@ -9,11 +9,9 @@
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
 
@@ -25,7 +23,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/statuses" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/admin/statuses" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -41,7 +39,7 @@
 {!! Form::model(
 	$status,
 	[
-		'route' => ['statuses.update', $status->id],
+		'route' => ['admin.statuses.update', $status->id],
 		'method' => 'PATCH',
 		'class' => 'form'
 	]
@@ -76,7 +74,7 @@
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/statuses" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+	<a href="/admin/statuses" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>
@@ -87,7 +85,8 @@
 </div>
 
 <div class="col-sm-4">
-	<a class="btn btn-danger btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
+<!-- Button trigger modal -->
+	<a data-toggle="modal" data-target="#myModal" class="btn btn-default btn-block" title="{{ trans('kotoba::button.delete') }}">
 		<i class="fa fa-trash-o fa-fw"></i>
 		{{ trans('kotoba::general.command.delete') }}
 	</a>
@@ -96,4 +95,12 @@
 
 </div> <!-- ./ row -->
 </div> <!-- ./ wrap/container -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	@include('_partials.modal')
+</div>
+
+
 @stop

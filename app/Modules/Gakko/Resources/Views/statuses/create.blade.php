@@ -23,7 +23,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/statuses" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/admin/statuses" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -37,7 +37,7 @@
 
 <div class="row">
 {!! Form::open([
-	'url' => 'statuses',
+	'url' => 'admin/statuses',
 	'method' => 'POST',
 	'class' => 'form'
 ]) !!}
@@ -70,22 +70,15 @@
 
 
 <div class="row">
-<div class="col-sm-4">
-	<a href="/statuses" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+<div class="col-sm-6">
+	<a href="/admin/statuses" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>
 </div>
 
-<div class="col-sm-4">
+<div class="col-sm-6">
 	<input class="btn btn-default btn-block" type="reset" value="{{ trans('kotoba::button.reset') }}">
-</div>
-
-<div class="col-sm-4">
-<a class="btn btn-default btn-block action_confirm" data-method="delete" title="{{ trans('kotoba::general.command.delete') }}" onclick="">
-	<i class="fa fa-trash-o fa-fw"></i>
-	{{ trans('kotoba::general.command.delete') }}
-</a>
 </div>
 </div>
 

@@ -22,6 +22,7 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('api/profiles') }}",
 		"columns": [
+			{data: 'id', name: 'id'},
 			{data: 'first_name', name: 'first_name'},
 			{data: 'last_name', name: 'last_name'},
 			{data: 'email_1', name: 'email_1'},
@@ -56,6 +57,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th>{{ trans('kotoba::table.id') }}</th>
 			<th>{{ trans('kotoba::account.first_name') }}</th>
 			<th>{{ trans('kotoba::account.last_name') }}</th>
 			<th>{{ trans('kotoba::account.primary_email') }}</th>

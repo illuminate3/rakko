@@ -29,7 +29,7 @@ class JobTitlesController extends GakkoController {
 	{
 		$this->job_title = $job_title;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -75,9 +75,9 @@ class JobTitlesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$job_title = $this->job_title->findOrFail($id);
-
-		return View::make('HR::job_titles.show', compact('job_title'));
+// 		$job_title = $this->job_title->findOrFail($id);
+//
+// 		return View::make('HR::job_titles.show', compact('job_title'));
 	}
 
 	/**
@@ -95,7 +95,7 @@ class JobTitlesController extends GakkoController {
 		$model = '$job_title';
 
 		return View('gakko::job_titles.edit',
-			$this->job_title->show($id),
+			$this->job_title->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -134,7 +134,7 @@ class JobTitlesController extends GakkoController {
 	{
 		$this->job_title->find($id)->delete();
 
-		return Redirect::route('admin.admin.job_titles.index');
+		return Redirect::route('admin.job_titles.index');
 	}
 
 	/**
@@ -152,7 +152,7 @@ class JobTitlesController extends GakkoController {
 //dd($query);
 
 		return Datatables::of($query)
-			->remove_column('id')
+//			->remove_column('id')
 
 			->addColumn(
 				'actions',
@@ -164,43 +164,6 @@ class JobTitlesController extends GakkoController {
 				)
 
 			->make(true);
-	}
-
-
-	/**
-	* Show a list of all the languages posts formatted for Datatables.
-	*
-	* @return Datatables JSON
-	*/
-	public function data1()
-	{
-//dd("loaded");
-		$job_titles = JobTitle::select(array('job_titles.id','job_titles.name','job_titles.description'))
-			->orderBy('job_titles.name', 'ASC');
-//dd($job_titles);
-
-		return Datatables::of($job_titles)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
-				'actions',
-				'<a href="{{ URL::to(\'job_titles/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
-
-				->remove_column('id')
-
-				->make();
 	}
 
 

@@ -19,35 +19,36 @@ class School extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+	/**
+	 * Present the sites
+	 *
+	 * @return string
+	 */
+	public function siteName()
+	{
+		$return = '';
+		$sites = $this->entity->sites;
+//dd($sites);
 
-	/**
-	 * Present the name
-	 *
-	 * @return string
-	 */
-	public function first_name()
-	{
-		return ucwords($this->entity->first_name);
+		if (empty($sites))
+		{
+			$return = trans('kotoba::general.none');
+		} else {
+			foreach ($sites as $site)
+			{
+//				$return .= $site->present()->name() . ',&nbsp;';
+				$return .= $site->name . ',<br>';
+			}
+		}
+
+		return trim($return, ',<br>');
 	}
 
-	/**
-	 * Present the name
-	 *
-	 * @return string
-	 */
-	public function last_name()
-	{
-		return ucwords($this->entity->last_name);
-	}
-	/**
-	 * Present the email
-	 *
-	 * @return string
-	 */
-	public function email()
-	{
-		return $this->entity->email;
-	}
+
+
+
+
+
 
 
 	/**
@@ -124,32 +125,6 @@ class School extends Presenter {
 		return trim($return, ',&nbsp;');
 	}
 
-
-	/**
-	 * Present the sites
-	 *
-	 * @return string
-	 */
-	public function sites()
-	{
-		$return = '';
-		$sites = $this->entity->sites;
-//dd($sites);
-
-		if (empty($sites))
-		{
-			$return = trans('lingos::general.none');
-		} else {
-			foreach ($sites as $site)
-			{
-//				$return .= $site->present()->name() . ',&nbsp;';
-				$return .= $site->name . ',<br>';
-			}
-		}
-
-		return trim($return, ',<br>');
-	}
-
 	/**
 	 * Present the sites
 	 *
@@ -163,7 +138,7 @@ class School extends Presenter {
 
 		if (empty($sites))
 		{
-			$return = trans('lingos::general.none');
+			$return = trans('kotoba::general.none');
 		} else {
 			foreach ($sites as $site)
 			{

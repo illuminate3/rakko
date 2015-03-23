@@ -202,7 +202,7 @@ dd('destroy');
 //dd($query);
 
 		return Datatables::of($query)
-			->remove_column('id')
+//			->remove_column('id')
 
 			->addColumn(
 				'actions',

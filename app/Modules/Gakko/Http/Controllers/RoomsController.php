@@ -29,7 +29,7 @@ class RoomsController extends GakkoController {
 	{
 		$this->room = $room;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +64,7 @@ class RoomsController extends GakkoController {
 		$this->room->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.room_create') );
-		return redirect('rooms');
+		return redirect('admin/rooms');
 	}
 
 	/**
@@ -88,7 +88,22 @@ class RoomsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::rooms.edit',  $this->room->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.rooms.destroy';
+		$modal_id = $id;
+		$model = '$room';
+
+		return View('gakko::rooms.edit',
+			$this->room->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::rooms.edit',  $this->room->edit($id));
 	}
 
 	/**
@@ -106,7 +121,7 @@ class RoomsController extends GakkoController {
 		$this->room->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.room_update') );
-		return redirect('rooms');
+		return redirect('admin/rooms');
 	}
 
 	/**
@@ -122,48 +137,42 @@ class RoomsController extends GakkoController {
 		return Redirect::route('admin.rooms.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-/*
-			$table->integer('site_id')->nullable();
-			$table->integer('user_id')->nullable();
-			$table->string('name')->nullable();
-			$table->string('description')->nullable();
-			$table->string('barcode')->nullable();
-*/
-		$rooms = Room::select(array('rooms.id','rooms.name','rooms.description'))
-			->orderBy('rooms.name', 'ASC');
-//dd($rooms);
+//		$query = Room::select(array('rooms.id','rooms.name','rooms.description', 'barcode'))
+//			->orderBy('rooms.name', 'ASC');
+//		$query = Room::select('id', 'name' 'description', 'barcode', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Room::select('id', 'site_id', 'user_id', 'name', 'description', 'barcode', 'updated_at');
+//dd($query);
 
-		return Datatables::of($rooms)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+// 			-> edit_column(
+// 				'site_id',
+// 				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+// 				)
+// 			-> edit_column(
+// 				'user_id',
+// 				'@if ($blocked=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+// 				)
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'rooms/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/rooms/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

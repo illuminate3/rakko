@@ -29,7 +29,7 @@ class StatusesController extends GakkoController {
 	{
 		$this->status = $status;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +64,7 @@ class StatusesController extends GakkoController {
 		$this->status->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.status_create') );
-		return redirect('statuses');
+		return redirect('admin/statuses');
 	}
 
 	/**
@@ -75,9 +75,9 @@ class StatusesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$status = $this->status->findOrFail($id);
-
-		return View::make('HR::statuses.show', compact('status'));
+// 		$status = $this->status->findOrFail($id);
+//
+// 		return View::make('HR::statuses.show', compact('status'));
 	}
 
 	/**
@@ -88,7 +88,22 @@ class StatusesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::statuses.edit',  $this->status->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.statuses.destroy';
+		$modal_id = $id;
+		$model = '$status';
+
+		return View('gakko::statuses.edit',
+			$this->status->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::statuses.edit',  $this->status->edit($id));
 	}
 
 	/**
@@ -106,7 +121,7 @@ class StatusesController extends GakkoController {
 		$this->status->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.status_update') );
-		return redirect('statuses');
+		return redirect('admin/statuses');
 	}
 
 	/**
@@ -122,41 +137,33 @@ class StatusesController extends GakkoController {
 		return Redirect::route('admin.statuses.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$statuses = Status::select(array('statuses.id','statuses.name','statuses.description'))
-			->orderBy('statuses.name', 'ASC');
-//dd($statuses);
+//		$query = Status::select(array('statuses.id','statuses.name','statuses.description'))
+//			->orderBy('statuses.name', 'ASC');
+//		$query = Status::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Status::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($statuses)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'statuses/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/statuses/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

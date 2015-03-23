@@ -14,7 +14,7 @@ class GakkoDatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-
+/*
 		$this->call('App\Modules\Gakko\Database\Seeds\ModuleSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\EmployeesSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\EmployeeTypesSeeder');
@@ -25,7 +25,9 @@ class GakkoDatabaseSeeder extends Seeder {
 		$this->call('App\Modules\Gakko\Database\Seeds\JobTitlesSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\GradesSeeder');
 		$this->call('App\Modules\Gakko\Database\Seeds\SubjectsSeeder');
- 		$this->call('App\Modules\Gakko\Database\Seeds\JobTitlesSeeder');
+		$this->call('App\Modules\Gakko\Database\Seeds\JobTitlesSeeder');
+*/
+		$this->call('App\Modules\Gakko\Database\Seeds\RoomsSeeder');
 
 	}
 

@@ -22,6 +22,7 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('admin/api/users') }}",
 		"columns": [
+			{data: 'id', name: 'id'},
 			{data: 'name', name: 'name'},
 			{data: 'email', name: 'email'},
 			{data: 'blocked', name: 'blocked'},
@@ -58,6 +59,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th>{{ trans('kotoba::table.id') }}</th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.email') }}</th>
 			<th>{{ trans('kotoba::table.blocked') }}</th>

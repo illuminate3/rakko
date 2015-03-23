@@ -6,29 +6,31 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/admin/css/jquery.dataTables.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/admin/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/dataTables.bootstrap.js') }}"></script>
-	<script src="{{ asset('assets/admin/js/bootstrap-dataTables-paging.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	var oTable;
-	$(document).ready(function() {
-		oTable = $('#table').dataTable({
-			"sDom" : "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-			"sPaginationType" : "bootstrap",
-			"bProcessing" : true,
-			"bServerSide" : true,
-			"sAjaxSource" : "{{ URL::to('api/departments') }}",
-		});
+$(document).ready(function() {
+oTable =
+	$('#table').DataTable({
+		"processing": true,
+		"serverSide": true,
+		"ajax": "{{ URL::to('admin/api/departments') }}",
+		"columns": [
+			{data: 'id', name: 'id'},
+			{data: 'name', name: 'name'},
+			{data: 'description', name: 'description'},
+			{data: 'updated_at', name: 'updated_at'},
+			{data: 'actions', name: 'actions'}
+		]
 	});
+});
 @stop
-
 
 
 {{-- Content --}}
@@ -37,7 +39,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/departments/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+	<a href="/admin/departments/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
 		<i class="fa fa-plus fa-fw"></i>
 		{{ trans('kotoba::button.new') }}
 	</a>
@@ -50,18 +52,19 @@
 
 
 <div class="row">
-
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th>{{ trans('kotoba::table.id') }}</th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.description') }}</th>
+			<th>{{ trans('kotoba::table.updated_at') }}</th>
 
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody></tbody>
-
+</table>
 </div>
 
 @stop

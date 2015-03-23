@@ -29,7 +29,7 @@ class DepartmentsController extends GakkoController {
 	{
 		$this->department = $department;
 
-//		$this->middleware('admin');
+		$this->middleware('admin');
 	}
 
 	/**
@@ -64,7 +64,7 @@ class DepartmentsController extends GakkoController {
 		$this->department->store($request->all());
 
 		Flash::success( trans('kotoba::hr.success.department_create') );
-		return redirect('departments');
+		return redirect('admin/departments');
 	}
 
 	/**
@@ -75,9 +75,9 @@ class DepartmentsController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$department = $this->department->findOrFail($id);
-
-		return View::make('HR::departments.show', compact('department'));
+// 		$department = $this->department->findOrFail($id);
+//
+// 		return View::make('HR::departments.show', compact('department'));
 	}
 
 	/**
@@ -88,6 +88,21 @@ class DepartmentsController extends GakkoController {
 	 */
 	public function edit($id)
 	{
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.departments.destroy';
+		$modal_id = $id;
+		$model = '$department';
+
+		return View('gakko::departments.edit',
+			$this->department->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
 		return View('gakko::departments.edit',  $this->department->edit($id));
 	}
 
@@ -106,7 +121,7 @@ class DepartmentsController extends GakkoController {
 		$this->department->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::hr.success.department_update') );
-		return redirect('departments');
+		return redirect('admin/departments');
 	}
 
 	/**
@@ -122,41 +137,33 @@ class DepartmentsController extends GakkoController {
 		return Redirect::route('admin.departments.index');
 	}
 
-
 	/**
-	* Show a list of all the languages posts formatted for Datatables.
+	* Datatables data
 	*
 	* @return Datatables JSON
 	*/
 	public function data()
 	{
-//dd("loaded");
-		$departments = Department::select(array('departments.id','departments.name','departments.description'))
-			->orderBy('departments.name', 'ASC');
-//dd($departments);
+//		$query = Department::select(array('departments.id','departments.name','departments.description'))
+//			->orderBy('departments.name', 'ASC');
+//		$query = Department::select('id', 'name' 'description', 'updated_at');
+//			->orderBy('name', 'ASC');
+		$query = Department::select('id', 'name', 'description', 'updated_at');
+//dd($query);
 
-		return Datatables::of($departments)
-/*
-			-> edit_column(
-				'confirmed',
-				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif'
-				)
-*/
-			->add_column(
+		return Datatables::of($query)
+//			->remove_column('id')
+
+			->addColumn(
 				'actions',
-				'<a href="{{ URL::to(\'departments/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-					<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-				</a>
-				')
-/*
-				<a href="{{ URL::to(\'admin/roles/\' . $id . \'/destroy\' ) }}" class="btn btn-sm btn-danger action_confirm" data-method="delete" title="{{ trans(\'kotoba::general.command.delete\') }}" onclick="">
-					<span class="glyphicon glyphicon-trash"></span> {{ trans("kotoba::button.delete") }}
-				</a>
-*/
+				'
+					<a href="{{ URL::to(\'admin/departments/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
 
-				->remove_column('id')
-
-				->make();
+			->make(true);
 	}
 
 

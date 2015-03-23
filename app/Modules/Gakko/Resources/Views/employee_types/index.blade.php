@@ -22,6 +22,7 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('admin/api/employee_types') }}",
 		"columns": [
+			{data: 'id', name: 'id'},
 			{data: 'name', name: 'name'},
 			{data: 'description', name: 'description'},
 			{data: 'updated_at', name: 'updated_at'},
@@ -54,6 +55,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th>{{ trans('kotoba::table.id') }}</th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.description') }}</th>
 			<th>{{ trans('kotoba::table.updated_at') }}</th>

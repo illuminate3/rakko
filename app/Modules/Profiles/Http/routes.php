@@ -30,9 +30,9 @@ Route::get('api/profiles', array(
 Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id', '[0-9]+');
 
-// AAdmin
+// Admin
 	Route::get('profiles.destroy', array(
-	//	'as'=>'api.users',
+	//	'as'=>'profiles.destroy',
 		'uses'=>'ProfilesController@destroy'
 		));
 

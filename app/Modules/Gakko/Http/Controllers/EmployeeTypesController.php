@@ -75,9 +75,9 @@ class EmployeeTypesController extends GakkoController {
 	 */
 	public function show($id)
 	{
-		$employee_type = $this->employee_type->findOrFail($id);
-
-		return View::make('HR::employee_types.show', compact('employee_type'));
+// 		$employee_type = $this->employee_type->findOrFail($id);
+//
+// 		return View::make('HR::employee_types.show', compact('employee_type'));
 	}
 
 	/**
@@ -95,7 +95,7 @@ class EmployeeTypesController extends GakkoController {
 		$model = '$employee_type';
 
 		return View('gakko::employee_types.edit',
-			$this->employee_type->show($id),
+			$this->employee_type->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -152,7 +152,7 @@ class EmployeeTypesController extends GakkoController {
 //dd($query);
 
 		return Datatables::of($query)
-			->remove_column('id')
+//			->remove_column('id')
 
 			->addColumn(
 				'actions',

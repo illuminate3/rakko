@@ -17,6 +17,18 @@ class Site extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * Present the profiles
 	 *
