@@ -26,7 +26,7 @@ class SubjectsController extends GakkoController {
 		)
 	{
 		$this->subject = $subject;
-
+// middleware
 		$this->middleware('admin');
 	}
 

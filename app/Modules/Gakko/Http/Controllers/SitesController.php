@@ -9,10 +9,11 @@ use App\Modules\Gakko\Http\Requests\SiteCreateRequest;
 use App\Modules\Gakko\Http\Requests\SiteUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-use Datatables;
-use Flash, Image;
-
 use Config;
+use Datatables;
+use File;
+use Flash;
+use Image;
 
 class SitesController extends GakkoController {
 
@@ -31,7 +32,7 @@ class SitesController extends GakkoController {
 	{
 		$this->request = $request;
 		$this->site = $site;
-
+// middleware
 		$this->middleware('admin', ['only' => 'destroy']);
 //		$this->middleware('admin');
 	}

@@ -25,6 +25,7 @@ class KagiController extends Controller
 		$this->middleware('auth');
 */
 // middleware
+		$this->middleware('auth');
 		$this->middleware('admin');
 	}
 

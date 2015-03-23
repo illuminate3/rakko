@@ -16,7 +16,9 @@ Route::get('welcome/gakko', array(
 	));
 
 //Route::get('/', Config::get('general.home_controller'));
-Route::get('/', 'GakkoController@index');
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/', 'GakkoController@index');
+});
 
 Route::get('school', array(
 	'uses'=>'GakkoController@school'

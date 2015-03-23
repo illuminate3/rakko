@@ -26,7 +26,7 @@ class DepartmentsController extends GakkoController {
 		)
 	{
 		$this->department = $department;
-
+// middleware
 		$this->middleware('admin');
 	}
 

@@ -26,7 +26,7 @@ class DivisionsController extends GakkoController {
 		)
 	{
 		$this->division = $division;
-
+// middleware
 		$this->middleware('admin');
 	}
 

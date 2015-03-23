@@ -10,7 +10,6 @@ use GrahamCampbell\Throttle\Facades\Throttle;
 use Illuminate\Support\Facades\Request as FRequest;
 
 use Config;
-
 use Flash;
 
 trait KagiAuthandRegister {

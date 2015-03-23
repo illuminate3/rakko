@@ -26,7 +26,7 @@ class EmployeeTypesController extends GakkoController {
 		)
 	{
 		$this->employee_type = $employee_type;
-
+// middleware
 		$this->middleware('admin');
 	}
 

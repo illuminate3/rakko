@@ -82,7 +82,6 @@ DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 		DB::table('profiles')->insert($seeds);
 
 
-		if ( $_ENV['APP_TYPE'] == 'HR' ) {
 // grab csv file for the users
 			$csv = dirname(__FILE__) . '/data/' . 'users.csv';
 			$file_handle = fopen($csv, "r");
@@ -140,7 +139,6 @@ DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
 			}
 
 			fclose($file_handle);
-		}
 
 DB::statement('SET FOREIGN_KEY_CHECKS = 1'); // enable foreign key constraints
 

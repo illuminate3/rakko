@@ -26,7 +26,7 @@ class StatusesController extends GakkoController {
 		)
 	{
 		$this->status = $status;
-
+// middleware
 		$this->middleware('admin');
 	}
 

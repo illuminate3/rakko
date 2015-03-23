@@ -26,7 +26,7 @@ class JobTitlesController extends GakkoController {
 		)
 	{
 		$this->job_title = $job_title;
-
+// middleware
 		$this->middleware('admin');
 	}
 

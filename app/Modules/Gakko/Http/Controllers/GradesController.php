@@ -26,7 +26,7 @@ class GradesController extends GakkoController {
 		)
 	{
 		$this->grade = $grade;
-
+// middleware
 		$this->middleware('admin');
 	}
 

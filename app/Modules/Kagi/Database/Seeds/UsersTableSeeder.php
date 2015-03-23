@@ -34,7 +34,8 @@ class UsersTableSeeder extends Seeder {
 			'banned'				=> 0,
 			'confirmed'				=> 1,
 			'activated'				=> 1,
-			'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
+			'avatar'				=> 'assets/images/usr.png'
 		);
 
 		$permissions = array(

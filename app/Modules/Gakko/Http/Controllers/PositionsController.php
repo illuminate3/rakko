@@ -26,7 +26,7 @@ class PositionsController extends GakkoController {
 		)
 	{
 		$this->position = $position;
-
+// middleware
 		$this->middleware('admin');
 	}
 

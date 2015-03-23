@@ -26,7 +26,7 @@ class RoomsController extends GakkoController {
 		)
 	{
 		$this->room = $room;
-
+// middleware
 		$this->middleware('admin');
 	}
 

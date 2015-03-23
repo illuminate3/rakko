@@ -19,9 +19,11 @@
 		<li><a href="/">{{ trans('kotoba::general.home') }}</a></li>
 	</ul>
 -->
-	<ul class="nav navbar-nav">
-		@include('_partials.menu', ['items'=> $menu_navbar->roots()])
-	</ul>
+	@if (Auth::user())
+		<ul class="nav navbar-nav">
+			@include('_partials.menu', ['items'=> $menu_navbar->roots()])
+		</ul>
+	@endif
 	<ul class="nav navbar-nav navbar-right">
 		@if (Auth::guest())
 			<li><a href="/auth/login">{{ trans('kotoba::auth.log_in') }}</a></li>

@@ -9,13 +9,10 @@ use App\Modules\Kagi\Http\Requests\PermissionCreateRequest;
 use App\Modules\Kagi\Http\Requests\PermissionUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
-use Datatable;
-use DB;
-use Form;
-
 use Datatables;
-//use Bootstrap;
+use DB;
 use Flash;
+use Form;
 
 class PermissionsController extends KagiController {
 

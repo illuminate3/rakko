@@ -24,9 +24,10 @@ class GakkoController extends Controller
 		$this->middleware('csrf');
 		$this->middleware('auth');
 */
+// middleware
+		$this->middleware('auth');
 //		$this->middleware('guest');
 //		$this->middleware('admin');
-
 	}
 
 	/**

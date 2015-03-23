@@ -9,9 +9,7 @@ use App\Modules\Gakko\Http\Requests\EmployeeCreateRequest;
 use App\Modules\Gakko\Http\Requests\EmployeeUpdateRequest;
 use App\Modules\Gakko\Http\Requests\DeleteRequest;
 
-//use Datatable;
 use Datatables;
-//use Bootstrap;
 use Flash;
 
 class EmployeesController extends GakkoController {
@@ -28,8 +26,8 @@ class EmployeesController extends GakkoController {
 		)
 	{
 		$this->employee = $employee;
-
-//		$this->middleware('admin');
+// middleware
+		$this->middleware('admin');
 	}
 
 	/**
@@ -86,7 +84,22 @@ class EmployeesController extends GakkoController {
 	 */
 	public function edit($id)
 	{
-		return View('gakko::employees.edit',  $this->employee->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.employees.destroy';
+		$modal_id = $id;
+		$model = '$employee';
+
+		return View('gakko::employees.edit',
+			$this->employee->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('gakko::employees.edit',  $this->employee->edit($id));
 	}
 
 	/**
@@ -120,13 +133,48 @@ class EmployeesController extends GakkoController {
 		return Redirect::route('admin.employees.index');
 	}
 
+	/**
+	* Datatables data
+	*
+	* @return Datatables JSON
+	*/
+	public function data()
+	{
+		$query = Employee::join('profiles','employees.user_id','=','profiles.id')
+			->select(array('employees.id','profiles.first_name','profiles.middle_initial','profiles.last_name','profiles.email_1'));
+//		$query = Site::select('id', 'name', 'division_id', 'website', 'user_id');
+//dd($query);
+
+		return Datatables::of($query)
+//			->remove_column('id')
+
+// 			-> edit_column(
+// 				'division_id',
+// 				'{{ $query->present()->divisionName(division_id) }}'
+// 				)
+
+			->addColumn(
+				'actions',
+				'
+					<a href="{{ URL::to(\'employees/\' . $id . \'/\' ) }}" class="btn btn-info btn-sm" >
+						<span class="glyphicon glyphicon-search"></span>  {{ trans("kotoba::button.view") }}
+					</a>
+					<a href="{{ URL::to(\'/employees/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
+					</a>
+				'
+				)
+
+			->make(true);
+	}
+
 
 	/**
 	* Show a list of all the languages posts formatted for Datatables.
 	*
 	* @return Datatables JSON
 	*/
-	public function data()
+	public function data1()
 	{
 /*
 			$table->integer('user_id');

@@ -33,6 +33,7 @@ oTable =
 });
 @stop
 
+
 {{-- Content --}}
 @section('content')
 
@@ -52,7 +53,6 @@ oTable =
 
 
 <div class="row">
-
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -66,7 +66,7 @@ oTable =
 		</tr>
 	</thead>
 	<tbody></tbody>
-
+</table>
 </div>
 
 @stop
