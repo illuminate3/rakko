@@ -8,10 +8,6 @@ Thumbs.db
 /node_modules
 /vendor
 /app/Modules/Campus
-/app/Modules/Campus/*
 /app/Modules/Gakko
-/app/Modules/Gakko/*
 /app/Modules/Jinji
-/app/Modules/Jinji/*
 /app/Modules/Shisan
-/app/Modules/Shisan/*
