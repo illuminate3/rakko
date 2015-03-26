@@ -17,11 +17,13 @@ class ProfileMenuProvider extends MenuServiceProvider {
 	{
 
 // navbar menu
-		$menu = Menu::get('navbar');
-		$menu->add('Profiles', 'profiles')->data('order', 3);
+// 		$menu = Menu::get('navbar');
+// 		$menu->add('Profiles', 'profiles')->data('order', 3);
+// 		$menu->sortBy('order');
 
 // right side drop down
 		$menu = Menu::get('admin');
+		$menu->add('Profiles', 'profiles');
 
 	}
 

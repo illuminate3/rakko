@@ -16,7 +16,7 @@ class ModuleSeeder extends Seeder {
 			'version'				=> '1.0',
 			'description'			=> 'School Management System for Rakko',
 			'enabled'				=> 1,
-			'order'					=> 3
+			'order'					=> 5
 		);
 
 // Insert Module Information
