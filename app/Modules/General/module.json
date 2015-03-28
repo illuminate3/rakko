@@ -1,0 +1,8 @@
+{
+	"name": "General",
+	"slug": "general",
+	"version": "1.0",
+	"description": "School Management System for Rakko",
+	"enabled": true,
+	"order": 4
+}
