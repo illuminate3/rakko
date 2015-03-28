@@ -11,3 +11,5 @@ Thumbs.db
 /app/Modules/Gakko
 /app/Modules/Jinji
 /app/Modules/Shisan
+/public/images/logos
+/public/images/users

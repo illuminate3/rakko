@@ -32,7 +32,8 @@ class MMController extends ManagerController {
 		)
 	{
 		$this->module = $module;
-
+// middleware
+		$this->middleware('auth');
 		$this->middleware('admin');
 	}
 

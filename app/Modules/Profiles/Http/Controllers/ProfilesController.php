@@ -45,7 +45,7 @@ class ProfilesController extends ProfileController {
 	{
 		$this->user = $user;
 		$this->profile = $profile;
-
+// middleware
 		$this->middleware('auth');
 		$this->middleware('admin', ['only' => 'destroy']);
 //		$this->middleware('ajax', ['only' => 'updateSeen']);
