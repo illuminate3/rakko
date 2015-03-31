@@ -45,6 +45,19 @@ body {
 	margin: 10% auto;
 }
 
+.plain a:link {
+	text-decoration: none;
+}
+.plain a:visited {
+	text-decoration: none;
+}
+.plain a:hover {
+	 text-decoration: none;
+}
+.plain a:active {
+	text-decoration: none;
+}
+
 /*
 .navbar-brand {
 	width: 3.5em;
