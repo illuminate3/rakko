@@ -20,7 +20,9 @@ body {
 	padding: 0;
 	margin: 10px auto 0;
 	border-radius: 0;
+/*
 	background-color: #fff;
+*/
 }
 .row {
 /*
@@ -35,7 +37,7 @@ body {
 }
 
 .ms-container{
-	width: 100% !important
+	width: 100% !important;
 }
 
 .nav-profile {
@@ -43,6 +45,16 @@ body {
 	height: 40px;
 	display: block;
 	margin: 10% auto;
+}
+
+img.img-table {
+	min-height: 35px !important;
+	height: 20% !important;
+}
+
+img.img-show {
+	min-height: 75px !important;
+	height: 50% !important;
 }
 
 .plain a:link {
