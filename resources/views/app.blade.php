@@ -59,6 +59,8 @@
 	@include('_partials.navigation')
 
 	<div class="container-fluid">
+<!-- <div id="wrap" class="container"> -->
+
 		@include('_partials.content')
 	</div><!-- ./container -->
 
