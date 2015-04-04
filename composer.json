@@ -12,6 +12,7 @@
 		"caffeinated/flash": "dev-master",
 		"caffeinated/shinobi": "dev-master",
 		"caffeinated/menus": "~1.0@dev",
+		"caffeinated/plugins": "dev-master",
 		"laravel/socialite": "~2.0",
 		"laravelcollective/html": "~5.0",
 		"laracasts/presenter": "dev-master",
@@ -19,7 +20,8 @@
 		"graham-campbell/throttle": "~3.0",
 		"intervention/image": "~2.1",
 		"intervention/imagecache": "~2.1",
-		"wikimedia/composer-merge-plugin": "~1.0"
+		"wikimedia/composer-merge-plugin": "~1.0",
+		"arrilot/laravel-widgets": "~2.2"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
