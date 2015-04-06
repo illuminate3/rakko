@@ -14,11 +14,19 @@
 </div>
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<!--
+
+@if (Auth::user())
+@if (Auth::user()->can('manage_shisan'))
 	<ul class="nav navbar-nav">
-		<li><a href="/">{{ trans('kotoba::general.home') }}</a></li>
+		<li>
+		<a href="#" class="sitemap" id="showLeft">
+			{{ Lang::choice('kotoba::general.category', 2) }}
+		</a>
+		</li>
 	</ul>
--->
+@endif
+@endif
+
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
 			@include('_partials.menu', ['items'=> $menu_navbar->roots()])
@@ -45,7 +53,9 @@
 		@endif
 	</li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					{{ Auth::user()->name }} <span class="caret"></span>
+				</a>
 				<ul class="dropdown-menu" role="menu">
 					<li>
 						<a href="/profiles/{{ Auth::user()->id }}">

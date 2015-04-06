@@ -34,12 +34,12 @@
 
 <!--
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-3.3.2/css/bootstrap-theme.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/SlidePushMenus.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/navgoco/jquery.navgoco.css') }}" media="screen" />
 -->
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/SlidePushMenus.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/navgoco/jquery.navgoco.css') }}" media="screen" />
 
 <!-- ------------------------------------------ app loaded CSS stylesheets ------------------------------------------ -->
 	@yield('styles')
@@ -57,6 +57,8 @@
 
 
 	@include('_partials.navigation')
+	@include('_partials.left_side')
+	@include('_partials.right_side')
 
 	<div class="container-fluid">
 		@include('_partials.content')
@@ -71,13 +73,13 @@
 	<script type="text/javascript" src="{{ asset('assets/vendors/jquery/jquery-2.1.3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/vendors/bootstrap-3.3.2/js/bootstrap.min.js') }}"></script>
 
+	<script type="text/javascript" src="{{ asset('assets/js/SlidePushMenus.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/navgoco/jquery.cookie.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/navgoco/jquery.navgoco.min.js') }}"></script>
+
 <!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript" src="{{ asset('js/SlidePushMenus.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendors/navgoco/jquery.cookie.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendors/navgoco/jquery.navgoco.min.js') }}"></script>
 
 	<script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
 -->
@@ -89,6 +91,83 @@
 <!-- ------------------------------------------ template loaded js ------------------------------------------ -->
 	<script type="text/javascript">
 		@yield('inline-scripts')
+	</script>
+	<script type="text/javascript">
+		$(function () {
+
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+//				menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+				showLeft = document.getElementById( 'showLeft' ),
+//				showRight = document.getElementById( 'showRight' ),
+				body = document.body;
+
+				menuLeft.onclick = function () {
+					classie.toggle( this, 'active' );
+					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				};
+// 				menuRight.onclick = function () {
+// 					classie.toggle( this, 'active' );
+// 					classie.toggle( menuRight, 'cbp-spmenu-open' );
+// 				};
+
+			showLeft.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeft' );
+			};
+// 			showRight.onclick = function() {
+// 				classie.toggle( this, 'active' );
+// 				classie.toggle( menuRight, 'cbp-spmenu-open' );
+// 				disableOther( 'showRight' );
+// 			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeft' ) {
+					classie.toggle( showLeft, 'disabled' );
+				}
+				if( button !== 'showRight' ) {
+					classie.toggle( showRight, 'disabled' );
+				}
+			}
+
+		});
+		$(document).ready(function() {
+			// Initialize navgoco with default options
+			$("#navagoco").navgoco({
+				caretHtml: '',
+				accordion: false,
+				openClass: 'open',
+				save: true,
+				cookie: {
+					name: 'navgoco',
+					expires: false,
+					path: '/'
+				},
+				slide: {
+					duration: 400,
+					easing: 'swing'
+				},
+				// Add Active class to clicked menu item
+				onClickAfter: function(e, submenu) {
+		//			e.preventDefault();
+					$('#navagoco').find('li').removeClass('active');
+					var li =  $(this).parent();
+					var lis = li.parents('li');
+					li.addClass('active');
+					lis.addClass('active');
+				},
+			});
+
+			$("#collapseAll").click(function(e) {
+				e.preventDefault();
+				$("#navagoco").navgoco('toggle', false);
+			});
+
+			$("#expandAll").click(function(e) {
+				e.preventDefault();
+				$("#navagoco").navgoco('toggle', true);
+			});
+		});
 	</script>
 
 </body>

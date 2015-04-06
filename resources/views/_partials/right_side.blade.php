@@ -1,4 +1,6 @@
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+
+<!--
 	<h3>User</h3>
 
 		<a href="#">
@@ -13,5 +15,6 @@
 		<a href="{{ URL::to('categories') }}">
 			<i class="i"></i> Manage Categories
 		</a>
+-->
 
 </nav>

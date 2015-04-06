@@ -1,1 +1,44 @@
+/* BEHIND IMAGES ON HOVER
+ ------------------------------------- */
+a.go,a.cat-go, a.play, a.zoom, a.view, a.read_more, a.external, a.arrow_left, a.arrow_right, a.read_article, a.zoom_rounded, a.zoom_rounded2 {
+	background: #000 no-repeat center;
+	overflow: hidden;
+	display: block;
+	background-position:center;
+}
+a.go {
+	background-image: url(../image/hover/go.png);
+}
+a.cat-go {
+	background-image: url(../image/hover/go.png);
+	height:75px;
+	width:130px;
+}
+a.play {
+	background-image: url(../image/hover/play.png);
+}
+a.zoom {
+	background-image: url(../image/hover/zoom.png);
+}
+a.view {
+	background-image: url(../image/hover/view.png);
+}
+a.read_more {
+	background-image: url(../image/hover/read_more.png);
+}
+a.external {
+	background-image: url(../image/hover/external_link.png);
+}
+a.arrow_left {
+	background-image: url(../image/hover/arrow_left.png);
+}
+a.arrow_right {
+	background-image: url(../image/hover/arrow_right.png);
+}
+a.read_article {
+	background-image: url(../image/hover/read_article.png);
+}
+a.zoom_rounded {
+	background-image: url(../image/hover/zoom_rounded.png);
+}
 

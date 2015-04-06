@@ -26,7 +26,7 @@
 	background: #47a3da;
 	position: fixed;
 	margin-top: 50px;
-	margin-left: 70px;
+	margin-left: 0px;
 }
 
 .cbp-spmenu h3 {
@@ -92,11 +92,11 @@
 /* Vertical menu that slides from the left or right */
 
 .cbp-spmenu-left {
-	left: -240px;
+	left: -310px;
 }
 
 .cbp-spmenu-right {
-	right: -240px;
+	right: -310px;
 }
 
 .cbp-spmenu-left.cbp-spmenu-open {
@@ -134,11 +134,11 @@
 }
 
 .cbp-spmenu-push-toright {
-	left: 240px;
+	left: 50px;
 }
 
 .cbp-spmenu-push-toleft {
-	left: -240px;
+	left: -50px;
 }
 
 /* Transitions */

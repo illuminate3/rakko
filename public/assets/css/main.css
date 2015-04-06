@@ -49,12 +49,12 @@ body {
 
 img.img-table {
 	min-height: 35px !important;
-	height: 20% !important;
+	height: 45px !important;
 }
 
 img.img-show {
 	min-height: 75px !important;
-	height: 50% !important;
+	height: 75px !important;
 }
 
 .plain a:link {

@@ -51,16 +51,16 @@
 
 .navagoco li > a > span:after {
 /*
-	content: '\25b2';
-*/
 	content: '\25bc';
+*/
+	content: '\25b2';
 	margin-right: 5px;
 }
 .navagoco li.open > a > span:after {
 /*
-	content: '\25bc';
-*/
 	content: '\25b2';
+*/
+	content: '\25bc';
 	margin-right: 5px;
 }
 
