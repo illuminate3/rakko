@@ -128,7 +128,7 @@ dd("store");
 	{
 //dd($id);
 //dd(Auth::id());
-		if (Auth::id() == $id) {
+		if ( (Auth::id() == $id) || (Auth::user()->can('manage_admin')) || (Auth::user()->can('manage_profiles')) ) {
 //dd("edit");
 			$modal_title = trans('kotoba::general.command.delete');
 			$modal_body = trans('kotoba::general.ask.delete');
