@@ -61,6 +61,8 @@
 	@include('_partials.right_side')
 
 	<div class="container-fluid">
+<!-- <div id="wrap" class="container"> -->
+
 		@include('_partials.content')
 	</div><!-- ./container -->
 
