@@ -140,7 +140,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
-		<input type="text" id="notes" name="notes" placeholder="{{ trans('kotoba::general.notes') }}" class="form-control">
+		<input type="text" id="notes" name="notes" placeholder="{{ Lang::choice('kotoba::general.notes', 2) }}" class="form-control">
 </div>
 </div>
 
