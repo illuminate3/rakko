@@ -18,8 +18,6 @@
 {{-- Content --}}
 @section('content')
 
-<div id="wrap" class="container">
-
 <div class="row">
 <h1>
 	<p class="pull-right">
@@ -167,8 +165,8 @@
 @endif
 </div>
 
+
 </div> <!-- ./ row -->
-</div> <!-- ./ wrap/container -->
 
 
 <!-- Modal -->

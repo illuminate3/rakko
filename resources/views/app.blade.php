@@ -62,12 +62,10 @@
 
 	<div class="container-fluid">
 <!-- <div id="wrap" class="container"> -->
-
 		@include('_partials.content')
 	</div><!-- ./container -->
 
 	@include('_partials.footer')
-
 
 
 <!-- ------------------------------------------ js ------------------------------------------ -->

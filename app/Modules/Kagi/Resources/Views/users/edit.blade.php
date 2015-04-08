@@ -29,8 +29,6 @@ jQuery(document).ready(function($) {
 {{-- Content --}}
 @section('content')
 
-<div id="wrap" class="container">
-
 <div class="row">
 <h1>
 	<p class="pull-right">
@@ -144,6 +142,7 @@ jQuery(document).ready(function($) {
 
 <hr>
 
+
 <div class="form-group">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
 </div>
@@ -172,8 +171,8 @@ jQuery(document).ready(function($) {
 </div>
 </div>
 
+
 </div> <!-- ./ row -->
-</div> <!-- ./ wrap/container -->
 
 
 <!-- Modal -->
