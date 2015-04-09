@@ -39,7 +39,8 @@ abstract class BaseRepository {
 	 */
 	public function getById($id)
 	{
-		return $this->model->findOrFail($id);
+//dd($this->model);
+		return $this->model->find($id);
 	}
 
 }

@@ -7,9 +7,9 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
 
 use Illuminate\Http\Request;
-use App\Modules\Profile\Http\Requests\ProfileCreateRequest;
-use App\Modules\Profile\Http\Requests\ProfileUpdateRequest;
-use App\Modules\Profile\Http\Requests\DeleteRequest;
+use App\Modules\Profiles\Http\Requests\ProfileCreateRequest;
+use App\Modules\Profiles\Http\Requests\ProfileUpdateRequest;
+use App\Modules\Profiles\Http\Requests\DeleteRequest;
 
 use Auth;
 use Datatables;
@@ -159,14 +159,14 @@ dd("store");
 	 * @return Response
 	 */
 	public function update(
-		UserUpdateRequest $request,
+		ProfileUpdateRequest $request,
 		$id
 		)
 	{
 //dd($request->password);
-		$this->user->update($request->all(), $id);
+		$this->profile->update($request->all(), $id);
 		Flash::success( trans('kotoba::account.success.update') );
-		return redirect('admin/users');
+		return redirect('admin/profiles');
 	}
 
 	/**
@@ -180,11 +180,16 @@ dd("store");
 		$id
 		)
 	{
-dd('destroy');
-		$this->user->destroy($id);
-//		$this->user->destroy($id);
+//dd('destroy');
+//		$this->profile->destroy($id);
+		$profile= Profile::find($id);
+//		$profile->roles()->detach();
+		$profile->delete();
 
-		return redirect('user')->with('ok', trans('back/users.destroyed'));
+//		$this->user->destroy($id);
+//		return redirect('user')->with('ok', trans('back/users.destroyed'));
+		Flash::success( trans('kotoba::account.success.delete') );
+		return redirect('profiles');
 	}
 
 	/**

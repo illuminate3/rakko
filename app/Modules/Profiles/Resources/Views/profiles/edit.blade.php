@@ -42,6 +42,8 @@
 		'class' => 'form'
 	]
 ) !!}
+{!! Form::hidden('id', $profile->id) !!}
+{!! Form::hidden('user_id', $profile->user_id) !!}
 
 
 <div class="form-group">

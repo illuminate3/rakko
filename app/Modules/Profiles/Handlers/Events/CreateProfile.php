@@ -18,10 +18,10 @@ class CreateProfile {
 	 * @return void
 	 */
 	public function __construct(
-			ProfileRepository $profile
+			ProfileRepository $profileRepo
 		)
 	{
-		$this->profile = $profile;
+		$this->profileRepo = $profileRepo;
 	}
 
 
@@ -36,7 +36,7 @@ class CreateProfile {
 //dd($data);
 
 		if ($data != null) {
-			$this->profile->findOrCreateProfile($data);
+			$this->profileRepo->CreateProfile($data);
 		}
 
 	}

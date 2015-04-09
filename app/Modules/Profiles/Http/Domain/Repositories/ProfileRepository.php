@@ -146,7 +146,7 @@ class ProfileRepository extends BaseRepository {
 //dd($email);
 		$profile = DB::table('profiles')
 			->where('email_1', '=', $email)
-			->first();
+			->get();
 //dd($profile);
 
 		return $profile;
@@ -156,7 +156,7 @@ class ProfileRepository extends BaseRepository {
 	 * @param $data
 	 * @return static
 	 */
-	public function findOrCreateProfile($data)
+	public function CreateProfile($data)
 	{
 //dd($data);
 		$check = $this->checkProfileExists($data->email);
@@ -176,10 +176,11 @@ class ProfileRepository extends BaseRepository {
 	public function DeleteProfile($data)
 	{
 //dd($data);
+dd*('DeleteProfile');
 		$check = $this->checkProfileExists($data->email);
 		if ($check != null) {
 //dd($data->id);
-			return Profile::delete($data->id);
+			return Profile::delete($check->id);
 		}
 
 	}

@@ -153,9 +153,13 @@ dd("store");
 		)
 	{
 		$user= User::find($id);
-		$user->roles()->detach();
-		$user->delete();
+
 		\Event::fire(new \ProfileWasDeleted($user));
+		\Event::fire(new \EmployeeWasDeleted($user));
+//dd('here');
+
+// 		$user->roles()->detach();
+// 		$user->delete();
 
 		Flash::success( trans('kotoba::account.success.delete') );
 		return redirect('admin/users');

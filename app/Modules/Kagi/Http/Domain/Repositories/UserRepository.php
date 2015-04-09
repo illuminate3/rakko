@@ -231,6 +231,7 @@ class UserRepository extends BaseRepository {
 			$user->syncRoles([Config::get('kagi.default_role')]);
 
 			\Event::fire(new \ProfileWasCreated($check_again));
+			\Event::fire(new \EmployeeWasCreated($check_again));
 
 			return $user;
 
@@ -284,6 +285,7 @@ class UserRepository extends BaseRepository {
 			]);
 
 			\Event::fire(new \ProfileWasCreated($check));
+			\Event::fire(new \EmployeeWasCreated($check));
 
 		} else {
 //dd($check);

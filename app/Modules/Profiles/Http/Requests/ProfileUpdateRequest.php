@@ -2,7 +2,7 @@
 namespace App\Modules\Profiles\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Config;
+//use Config;
 
 class ProfileUpdateRequest extends FormRequest {
 

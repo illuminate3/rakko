@@ -19,6 +19,10 @@ Route::pattern('id', '[0-9]+');
 
 # main controller
 Route::resource('profiles', 'ProfilesController');
+	Route::delete('profiles/{id}', array(
+		'as'=>'profiles.destroy',
+		'uses'=>'ProfilesController@destroy'
+		));
 
 
 # API data
@@ -31,9 +35,10 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::pattern('id', '[0-9]+');
 
 // Admin
-	Route::get('profiles.destroy', array(
-	//	'as'=>'profiles.destroy',
-		'uses'=>'ProfilesController@destroy'
-		));
+// 	Route::get('profiles.destroy', array(
+// 	//	'as'=>'profiles.destroy',
+// 		'uses'=>'ProfilesController@destroy'
+// 		));
+//	Route::get('getDelete/{id}', 'ProfilesController@getDelete');
 
 });

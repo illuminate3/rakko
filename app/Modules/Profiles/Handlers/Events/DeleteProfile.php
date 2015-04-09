@@ -18,10 +18,10 @@ class DeleteProfile {
 	 * @return void
 	 */
 	public function __construct(
-			ProfileRepository $profile
+			ProfileRepository $profileRepo
 		)
 	{
-		$this->profile = $profile;
+		$this->profileRepo = $profileRepo;
 	}
 
 
@@ -33,11 +33,12 @@ class DeleteProfile {
 	 */
 	public function handle(ProfileWasDeleted $data)
 	{
-//dd($email);
+dd($data);
 
 		if ($data != null) {
-			$this->profile->DeleteProfile($data);
+			$this->profileRepo->DeleteProfile($data);
 		}
+dd('ProfileWasDeleted NOPpers');
 
 	}
 
