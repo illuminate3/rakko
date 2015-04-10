@@ -20,7 +20,7 @@ class KagiAuthController extends Controller {
 	|
 	*/
 
-	use kagiAuthandRegister;
+	use KagiAuthandRegister;
 
 	/**
 	 * Create a new authentication controller instance.
