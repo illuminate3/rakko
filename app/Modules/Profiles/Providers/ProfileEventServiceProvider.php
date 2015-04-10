@@ -8,6 +8,8 @@ use App\Providers\EventServiceProvider;
 
 use App\Modules\Profiles\Events\ProfileWasCreated;
 use App\Modules\Profiles\Handlers\Events\CreateProfile;
+use App\Modules\Profiles\Events\ProfileWasDeleted;
+use App\Modules\Profiles\Handlers\Events\DeleteProfile;
 
 use App;
 use Event;

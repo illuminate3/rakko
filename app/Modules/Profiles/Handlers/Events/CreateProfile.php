@@ -33,12 +33,9 @@ class CreateProfile {
 	 */
 	public function handle(ProfileWasCreated $data)
 	{
-//dd($data);
-
 		if ($data != null) {
 			$this->profileRepo->CreateProfile($data);
 		}
-
 	}
 
 

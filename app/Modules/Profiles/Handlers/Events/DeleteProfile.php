@@ -33,13 +33,9 @@ class DeleteProfile {
 	 */
 	public function handle(ProfileWasDeleted $data)
 	{
-dd($data);
-
 		if ($data != null) {
 			$this->profileRepo->DeleteProfile($data);
 		}
-dd('ProfileWasDeleted NOPpers');
-
 	}
 
 
