@@ -41,10 +41,12 @@ oTable =
 <div class="row">
 <h1>
 	<p class="pull-right">
+{{--
 	<a href="/profiles/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
 		<i class="fa fa-plus fa-fw"></i>
 		{{ trans('kotoba::button.new') }}
 	</a>
+--}}
 	</p>
 	<i class="fa fa-users fa-lg"></i>
 		{{ Lang::choice('kotoba::account.profile', 2) }}

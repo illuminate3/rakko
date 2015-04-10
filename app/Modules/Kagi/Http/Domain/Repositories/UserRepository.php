@@ -58,8 +58,10 @@ class UserRepository extends BaseRepository {
 //dd($user);
 		$roles = $this->getRoles();
 //dd($roles);
+		$allRoles =  $this->role->all()->lists('name', 'id');
+//dd($allRoles);
 
-		return compact('user', 'roles');
+		return compact('user', 'roles', 'allRoles');
 	}
 
 	/**
@@ -151,6 +153,8 @@ class UserRepository extends BaseRepository {
 	{
 //		$roles = $this->role->all();
 		if (! is_null($this->shinobiRole)) {
+//dd($this->shinobiRole->lists('name'));
+
 			return $this->shinobiRole->lists('name');
 		}
 

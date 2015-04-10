@@ -109,6 +109,24 @@
 				<div class="table-responsive">
 				<table class="table table-striped table-hover">
 					<tbody>
+					@if ($allRoles != null)
+						@foreach ($allRoles as $key => $value)
+							@if (isset($roles[$key]) )
+							<tr>
+								</td>
+								{{ $value }} ---- selected
+								</td>
+							</tr>
+							@else
+							<tr>
+								</td>
+								{{ $value }}
+								</td>
+							</tr>
+							@endif
+						@endforeach
+					@endif
+{{--
 						@foreach ($roles as $key => $value)
 							<tr>
 								</td>
@@ -116,6 +134,7 @@
 								</td>
 							</tr>
 						@endforeach
+--}}
 					</tbody>
 				</table>
 				</div><!-- ./responsive -->
