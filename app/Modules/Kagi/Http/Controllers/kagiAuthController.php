@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class kagiAuthController extends Controller {
+class KagiAuthController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
