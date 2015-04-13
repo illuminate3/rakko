@@ -237,6 +237,8 @@ return [
 'Throttle'		=> 'GrahamCampbell\Throttle\Facades\Throttle',
 'Datatables'	=> 'yajra\Datatables\Datatables',
 'Image'			=> 'Intervention\Image\Facades\Image',
+'NestedSet'		=> 'Kalnoy\Nestedset\NestedSet',
+'Node'			=> 'Kalnoy\Nestedset\Node',
 
 /*
  * DEV Package Alias

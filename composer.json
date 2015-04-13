@@ -21,6 +21,7 @@
 		"intervention/image": "~2.1",
 		"intervention/imagecache": "~2.1",
 		"wikimedia/composer-merge-plugin": "~1.0",
+		"kalnoy/nestedset": "dev-master",
 		"arrilot/laravel-widgets": "~2.2"
 	},
 	"require-dev": {
