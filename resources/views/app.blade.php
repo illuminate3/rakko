@@ -126,7 +126,7 @@
 					classie.toggle( showLeft, 'disabled' );
 				}
 				if( button !== 'showRight' ) {
-					classie.toggle( showRight, 'disabled' );
+//					classie.toggle( showRight, 'disabled' );
 				}
 			}
 
