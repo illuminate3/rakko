@@ -54,7 +54,7 @@ return [
 	*/
 
 	'locale' => 'en',
-	'locales' => ['en' => 'English', 'es' => 'Spanish', 'sv' => 'Swedish'],
+//	'locales' => ['en' => 'English', 'es' => 'Spanish', 'sv' => 'Swedish'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -174,6 +174,7 @@ return [
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 'Intervention\Image\ImageServiceProvider',
+'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
 
 	],
 
@@ -226,25 +227,26 @@ return [
 /*
  * Package Alias
  */
-'Carbon'		=> 'Carbon\Carbon',
-'Module'		=> 'Caffeinated\Modules\Facades\Module',
-'Theme'			=> 'Caffeinated\Themes\Facades\Theme',
-'Component'		=> 'Caffeinated\Themes\Facades\Component',
-'Flash'			=> 'Caffeinated\Flash\Facades\Flash',
-'Menu'			=> 'Caffeinated\Menus\Facades\Menu',
-'Socialize'		=> 'Laravel\Socialite\Facades\Socialite',
-'Form'			=> 'Collective\Html\FormFacade',
-'Html'			=> 'Collective\Html\HtmlFacade',
-'Throttle'		=> 'GrahamCampbell\Throttle\Facades\Throttle',
-'Datatables'	=> 'yajra\Datatables\Datatables',
-'Image'			=> 'Intervention\Image\Facades\Image',
-'NestedSet'		=> 'Kalnoy\Nestedset\NestedSet',
-'Node'			=> 'Kalnoy\Nestedset\Node',
+'Carbon'				=> 'Carbon\Carbon',
+'Module'				=> 'Caffeinated\Modules\Facades\Module',
+'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
+'Component'				=> 'Caffeinated\Themes\Facades\Component',
+'Flash'					=> 'Caffeinated\Flash\Facades\Flash',
+'Menu'					=> 'Caffeinated\Menus\Facades\Menu',
+'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
+'Form'					=> 'Collective\Html\FormFacade',
+'Html'					=> 'Collective\Html\HtmlFacade',
+'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
+'Datatables'			=> 'yajra\Datatables\Datatables',
+'Image'					=> 'Intervention\Image\Facades\Image',
+'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
+'Node'					=> 'Kalnoy\Nestedset\Node',
 
 /*
  * DEV Package Alias
  */
-'Debugbar'		=> 'Barryvdh\Debugbar\Facade',
+'Debugbar'				=> 'Barryvdh\Debugbar\Facade',
 
 	],
 

@@ -32,6 +32,10 @@ class Kernel extends HttpKernel {
 // module middleware
 		'admin'						=> 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
 		'throttle'					=> 'App\Modules\Kagi\Http\Middleware\Throttle',
+// REDIRECTION MIDDLEWARE
+		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
+		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect'
 	];
 
 }

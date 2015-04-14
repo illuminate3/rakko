@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f4597a450cb6dff670e61d1496b7390e",
+    "hash": "0eee1b80089eef6b6af4c5ca977925cb",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
-            "version": "2.2.3",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Arrilot/laravel-widgets.git",
-                "reference": "7939e579b49e0feefe35916ee8a15f5c4bc00b1a"
+                "reference": "fc526dbf57f4895e9a045c0df8258bfb649ac5ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/7939e579b49e0feefe35916ee8a15f5c4bc00b1a",
-                "reference": "7939e579b49e0feefe35916ee8a15f5c4bc00b1a",
+                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/fc526dbf57f4895e9a045c0df8258bfb649ac5ae",
+                "reference": "fc526dbf57f4895e9a045c0df8258bfb649ac5ae",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "laravel",
                 "widgets"
             ],
-            "time": "2015-03-30 19:10:53"
+            "time": "2015-04-11 22:46:50"
         },
         {
             "name": "caffeinated/flash",
@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/menus.git",
-                "reference": "3687b1c83468c33ebfadb2d26b51fac10f7877aa"
+                "reference": "6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/menus/zipball/3687b1c83468c33ebfadb2d26b51fac10f7877aa",
-                "reference": "3687b1c83468c33ebfadb2d26b51fac10f7877aa",
+                "url": "https://api.github.com/repos/caffeinated/menus/zipball/6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d",
+                "reference": "6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d",
                 "shasum": ""
             },
             "require": {
@@ -151,7 +151,7 @@
                 "menu",
                 "navigation"
             ],
-            "time": "2015-04-02 16:37:41"
+            "time": "2015-04-09 22:50:49"
         },
         {
             "name": "caffeinated/modules",
@@ -899,12 +899,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "d6b72e03dc53a31b07f653485f42ae500a715a72"
+                "reference": "bda15fdfcd22ba8b80ec404450e78b53248a275c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/d6b72e03dc53a31b07f653485f42ae500a715a72",
-                "reference": "d6b72e03dc53a31b07f653485f42ae500a715a72",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/bda15fdfcd22ba8b80ec404450e78b53248a275c",
+                "reference": "bda15fdfcd22ba8b80ec404450e78b53248a275c",
                 "shasum": ""
             },
             "require": {
@@ -935,7 +935,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-04-03 20:18:15"
+            "time": "2015-04-13 21:04:34"
         },
         {
             "name": "intervention/image",
@@ -1639,16 +1639,16 @@
         },
         {
             "name": "league/oauth1-client",
-            "version": "1.2.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "2bcdde3df4e59ebefd2be902102ac185ade844b7"
+                "reference": "b378b2ba54f0de789628c9b5784bcf01c8303adf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/2bcdde3df4e59ebefd2be902102ac185ade844b7",
-                "reference": "2bcdde3df4e59ebefd2be902102ac185ade844b7",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/b378b2ba54f0de789628c9b5784bcf01c8303adf",
+                "reference": "b378b2ba54f0de789628c9b5784bcf01c8303adf",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1698,55 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2015-02-01 23:22:54"
+            "time": "2015-04-07 00:07:18"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "952d26841ab9f4bc76460514609d38b98311c898"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/952d26841ab9f4bc76460514609d38b98311c898",
+                "reference": "952d26841ab9f4bc76460514609d38b98311c898",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.0.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "time": "2015-03-11 16:51:00"
         },
         {
             "name": "monolog/monolog",
@@ -2920,16 +2968,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v4.0.11",
+            "version": "v4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-oracle.git",
-                "reference": "98ce85ffd32a65cecaccd23d2565229e99d9f79a"
+                "reference": "0db4d809d68b7e94a3fc1483e2d525c860b3d634"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/98ce85ffd32a65cecaccd23d2565229e99d9f79a",
-                "reference": "98ce85ffd32a65cecaccd23d2565229e99d9f79a",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/0db4d809d68b7e94a3fc1483e2d525c860b3d634",
+                "reference": "0db4d809d68b7e94a3fc1483e2d525c860b3d634",
                 "shasum": ""
             },
             "require": {
@@ -2969,7 +3017,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2015-03-28 15:05:00"
+            "time": "2015-04-08 07:33:40"
         }
     ],
     "packages-dev": [
@@ -3083,16 +3131,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "dcce91553e2e056857f1ea844949e9a8a71b613d"
+                "reference": "c982fe62c44798c433229cb0425c61b487cc1883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/dcce91553e2e056857f1ea844949e9a8a71b613d",
-                "reference": "dcce91553e2e056857f1ea844949e9a8a71b613d",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/c982fe62c44798c433229cb0425c61b487cc1883",
+                "reference": "c982fe62c44798c433229cb0425c61b487cc1883",
                 "shasum": ""
             },
             "require": {
@@ -3137,7 +3185,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-02-17 15:50:31"
+            "time": "2015-03-30 15:26:59"
         },
         {
             "name": "laracasts/generators",
@@ -3460,16 +3508,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67"
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/34cc484af1ca149188d0d9e91412191e398e0b67",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/934fd03eb6840508231a7f73eb8940cf32c3b66c",
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
                 "shasum": ""
             },
             "require": {
@@ -3518,7 +3566,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-24 10:06:35"
+            "time": "2015-04-11 04:35:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3657,16 +3705,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
+                "reference": "eab81d02569310739373308137284e0158424330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db32c18eba00b121c145575fcbcd4d4d24e6db74",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+                "reference": "eab81d02569310739373308137284e0158424330",
                 "shasum": ""
             },
             "require": {
@@ -3702,20 +3750,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-01-17 09:51:32"
+            "time": "2015-04-08 04:46:07"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.1",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "08b2aacdd8433abbba468f995d6d64b76a7a62ec"
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/08b2aacdd8433abbba468f995d6d64b76a7a62ec",
-                "reference": "08b2aacdd8433abbba468f995d6d64b76a7a62ec",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
                 "shasum": ""
             },
             "require": {
@@ -3754,9 +3802,6 @@
             "autoload": {
                 "classmap": [
                     "src/"
-                ],
-                "files": [
-                    "src/Framework/Assert/Functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3777,7 +3822,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-03 13:46:59"
+            "time": "2015-04-11 05:23:21"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4266,8 +4311,8 @@
         "caffeinated/menus": 20,
         "caffeinated/plugins": 20,
         "laracasts/presenter": 20,
-        "laracasts/generators": 20,
-        "kalnoy/nestedset": 20
+        "kalnoy/nestedset": 20,
+        "laracasts/generators": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
