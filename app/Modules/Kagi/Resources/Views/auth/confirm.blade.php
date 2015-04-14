@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
 <div class="row">
 
 	<div class="col-md-8 col-md-offset-2">
@@ -12,11 +11,11 @@
 			</div>
 			<div class="panel-body">
 
-{!! Form::open([
-	'url' => ['auth/confirm', $code],
-	'method' => 'POST',
-	'class' => 'form'
-]) !!}
+				{!! Form::open([
+					'url' => ['auth/confirm', $code],
+					'method' => 'POST',
+					'class' => 'form'
+				]) !!}
 
 					<div class="form-group">
 						<label class="col-md-4 control-label">{{ trans('kotoba::account.email') }}</label>
@@ -37,7 +36,7 @@
 						</div>
 					</div>
 
-{!! Form::close() !!}
+				{!! Form::close() !!}
 
 			</div><!-- ./panel-body -->
 		</div><!-- ./panel -->
@@ -45,5 +44,4 @@
 	</div><!-- ./col -->
 
 </div><!-- ./row -->
-</div><!-- ./container-fluid -->
 @endsection
