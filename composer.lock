@@ -2968,16 +2968,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v4.1.4",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-oracle.git",
-                "reference": "0db4d809d68b7e94a3fc1483e2d525c860b3d634"
+                "reference": "350396f33862fd62653131e9e09194f25e3f6363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/0db4d809d68b7e94a3fc1483e2d525c860b3d634",
-                "reference": "0db4d809d68b7e94a3fc1483e2d525c860b3d634",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-oracle/zipball/350396f33862fd62653131e9e09194f25e3f6363",
+                "reference": "350396f33862fd62653131e9e09194f25e3f6363",
                 "shasum": ""
             },
             "require": {
@@ -3017,7 +3017,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2015-04-08 07:33:40"
+            "time": "2015-04-14 07:56:59"
         }
     ],
     "packages-dev": [
