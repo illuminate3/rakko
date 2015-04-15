@@ -22,17 +22,46 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('api/profiles') }}",
 		"columns": [
-			{data: 'id', name: 'id'},
-			{data: 'first_name', name: 'first_name'},
-			{data: 'last_name', name: 'last_name'},
-			{data: 'email_1', name: 'email_1'},
-			{data: 'email_2', name: 'email_2'},
-			{data: 'actions', name: 'actions'}
+			{
+				data: 'id',
+				name: 'id',
+				searchable: false,
+				visible: false
+			},
+			{
+				data: 'first_name',
+				name: 'first_name',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'last_name',
+				name: 'last_name',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'email_1',
+				name: 'email_1',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'email_2',
+				name: 'email_2',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'actions',
+				name: 'actions',
+				orderable: false,
+				searchable: false
+			}
 		]
 	});
 });
 @stop
-
 
 
 {{-- Content --}}
@@ -59,7 +88,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.id') }}</th>
+			<th></th>
 			<th>{{ trans('kotoba::account.first_name') }}</th>
 			<th>{{ trans('kotoba::account.last_name') }}</th>
 			<th>{{ trans('kotoba::account.primary_email') }}</th>

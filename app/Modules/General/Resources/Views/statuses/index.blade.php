@@ -22,11 +22,36 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('admin/api/statuses') }}",
 		"columns": [
-			{data: 'id', name: 'id'},
-			{data: 'name', name: 'name'},
-			{data: 'description', name: 'description'},
-			{data: 'updated_at', name: 'updated_at'},
-			{data: 'actions', name: 'actions'}
+			{
+				data: 'id',
+				name: 'id',
+				searchable: false,
+				visible: false
+			},
+			{
+				data: 'name',
+				name: 'name',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'description',
+				name: 'description',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'updated_at',
+				name: 'updated_at',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'actions',
+				name: 'actions',
+				orderable: false,
+				searchable: false
+			}
 		]
 	});
 });
@@ -56,7 +81,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.id') }}</th>
+			<th></th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.description') }}</th>
 			<th>{{ trans('kotoba::table.updated_at') }}</th>

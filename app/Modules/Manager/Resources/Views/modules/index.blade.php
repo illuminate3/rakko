@@ -22,13 +22,54 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('admin/api/manager') }}",
 		"columns": [
-			{data: 'name', name: 'name'},
-			{data: 'slug', name: 'slug'},
-			{data: 'version', name: 'version'},
-			{data: 'description', name: 'description'},
-			{data: 'enabled', name: 'enabled'},
-			{data: 'order', name: 'order'},
-			{data: 'actions', name: 'actions'}
+			{
+				data: 'id',
+				name: 'id',
+				searchable: false,
+				visible: false
+			},
+			{
+				data: 'name',
+				name: 'name',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'slug',
+				name: 'slug',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'version',
+				name: 'version',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'description',
+				name: 'description',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'enabled',
+				name: 'enabled',
+				orderable: true,
+				searchable: false
+			},
+			{
+				data: 'order',
+				name: 'order',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'actions',
+				name: 'actions',
+				orderable: false,
+				searchable: false
+			}
 		]
 	});
 });
@@ -53,6 +94,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th></th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.slug') }}</th>
 			<th>{{ trans('kotoba::table.version') }}</th>
