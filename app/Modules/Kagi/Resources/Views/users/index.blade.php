@@ -22,15 +22,60 @@ oTable =
 		"serverSide": true,
 		"ajax": "{{ URL::to('admin/api/users') }}",
 		"columns": [
-			{data: 'id', name: 'id'},
-			{data: 'name', name: 'name'},
-			{data: 'email', name: 'email'},
-			{data: 'blocked', name: 'blocked'},
-			{data: 'banned', name: 'banned'},
-			{data: 'confirmed', name: 'confirmed'},
-			{data: 'activated', name: 'activated'},
-			{data: 'created_at', name: 'created_at'},
-			{data: 'actions', name: 'actions'}
+			{
+				data: 'id',
+				name: 'id',
+				searchable: false,
+				visible: false
+			},
+			{
+				data: 'name',
+				name: 'name',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'email',
+				name: 'email',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'blocked',
+				name: 'blocked',
+				orderable: true,
+				searchable: false
+			},
+			{
+				data: 'banned',
+				name: 'banned',
+				orderable: true,
+				searchable: false
+			},
+			{
+				data: 'confirmed',
+				name: 'confirmed',
+				orderable: true,
+				searchable: false
+			},
+			{
+				data: 'activated',
+				name: 'activated',
+				orderable: true,
+				searchable: false
+			},
+			{
+				data: 'created_at',
+				name: 'created_at',
+				orderable: true,
+				searchable: true
+			},
+			{
+				data: 'actions',
+				name: 'actions',
+				orderable: false,
+				searchable: false
+			}
 		]
 	});
 });
@@ -59,7 +104,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.id') }}</th>
+			<th></th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.email') }}</th>
 			<th>{{ trans('kotoba::table.blocked') }}</th>
