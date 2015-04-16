@@ -9,15 +9,20 @@
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation"><a href="/auth/login" aria-controls="login">{{ trans('kotoba::auth.log_in') }}</a></li>
-		<li role="presentation" class="active"><a href="#forgot_password" aria-controls="forgot_password" role="forgot_password" data-toggle="forgot_password">{{ trans('kotoba::auth.forgot_password') }}</a></li>
+		<li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">{{ trans('kotoba::button.log_in') }}</a></li>
+		<li role="presentation" class="active"><a href="#forgot_password" aria-controls="forgot_password" role="forgot_password" data-toggle="tab">{{ trans('kotoba::button.forgot_password') }}</a></li>
 		<li role="presentation"><a href="/auth/register" aria-controls="register" role="tab">{{ trans('kotoba::button.register') }}</a></li>
-		<li role="presentation"><a href="/social/login" aria-controls="social" role="tab">{{ trans('kotoba::button.social_log_in') }}</a></li>
+		<li role="presentation"><a href="/auth/login" aria-controls="login">{{ trans('kotoba::button.admin') }}</a></li>
 	</ul>
 
 	<!-- Tab panes -->
 	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane" id="login">
+		<div role="tabpanel" class="tab-pane" id="social">
+
+			<div class="form-group margin-top-xl">
+				<a href="/social/login" class="btn btn-success btn-block">{{ trans('kotoba::button.log_in') }}</a>
+			</div>
+
 		</div>
 		<div role="tabpanel" class="tab-pane active" id="forgot_password">
 
@@ -42,10 +47,6 @@
 
 				</form>
 
-		</div>
-		<div role="tabpanel" class="tab-pane" id="register">
-		</div>
-		<div role="tabpanel" class="tab-pane" id="social">
 		</div>
 	</div>
 
