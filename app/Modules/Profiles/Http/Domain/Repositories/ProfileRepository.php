@@ -54,7 +54,7 @@ class ProfileRepository extends BaseRepository {
 //		$profile = $this->getProfile($id);
 		$profile = $this->profile->find($id);
 
-dd($id);
+//dd($id);
 		return compact('profile');
 	}
 
