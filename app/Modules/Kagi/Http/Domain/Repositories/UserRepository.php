@@ -272,8 +272,9 @@ class UserRepository extends BaseRepository {
 		$avatar							= $userData->avatar;
 
 		$check = $this->checkUserExists($name, $email);
+//dd($check);
 		if ($check == null) {
-			return User::firstOrCreate([
+			User::firstOrCreate([
 				'name'					=> $name,
 				'email'					=> $email,
 				'avatar'				=> $avatar,
@@ -293,8 +294,8 @@ class UserRepository extends BaseRepository {
 			$user = $this->user->find($check_again->id);
 			$user->syncRoles([Config::get('kagi.default_role')]);
 
-			\Event::fire(new \ProfileWasCreated($check));
-			\Event::fire(new \EmployeeWasCreated($check));
+			\Event::fire(new \ProfileWasCreated($check_again));
+			\Event::fire(new \EmployeeWasCreated($check_again));
 
 		} else {
 //dd($check);

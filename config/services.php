@@ -37,13 +37,13 @@ return [
 	'github' => [
 		'client_id' => getenv('GITHUB_CLIENT_ID'),
 		'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
-		'redirect' => 'http://l5.local/social/login'
+		'redirect' => getenv('GITHUB_REDIRECT'),
 	],
 
 	'google' => [
 		'client_id' => getenv('GOOGLE_CLIENT_ID'),
 		'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
-		'redirect' => 'http://localhost/social/login'
+		'redirect' => getenv('GOOGLE_REDIRECT'),
 	]
 
 ];

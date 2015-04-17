@@ -66,6 +66,7 @@ class SocialAuthenticateUser {
 		if ( Config::get('kagi.kagi_social') == 'google' ) {
 			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
 		}
+//dd($user);
 
 		$this->auth->login($user, true);
 
