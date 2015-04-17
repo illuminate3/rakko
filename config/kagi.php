@@ -39,7 +39,7 @@ return [
 | facebook, twitter, google, and github
 |
 */
-'kagi_social'					=> 'github',
+'kagi_social'					=> 'google',
 'kagi_avatar'					=> 'assets/images/usr.png',
 
 ];

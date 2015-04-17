@@ -62,16 +62,12 @@ class SocialAuthenticateUser {
 
 		if ( Config::get('kagi.kagi_social') == 'github' ) {
 			$user = $this->users->findByUsernameOrCreateGithub($this->getGithubUser());
-//			$user = $loginRegistrar->findByUsernameOrCreateGithub($this->getGithubUser());
 		}
 		if ( Config::get('kagi.kagi_social') == 'google' ) {
 			$user = $this->users->findByUsernameOrCreateGoogle($this->getGoogleUser());
-//			$user = $loginRegistrar->findByUsernameOrCreateGoogle($this->getGoogleUser());
 		}
-//dd($user);
+
 		$this->auth->login($user, true);
-
-
 
 		return $listener->userHasLoggedIn($user);
 	}

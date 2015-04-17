@@ -23,7 +23,7 @@ class SocialAuthController extends Controller implements AuthenticateUserListene
 		)
 	{
 		$hasCode = $request->has('code');
-//dd($this);
+//dd($hasCode);
 
 		return $authenticateUser->execute($hasCode, $this);
 	}

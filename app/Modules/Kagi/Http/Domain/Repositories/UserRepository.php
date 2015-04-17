@@ -288,6 +288,11 @@ class UserRepository extends BaseRepository {
 				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
 			]);
 
+			$check_again = $this->checkUserExists($name, $email);
+//dd($check_again->id);
+			$user = $this->user->find($check_again->id);
+			$user->syncRoles([Config::get('kagi.default_role')]);
+
 			\Event::fire(new \ProfileWasCreated($check));
 			\Event::fire(new \EmployeeWasCreated($check));
 

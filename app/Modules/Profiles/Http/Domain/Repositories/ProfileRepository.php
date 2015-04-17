@@ -48,12 +48,13 @@ class ProfileRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-		$profile = $this->profile->with('user')->find($id);
-/*
-		$profile = $this->getProfile($id)->with('user');
-		$profile = $this->getProfile($id);
-*/
-//dd($profile);
+//		$profile = $this->profile->find($id);
+//		$profile = $this->profile->with('user')->find($id);
+//		$profile = $this->getProfile($id)->with('user');
+//		$profile = $this->getProfile($id);
+		$profile = $this->profile->find($id);
+
+dd($id);
 		return compact('profile');
 	}
 
