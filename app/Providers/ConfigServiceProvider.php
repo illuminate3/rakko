@@ -16,10 +16,9 @@ class ConfigServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		config([
-			//
-		]);
-
+// 		config([
+// 			//
+// 		]);
 
 // 		config([
 // 			'laravellocalization.supportedLocales' => [
@@ -29,7 +28,6 @@ class ConfigServiceProvider extends ServiceProvider {
 // 			'laravellocalization.useAcceptLanguageHeader' => true,
 // 			'laravellocalization.hideDefaultLocaleInURL' => true
 // 		]);
-
 
 	}
 
