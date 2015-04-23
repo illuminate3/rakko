@@ -34,6 +34,7 @@ Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 */
 
+
 Route::get('welcome/kagi', array(
 	'uses'=>'KagiController@welcome'
 	));

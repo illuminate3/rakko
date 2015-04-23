@@ -297,6 +297,11 @@ class UserRepository extends BaseRepository {
 			\Event::fire(new \ProfileWasCreated($check_again));
 			\Event::fire(new \EmployeeWasCreated($check_again));
 
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+
 		} else {
 //dd($check);
 			$this->touchLastLogin($check->id);

@@ -42,18 +42,23 @@ class Language implements Middleware {
 	public function handle($request, Closure $next)
 	{
 		// Make sure current locale exists.
-		$locale = $request->segment(1);
+// 		$locale = $request->segment(1);
+//
+// 		if ( ! array_key_exists($locale, Config::get('app.locales'))) {
+// 			$segments = $request->segments();
+// 			$segments[0] = Config::get('app.fallback_locale');
+//
+// 			return Redirect::to(implode('/', $segments));
+// 		}
+//
+// 		App::setLocale($locale);
+//
+// 		return $next($request);
 
-		if ( ! array_key_exists($locale, Config::get('app.locales'))) {
-			$segments = $request->segments();
-			$segments[0] = Config::get('app.fallback_locale');
 
-			return Redirect::to(implode('/', $segments));
-		}
-
-		App::setLocale($locale);
-
-		return $next($request);
+// 	$locale = $request->route('locale');
+// 	Localization::setLocale($locale);
+// 	return $next($request);
 
 	}
 
