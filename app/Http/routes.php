@@ -11,21 +11,21 @@
 |
 */
 
-// Route::group(
-// [
-// 	'prefix' => LaravelLocalization::setLocale(),
-// 	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
-// ],
-// function()
-// {
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+],
+function()
+{
 
 // Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 // {
 //------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
 
-//Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('welcome', 'WelcomeController@index');
 
-// });
+});
