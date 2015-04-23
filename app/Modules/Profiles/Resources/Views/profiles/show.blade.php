@@ -27,7 +27,24 @@
 	</a>
 	</p>
 	<i class="fa fa-user fa-lg"></i>
-	{{{ $profile->prefix }}}&nbsp;{{{ $profile->first_name }}}&nbsp;{{{ $profile->middle_initial }}}&nbsp;{{{ $profile->last_name }}}&nbsp;{{{ $profile->suffix }}}
+	@if ( !empty($profile->prefix ) )
+		{{{ $profile->prefix }}}&nbsp;
+	@endif
+	@if ( !empty($profile->first_name ) )
+		{{{ $profile->first_name }}}
+	@endif
+	@if ( !empty($profile->middle_initial ) )
+		&nbsp;{{{ $profile->middle_initial }}}
+	@endif
+	@if ( !empty($profile->last_name ) )
+		&nbsp;{{{ $profile->last_name }}}
+	@endif
+	@if ( !empty($profile->prefix ) )
+		&nbsp;{{{ $profile->prefix }}}
+	@endif
+	@if ( !empty($profile->suffix ) )
+		&nbsp;{{{ $profile->suffix }}}
+	@endif
 	<hr>
 </h1>
 </div>
@@ -50,45 +67,62 @@
 					{{ trans('kotoba::account.primary_phone') }}:
 				</strong>
 				<br>
-				{{{ $profile->primary_phone }}}
+				@if ( !empty($profile->primary_phone ) )
+					{{{ $profile->primary_phone }}}
+				@endif
 				<br>
 				<br>
 				<strong>
 					{{ trans('kotoba::account.secondary_phone') }}:
 				</strong>
 				<br>
-				{{{ $profile->secondary_phone }}}
+				@if ( !empty($profile->secondary_phone ) )
+					{{{ $profile->secondary_phone }}}
+				@endif
 				<br>
 				<br>
 				<strong>
 					{{ trans('kotoba::account.address') }}:
 				</strong>
 				<br>
-				{{{ $profile->address }}}
+				@if ( !empty($profile->address ) )
+					{{{ $profile->address }}}
+				@endif
 				<br>
-@if ( !empty($profile->city ) )
-				{{{ $profile->city }}},&nbsp;
-@endif
-				{{{ $profile->state }}}&nbsp;&nbsp;&nbsp;{{{ $profile->zipcode }}}
+				@if ( !empty($profile->city ) )
+					{{{ $profile->city }}}
+				@endif
+				@if ( !empty($profile->state ) )
+					,&nbsp;{{{ $profile->state }}}
+				@endif
+				@if ( !empty($profile->zipcode ) )
+					&nbsp;&nbsp;&nbsp;{{{ $profile->zipcode }}}
+				@endif
 			</div>
 			<div class="col-md-4">
 				<strong>
 					{{ trans('kotoba::account.primary_email') }}:
 				</strong>
 				<br>
-				{{{ $profile->email }}}
-				{{{ $profile->user->email }}}
+				@if ( !empty($profile->email ) )
+					{{{ $profile->email }}}
+				@endif
+				@if ( !empty($profile->email ) )
+					{{{ $profile->user->email }}}
+				@endif
 				<br>
 				<br>
 				<strong>
 					{{ trans('kotoba::account.secondary_email') }}:
 				</strong>
 				<br>
-				{{{ $profile->secondary_email }}}
+				@if ( !empty($profile->secondary_email ) )
+					{{{ $profile->secondary_email }}}
+				@endif
 			</div>
 		</div>
 		<div class="col-md-4">
-				@if($profile->user->avatar)
+				@if ( !empty($profile->user->avatar ) )
 					<img
 						src="{{ asset($profile->user->avatar) }}"
 						alt="{{ $profile->email_1 }}"
@@ -109,7 +143,9 @@
 			{{ trans('kotoba::general.introduction') }}:
 		</strong>
 		<br>
-		{{{ $profile->notes }}}
+		@if ( !empty($profile->notes ) )
+			{{{ $profile->user->notes }}}
+		@endif
 		<br>
 	</div><!-- ./panel-body -->
 </div><!-- ./panel -->

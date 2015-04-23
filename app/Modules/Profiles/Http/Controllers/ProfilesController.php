@@ -105,6 +105,7 @@ dd("store");
 		$modal_route = 'profiles.destroy';
 		$modal_id = $id;
 		$model = '$profile';
+//dd($this->profile->show($id));
 
 		return View('profiles::profiles.show',
 			$this->profile->show($id),

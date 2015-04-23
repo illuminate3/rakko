@@ -15,6 +15,17 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		// $this->call('UserTableSeeder');
+
+		$statement = "ALTER TABLE employees AUTO_INCREMENT = 2;";
+		DB::unprepared($statement);
+
+		$statement = "ALTER TABLE profiles AUTO_INCREMENT = 2;";
+		DB::unprepared($statement);
+
+		$statement = "ALTER TABLE users AUTO_INCREMENT = 2;";
+		DB::unprepared($statement);
+
+
 	}
 
 }
