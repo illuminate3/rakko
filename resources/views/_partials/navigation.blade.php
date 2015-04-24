@@ -27,6 +27,26 @@
 @endif
 @endif
 
+
+	<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown messages-menu">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<img alt="" src="{{ asset('assets/images/famfamfam_flag_icons/png/us.png') }}">
+				<span class="username">{{ LaravelLocalization::getCurrentLocaleName() }}</span>
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+					<li>
+						<a href="{{LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}"><img alt="" src="{{ asset('assets/images/famfamfam_flag_icons/png/' . $localeCode . '.png') }}">{{{ $properties['native'] }}}</a>
+
+					</li>
+				@endforeach
+			</ul>
+		</li>
+	</ul>
+
+
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
 			@include('_partials.menu', ['items'=> $menu_navbar->roots()])

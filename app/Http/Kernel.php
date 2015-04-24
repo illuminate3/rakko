@@ -33,9 +33,9 @@ class Kernel extends HttpKernel {
 		'admin'						=> 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
 		'throttle'					=> 'App\Modules\Kagi\Http\Middleware\Throttle',
 // Locale REDIRECTION MIDDLEWARE
-// 		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-// 		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
-// 		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect'
+		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
+		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect'
 	];
 
 }

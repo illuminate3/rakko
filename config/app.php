@@ -54,7 +54,7 @@ return [
 	*/
 
 	'locale' => 'en',
-	'locales' => ['en' => 'English', 'es' => 'Spanish'],
+//	'locales' => ['en' => 'English', 'es' => 'Spanish'],
 
 	/*
 	|--------------------------------------------------------------------------
