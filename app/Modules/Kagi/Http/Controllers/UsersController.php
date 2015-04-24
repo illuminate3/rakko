@@ -79,10 +79,10 @@ class UsersController extends KagiController {
 		UserCreateRequest $request
 		)
 	{
-dd("store");
+//dd($request);
 		$this->user->store($request->all());
-
-		return redirect('user')->with('ok', trans('back/users.created'));
+		Flash::success( trans('kotoba::account.success.create') );
+		return redirect('admin/users');
 	}
 
 	/**
@@ -93,7 +93,7 @@ dd("store");
 	 */
 	public function show($id)
 	{
-//dd("show");
+//dd($this->user->show($id));
 		return View('kagi::users.show',  $this->user->show($id));
 	}
 

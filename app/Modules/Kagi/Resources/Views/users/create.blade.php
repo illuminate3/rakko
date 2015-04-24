@@ -35,7 +35,7 @@
 
 <div class="row">
 {!! Form::open([
-	'url' => 'admin.users.store',
+	'url' => 'admin/users',
 	'method' => 'POST',
 	'class' => 'form'
 ]) !!}

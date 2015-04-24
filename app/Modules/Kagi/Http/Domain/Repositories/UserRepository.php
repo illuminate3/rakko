@@ -46,6 +46,7 @@ class UserRepository extends BaseRepository {
 		$this->user = $user;
 	}
 
+
 	/**
 	 * Get user collection.
 	 *
@@ -56,13 +57,15 @@ class UserRepository extends BaseRepository {
 	{
 		$user = $this->user->findOrFail($id);
 //dd($user);
-		$roles = $this->getRoles();
-//dd($roles);
-		$allRoles =  $this->role->all()->lists('name', 'id');
-//dd($allRoles);
 
-		return compact('user', 'roles', 'allRoles');
+//		$roles = $this->getRoles();
+//		$allRoles =  $this->role->all()->lists('name', 'id');
+		$roles = $this->getUserRoles($user->id);
+//dd($roles);
+
+		return compact('user', 'roles');
 	}
+
 
 	/**
 	 * Get user collection.
@@ -81,17 +84,71 @@ class UserRepository extends BaseRepository {
 		return compact('user', 'roles', 'allRoles');
 	}
 
+
 	/**
 	 * Get all models.
 	 *
 	 * @return Illuminate\Support\Collection
 	 */
-	public function store($input)
+	public function store($userData)
 	{
-//dd($input);
-		$this->user = new User;
-		$this->user->create($input);
+//dd($userData);
+
+		$date = date("Y-m-d H:i:s");
+
+		$name							= $userData['name'];
+		$email							= $userData['email'];
+		$password						= Hash::make($userData['password']);
+
+		if ( isset($userData['blocked']) ) {
+			$blocked = $userData['blocked'];
+		} else {
+			$blocked = 0;
+		}
+
+		if ( isset($userData['banned']) ) {
+			$banned = $userData['banned'];
+		} else {
+			$banned = 0;
+		}
+
+		if ( isset($userData['confirmed']) ) {
+			$confirmed = $userData['confirmed'];
+			$confirmation_code = md5(microtime().Config::get('app.key'));
+		} else {
+			$confirmed = 0;
+			$confirmation_code = '';
+		}
+
+		if ( isset($userData['activated']) ) {
+			$activated = $userData['activated'];
+			$activated_at = $date;
+		} else {
+			$activated = 0;
+			$activated_at = '';
+		}
+
+		User::create([
+			'name'					=> $name,
+			'email'					=> $email,
+			'password'				=> $password,
+			'blocked'				=> $blocked,
+			'banned'				=> $banned,
+			'confirmed'				=> $confirmed,
+			'activated'				=> $activated,
+			'activated_at'			=> $activated_at,
+			'confirmation_code'		=> $confirmation_code
+		]);
+
+		$check_again = $this->checkUserExists($name, $email);
+//dd($check_again->id);
+		$user = $this->user->find($check_again->id);
+		$user->syncRoles([Config::get('kagi.default_role')]);
+
+		\Event::fire(new \ProfileWasCreated($check_again));
+		\Event::fire(new \EmployeeWasCreated($check_again));
 	}
+
 
 	/**
 	 * Update a role.
@@ -154,11 +211,21 @@ class UserRepository extends BaseRepository {
 //		$roles = $this->role->all();
 		if (! is_null($this->shinobiRole)) {
 //dd($this->shinobiRole->lists('name'));
-
 			return $this->shinobiRole->lists('name');
 		}
 
 		return null;
+	}
+
+	public function getUserRoles($user_id)
+	{
+		$user = DB::table('role_user')
+			->leftJoin('roles', 'roles.id', '=', 'role_user.role_id')
+			->where('user_id', '=', $user_id)
+			->get();
+//dd($user);
+
+		return $user;
 	}
 
 

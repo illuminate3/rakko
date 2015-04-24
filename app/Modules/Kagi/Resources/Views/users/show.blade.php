@@ -70,10 +70,9 @@
 
 		<fieldset>
 			<h2>
-				<legend>
-					<i class="fa fa-user fa-fw"></i>
-					{{ trans('kotoba::general.information') }}
-				</legend>
+				<i class="fa fa-user fa-fw"></i>
+				{{ trans('kotoba::general.information') }}
+				<hr>
 			</h2>
 
 			<div class="table-responsive">
@@ -98,43 +97,28 @@
 
 		<fieldset>
 			<h2>
-				<legend>
-					<i class="fa fa-gavel fa-fw"></i>
-					{{ Lang::choice('kotoba::role.role', 2) }}
-				</legend>
+				<i class="fa fa-gavel fa-fw"></i>
+				{{ Lang::choice('kotoba::role.role', 2) }}
+				<hr>
 			</h2>
 
-			{{-- $user->present()->roles() --}}
-			@if (count($roles))
+			{{-- $user->roles --}}
+			@if (count($user->roles))
 				<div class="table-responsive">
 				<table class="table table-striped table-hover">
 					<tbody>
-					@if ($allRoles != null)
-						@foreach ($allRoles as $key => $value)
-							@if (isset($roles[$key]) )
+
+						@foreach ($user->roles as $role)
 							<tr>
+								<td>
+								{{ $role->name }}
 								</td>
-								{{ $value }} ---- selected
-								</td>
-							</tr>
-							@else
-							<tr>
-								</td>
-								{{ $value }}
-								</td>
-							</tr>
-							@endif
-						@endforeach
-					@endif
-{{--
-						@foreach ($roles as $key => $value)
-							<tr>
-								</td>
-								{{ $value }}
+								<td>
+								{{ $role->description }}
 								</td>
 							</tr>
 						@endforeach
---}}
+
 					</tbody>
 				</table>
 				</div><!-- ./responsive -->
@@ -149,10 +133,9 @@
 
 		<fieldset>
 			<h2>
-				<legend>
-					<i class="fa fa-sort-amount-asc fa-fw"></i>
-					{{ trans('kotoba::auth.user_control') }}
-				</legend>
+				<i class="fa fa-sort-amount-asc fa-fw"></i>
+				{{ trans('kotoba::auth.user_control') }}
+				<hr>
 			</h2>
 
 			<div class="table-responsive">
@@ -185,10 +168,9 @@
 
 		<fieldset>
 			<h2>
-				<legend>
-					<i class="fa fa-heart fa-fw"></i>
-					{{ trans('kotoba::general.status') }}
-				</legend>
+				<i class="fa fa-heart fa-fw"></i>
+				{{ trans('kotoba::general.status') }}
+				<hr>
 			</h2>
 
 			<div class="table-responsive">
