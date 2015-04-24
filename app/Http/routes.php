@@ -11,13 +11,13 @@
 |
 */
 
-Route::group(
-[
-	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
-],
-function()
-{
+// Route::group(
+// [
+// 	'prefix' => LaravelLocalization::setLocale(),
+// 	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+// ],
+// function()
+// {
 
 // Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 // {
@@ -28,4 +28,4 @@ Route::get('home', 'HomeController@index');
 
 Route::get('welcome', 'WelcomeController@index');
 
-});
+// });

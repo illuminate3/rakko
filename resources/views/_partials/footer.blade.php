@@ -6,6 +6,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 
+{{--
 <ul class="language_bar_chooser">
 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 	<li>
@@ -16,6 +17,7 @@
 	</li>
 @endforeach
 </ul>
+--}}
 
 			</div>
 			<div class="col-sm-4">

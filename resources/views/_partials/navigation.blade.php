@@ -27,7 +27,7 @@
 @endif
 @endif
 
-
+{{--
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown messages-menu">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -45,7 +45,7 @@
 			</ul>
 		</li>
 	</ul>
-
+--}}
 
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
