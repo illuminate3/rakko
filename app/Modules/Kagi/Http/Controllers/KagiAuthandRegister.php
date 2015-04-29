@@ -9,6 +9,7 @@ use App\Modules\Kagi\Http\Requests\Auth\LoginRequest;
 use GrahamCampbell\Throttle\Facades\Throttle;
 use Illuminate\Support\Facades\Request as FRequest;
 
+
 use Config;
 use Flash;
 
@@ -35,6 +36,14 @@ trait KagiAuthandRegister {
 	 */
 	public function getRegister()
 	{
+		$check = $this->registrar->checkSankaStatus();
+//dd($check);
+		if ( $check != null ) {
+			$payment_settings = \App\Modules\Sanka\Http\Domain\Models\PaymentSetting::first();
+//dd($payment_settings);
+			return View('sanka::subscription.signup', compact('payment_settings'));
+		}
+
 		return View('kagi::auth.register');
 	}
 

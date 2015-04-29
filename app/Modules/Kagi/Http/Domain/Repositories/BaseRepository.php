@@ -43,4 +43,5 @@ abstract class BaseRepository {
 		return $this->model->find($id);
 	}
 
+
 }

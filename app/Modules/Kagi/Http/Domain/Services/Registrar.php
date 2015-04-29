@@ -179,4 +179,24 @@ class Registrar implements RegistrarContract {
 		}
 	}
 
+
+/*
+|--------------------------------------------------------------------------
+| Auth Functions
+|--------------------------------------------------------------------------
+*/
+
+
+	public function checkSankaStatus()
+	{
+//dd('loaded');
+		$sanka = DB::table('modules')
+			->where('slug', '=', 'sanka')
+			->where('enabled', '=', '1', 'AND')
+			->first();
+//dd($sanka);
+
+		return $sanka;
+	}
+
 }
