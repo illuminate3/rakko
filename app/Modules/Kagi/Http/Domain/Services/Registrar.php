@@ -182,10 +182,9 @@ class Registrar implements RegistrarContract {
 
 /*
 |--------------------------------------------------------------------------
-| Auth Functions
+| Module Functions
 |--------------------------------------------------------------------------
 */
-
 
 	public function checkSankaStatus()
 	{
@@ -197,6 +196,18 @@ class Registrar implements RegistrarContract {
 //dd($sanka);
 
 		return $sanka;
+	}
+
+	public function checkJinjiStatus()
+	{
+//dd('loaded');
+		$jinji = DB::table('modules')
+			->where('slug', '=', 'jinji')
+			->where('enabled', '=', '1', 'AND')
+			->first();
+//dd($sanka);
+
+		return $jinji;
 	}
 
 }

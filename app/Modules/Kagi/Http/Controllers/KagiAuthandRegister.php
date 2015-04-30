@@ -1,13 +1,13 @@
 <?php
 namespace App\Modules\Kagi\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
 use App\Modules\Kagi\Http\Requests\Auth\LoginRequest;
 use GrahamCampbell\Throttle\Facades\Throttle;
-use Illuminate\Support\Facades\Request as FRequest;
+use Illuminate\Support\Facades\Request as Request;
 
 
 use Config;
@@ -81,7 +81,7 @@ trait KagiAuthandRegister {
 
 // get the current request object
 //Throttle::clear();
-		$request = FRequest::getFacadeRoot();
+		$request = Request::getFacadeRoot();
 //dd($request);
 // throttler object for that request, X, Y
 // X = tries, Y = minutes

@@ -4,6 +4,7 @@ namespace App\Modules\Kagi\Http\Domain\Repositories;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 use App\Modules\Kagi\Http\Domain\Models\User;
+use App\Modules\Kagi\Http\Domain\Services\Registrar;
 
 use Auth;
 use Config;
@@ -36,11 +37,13 @@ class UserRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
+		Registrar $registrar,
 		Role $role,
 		shinobiRole $shinobiRole,
 		User $user
 		)
 	{
+		$this->registrar = $registrar;
 		$this->role = $role;
 		$this->shinobiRole = $shinobiRole;
 		$this->user = $user;
@@ -146,7 +149,19 @@ class UserRepository extends BaseRepository {
 		$user->syncRoles([Config::get('kagi.default_role')]);
 
 		\Event::fire(new \ProfileWasCreated($check_again));
-		\Event::fire(new \EmployeeWasCreated($check_again));
+
+		$check = $this->registrar->checkJinjiStatus();
+//dd($check);
+		if ( $check != null ) {
+			\Event::fire(new \EmployeeWasCreated($check_again));
+		}
+
+		$check = $this->registrar->checkSankaStatus();
+//dd($check);
+		if ( $check != null ) {
+			\Event::fire(new \MemberWasCreated($check_again));
+		}
+
 	}
 
 
