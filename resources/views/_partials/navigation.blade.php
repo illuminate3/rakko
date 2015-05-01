@@ -16,7 +16,9 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 @if (Auth::user())
-@if (Auth::user()->can('manage_shisan'))
+
+{{-- @if (Auth::user()->can('manage_shisan')) --}}
+@if ( Config::get('shisan.show_category_menu') == true)
 	<ul class="nav navbar-nav">
 		<li>
 		<a href="#" class="sitemap" id="showLeft">
