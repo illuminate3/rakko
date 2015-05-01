@@ -152,6 +152,11 @@ CACHE_DRIVER=file
 SESSION_DRIVER=file
 ```
 
+# module publish command
+```
+vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServiceProvider"
+```
+
 # Coding Standards
 I've been trying my best to confirm ro PSR-0-4 standards.
 

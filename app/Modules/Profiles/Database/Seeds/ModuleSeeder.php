@@ -20,12 +20,12 @@ class ModuleSeeder extends Seeder {
 		);
 
 // Insert Module Information
-		if (Schema::hasTable('modules'))
-		{
+// 		if (Schema::hasTable('modules'))
+// 		{
 
 			DB::table('modules')->insert( $module );
 
-		}
+// 		}
 
 // Permission Information
 		$permissions = array(

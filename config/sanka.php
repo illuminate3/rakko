@@ -9,15 +9,11 @@ return [
 | db settings
 |--------------------------------------------------------------------------
 */
-'shisan_db' => array(
-	'prefix'					=> '',
+'sanka_db' => array(
+	'prefix'						=> '',
 ),
 
-/*
-|--------------------------------------------------------------------------
-| general
-|--------------------------------------------------------------------------
-*/
-'show_category_menu'			=> true,
+	'sales_pitch'					=> 'Signup to Gain access to all content on the site for $7 a month.',
+
 
 ];
