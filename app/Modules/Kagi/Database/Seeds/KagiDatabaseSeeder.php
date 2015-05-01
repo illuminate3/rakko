@@ -17,7 +17,7 @@ class KagiDatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		$this->call('App\Modules\Kagi\Database\Seeds\ModuleSeeder');
-//		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder');
 
 	} // run
 

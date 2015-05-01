@@ -22,6 +22,7 @@ class InstallerController extends Controller
 	public function getIndex()
 	{
 //dd('start');
+
 		if ( Config::get('rakko.installed') === true)
 		{
 			Flash::error(trans('installer::install.error.installed'));
@@ -75,6 +76,18 @@ class InstallerController extends Controller
 			Response::make($e->getMessage(), 500);
 		}
 
+// Migrate: general
+		try {
+			Artisan::call('module:migrate', [
+				'module' => 'general'
+				]);
+			$module_migrate = true;
+		} catch (Exception $e) {
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'general']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
 // Seed: manager
 		try {
 			Artisan::call('module:seed', [
@@ -108,6 +121,18 @@ class InstallerController extends Controller
 		} catch (Exception $e) {
 			$module_seed = false;
 			Log::error( trans('installer::install.error.seed', ['table' => 'profiles']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: profiles
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'general'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'general']) . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
