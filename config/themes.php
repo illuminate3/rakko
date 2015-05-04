@@ -1,7 +1,7 @@
 <?php
 
 return [
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Active Theme
@@ -13,8 +13,9 @@ return [
 	|
 	*/
 
-	'active' => 'bootstrap',
-	
+//	'active' => 'bootstrap',
+	'default_theme' => 'bootstrap',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Templating Engine
