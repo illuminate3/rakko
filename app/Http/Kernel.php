@@ -12,6 +12,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $middleware = [
 		'App\Http\Middleware\SetTheme',
+//		'App\Http\Middleware\Language',
 		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
 		'Illuminate\Cookie\Middleware\EncryptCookies',
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
@@ -26,16 +27,17 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
+// Locale REDIRECTION MIDDLEWARE
+		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
+		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect',
+// auth middleware
 		'auth'						=> 'App\Http\Middleware\Authenticate',
 		'auth.basic'				=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest'						=> 'App\Http\Middleware\RedirectIfAuthenticated',
 // module middleware
 		'admin'						=> 'App\Modules\Kagi\Http\Middleware\AuthenticateAdmin',
-		'throttle'					=> 'App\Modules\Kagi\Http\Middleware\Throttle',
-// Locale REDIRECTION MIDDLEWARE
-// 		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-// 		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
-// 		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect'
+		'throttle'					=> 'App\Modules\Kagi\Http\Middleware\Throttle'
 	];
 
 }

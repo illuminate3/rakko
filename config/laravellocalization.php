@@ -1,5 +1,8 @@
 <?php
 
+// <link rel="alternate' hreflang="en' href="" />
+// <link rel="alternate' hreflang="x-default' href="" />
+
 return [
 
 	// Uncomment the languages that your site supports - or add new ones.
@@ -307,6 +310,6 @@ return [
     // IMPORTANT - When hideDefaultLocaleInURL is set to true, the unlocalized root is treated as the applications default locale "app.locale".
     // Because of this language negotiation using the Accept-Language header will NEVER occur when hideDefaultLocaleInURL is true.
     //
-	'hideDefaultLocaleInURL' => true,
+	'hideDefaultLocaleInURL' => false,
 
 ];

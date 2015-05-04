@@ -41,17 +41,6 @@ class GeneralController extends Controller
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function school()
-	{
-		return View('general::school');
-	}
-
-
-	/**
 	 * Show the application welcome screen to the user.
 	 *
 	 * @return Response

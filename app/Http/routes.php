@@ -11,21 +11,42 @@
 |
 */
 
-// Route::group(
-// [
-// 	'prefix' => LaravelLocalization::setLocale(),
-// 	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
-// ],
-// function()
-// {
+//App::setLocale('en');
+
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+],
+function()
+{
 
 // Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 // {
 //------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
 
-Route::get('/', 'HomeController@index');
+
+	Route::pattern('id', '[0-9]+');
+
+
+
+
+//Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('welcome', 'WelcomeController@index');
 
+
+
+// Route::group(['prefix' => 'admin'], function() {
+//
+// 	Route::pattern('id', '[0-9]+');
+//
 // });
+
+
+
+});
+
+
+// 	Route::pattern('id', '[0-9]+');

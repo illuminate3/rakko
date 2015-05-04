@@ -18,7 +18,7 @@ class GeneralMenuProvider extends MenuServiceProvider {
 
 // navbar menu
 		$menu = Menu::get('navbar');
-		$menu->add('Home', '')->data('order', 1);
+		$menu->add(trans('kotoba::general.home'), '')->data('order', 1);
 // 		$menu->add('School', 'school')->data('order', 2);
 // 		$menu->school->add('Employees', 'employees');
 // 		$menu->school->add('Sites', 'sites');

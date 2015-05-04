@@ -23,12 +23,6 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::pattern('id', '[0-9]+');
 
-// Admin
-// 	Route::get('rooms.destroy', array(
-// 	//	'as'=>'rooms.destroy',
-// 		'uses'=>'RoomsController@destroy'
-// 		));
-
 // Controllers
 	Route::resource('statuses', 'StatusesController');
 

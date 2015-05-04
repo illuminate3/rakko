@@ -65,7 +65,7 @@
 	<div class="container">
 		<div class="content">
 			<a href="/">
-				<img src="assets/images/rakko.jpg">
+				<img src="/assets/images/rakko.jpg">
 			</a>
 			<div class="title">
 				<a href="/">

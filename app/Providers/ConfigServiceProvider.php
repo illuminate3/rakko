@@ -20,14 +20,19 @@ class ConfigServiceProvider extends ServiceProvider {
 // 			//
 // 		]);
 
-// 		config([
-// 			'laravellocalization.supportedLocales' => [
+		config([
+			'laravellocalization.supportedLocales' => [
 // 				'en' => [ 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ],
 // 				'es' => [ 'name' => 'Spanish', 'script' => 'Latn', 'native' => 'español'],
-// 			],
-// 			'laravellocalization.useAcceptLanguageHeader' => true,
-// 			'laravellocalization.hideDefaultLocaleInURL' => true
-// 		]);
+
+'ace' => array( 'name' => 'Achinese', 'script' => 'Latn', 'native' => 'Aceh' ),
+'ca'  => array( 'name' => 'Catalan', 'script' => 'Latn', 'native' => 'català' ),
+'en'  => array( 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ),
+
+			],
+			'laravellocalization.useAcceptLanguageHeader' => true,
+			'laravellocalization.hideDefaultLocaleInURL' => true
+		]);
 
 	}
 
