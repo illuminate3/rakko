@@ -26,7 +26,7 @@ class ConfigServiceProvider extends ServiceProvider {
 // 				'es' => [ 'name' => 'Spanish', 'script' => 'Latn', 'native' => 'español'],
 
 'ace' => array( 'name' => 'Achinese', 'script' => 'Latn', 'native' => 'Aceh' ),
-'ca'  => array( 'name' => 'Catalan', 'script' => 'Latn', 'native' => 'català' ),
+'es'  => array( 'name' => 'Catalan', 'script' => 'Latn', 'native' => 'català' ),
 'en'  => array( 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ),
 
 			],

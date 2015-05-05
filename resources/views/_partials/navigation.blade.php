@@ -29,7 +29,7 @@
 @endif
 @endif
 
-{{--
+
 	<ul class="nav navbar-nav navbar-right">
 
 			<li><a href="/{{ LaravelLocalization::getCurrentLocale() }}/">{{ trans('kotoba::general.home') }}</a></li>
@@ -46,6 +46,7 @@
 						<a rel="alternate" hreflang="{{$localeCode}}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"">
 							<img alt="{{ $localeCode }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $localeCode . '.png') }}">
 							&nbsp;
+{{LaravelLocalization::getLocalizedURL($localeCode) }} ::
 							{{{ $properties['native'] }}}
 						</a>
 					</li>
@@ -53,7 +54,7 @@
 			</ul>
 		</li>
 	</ul>
---}}
+
 
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
