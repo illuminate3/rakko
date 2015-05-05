@@ -1,8 +1,8 @@
 {
-	"name": "Installer",
-	"slug": "installer",
-	"version": "1.0",
-	"description": "Installer module for Rakko",
-	"enabled": true,
-	"order": 0
+    "name": "Installer",
+    "slug": "installer",
+    "description": "Installer for Rakko",
+    "version": "1.0",
+    "order": "0",
+    "enabled": "1"
 }
