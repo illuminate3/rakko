@@ -11,7 +11,8 @@
 |
 */
 
-//App::setLocale('en');
+// App::setLocale('en');
+// Session::put('locale', 'en');
 
 Route::group(
 [

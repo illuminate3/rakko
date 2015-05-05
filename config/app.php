@@ -161,7 +161,6 @@ return [
  * Package Service Providers
  */
 'Illuminate3\Kotoba\KotobaServiceProvider',
-//'Illuminate3\BootAwesome\BootstrapServiceProvider',
 'Caffeinated\Modules\ModulesServiceProvider',
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',
