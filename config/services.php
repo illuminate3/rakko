@@ -30,8 +30,8 @@ return [
 	],
 
 	'stripe' => [
-		'model'  => 'User',
-		'secret' => '',
+		'model'  => getenv('STRIPE_MODEL'),
+		'secret' => getenv('STRIPE_SECRET'),
 	],
 
 	'github' => [
