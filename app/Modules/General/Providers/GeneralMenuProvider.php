@@ -4,6 +4,7 @@ namespace App\Modules\General\Providers;
 use App\Providers\MenuServiceProvider;
 
 use Auth;
+use LaravelLocalization;
 use Menu;
 
 class GeneralMenuProvider extends MenuServiceProvider {
@@ -18,23 +19,15 @@ class GeneralMenuProvider extends MenuServiceProvider {
 
 // navbar menu
 		$menu = Menu::get('navbar');
-		$menu->add(trans('kotoba::general.home'), '')->data('order', 1);
+		$menu->add(trans('kotoba::general.home'), LaravelLocalization::getCurrentLocale())->data('order', 1);
 // 		$menu->add('School', 'school')->data('order', 2);
 // 		$menu->school->add('Employees', 'employees');
 // 		$menu->school->add('Sites', 'sites');
 		$menu->sortBy('order');
 
 // right side drop down
-// 		$menu = Menu::get('admin');
-// 		$menu->add('Departments', 'admin/departments');
-// 		$menu->add('Divisions', 'admin/divisions');
-// 		$menu->add('Employee Types', 'admin/employee_types');
-// 		$menu->add('Grades', 'admin/grades');
-// 		$menu->add('Job Titles', 'admin/job_titles');
-// 		$menu->add('Positions', 'admin/positions');
-// 		$menu->add('Statuses', 'admin/statuses');
-// 		$menu->add('Subjects', 'admin/subjects');
-//		$menu->add('Rooms', 'admin/rooms');
+		$menu = Menu::get('admin');
+		$menu->add('Statuses', LaravelLocalization::getCurrentLocale() . '/admin/statuses');
 
 	}
 

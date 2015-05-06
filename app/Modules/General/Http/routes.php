@@ -11,25 +11,39 @@
 |
 */
 
-Route::get('welcome/general', array(
-	'uses'=>'GeneralController@welcome'
-	));
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+],
+function()
+{
+
+// Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+// {
+//------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
+
+	Route::get('welcome/general', array(
+		'uses'=>'GeneralController@welcome'
+		));
 
 // API DATA
 
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-Route::group(['prefix' => 'admin'], function() {
+	Route::group(['prefix' => 'admin'], function() {
 
-	Route::pattern('id', '[0-9]+');
+		Route::pattern('id', '[0-9]+');
 
 // Controllers
-	Route::resource('statuses', 'StatusesController');
+		Route::resource('statuses', 'StatusesController');
 
 // API DATA
-	Route::get('api/statuses', array(
-	//	'as'=>'api.statuses',
-		'uses'=>'StatusesController@data'
-		));
+		Route::get('api/statuses', array(
+//			'as'=>'api.statuses',
+			'uses'=>'StatusesController@data'
+			));
+
+	});
 
 });

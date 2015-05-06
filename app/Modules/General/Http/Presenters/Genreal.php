@@ -33,6 +33,95 @@ class School extends Presenter {
 		return $division;
 	}
 
+	/**
+	 * List, Trim: sites
+	 *
+	 * @return string
+	 */
+	public function sites()
+	{
+		$return = '';
+		$sites = $this->entity->sites;
+//dd($sites);
+		if (empty($sites))
+		{
+			$return = trans('kotoba::general.none');
+		} else {
+			foreach ($sites as $site)
+			{
+//				$return .= $site->present()->name() . ',&nbsp;';
+				$return .= $site->name . ',<br>';
+			}
+		}
+		return trim($return, ',<br>');
+	}
+
+
+
+	/**
+	 * Present the active field
+	 *
+	 * @return string
+	 */
+	public function active()
+	{
+		return $this->entity->active ? trans('lingos::general.yes') : trans('lingos::general.no');
+	}
+
+	/**
+	 * Present the profiles
+	 *
+	 * @return string
+	 */
+	public function profiles()
+	{
+		$return   = '';
+		$profiles = $this->entity->profiles;
+//dd($profiles);
+
+		if (empty($profiles)) {
+			$return = trans('lingos::general.none');
+		} else {
+			foreach ($profiles as $profile) {
+//				$return .= $site->present()->name() . ',&nbsp;';
+				$return .= $profile->first_name . ',<br>';
+			}
+		}
+	}
+
+
+
+	/**
+	 * Uppercase: first_name
+	 *
+	 * @return string
+	 */
+	public function first_name()
+	{
+		return ucwords($this->entity->first_name);
+	}
+
+
+	/**
+	 * Uppercase: last_name
+	 *
+	 * @return string
+	 */
+	public function last_name()
+	{
+		return ucwords($this->entity->last_name);
+	}
+
+
+	/**
+	 * Present<> email
+	 *
+	 * @return string
+	 */
+	public function email()
+	{
+		return $this->entity->email;
+	}
 
 
 
@@ -198,6 +287,22 @@ class School extends Presenter {
 //		return trim($return, ',&nbsp;');
 	}
 
+
+	/**
+	 * Present the jobtitles
+	 *
+	 * @return string
+	 */
+	public function getSupervisior($id)
+	{
+		$jobtitle = DB::table('profiles')
+			->where('id', '=', $id)
+			->pluck('first_name', 'Last Name');
+		return $jobtitle;
+	}
+
+
+
 	/**
 	 * Present the positions
 	 *
@@ -228,6 +333,259 @@ class School extends Presenter {
 		return $position;
 
 //		return trim($return, ',&nbsp;');
+	}
+
+	/**
+	 * return Checked: departments
+	 *
+	 * @return string
+	 */
+	public function checkBoxDepartments($id)
+	{
+		$departments = $this->entity->departments;
+		$departments->toArray();
+		$checkBoxValue = '';
+		foreach ($departments as $department)
+		{
+			if ($department['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+		return $checkBoxValue;
+	}
+
+
+	/**
+	 * return Checked: grades
+	 *
+	 * @return string
+	 */
+	public function checkBoxGrades($id)
+	{
+		$grades = $this->entity->grades;
+		$grades->toArray();
+		$checkBoxValue = '';
+		foreach ($grades as $grade)
+		{
+			if ($grade['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+		return $checkBoxValue;
+	}
+
+
+	/**
+	 * return Checked: subjects
+	 *
+	 * @return string
+	 */
+	public function checkBoxSubjects($id)
+	{
+		$subjects = $this->entity->subjects;
+		$subjects->toArray();
+		$checkBoxValue = '';
+		foreach ($subjects as $subject)
+		{
+			if ($subject['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+		return $checkBoxValue;
+	}
+
+
+	/**
+	 * return Checked: positions
+	 *
+	 * @return string
+	 */
+	public function checkBoxPositions($id)
+	{
+		$positions = $this->entity->positions;
+		$positions->toArray();
+		$checkBoxValue = '';
+		foreach ($positions as $position)
+		{
+			if ($position['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+		return $checkBoxValue;
+	}
+
+
+	/**
+	 * return Checked: sites
+	 *
+	 * @return string
+	 */
+	public function checkBoxSites($id)
+	{
+		$sites = $this->entity->sites;
+		$sites->toArray();
+		$checkBoxValue = '';
+		foreach ($sites as $site)
+		{
+			if ($site['id'] === $id) {
+				$checkBoxValue = ' ' . 'checked';
+				return $checkBoxValue;
+				break;
+			}
+		}
+		return $checkBoxValue;
+	}
+
+
+	/**
+	 * return Selected: departments
+	 *
+	 * @return string
+	 */
+	public function selectedDepartments($id)
+	{
+		$departments = $this->entity->departments;
+		$departments->toArray();
+		$selectOption = '';
+		foreach ($departments as $department)
+		{
+			if ($department['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+	/**
+	 * return Selected: jobTitles
+	 *
+	 * @return string
+	 */
+	public function selectedJobTitles($id)
+	{
+		$jobTitles = $this->entity->jobtitles;
+		$jobTitles->toArray();
+		$selectOption = '';
+		foreach ($jobTitles as $jobTitle)
+		{
+			if ($jobTitle['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+	/**
+	 * return Selected: grades
+	 *
+	 * @return string
+	 */
+	public function selectedGrades($id)
+	{
+		$grades = $this->entity->grades;
+		$grades->toArray();
+		$selectOption = '';
+		foreach ($grades as $grade)
+		{
+			if ($grade['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+	/**
+	 * return Selected: subjects
+	 *
+	 * @return string
+	 */
+	public function selectedSubjects($id)
+	{
+		$subjects = $this->entity->subjects;
+		$subjects->toArray();
+		$selectOption = '';
+		foreach ($subjects as $subject)
+		{
+			if ($subject['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+
+	/**
+	 * return Selected: positions
+	 *
+	 * @return string
+	 */
+	public function selectedPositions($id)
+	{
+		$positions = $this->entity->positions;
+		$positions->toArray();
+		$selectOption = '';
+		foreach ($positions as $position)
+		{
+			if ($position['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+	/**
+	 * return Selected: sites
+	 *
+	 * @return string
+	 */
+	public function selectedSites($id)
+	{
+		$sites = $this->entity->sites;
+		$sites->toArray();
+		$selectOption = '';
+		foreach ($sites as $site)
+		{
+			if ($site['id'] === $id) {
+				$selectOption = ' ' . 'selected';
+				return $selectOption;
+				break;
+			}
+		}
+		return $selectOption;
+	}
+
+
+	/**
+	 * YES/NO: isSupervisior
+	 *
+	 * @return string
+	 */
+	public function isSupervisior()
+	{
+		return $this->entity->isSupervisior ? trans('kotoba::general.yes') : trans('kotoba::general.no');
 	}
 
 

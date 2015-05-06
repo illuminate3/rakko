@@ -11,13 +11,14 @@
 |
 */
 
-// App::setLocale('en');
-// Session::put('locale', 'en');
+
+// set pattern for overall
+Route::pattern('id', '[0-9]+');
 
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
 ],
 function()
 {
@@ -26,28 +27,18 @@ function()
 // {
 //------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
 
-
+// set pattern for locales
 	Route::pattern('id', '[0-9]+');
 
-
-
-
 //Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
-
-Route::get('welcome', 'WelcomeController@index');
-
+	Route::get('home', 'HomeController@index');
+	Route::get('welcome', 'WelcomeController@index');
 
 
-// Route::group(['prefix' => 'admin'], function() {
-//
-// 	Route::pattern('id', '[0-9]+');
-//
-// });
-
+// Set pattern for admin
+	Route::group(['prefix' => 'admin'], function() {
+		Route::pattern('id', '[0-9]+');
+	});
 
 
 });
-
-
-// 	Route::pattern('id', '[0-9]+');
