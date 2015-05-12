@@ -2,7 +2,7 @@
 	"name": "General",
 	"slug": "general",
 	"version": "1.0",
-	"description": "School Management System for Rakko",
+	"description": "Core functionality for Rakko",
 	"enabled": true,
-	"order": 4
+	"order": 1
 }
