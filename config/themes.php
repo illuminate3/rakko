@@ -13,8 +13,8 @@ return [
 	|
 	*/
 
-//	'active' => 'bootstrap',
-	'default_theme' => 'bootstrap',
+	'active' => 'bootstrap',
+//	'default_theme' => 'bootstrap',
 
 	/*
 	|--------------------------------------------------------------------------

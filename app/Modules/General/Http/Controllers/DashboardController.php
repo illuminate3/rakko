@@ -11,7 +11,7 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 // use App\Modules\General\Http\Requests\StatusUpdateRequest;
 
 use Auth;
-// use Flash;
+use Theme;
 
 class DashboardController extends GeneralController {
 
@@ -37,13 +37,17 @@ class DashboardController extends GeneralController {
 	public function index()
 	{
 //dd(Auth::user());
+//dd(Theme::getProperty('theme::name', 'default value if nothing is returned'));
+//dd(Theme::all());
+dd(Theme::getActive());
 
 		if ( Auth::user() ) {
 			if ( Auth::user()->can('manage_admin') ) {
 				return View('general::dashboard');
 			}
 		}
-		return View('general::landing');
+//		return View('general::landing');
+		return Theme::View('modules.general.landing');
 
 	}
 
