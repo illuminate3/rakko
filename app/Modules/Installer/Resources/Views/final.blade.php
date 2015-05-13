@@ -52,6 +52,14 @@
 					</li>
 
 					<li>
+						{{ trans('installer::install.final.login') }}&nbsp;user@user.com
+					</li>
+
+					<li>
+						{{ trans('installer::install.final.password') }}&nbsp;kagiuser
+					</li>
+
+					<li>
 						<h4>
 							{{ trans('installer::install.final.social_login') }}
 						</h4>

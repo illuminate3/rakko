@@ -24,10 +24,23 @@ class UsersTableSeeder extends Seeder {
 	public function run()
 	{
 
-		$user = array(
+		$admin = array(
 			'name'					=> 'admin',
 			'email'					=> 'admin@admin.com',
 			'password'				=> bcrypt('kagiadmin'),
+			'activated_at'			=> date("Y-m-d H:i:s"),
+			'created_at'			=> date("Y-m-d H:i:s"),
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
+			'avatar'				=> 'assets/images/usr.png'
+		);
+		$user = array(
+			'name'					=> 'user',
+			'email'					=> 'user@user.com',
+			'password'				=> bcrypt('kagiuser'),
 			'activated_at'			=> date("Y-m-d H:i:s"),
 			'created_at'			=> date("Y-m-d H:i:s"),
 			'blocked'				=> 0,
@@ -89,6 +102,7 @@ class UsersTableSeeder extends Seeder {
 		DB::table('users')->delete();
 			$statement = "ALTER TABLE users AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
+		DB::table('users')->insert($admin);
 		DB::table('users')->insert($user);
 
 // Attach permission to role
@@ -100,6 +114,8 @@ class UsersTableSeeder extends Seeder {
 // Attach role to user
 		$user = User::find(1);
 		$user->roles()->attach(1);
+		$user = User::find(2);
+		$user->roles()->attach(2);
 
 	} // run
 
