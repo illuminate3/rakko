@@ -33,7 +33,8 @@ Route::get('welcome/kagi', array(
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+	'middleware' => [ 'localeSessionRedirect' ]
 ],
 function()
 {

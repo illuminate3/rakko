@@ -189,9 +189,9 @@ class Registrar implements RegistrarContract {
 	public function checkSankaStatus()
 	{
 //dd('loaded');
-		$sanka = DB::table('modules')
-			->where('slug', '=', 'sanka')
-			->where('enabled', '=', '1', 'AND')
+		$sanka = DB::table('permissions')
+			->where('slug', '=', 'manage_sanka')
+//			->where('enabled', '=', '1', 'AND')
 			->first();
 //dd($sanka);
 
@@ -201,9 +201,9 @@ class Registrar implements RegistrarContract {
 	public function checkJinjiStatus()
 	{
 //dd('loaded');
-		$jinji = DB::table('modules')
-			->where('slug', '=', 'jinji')
-			->where('enabled', '=', '1', 'AND')
+		$jinji = DB::table('permissions')
+			->where('slug', '=', 'manage_jinji')
+//			->where('enabled', '=', '1', 'AND')
 			->first();
 //dd($sanka);
 

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
+use Config;
+
 class Authenticate {
 
 	/**
@@ -33,7 +35,10 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+//dd($request);
 //dd($this->auth->guest());
+//dd(Config::get('general.require_login'));
+
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
@@ -42,7 +47,10 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				if ( Config::get('general.require_login') === true) {
+					return redirect()->guest('auth/login');
+				}
+				return redirect()->guest('/');
 			}
 		}
 

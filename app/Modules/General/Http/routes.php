@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', array(
+Route::get('welcome/general', array(
 	'uses'=>'GeneralController@welcome'
 	));
 
@@ -21,7 +21,8 @@ Route::get('/', array(
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+	'middleware' => [ 'localeSessionRedirect' ]
 ],
 function()
 {
@@ -30,9 +31,11 @@ function()
 // {
 //------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
 
-	Route::get('welcome/general', array(
+
+	Route::get('/', array(
 		'uses'=>'GeneralController@welcome'
 		));
+
 
 // API DATA
 

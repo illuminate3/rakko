@@ -25,8 +25,8 @@ class GeneralController extends Controller
 		$this->middleware('auth');
 */
 // middleware
-		$this->middleware('auth');
-//		$this->middleware('guest');
+//		$this->middleware('auth');
+		$this->middleware('guest');
 //		$this->middleware('admin');
 	}
 

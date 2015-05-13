@@ -41,11 +41,7 @@
 			<div class="content">
 				<div class="title">General</div>
 				<div class="quote">
-					学校 : General [gah-koh]
-					<br>
-					noun - school, can also refer to generic educational centers
-					<br>
-					General is a Rakko module for School Management
+					A basic collection of functions for Rakko
 				</div>
 			</div>
 		</div>
