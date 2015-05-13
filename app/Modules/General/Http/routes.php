@@ -33,7 +33,7 @@ function()
 
 
 	Route::get('/', array(
-		'uses'=>'GeneralController@welcome'
+		'uses'=>'DashboardController@index'
 		));
 
 

@@ -1,19 +1,51 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php
+namespace App\Modules\General\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Modules\Kagi\Http\Domain\Models\User;
+// use App\Modules\General\Http\Domain\Models\Status;
+// use App\Modules\General\Http\Domain\Repositories\StatusRepository;
 
-/**
- * Class DashboardController
- * @package App\Http\Controllers\Frontend
- */
-class DashboardController extends Controller {
+// use Illuminate\Http\Request;
+// use App\Modules\General\Http\Requests\DeleteRequest;
+// use App\Modules\General\Http\Requests\StatusCreateRequest;
+// use App\Modules\General\Http\Requests\StatusUpdateRequest;
+
+use Auth;
+// use Flash;
+
+class DashboardController extends GeneralController {
+
+
+	public function __construct(
+			User $user
+// 			RoleRepository $role
+		)
+	{
+		$this->user = $user;
+// 		$this->role = $role;
+
+// middleware
+		$this->middleware('guest');
+	}
+
 
 	/**
-	 * @return mixed
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
 	 */
 	public function index()
 	{
-		return view('frontend.user.dashboard')
-			->withUser(auth()->user());
+//dd(Auth::user());
+
+		if ( Auth::user() ) {
+			if ( Auth::user()->can('manage_admin') ) {
+				return View('general::dashboard');
+			}
+		}
+		return View('general::landing');
+
 	}
+
+
 }
