@@ -11,6 +11,13 @@
 |
 */
 
+
+Route::get('/', array(
+	'uses'=>'GeneralController@welcome'
+	));
+
+
+
 Route::group(
 [
 	'prefix' => LaravelLocalization::setLocale(),

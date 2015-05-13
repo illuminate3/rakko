@@ -22,17 +22,6 @@ Route::model('post', 'Post');
 Route::model('role', 'Role');
 */
 
-/** ------------------------------------------
- *  Route constraint patterns
- *  ------------------------------------------
- */
-/*
-Route::pattern('comment', '[0-9]+');
-Route::pattern('post', '[0-9]+');
-Route::pattern('user', '[0-9]+');
-Route::pattern('role', '[0-9]+');
-Route::pattern('token', '[0-9a-z]+');
-*/
 
 
 Route::get('welcome/kagi', array(
@@ -40,17 +29,33 @@ Route::get('welcome/kagi', array(
 	));
 
 
-// Login a user with GitHub (or any provider).
-Route::get('social/login', 'SocialAuthController@login');
 
-Route::controllers([
-	'auth' => 'kagiAuthController',
-	'password' => 'KagiPasswordController',
-]);
-Route::group(['prefix' => 'auth'], function() {
-	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
-	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+],
+function()
+{
+
+// Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+// {
+//------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
+
+// Login a user with GitHub (or any provider).
+	Route::get('social/login', 'SocialAuthController@login');
+
+	Route::controllers([
+		'auth' => 'kagiAuthController',
+		'password' => 'KagiPasswordController',
+	]);
+	Route::group(['prefix' => 'auth'], function() {
+		Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
+		Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
+	});
+
 });
+
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::group(['prefix' => 'admin'], function() {

@@ -10,20 +10,20 @@ class ModuleSeeder extends Seeder {
 	{
 
 // Module Information
-		$module = array(
-			'name'					=> 'Profiles',
-			'slug'					=> 'profiles',
-			'version'				=> '1.0',
-			'description'			=> 'Profiles is a Rakko module that provides the ability to add User Profiles',
-			'enabled'				=> 1,
-			'order'					=> 2
-		);
+// 		$module = array(
+// 			'name'					=> 'Profiles',
+// 			'slug'					=> 'profiles',
+// 			'version'				=> '1.0',
+// 			'description'			=> 'Profiles is a Rakko module that provides the ability to add User Profiles',
+// 			'enabled'				=> 1,
+// 			'order'					=> 2
+// 		);
 
 // Insert Module Information
 // 		if (Schema::hasTable('modules'))
 // 		{
 
-			DB::table('modules')->insert( $module );
+// 			DB::table('modules')->insert( $module );
 
 // 		}
 

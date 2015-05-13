@@ -1,0 +1,13 @@
+{
+	"name": "rakko/installer",
+	"description": "Installer for Rakko",
+	"keywords": ["Installer", "CMS", "Rakko"],
+	"require": {
+		"illuminate3/kotoba": "dev-master",
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

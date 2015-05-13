@@ -10,20 +10,20 @@ class ModuleSeeder extends Seeder {
 	{
 
 // Module Information
-		$module = array(
-			'name'					=> 'General',
-			'slug'					=> 'general',
-			'version'				=> '1.0',
-			'description'			=> 'General functionality for Rakko',
-			'enabled'				=> 1,
-			'order'					=> 3
-		);
+// 		$module = array(
+// 			'name'					=> 'General',
+// 			'slug'					=> 'general',
+// 			'version'				=> '1.0',
+// 			'description'			=> 'General functionality for Rakko',
+// 			'enabled'				=> 1,
+// 			'order'					=> 3
+// 		);
 
 // Insert Module Information
 // 		if (Schema::hasTable('modules'))
 // 		{
 
-			DB::table('modules')->insert( $module );
+// 			DB::table('modules')->insert( $module );
 
 // 		}
 

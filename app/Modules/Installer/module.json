@@ -3,6 +3,6 @@
     "slug": "installer",
     "description": "Installer for Rakko",
     "version": "1.0",
-    "order": "0",
-    "enabled": "1"
+	"enabled": true,
+	"order": 1
 }

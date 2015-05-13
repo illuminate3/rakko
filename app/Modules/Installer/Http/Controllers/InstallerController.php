@@ -40,18 +40,6 @@ class InstallerController extends Controller
 	{
 //dd('artisan');
 
-// Migrate: manager
-		try {
-			Artisan::call('module:migrate', [
-				'module' => 'manager'
-				]);
-			$module_migrate = true;
-		} catch (Exception $e) {
-			$module_migrate = false;
-			Log::error( trans('installer::install.error.migrate', ['table' => 'manager']) . $e->getMessage() );
-			Response::make($e->getMessage(), 500);
-		}
-
 // Migrate: kagi
 		try {
 			Artisan::call('module:migrate', [
@@ -88,15 +76,27 @@ class InstallerController extends Controller
 			Response::make($e->getMessage(), 500);
 		}
 
-// Seed: manager
+// Migrate: kantoku
 		try {
-			Artisan::call('module:seed', [
-				'module' => 'manager'
+			Artisan::call('module:migrate', [
+				'module' => 'kantoku'
 				]);
-			$module_seed = true;
+			$module_migrate = true;
 		} catch (Exception $e) {
-			$module_seed = false;
-			Log::error( trans('installer::install.error.seed', ['table' => 'manager']) . $e->getMessage() );
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'kantoku']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Migrate: origami
+		try {
+			Artisan::call('module:migrate', [
+				'module' => 'origami'
+				]);
+			$module_migrate = true;
+		} catch (Exception $e) {
+			$module_migrate = false;
+			Log::error( trans('installer::install.error.migrate', ['table' => 'origami']) . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 
@@ -133,6 +133,30 @@ class InstallerController extends Controller
 		} catch (Exception $e) {
 			$module_seed = false;
 			Log::error( trans('installer::install.error.seed', ['table' => 'general']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: kantoku
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'kantoku'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'kantoku']) . $e->getMessage() );
+			Response::make($e->getMessage(), 500);
+		}
+
+// Seed: manager
+		try {
+			Artisan::call('module:seed', [
+				'module' => 'origami'
+				]);
+			$module_seed = true;
+		} catch (Exception $e) {
+			$module_seed = false;
+			Log::error( trans('installer::install.error.seed', ['table' => 'origami']) . $e->getMessage() );
 			Response::make($e->getMessage(), 500);
 		}
 

@@ -96,7 +96,7 @@
 						</li>
 
 						<li>
-						@if ( is_writable(storage_path()) )
+						@if ( is_writable(storage_path().'/logs') )
 							<span class="glyphicon glyphicon-ok text-success"></span>
 							{{ trans('installer::install.success.storage') }}
 						@else
@@ -106,12 +106,6 @@
 						@endif
 						</li>
 
-						<li>
-							<h4>
-								{{ trans('installer::install.please_wait') }}
-							</h4>
-						</li>
-
 						@if ( $flag === false )
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
@@ -119,6 +113,11 @@
 								</div>
 							</div>
 						@else
+							<li>
+								<h4>
+									{{ trans('installer::install.please_wait') }}
+								</h4>
+							</li>
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2 hide" id="button">
 									<a href="{{url('install/artisan')}}" class="btn btn-success btn-block" title="{{ trans('installer::install.button.next') }}">
