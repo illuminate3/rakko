@@ -16,12 +16,17 @@ use File;
 class InstallerController extends Controller
 {
 
-	/**
-	* Check for dependencies
-	*/
+
+/*
+|--------------------------------------------------------------------------
+| Step: 1
+| check dependancies
+|--------------------------------------------------------------------------
+*/
+
+
 	public function getIndex()
 	{
-//dd('start');
 
 		if ( Config::get('rakko.installed') === true) {
 			Flash::error(trans('installer::install.error.installed'));
@@ -32,12 +37,16 @@ class InstallerController extends Controller
 	}
 
 
-	/**
-	* Run database calls
-	*/
+/*
+|--------------------------------------------------------------------------
+| Step: 3
+| database install
+|--------------------------------------------------------------------------
+*/
+
+
 	public function getArtisan()
 	{
-//dd('artisan');
 
 // Migrate: kagi
 		try {
@@ -167,9 +176,14 @@ class InstallerController extends Controller
 	}
 
 
-	/**
-	* get settings
-	*/
+/*
+|--------------------------------------------------------------------------
+| Step: 3
+| configure
+|--------------------------------------------------------------------------
+*/
+
+
 	public function getSettings()
 	{
 //dd('get settings');
@@ -256,9 +270,16 @@ dd('get settings');
 	}
 
 
-	/**
-	* write settings
-	*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Step: 4
+|
+|--------------------------------------------------------------------------
+*/
+
+
 	public function postSettings()
 	{
 /*
@@ -296,12 +317,21 @@ dd(Config::write('app.timezone', $timezone));
 	}
 
 
-	/**
-	* final
-	*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Step: 5
+| login
+|--------------------------------------------------------------------------
+*/
+
+
 	public function getFinal()
 	{
 //dd('final');
 		return View('installer::final');
 	}
+
+
 }

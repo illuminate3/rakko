@@ -40,10 +40,6 @@ class RouteServiceProvider extends ServiceProvider
 	 */
 	public function map(Router $router)
 	{
-// 		$router->group(['namespace' => $this->namespace, 'middleware'=>'caffeinated.module'], function($router)
-// 		{
-// 			require (config('modules.path').'/Installer/Http/routes.php');
-// 		});
 		$router->group(['namespace' => $this->namespace], function($router)
 		{
 			require (config('modules.path').'/Installer/Http/routes.php');
