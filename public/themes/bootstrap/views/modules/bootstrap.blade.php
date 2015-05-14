@@ -55,7 +55,7 @@
 
 <body>
 
-{{ dd('die') }}
+{{-- dd('die') --}}
 
 	@include('_partials.navigation')
 	@include('_partials.left_side')

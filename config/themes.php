@@ -45,4 +45,3 @@ return [
 	'path' => public_path('themes'),
 
 ];
-
