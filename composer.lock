@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0eee1b80089eef6b6af4c5ca977925cb",
+    "hash": "7b23d599ae02431bb3eb0e7f08fbb31a",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/menus.git",
-                "reference": "6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d"
+                "reference": "50b539da745ff68a3e22c4684bf9527005465271"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/menus/zipball/6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d",
-                "reference": "6f1ee4d1bc0f32e5388cb3b01cecfc1e1824036d",
+                "url": "https://api.github.com/repos/caffeinated/menus/zipball/50b539da745ff68a3e22c4684bf9527005465271",
+                "reference": "50b539da745ff68a3e22c4684bf9527005465271",
                 "shasum": ""
             },
             "require": {
@@ -151,7 +151,7 @@
                 "menu",
                 "navigation"
             ],
-            "time": "2015-04-09 22:50:49"
+            "time": "2015-04-23 18:04:48"
         },
         {
             "name": "caffeinated/modules",

@@ -44,6 +44,11 @@ public function handle(
 
 }
 
+
+
+
+
+
 <?php namespace Mcamara\LaravelLocalization\Middleware;
 
 use Illuminate\Contracts\Routing\Middleware;

@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 class InstallerServiceProvider extends ServiceProvider
 {
 
+
 	/**
 	 * Register the Installer module service provider.
 	 *
@@ -17,18 +18,11 @@ class InstallerServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		// This service provider is a convenient place to register your modules
-		// services in the IoC container. If you wish, you may make additional
-		// methods or service providers to keep the code more focused and granular.
-
 		App::register('App\Modules\Installer\Providers\RouteServiceProvider');
+
 		$this->registerNamespaces();
-
-// 		$this->mergeConfigFrom(
-// 			__DIR__.'/../Config/rakko.php', 'rakko'
-// 		);
-
 	}
+
 
 	/**
 	 * Register the Installer module resource namespaces.
@@ -41,6 +35,7 @@ class InstallerServiceProvider extends ServiceProvider
 		View::addNamespace('installer', realpath(__DIR__.'/../Resources/Views'));
 	}
 
+
 	/**
 	 * Boot the service provider.
 	 *
@@ -48,16 +43,13 @@ class InstallerServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-
-//dd(base_path() . 'App/Modules/Installer/Config/rakko.php');
-
-		$this->publishes([
-			__DIR__.'/../Config/rakko.php' => config_path('rakko.php'),
-		]);
-
+// config
 		$this->publishes([
 			__DIR__.'/../Config/rakko.php' => config_path('rakko.php')
-		], 'rakko');
+		], 'config');
+
+// assets
+// views
 
 	}
 

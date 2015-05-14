@@ -12,7 +12,6 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 
 use Auth;
 use Theme;
-//use View;
 
 class DashboardController extends GeneralController {
 
@@ -44,7 +43,8 @@ class DashboardController extends GeneralController {
 
 		if ( Auth::user() != null) {
 			if ( Auth::user()->can('manage_admin') ) {
-				return View('general::dashboard');
+//				return View('general::dashboard');
+				return Theme::View('modules.general.dashobard');
 			}
 		}
 //dd(Theme::all());

@@ -6,6 +6,8 @@ use Illuminate\Routing\Router;
 
 class RouteServiceProvider extends ServiceProvider
 {
+
+
 	/**
 	 * This namespace is applied to the controller routes in your module's routes file.
 	 *
@@ -14,6 +16,7 @@ class RouteServiceProvider extends ServiceProvider
 	 * @var string
 	 */
 	protected $namespace = 'App\Modules\General\Http\Controllers';
+
 
 	/**
 	 * Define your module's route model bindings, pattern filters, etc.
@@ -28,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
 		//
 	}
 
+
 	/**
 	 * Define the routes for the module.
 	 *
@@ -41,4 +45,6 @@ class RouteServiceProvider extends ServiceProvider
 			require (config('modules.path').'/General/Http/routes.php');
 		});
 	}
+
+
 }

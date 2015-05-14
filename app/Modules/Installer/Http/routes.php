@@ -1,28 +1,26 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
-| Module Routes
+| Module: General
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for the module.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
-// Route::group(
-// [
-// 	'prefix' => LaravelLocalization::setLocale(),
-//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-// 	'middleware' => [ 'localeSessionRedirect' ]
-// ],
-// function()
-// {
 
-// Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-// {
-//------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+	'middleware' => [ 'localeSessionRedirect' ]
+],
+function()
+{
+// --------------------------------------------------------------------------
+
+// Resources
+// Controllers
+// API DATA
 
 	Route::group(
 		[
@@ -44,4 +42,6 @@
 
 		});
 
-// }); // LaravelLocalization
+
+// --------------------------------------------------------------------------
+});

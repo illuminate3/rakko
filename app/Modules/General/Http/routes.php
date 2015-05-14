@@ -2,20 +2,9 @@
 
 /*
 |--------------------------------------------------------------------------
-| Module Routes
+| Module: General
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for the module.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
-
-
-Route::get('welcome/general', array(
-	'uses'=>'GeneralController@welcome'
-	));
-
 
 
 Route::group(
@@ -26,29 +15,33 @@ Route::group(
 ],
 function()
 {
+// --------------------------------------------------------------------------
 
-// Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-// {
-//------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
-
+// Resources
+// Controllers
+	Route::get('welcome/general', array(
+		'uses'=>'GeneralController@welcome'
+		));
 
 	Route::get('/', array(
 		'uses'=>'DashboardController@index'
 		));
 
-
 // API DATA
 
 
+
+// Admin
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 	Route::group(['prefix' => 'admin'], function() {
 
 		Route::pattern('id', '[0-9]+');
 
-// Controllers
+// Admin Resources
+// Admin Controllers
 		Route::resource('statuses', 'StatusesController');
 
-// API DATA
+// Admin API DATA
 		Route::get('api/statuses', array(
 //			'as'=>'api.statuses',
 			'uses'=>'StatusesController@data'
@@ -56,4 +49,6 @@ function()
 
 	});
 
+
+// --------------------------------------------------------------------------
 });

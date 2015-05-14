@@ -1,9 +1,13 @@
 <?php
 
+// php artisan vendor:publish --provider="App\Modules\Installer\Providers\InstallerServiceProvider" --tag="config"
+// php artisan vendor:publish --provider="App\Modules\Installer\Providers\InstallerServiceProvider" --tag="views"
+
+
 return [
 
-	'installed' => true,
+	'installed' => false,
 	'version' => '1.0.0',
-	'install_date' => ''
+	'installed_date' => ''
 
 ];

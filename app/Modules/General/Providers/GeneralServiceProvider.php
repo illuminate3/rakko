@@ -11,6 +11,8 @@ use View;
 
 class GeneralServiceProvider extends ServiceProvider
 {
+
+
 	/**
 	 * Register the General module service provider.
 	 *
@@ -18,18 +20,12 @@ class GeneralServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		// This service provider is a convenient place to register your modules
-		// services in the IoC container. If you wish, you may make additional
-		// methods or service providers to keep the code more focused and granular.
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
 		App::register('App\Modules\General\Providers\GeneralMenuProvider');
 
-		$this->mergeConfigFrom(
-			__DIR__.'/../Config/general.php', 'general'
-		);
-
 		$this->registerNamespaces();
 	}
+
 
 	/**
 	 * Register the General module resource namespaces.
@@ -42,6 +38,7 @@ class GeneralServiceProvider extends ServiceProvider
 		View::addNamespace('general', __DIR__.'/../Resources/Views/');
 	}
 
+
 	/**
 	 * Boot the service provider.
 	 *
@@ -49,9 +46,18 @@ class GeneralServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
+
+// config
 		$this->publishes([
-			__DIR__.'/../Config/general.php' => config_path('general.php'),
-		]);
+			__DIR__.'/../Config/general.php' => config_path('general.php')
+		], 'config');
+
+// assets
+// views
+		$this->publishes([
+			__DIR__.'/../Resources/Views/' => public_path('/themes/default/views/modules/general/')
+		], 'views');
+
 	}
 
 

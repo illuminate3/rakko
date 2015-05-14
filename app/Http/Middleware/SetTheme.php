@@ -28,7 +28,7 @@ class SetTheme implements Middleware {
 		$theme = Cache::get('theme');
 
 		if ($theme == null) {
-			$theme = Config::get('themes.active', 'default');
+			$theme = Config::get('themes.active', 'bootstrap');
 		}
 //dd($theme);
 

@@ -37,7 +37,8 @@ class StatusesController extends GeneralController {
 	 */
 	public function index()
 	{
-		return View('general::statuses.index');
+// 		return View('general::statuses.index');
+		return Theme::View('modules.general.statuses.index');
 	}
 
 	/**
@@ -47,7 +48,8 @@ class StatusesController extends GeneralController {
 	 */
 	public function create()
 	{
-		return view('general::statuses.create',  $this->status->create());
+// 		return view('general::statuses.create',  $this->status->create());
+		return Theme::View('modules.general.statuses.create',  $this->status->create());
 	}
 
 	/**
@@ -92,7 +94,8 @@ class StatusesController extends GeneralController {
 		$modal_id = $id;
 		$model = '$status';
 
-		return View('general::statuses.edit',
+//		return View('general::statuses.edit',
+		return Theme::View('modules.general.statuses.edit',
 			$this->status->edit($id),
 				compact(
 					'modal_title',
@@ -101,7 +104,6 @@ class StatusesController extends GeneralController {
 					'modal_id',
 					'model'
 			));
-//		return View('general::statuses.edit',  $this->status->edit($id));
 	}
 
 	/**

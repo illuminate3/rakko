@@ -1,0 +1,7 @@
+{
+    "slug": "default",
+    "name": "Default Theme",
+    "author": "illuminate3",
+    "description": "Intended use is just for pushing views to the themes area",
+    "version": "1.0.0"
+}

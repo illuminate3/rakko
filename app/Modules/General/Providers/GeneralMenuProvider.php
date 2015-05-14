@@ -9,6 +9,7 @@ use Menu;
 
 class GeneralMenuProvider extends MenuServiceProvider {
 
+
 	/**
 	 * Bootstrap any application services.
 	 *
@@ -19,15 +20,13 @@ class GeneralMenuProvider extends MenuServiceProvider {
 
 // navbar menu
 		$menu = Menu::get('navbar');
-		$menu->add(trans('kotoba::general.home'), LaravelLocalization::getCurrentLocale())->data('order', 1);
-// 		$menu->add('School', 'school')->data('order', 2);
-// 		$menu->school->add('Employees', 'employees');
-// 		$menu->school->add('Sites', 'sites');
+		$menu->add(trans('kotoba::general.home'), 'home')->data('order', 1);
 		$menu->sortBy('order');
 
 // right side drop down
 		$menu = Menu::get('admin');
 		$menu->add('Statuses', LaravelLocalization::getCurrentLocale() . '/admin/statuses');
+		$menu->add('Employees', '/admin/statuses');
 
 	}
 
@@ -40,11 +39,10 @@ class GeneralMenuProvider extends MenuServiceProvider {
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
-//
-	}
-
+// 	public function register()
+// 	{
+// //
+// 	}
 
 
 }
