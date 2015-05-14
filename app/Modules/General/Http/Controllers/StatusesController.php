@@ -11,6 +11,7 @@ use App\Modules\General\Http\Requests\StatusUpdateRequest;
 
 use Datatables;
 use Flash;
+use Theme;
 
 class StatusesController extends GeneralController {
 

@@ -32,6 +32,8 @@ class WelcomeController extends Controller {
 	public function index()
 	{
 		return view('welcome');
+//		return Theme::View('modules.general.dashboard');
 	}
+
 
 }

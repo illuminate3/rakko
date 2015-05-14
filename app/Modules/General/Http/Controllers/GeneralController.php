@@ -6,6 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use Theme;
+
 //abstract class KagiController extends BaseController {
 class GeneralController extends Controller
 {

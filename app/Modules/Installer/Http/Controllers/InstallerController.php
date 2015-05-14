@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 //use October\Rain\Config\Rewrite as NewConfig;
-//use app\Helpers\ConfigWriter\Rewrite as NewConfig;
+//use App\Helpers\ConfigWriter\Rewrite as Rewrite;
+//use App\Helpers\ConfigWriter\FileWriter as FileWriter;
 
 use Artisan;
 use Config;
@@ -187,8 +188,16 @@ class InstallerController extends Controller
 	public function getSettings()
 	{
 //dd('get settings');
-// work around until config::write can be solved
+// 		$fileWriter = new FileWriter;
+// 		$fileWriter->write('rakko.installed', true);
 
+// $writeConfig = new Rewrite;
+// $file = base_path() . '/config/' . 'rakko.php';
+// $writeConfig->toFile($file, [
+// 	'installed'=> '564654654'
+// 	]);
+
+// work around until config::write can be solved
 		$config_installed = Config::get('rakko.installed');
 		$config_timezone = Config::get('app.timezone');
 //dd($config_installed);

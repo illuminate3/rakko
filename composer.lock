@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b23d599ae02431bb3eb0e7f08fbb31a",
+    "hash": "fe69e10ca61fe162137c70ed5fe371ff",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -103,16 +103,16 @@
         },
         {
             "name": "caffeinated/menus",
-            "version": "dev-master",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/menus.git",
-                "reference": "50b539da745ff68a3e22c4684bf9527005465271"
+                "reference": "ee7fed8f97d146b9cb24324541e90a0487a3ab3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/menus/zipball/50b539da745ff68a3e22c4684bf9527005465271",
-                "reference": "50b539da745ff68a3e22c4684bf9527005465271",
+                "url": "https://api.github.com/repos/caffeinated/menus/zipball/ee7fed8f97d146b9cb24324541e90a0487a3ab3b",
+                "reference": "ee7fed8f97d146b9cb24324541e90a0487a3ab3b",
                 "shasum": ""
             },
             "require": {
@@ -124,11 +124,6 @@
                 "php": ">=5.4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Caffeinated\\Menus\\": "src/Caffeinated/Menus/"
@@ -151,7 +146,7 @@
                 "menu",
                 "navigation"
             ],
-            "time": "2015-04-23 18:04:48"
+            "time": "2015-05-11 23:04:20"
         },
         {
             "name": "caffeinated/modules",
@@ -4305,7 +4300,6 @@
         "caffeinated/modules": 20,
         "caffeinated/flash": 20,
         "caffeinated/shinobi": 20,
-        "caffeinated/menus": 20,
         "caffeinated/plugins": 20,
         "laracasts/presenter": 20,
         "kalnoy/nestedset": 20,

@@ -40,18 +40,19 @@ class DashboardController extends GeneralController {
 //dd(Theme::getProperty('theme::name', 'default value if nothing is returned'));
 //dd(Theme::all());
 //dd(Theme::getActive());
+//dd(Theme::View('modules.general.landing'));
 
 		if ( Auth::user() != null) {
 			if ( Auth::user()->can('manage_admin') ) {
 //				return View('general::dashboard');
-				return Theme::View('modules.general.dashobard');
+				return Theme::View('modules.general.dashboard');
 			}
 		}
 //dd(Theme::all());
-//dd(Theme::View('modules.general.landing'));
 //		return View('general::landing');
 //Theme::setLayout('bootstrap');
 
+//		return View('general::landing');
 		return Theme::View('modules.general.landing');
 
 	}

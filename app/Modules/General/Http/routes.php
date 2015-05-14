@@ -24,6 +24,7 @@ function()
 		));
 
 	Route::get('/', array(
+//		'uses'=>'GeneralController@index'
 		'uses'=>'DashboardController@index'
 		));
 
