@@ -1,4 +1,4 @@
-@extends('app')
+@extends('bootstrap')
 
 {{-- Web site Title --}}
 @section('title')
@@ -17,6 +17,8 @@
 
 {{-- Content --}}
 @section('content')
+
+{{ dd('die') }}
 
 	<p>WELCOME!</p>
 

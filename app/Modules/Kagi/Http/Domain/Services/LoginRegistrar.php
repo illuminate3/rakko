@@ -32,6 +32,7 @@ class LoginRegistrar extends Model {
 
 		$user = $this->findOrFail($id);
 		$user->last_login = new DateTime;
+//dd($user);
 
 		$user->update();
 	}

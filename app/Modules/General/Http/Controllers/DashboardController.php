@@ -12,6 +12,7 @@ use App\Modules\Kagi\Http\Domain\Models\User;
 
 use Auth;
 use Theme;
+//use View;
 
 class DashboardController extends GeneralController {
 
@@ -25,7 +26,7 @@ class DashboardController extends GeneralController {
 // 		$this->role = $role;
 
 // middleware
-		$this->middleware('guest');
+//		$this->middleware('guest');
 	}
 
 
@@ -39,14 +40,18 @@ class DashboardController extends GeneralController {
 //dd(Auth::user());
 //dd(Theme::getProperty('theme::name', 'default value if nothing is returned'));
 //dd(Theme::all());
-dd(Theme::getActive());
+//dd(Theme::getActive());
 
-		if ( Auth::user() ) {
+		if ( Auth::user() != null) {
 			if ( Auth::user()->can('manage_admin') ) {
 				return View('general::dashboard');
 			}
 		}
+//dd(Theme::all());
+//dd(Theme::View('modules.general.landing'));
 //		return View('general::landing');
+//Theme::setLayout('bootstrap');
+
 		return Theme::View('modules.general.landing');
 
 	}
