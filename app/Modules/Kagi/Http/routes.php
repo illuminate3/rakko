@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Module Routes
+| Module Kagi
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for the module.
@@ -30,14 +30,14 @@ Route::get('welcome/kagi', array(
 
 
 
-Route::group(
-[
-	'prefix' => LaravelLocalization::setLocale(),
-//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-	'middleware' => [ 'localeSessionRedirect' ]
-],
-function()
-{
+// Route::group(
+// [
+// 	'prefix' => LaravelLocalization::setLocale(),
+// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+// 	'middleware' => [ 'localeSessionRedirect' ]
+// ],
+// function()
+// {
 
 // Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 // {
@@ -55,7 +55,7 @@ function()
 		Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
 	});
 
-});
+// });
 
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {

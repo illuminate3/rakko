@@ -12,7 +12,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $middleware = [
 		'App\Http\Middleware\SetTheme',
-//		'App\Http\Middleware\Language',
+		'App\Http\Middleware\Language',
 		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
 		'Illuminate\Cookie\Middleware\EncryptCookies',
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
@@ -29,8 +29,8 @@ class Kernel extends HttpKernel {
 	protected $routeMiddleware = [
 // Locale REDIRECTION MIDDLEWARE
 		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect',
-		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+// 		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect',
+// 		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
 // auth middleware
 		'auth'						=> 'App\Http\Middleware\Authenticate',
 		'auth.basic'				=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',

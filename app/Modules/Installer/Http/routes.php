@@ -3,19 +3,19 @@
 
 /*
 |--------------------------------------------------------------------------
-| Module: General
+| Module: Installer
 |--------------------------------------------------------------------------
 */
 
 
-Route::group(
-[
-	'prefix' => LaravelLocalization::setLocale(),
-//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-	'middleware' => [ 'localeSessionRedirect' ]
-],
-function()
-{
+// Route::group(
+// [
+// 	'prefix' => LaravelLocalization::setLocale(),
+// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+// 	'middleware' => [ 'localeSessionRedirect' ]
+// ],
+// function()
+// {
 // --------------------------------------------------------------------------
 
 // Resources
@@ -44,4 +44,4 @@ function()
 
 
 // --------------------------------------------------------------------------
-});
+// });

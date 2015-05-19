@@ -6,15 +6,16 @@
 |--------------------------------------------------------------------------
 */
 
+Route::pattern('lang', '[0-9a-z]+');
 
-Route::group(
-[
-	'prefix' => LaravelLocalization::setLocale(),
-//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-	'middleware' => [ 'localeSessionRedirect' ]
-],
-function()
-{
+// Route::group(
+// [
+// 	'prefix' => LaravelLocalization::setLocale(),
+// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+// 	'middleware' => [ 'localeSessionRedirect' ]
+// ],
+// function()
+// {
 // --------------------------------------------------------------------------
 
 // Resources
@@ -27,6 +28,13 @@ function()
 //		'uses'=>'GeneralController@index'
 		'uses'=>'DashboardController@index'
 		));
+
+Route::get('language/{lang}', array(
+//		'as' => 'language.select',
+		'uses' => 'LanguageController@setLanguage'
+		));
+
+
 
 // API DATA
 
@@ -52,4 +60,4 @@ function()
 
 
 // --------------------------------------------------------------------------
-});
+// });

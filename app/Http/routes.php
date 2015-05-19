@@ -26,18 +26,18 @@ Route::pattern('id', '[0-9]+');
 */
 
 
-Route::group(
-[
-	'prefix' => LaravelLocalization::setLocale(),
-//	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-	'middleware' => [ 'localeSessionRedirect' ]
-],
-function()
-{
+// Route::group(
+// [
+// 	'prefix' => LaravelLocalization::setLocale(),
+// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+// 	'middleware' => [ 'localeSessionRedirect' ]
+// ],
+// function()
+// {
 // --------------------------------------------------------------------------
 
 // set pattern for locales
-	Route::pattern('id', '[0-9]+');
+// 	Route::pattern('id', '[0-9]+');
 
 // Resources
 // Controllers
@@ -62,4 +62,4 @@ function()
 
 
 // --------------------------------------------------------------------------
-});
+// });

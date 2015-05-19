@@ -107,14 +107,16 @@
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown messages-menu">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-				<img alt="{{ LaravelLocalization::getCurrentLocale() }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . LaravelLocalization::getCurrentLocale() . '.png') }}">
-				{{-- LaravelLocalization::getCurrentLocaleName() --}}
+				<img alt="{{ Session::get('locale')  }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . Session::get('locale') . '.png') }}">
 				<b class="caret"></b>
 			</a>
 			<ul class="dropdown-menu">
 				@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 					<li>
+						<a rel="alternate" hreflang="{{$localeCode}}" href="/language/{{$localeCode}}"">
+{{--
 						<a rel="alternate" hreflang="{{$localeCode}}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"">
+--}}
 							<img alt="{{ $localeCode }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $localeCode . '.png') }}">
 							&nbsp;
 							{{-- LaravelLocalization::getLocalizedURL($localeCode) --}}

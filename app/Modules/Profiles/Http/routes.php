@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Module Routes
+| Module Profiles
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for the module.
