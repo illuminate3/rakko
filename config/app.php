@@ -148,8 +148,9 @@ return [
  * Extend Application Service Providers...
  */
 'App\Providers\MenuServiceProvider',
+'App\Providers\ViewComposerServiceProvider',
 //'App\Providers\ConfigWriterServiceProvider',
-//		'App\Providers\ConfigServiceProvider',
+//'App\Providers\ConfigServiceProvider',
 
 /*
  * DEV Package Service Providers
@@ -171,7 +172,7 @@ return [
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 'Intervention\Image\ImageServiceProvider',
-'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+//'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
 
 	],
 
@@ -236,7 +237,7 @@ return [
 'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
 'Datatables'			=> 'yajra\Datatables\Datatables',
 'Image'					=> 'Intervention\Image\Facades\Image',
-'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+//'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 'Node'					=> 'Kalnoy\Nestedset\Node',
 

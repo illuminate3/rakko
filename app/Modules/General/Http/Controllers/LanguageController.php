@@ -2,11 +2,11 @@
 namespace App\Modules\General\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Application;
 
 use App;
 use Config;
 use Lang;
-use LaravelLocalization;
 use Redirect;
 use Session;
 
@@ -32,21 +32,24 @@ class LanguageController extends Controller
 	public function __construct()
 	{
 //		$this->middleware('auth');
-		$this->middleware('guest');
+//		$this->middleware('guest');
 	}
 
 
 	public function setLanguage($lang)
 	{
 //dd($lang);
+//		App::setLocale(Session::get('locale'));
+//		$this->app->setLocale($lang);
+
+		Session::forget('locale');
 
 		Session::put('locale', $lang);
-//		App::setLocale(Session::get('locale'));
-//		App::setLocale($lang);
-		Lang::setLocale($lang);
-		LaravelLocalization::setLocale($lang);
+		App::setLocale($lang);
+//		Lang::setLocale($lang);
 
 		return Redirect::back();
+//dd('die');
 	}
 
 	/**
@@ -56,8 +59,7 @@ class LanguageController extends Controller
 	 */
 	public function index()
 	{
-// 		return view('home');
-//		return Theme::View('modules.general.dashboard');
+		//
 	}
 
 

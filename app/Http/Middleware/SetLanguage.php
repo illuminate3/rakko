@@ -10,15 +10,19 @@ use Illuminate\Contracts\Routing\Middleware;
 use App;
 use Closure;
 use Config;
-use Redirect;
+use Lang;
 use Session;
 
-class Language implements Middleware {
+class SetLanguage implements Middleware {
 
-	public function __construct(Application $app, Redirector $redirector, Request $request) {
-		$this->app = $app;
-		$this->redirector = $redirector;
-		$this->request = $request;
+	public function __construct(
+		Application $app,
+		Redirector $redirector,
+		Request $request
+		){
+			$this->app = $app;
+			$this->redirector = $redirector;
+			$this->request = $request;
 	}
 
 	/**
@@ -31,16 +35,42 @@ class Language implements Middleware {
 	public function handle($request, Closure $next)
 	{
 
-// 		if ( app('laravellocalization')->checkLocaleInSupportedLocales($params[0]) == true ) {
-// // put URL locale into session
-// 			Session::put('locale', $params[0]);
-// 			return $next($request);
-// 		}
-
-
-if ( Session::get('locale') != null ) {
-	App::setLocale( Config::get('app.locale') );
+if ( !(Session::has('locale')) ) {
+//dd('die');
+	Session::put('locale', Config::get('app.locale'));
+// 	App::setLocale( Config::get('app.locale') );
+// 	Lang::setLocale( Config::get('app.locale') );
 }
+
+
+// $params = explode('/', $request->path());
+//
+//
+// //
+// if ( $params[0] === 'language' ) {
+// $lang = $params[1];
+// //dd('die');
+// //dd($lang);
+// //dd($lang);
+// //
+// Session::forget('locale');
+// //
+// //
+// 		Session::put('locale', $lang);
+// //		App::setLocale(Session::get('locale'));
+// //		LaravelLocalization::setLocale($lang);
+// 		$this->app->setLocale($lang);
+//
+// 		App::setLocale($lang);
+// // 		Lang::setLocale($lang);
+// //App::setLocale('en');
+// //
+//
+// // App::setLocale($lang);
+//
+// }
+
+
 
 return $next($request);
 

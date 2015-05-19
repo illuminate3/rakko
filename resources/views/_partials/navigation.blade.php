@@ -111,15 +111,10 @@
 				<b class="caret"></b>
 			</a>
 			<ul class="dropdown-menu">
-				@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+				@foreach( $locales as $locale => $properties)
 					<li>
-						<a rel="alternate" hreflang="{{$localeCode}}" href="/language/{{$localeCode}}"">
-{{--
-						<a rel="alternate" hreflang="{{$localeCode}}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}"">
---}}
-							<img alt="{{ $localeCode }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $localeCode . '.png') }}">
-							&nbsp;
-							{{-- LaravelLocalization::getLocalizedURL($localeCode) --}}
+						<a rel="alternate" hreflang="{{ $locale }}" href="/language/{{ $locale }}">
+							<img alt="{{ $locale }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $locale . '.png') }}">
 							{{{ $properties['native'] }}}
 						</a>
 					</li>
