@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe69e10ca61fe162137c70ed5fe371ff",
+    "hash": "e106f85a825e94ae9baf52a3570494d4",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
-            "version": "2.4.1",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Arrilot/laravel-widgets.git",
-                "reference": "147bc985f97f4ebc03d353abe6d4153ee3b8e865"
+                "reference": "49a13b78ba2e7ce24ebd9e87627c55c8c9825e6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/147bc985f97f4ebc03d353abe6d4153ee3b8e865",
-                "reference": "147bc985f97f4ebc03d353abe6d4153ee3b8e865",
+                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/49a13b78ba2e7ce24ebd9e87627c55c8c9825e6c",
+                "reference": "49a13b78ba2e7ce24ebd9e87627c55c8c9825e6c",
                 "shasum": ""
             },
             "require": {
@@ -43,13 +43,14 @@
                     "email": "nekrasov.ilya90@gmail.com"
                 }
             ],
-            "description": "This package provides widget functionality to boost your Laravel views. Includes asynchronous mode and generator.",
+            "description": "This package provides widget functionality to boost your Laravel views. It also includes asynchronous widgets, reloadable widgets, generator and etc.",
             "homepage": "https://github.com/Arrilot/laravel-widgets",
             "keywords": [
+                "ajax",
                 "laravel",
                 "widgets"
             ],
-            "time": "2015-05-11 21:11:38"
+            "time": "2015-05-17 16:18:59"
         },
         {
             "name": "caffeinated/flash",
@@ -889,12 +890,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "c320999123f9a73ec8317ebc10d3e5c304d08f72"
+                "reference": "2070138040bbdcab50f39bd04050f6271d89c456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/c320999123f9a73ec8317ebc10d3e5c304d08f72",
-                "reference": "c320999123f9a73ec8317ebc10d3e5c304d08f72",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/2070138040bbdcab50f39bd04050f6271d89c456",
+                "reference": "2070138040bbdcab50f39bd04050f6271d89c456",
                 "shasum": ""
             },
             "require": {
@@ -925,7 +926,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-05-08 05:24:38"
+            "time": "2015-05-15 20:05:04"
         },
         {
             "name": "intervention/image",
@@ -1629,16 +1630,16 @@
         },
         {
             "name": "league/oauth1-client",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "b378b2ba54f0de789628c9b5784bcf01c8303adf"
+                "reference": "815b2dbd2b866409f3de6e4046a76e66b5af608e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/b378b2ba54f0de789628c9b5784bcf01c8303adf",
-                "reference": "b378b2ba54f0de789628c9b5784bcf01c8303adf",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/815b2dbd2b866409f3de6e4046a76e66b5af608e",
+                "reference": "815b2dbd2b866409f3de6e4046a76e66b5af608e",
                 "shasum": ""
             },
             "require": {
@@ -1688,55 +1689,7 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2015-04-07 00:07:18"
-        },
-        {
-            "name": "mcamara/laravel-localization",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcamara/laravel-localization.git",
-                "reference": "952d26841ab9f4bc76460514609d38b98311c898"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/952d26841ab9f4bc76460514609d38b98311c898",
-                "reference": "952d26841ab9f4bc76460514609d38b98311c898",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.0.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.0.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [],
-                "psr-0": {
-                    "Mcamara\\LaravelLocalization": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marc Cámara",
-                    "email": "mcamara88@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easy localization for Laravel",
-            "homepage": "https://github.com/mcamara/laravel-localization",
-            "keywords": [
-                "laravel",
-                "localization",
-                "php"
-            ],
-            "time": "2015-03-11 16:51:00"
+            "time": "2015-05-18 00:04:43"
         },
         {
             "name": "monolog/monolog",

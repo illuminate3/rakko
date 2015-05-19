@@ -29,10 +29,10 @@ Route::pattern('lang', '[0-9a-z]+');
 		'uses'=>'DashboardController@index'
 		));
 
-	Route::get('language/{lang}', array(
-//		'as' => 'language.select',
-		'uses' => 'LanguageController@setLanguage'
-		));
+// 	Route::get('language/{lang}', array(
+// //		'as' => 'language.select',
+// 		'uses' => 'LanguageController@setLanguage'
+// 		));
 
 
 

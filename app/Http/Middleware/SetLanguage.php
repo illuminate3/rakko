@@ -43,23 +43,23 @@ if ( !(Session::has('locale')) ) {
 }
 
 
-// $params = explode('/', $request->path());
+//$params = explode('/', $request->path());
+
+
 //
-//
-// //
 // if ( $params[0] === 'language' ) {
 // $lang = $params[1];
 // //dd('die');
 // //dd($lang);
 // //dd($lang);
 // //
-// Session::forget('locale');
+// //Session::forget('locale');
 // //
 // //
-// 		Session::put('locale', $lang);
+// //		Session::put('locale', $lang);
 // //		App::setLocale(Session::get('locale'));
 // //		LaravelLocalization::setLocale($lang);
-// 		$this->app->setLocale($lang);
+// //		$this->app->setLocale($lang);
 //
 // 		App::setLocale($lang);
 // // 		Lang::setLocale($lang);
@@ -70,6 +70,7 @@ if ( !(Session::has('locale')) ) {
 //
 // }
 
+//dd(App::setLocale('es'));
 
 
 return $next($request);

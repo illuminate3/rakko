@@ -16,8 +16,23 @@ Route::pattern('token', '[0-9a-z]+');
 // set pattern for overall
 Route::pattern('id', '[0-9]+');
 
+//dd(App::setLocale('es'));
+
+// Route::get('/language/{lang}', function($lang)
+// {
+// 		Session::put('locale', $lang);
+//
+// 		return Redirect::back();
+// });
+// 		App::setLocale('es');
 
 
+Route::get('/language/{lang}', function ($lang) {
+	Session::put('locale', $lang);
+	App::setLocale('es');
+//dd($lang);
+	return redirect('/');
+});
 
 /*
 |--------------------------------------------------------------------------
