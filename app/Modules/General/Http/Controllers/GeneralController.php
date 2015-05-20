@@ -39,7 +39,6 @@ class GeneralController extends Controller
 	 */
 	public function index()
 	{
-// 		return View('general::general');
 		return Theme::View('modules.general.landing');
 	}
 
@@ -50,7 +49,6 @@ class GeneralController extends Controller
 	 */
 	public function welcome()
 	{
-// 		return View('general::general');
 		return Theme::View('modules.general.general');
 	}
 

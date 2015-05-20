@@ -1,14 +1,10 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
-| Module Kagi
+| Kagi
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for the module.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
 /** ------------------------------------------
@@ -23,44 +19,37 @@ Route::model('role', 'Role');
 */
 
 
+// Resources
+
+
+// Controllers
 
 Route::get('welcome/kagi', array(
 	'uses'=>'KagiController@welcome'
 	));
 
+Route::get('social/login', 'SocialAuthController@login');
+
+Route::controllers([
+	'auth' => 'kagiAuthController',
+	'password' => 'KagiPasswordController',
+]);
+Route::group(['prefix' => 'auth'], function() {
+	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
+	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
+});
+
+// API DATA
 
 
-// Route::group(
-// [
-// 	'prefix' => LaravelLocalization::setLocale(),
-// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-// 	'middleware' => [ 'localeSessionRedirect' ]
-// ],
-// function()
-// {
-
-// Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-// {
-//------- ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP -------//
-
-// Login a user with GitHub (or any provider).
-	Route::get('social/login', 'SocialAuthController@login');
-
-	Route::controllers([
-		'auth' => 'kagiAuthController',
-		'password' => 'KagiPasswordController',
-	]);
-	Route::group(['prefix' => 'auth'], function() {
-		Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
-		Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
-	});
-
-// });
-
-
-//Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
 Route::group(['prefix' => 'admin'], function() {
-	Route::pattern('id', '[0-9]+');
+
+// Resources
 
 # Users
 	Route::resource('users', 'UsersController');
@@ -70,7 +59,7 @@ Route::group(['prefix' => 'admin'], function() {
 # Permissions
 	Route::resource('permissions', 'PermissionsController');
 
-
+// Controllers
 // API DATA
 	Route::get('api/users', array(
 	//	'as'=>'api.users',
@@ -86,3 +75,4 @@ Route::group(['prefix' => 'admin'], function() {
 		));
 
 });
+// --------------------------------------------------------------------------

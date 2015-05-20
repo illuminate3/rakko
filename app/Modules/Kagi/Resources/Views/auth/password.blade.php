@@ -9,7 +9,7 @@
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">{{ trans('kotoba::button.log_in') }}</a></li>
+		<li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">{{ trans('kotoba::button.social_log_in') }}</a></li>
 		<li role="presentation" class="active"><a href="#forgot_password" aria-controls="forgot_password" role="forgot_password" data-toggle="tab">{{ trans('kotoba::button.forgot_password') }}</a></li>
 		<li role="presentation"><a href="/auth/register" aria-controls="register" role="tab">{{ trans('kotoba::button.register') }}</a></li>
 		<li role="presentation"><a href="/auth/login" aria-controls="login">{{ trans('kotoba::button.admin') }}</a></li>

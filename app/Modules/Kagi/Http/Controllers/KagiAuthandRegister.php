@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Request as Request;
 
 use Config;
 use Flash;
+use Theme;
 
 trait KagiAuthandRegister {
 
@@ -102,7 +103,7 @@ trait KagiAuthandRegister {
 			Flash::error(trans('kotoba::auth.error.not_approved'));
 		}
 
-		return View('kagi::auth.login');
+		return Theme::View('modules.kagi.auth.login');
 	}
 
 	/**

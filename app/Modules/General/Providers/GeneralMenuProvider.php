@@ -5,7 +5,7 @@ use App\Providers\MenuServiceProvider;
 
 use Auth;
 use Config;
-//use LaravelLocalization;
+use Lang;
 use Menu;
 
 class GeneralMenuProvider extends MenuServiceProvider {
@@ -26,8 +26,8 @@ class GeneralMenuProvider extends MenuServiceProvider {
 
 // right side drop down
 		$menu = Menu::get('admin');
-		$menu->add('Statuses', 'admin/statuses');
-		$menu->add('Employees', 'admin/statuses');
+		$menu->add(Lang::choice('kotoba::general.status', 2), 'admin/statuses');
+//		$menu->add(Lang::choice('kotoba::hr.employee', 2), 'admin/statuses');
 
 	}
 

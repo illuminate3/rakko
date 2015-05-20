@@ -15,66 +15,42 @@ Route::pattern('token', '[0-9a-z]+');
 
 // set pattern for overall
 Route::pattern('id', '[0-9]+');
+Route::pattern('lang', '[0-9a-z]+');
 
-//dd(App::setLocale('es'));
-
-// Route::get('/language/{lang}', function($lang)
-// {
-// 		Session::put('locale', $lang);
-//
-// 		return Redirect::back();
-// });
-// 		App::setLocale('es');
-
-
-Route::get('/language/{lang}', function ($lang) {
-	Session::put('locale', $lang);
-	App::setLocale('es');
-//dd($lang);
-	return redirect('/');
-});
 
 /*
 |--------------------------------------------------------------------------
-| Module: General
+| Main
 |--------------------------------------------------------------------------
 */
 
 
-// Route::group(
-// [
-// 	'prefix' => LaravelLocalization::setLocale(),
-// //	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-// 	'middleware' => [ 'localeSessionRedirect' ]
-// ],
-// function()
-// {
-// --------------------------------------------------------------------------
-
-// set pattern for locales
-// 	Route::pattern('id', '[0-9]+');
+Route::get('/language/{lang}', function ($lang) {
+	Session::put('locale', $lang);
+//	App::setLocale($lang);
+	return redirect('/');
+	});
 
 // Resources
 // Controllers
 
-//Route::get('/', 'HomeController@index');
-// 	Route::get('home', 'HomeController@index');
-	Route::get('welcome', 'WelcomeController@index');
+Route::get('welcome', 'WelcomeController@index');
 
 // API DATA
 
 
-// Set pattern for admin
-	Route::group(['prefix' => 'admin'], function() {
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function() {
 
-		Route::pattern('id', '[0-9]+');
+	Route::pattern('id', '[0-9]+');
 
-// Admin Resources
-// Admin Controllers
-// Admin API DATA
+// Resources
+// Controllers
+// API DATA
 
-	});
-
-
+});
 // --------------------------------------------------------------------------
-// });

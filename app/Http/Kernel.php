@@ -27,10 +27,6 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-// Locale REDIRECTION MIDDLEWARE
-//		'localize'					=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-// 		'localeSessionRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect',
-// 		'localizationRedirect'		=> 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
 // auth middleware
 		'auth'						=> 'App\Http\Middleware\Authenticate',
 		'auth.basic'				=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',

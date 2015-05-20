@@ -4,6 +4,7 @@ namespace App\Modules\Profiles\Providers;
 use App\Providers\MenuServiceProvider;
 
 use Auth;
+use Lang;
 use Menu;
 
 class ProfileMenuProvider extends MenuServiceProvider {
@@ -23,7 +24,7 @@ class ProfileMenuProvider extends MenuServiceProvider {
 
 // right side drop down
 		$menu = Menu::get('admin');
-		$menu->add('Profiles', 'profiles');
+		$menu->add(Lang::choice('kotoba::hr.profile', 2), 'profiles');
 
 	}
 
