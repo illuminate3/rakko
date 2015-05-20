@@ -56,7 +56,6 @@ I do use this as my base code on a daily basis so expect progression and vetting
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/edit_user.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/edit_role.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/permissions.png)
-![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/permissions.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/profile.png)
 
 
@@ -175,6 +174,20 @@ SESSION_DRIVER=file
 vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServiceProvider"
 ```
 The config files for each module has the vendor:publish code included.
+
+
+# add other modules
+
+```
+https://github.com/illuminate3/kantoku
+
+https://github.com/illuminate3/origami
+```
+
+Just download these, unzip and upload to the modules directory.
+The installer will have already added the permissions.
+
+I will fix the installer in up-coming updates to solve this issue.
 
 
 # Coding Standards
