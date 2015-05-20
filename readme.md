@@ -44,6 +44,20 @@ I do use this as my base code on a daily basis so expect progression and vetting
 ## Screen Shots
 
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/welcome.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/installer.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/main_page.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/multi_lingual.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/social_login.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/admin_dash.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/modules.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/themes.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/users.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/user_info.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/edit_user.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/edit_role.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/permissions.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/permissions.png)
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/profile.png)
 
 
 ## Modules
