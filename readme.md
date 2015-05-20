@@ -36,11 +36,15 @@ I do use this as my base code on a daily basis so expect progression and vetting
 
 
 # Future
-- [ ] screenshots -- will up them soon
 - [ ] website
 - [ ] demo site or video
 - [ ] clean up code
 - [ ] fix deletes in the modules
+
+## Screen Shots
+
+![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/welcome.png)
+
 
 ## Modules
 * Installer - a simple installer for Rakko
@@ -156,6 +160,8 @@ SESSION_DRIVER=file
 ```
 vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServiceProvider"
 ```
+The config files for each module has the vendor:publish code included.
+
 
 # Coding Standards
 I've been trying my best to confirm ro PSR-0-4 standards.
