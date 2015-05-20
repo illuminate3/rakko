@@ -19,4 +19,4 @@ User ID: @if(isset(Auth::user()->id)) {{ Auth::user()->id }} @endif
 {{-- var_dump($errors) --}}
 
 
-{{ trans('kotoba::general.home') }}
+{{-- trans('kotoba::general.home') --}}
