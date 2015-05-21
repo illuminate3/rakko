@@ -82,11 +82,6 @@
 							{{ Lang::choice('kotoba::permission.permission', 2) }}
 						</a>
 					</li>
-					<li>
-						<a href="/admin/manager">
-							{{ trans('kotoba::module.manager') }}
-						</a>
-					</li>
 				<li class="divider"></li>
 					@if (count($menu_admin->roots()) != 0)
 						@include('_partials.menu', ['items'=> $menu_admin->roots()])
