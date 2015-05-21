@@ -96,7 +96,7 @@ These are included.
 These are packages that are included with Rakko.
 
 
-## Easy Install
+## Easy Install [still testing, installer may timeout or just stall before running migrations]
 
 1. Down load and upload to server
 2. Run composer install
@@ -107,73 +107,6 @@ These are packages that are included with Rakko.
 
 
 * This might fail since the installer is actually still in development.
-
-
-## Manual Install
-
-1. Down load and upload to server
-2. Run composer install
-3. Create the database
-4. Copy paste the .env information and set to your specific server (provide below)
-5. Run the following:
-
-a.
-```
-php artisan module:migrate Manager
-```
-b.
-```
-php artisan module:migrate Kagi
-```
-c.
-```
-php artisan module:seed Manager
-php artisan module:seed Kagi
-```
-d.
-```
-php artisan module:migrate Profiles
-php artisan module:seed Profiles
-```
-
-6. login at http://yoursite/auth/login
-	login:		admin@admin.com
-	password:	kagiadmin
-
-
-# .env file
-```
-APP_ENV=local
-APP_DEBUG=false
-APP_KEY=whatevergetsgenerated
-APP_URL=http://localhost
-
-DB_HOST=127.0.0.1
-DB_DATABASE=databasename
-DB_USERNAME=mysqlusername
-DB_PASSWORD=mysqlpassword
-
-EMAIL_HOST=localhost
-EMAIL_PORT=1025
-EMAIL_FROM_ADDRESS=email@email.com
-EMAIL_FROM_NAME=fromname
-EMAIL_ENCRYPTION=null
-
-GITHUB_CLIENT_ID=githubid
-GITHUB_CLIENT_SECRET=githubsecret
-GOOGLE_CLIENT_ID=thatreallylonggoogleclientid
-GOOGLE_CLIENT_SECRET=nosolongsecret
-
-
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-```
-
-# module publish command
-```
-vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServiceProvider"
-```
-The config files for each module has the vendor:publish code included.
 
 
 # add other modules
@@ -189,6 +122,82 @@ The installer will have already added the permissions.
 
 I will fix the installer in up-coming updates to solve this issue.
 
+
+
+## Manual Install
+
+1. Down load and upload to server
+2. Run composer install
+3. Create the database
+4. download and upload the modules listed above
+5. Copy paste the .env information and set to your specific server (provide below)
+6. Run the following:
+
+a.
+```
+php artisan module:migrate Kagi
+php artisan module:seed Kagi
+```
+b.
+```
+php artisan module:migrate Profiles
+php artisan module:seed Profiles
+```
+c.
+```
+php artisan module:seed Kantoku
+```
+d.
+```
+php artisan module:seed Origami
+```
+
+6. login at http://yoursite/auth/login
+	login:		admin@admin.com
+	password:	kagiadmin
+
+	login:		user@user.com
+	password:	kagiuser
+
+
+# .env file
+```
+APP_ENV=local
+APP_DEBUG=false
+APP_KEY=whatevergetsgenerated
+APP_URL=http://localhost
+
+DB_HOST=127.0.0.1
+DB_DATABASE=databasename
+DB_USERNAME=mysqlusername
+DB_PASSWORD=mysqlpassword
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+
+EMAIL_HOST=localhost
+EMAIL_PORT=1025
+EMAIL_FROM_ADDRESS=
+EMAIL_FROM_NAME=
+EMAIL_ENCRYPTION=NULL
+
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_REDIRECT=http://www.site.com/social/login
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT=http://www.site.com/social/login
+
+STRIPE_MODEL=User
+STRIPE_SECRET=
+```
+
+# module publish command
+```
+vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServiceProvider"
+```
+The config files for each module has the vendor:publish code included.
 
 # Coding Standards
 I've been trying my best to confirm ro PSR-0-4 standards.
