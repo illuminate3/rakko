@@ -24,12 +24,13 @@ class ProfileUpdateRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'name'						=> 'required|min:3',
-			'email'						=> 'required|email',
+			'first_name'				=> 'required',
+			'last_name'					=> 'required',
+			'email_1'					=> 'required|email',
 //			'password'					=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
 //			'password'					=> 'required|confirmed|min:6',
 //			'password_confirmation'		=> 'required_with:password'
-			'roles'						=> 'required',
+//			'roles'						=> 'required',
 		];
 	}
 

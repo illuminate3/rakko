@@ -94,51 +94,58 @@ class ProfileRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input);
-		$user = $this->getById($id);
 
-		if ( isset($input['name']) ) {
-			$user->name = $input['name'];
-		}
-		if ( isset($input['email']) ) {
-			$user->email = $input['email'];
-		}
+		$profile = Profile::find($id);
+		$profile->update($input);
 
-		if ( $input['password'] != null ) {
-			$user->password = Hash::make($input['password']);
-		}
 
-		if ( isset($input['blocked']) ) {
-//			$user->blocked = $input['blocked'];
-			$user->blocked = 1;
-		} else {
-			$user->blocked = 0;
-		}
-		if ( isset($input['banned']) ) {
-//			$user->banned = $input['banned'];
-			$user->banned = 1;
-		} else {
-			$user->banned = 0;
-		}
-		if ( isset($input['confirmed']) ) {
-//			$user->confirmed = $input['confirmed'];
-			$user->confirmed = 1;
-		} else {
-			$user->confirmed = 0;
-		}
-		if ( isset($input['activated']) ) {
-//			$user->activated = $input['activated'];
-			$user->activated = 1;
-			$user->activated_at = date("Y-m-d H:i:s");
-
-		} else {
-			$user->activated = 0;
-			$user->activated_at = null;
-		}
-//dd($user);
-
-		$user->update();
-
-		$user->syncRoles($input['roles']);
+//		$user = $this->getById($id);
+// 		$user_id = $this->getUserID($id);
+// 		$user = User::find($user_id);
+//
+// 		if ( isset($input['name']) ) {
+// 			$user->name = $input['name'];
+// 		}
+// 		if ( isset($input['email']) ) {
+// 			$user->email = $input['email'];
+// 		}
+//
+// 		if ( $input['password'] != null ) {
+// 			$user->password = Hash::make($input['password']);
+// 		}
+//
+// 		if ( isset($input['blocked']) ) {
+// //			$user->blocked = $input['blocked'];
+// 			$user->blocked = 1;
+// 		} else {
+// 			$user->blocked = 0;
+// 		}
+// 		if ( isset($input['banned']) ) {
+// //			$user->banned = $input['banned'];
+// 			$user->banned = 1;
+// 		} else {
+// 			$user->banned = 0;
+// 		}
+// 		if ( isset($input['confirmed']) ) {
+// //			$user->confirmed = $input['confirmed'];
+// 			$user->confirmed = 1;
+// 		} else {
+// 			$user->confirmed = 0;
+// 		}
+// 		if ( isset($input['activated']) ) {
+// //			$user->activated = $input['activated'];
+// 			$user->activated = 1;
+// 			$user->activated_at = date("Y-m-d H:i:s");
+//
+// 		} else {
+// 			$user->activated = 0;
+// 			$user->activated_at = null;
+// 		}
+// //dd($user);
+//
+// 		$user->update();
+//
+// 		$user->syncRoles($input['roles']);
 	}
 
 
@@ -198,6 +205,16 @@ class ProfileRepository extends BaseRepository {
 //dd($profile);
 
 		return $profile;
+	}
+
+	public function getUserID($id)
+	{
+		$user_id = DB::table('profiles')
+			->where('id', '=', $id)
+			->pluck('user_id');
+//dd($profile);
+
+		return $user_id;
 	}
 
 

@@ -167,7 +167,7 @@ dd("store");
 //dd($request->password);
 		$this->profile->update($request->all(), $id);
 		Flash::success( trans('kotoba::account.success.update') );
-		return redirect('admin/profiles');
+		return redirect('profiles/' . $id);
 	}
 
 	/**
