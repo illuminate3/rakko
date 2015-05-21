@@ -130,10 +130,10 @@ dd("show");
 		$id
 		)
 	{
-dd("destroy");
 		$this->permission->destroy($id);
 
-		return redirect('permission')->with('ok', trans('back/permissions.destroyed'));
+		Flash::success( trans('kotoba::permission.success.delete') );
+		return redirect('admin/permissions');
 	}
 
 	/**
