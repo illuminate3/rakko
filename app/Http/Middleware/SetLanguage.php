@@ -22,9 +22,9 @@ class SetLanguage implements Middleware {
 // fix for setting App::locale
 		$lang = Session::get('locale');
 		if ($lang != null) {
-			\App::setLocale($lang);
+//			\App::setLocale($lang);
+//\App::setLocale(Session::get('locale'));
 		}
-
 	}
 
 	/**

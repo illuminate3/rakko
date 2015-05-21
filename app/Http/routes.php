@@ -30,6 +30,8 @@ Route::get('/language/{lang}', function ($lang) {
 //	App::setLocale($lang);
 	return redirect('/');
 	});
+// dd(Session::get('locale'));
+// \App::setLocale(Session::get('locale'));
 
 // Resources
 // Controllers
