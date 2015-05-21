@@ -92,8 +92,10 @@ class StatusesController extends GeneralController {
 		$modal_route = 'admin.statuses.destroy';
 		$modal_id = $id;
 		$model = '$status';
+//dd($modal_body);
 
-		return Theme::View('modules.general.statuses.edit',
+		return View('general::statuses.edit',
+//		return Theme::View('modules.general.statuses.edit',
 			$this->status->edit($id),
 				compact(
 					'modal_title',
