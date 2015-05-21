@@ -32,7 +32,6 @@ I do use this as my base code on a daily basis so expect progression and vetting
 ## Screen Shots
 
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/welcome.png)
-![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/installer.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/main_page.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/multi_lingual.png)
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/social_login.png)

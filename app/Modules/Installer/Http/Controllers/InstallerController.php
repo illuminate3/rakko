@@ -13,9 +13,22 @@ use Config;
 use Caffeinated\Flash\Facades\Flash as Flash;
 use Input;
 use File;
+use Theme;
 
 class InstallerController extends Controller
 {
+
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function welcome()
+	{
+		return Theme::View('modules.installer.installer');
+//		return View('installer::installer');
+	}
 
 
 /*

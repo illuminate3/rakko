@@ -7,6 +7,12 @@
 |--------------------------------------------------------------------------
 */
 
+
+Route::get('welcome/installer', array(
+	'uses'=>'InstallerController@welcome'
+	));
+
+
 Route::group(
 	[
 	'prefix'=>'install',

@@ -27,20 +27,10 @@ class GeneralController extends Controller
 		$this->middleware('auth');
 */
 // middleware
-//		$this->middleware('auth');
-		$this->middleware('guest');
-//		$this->middleware('admin');
+		$this->middleware('auth');
+		$this->middleware('admin');
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return Theme::View('modules.general.landing');
-	}
 
 	/**
 	 * Show the application welcome screen to the user.
@@ -50,6 +40,17 @@ class GeneralController extends Controller
 	public function welcome()
 	{
 		return Theme::View('modules.general.general');
+	}
+
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return Theme::View('modules.general.landing');
 	}
 
 

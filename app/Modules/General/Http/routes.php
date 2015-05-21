@@ -14,6 +14,7 @@ Route::get('welcome/general', array(
 	'uses'=>'GeneralController@welcome'
 	));
 
+
 Route::get('/', array(
 	'uses'=>'DashboardController@index'
 	));

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use theme;
+
 //abstract class ProfileController extends BaseController {
 class ProfileController extends Controller
 {
@@ -35,8 +37,8 @@ class ProfileController extends Controller
 	 */
 	public function welcome()
 	{
-//dd("loaded");
-		return View('profiles::profiles');
+		return Theme::View('modules.profiles.profiles');
+//		return View('profiles::profiles');
 	}
 
 

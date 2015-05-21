@@ -6,6 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use Theme;
+
 //abstract class KagiController extends BaseController {
 class KagiController extends Controller
 {
@@ -37,7 +39,8 @@ class KagiController extends Controller
 	 */
 	public function welcome()
 	{
-		return View('kagi::kagi');
+		return Theme::View('modules.kagi.kagi');
+//		return View('kagi::kagi');
 	}
 
 
