@@ -204,7 +204,8 @@ dd("store");
 //			->orderBy('profiles.last_name', 'ASC');
 //		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
 //			->orderBy('last_name', 'ASC');
-		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2');
+		$query = Profile::select('id', 'first_name', 'last_name', 'email_1', 'email_2')
+			->orderBy('profiles.last_name', 'ASC');
 //dd($query);
 
 		return Datatables::of($query)

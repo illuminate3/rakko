@@ -176,7 +176,8 @@ class UsersController extends KagiController {
 //			->orderBy('users.email', 'ASC');
 //		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
 //			->orderBy('name', 'ASC');
-		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at');
+		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
+			->orderBy('users.email', 'ASC');
 //dd($query);
 
 		return Datatables::of($query)
