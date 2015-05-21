@@ -1,53 +1,34 @@
-<html>
-	<head>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<title>Kagi</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				display: table;
-				font-weight: 400;
-				font-family: 'Open Sans', sans-serif;
-				color: #111;
-			}
+@extends('module_info')
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+{{-- Web site Title --}}
+@section('title')
+{{ Config::get('general.title') }} :: @parent
+@stop
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+@section('styles')
+@stop
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+@section('scripts')
+@stop
 
-			.quote {
-				font-size: 24px;
-				text-align: left;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Kagi</div>
-				<div class="quote">
-					鍵 : kagi
-					<br>
-					noun - key also can refer to the lock itself
-					<br>
-					Kagi is a module for Laravel 5 Authentification and Authorization
-				</div>
+@section('inline-scripts')
+@stop
+
+
+{{-- Content --}}
+@section('content')
+
+	<div class="container">
+		<div class="content">
+			<div class="title">Kagi</div>
+			<div class="quote">
+				鍵 : kagi
+				<br>
+				noun - key also can refer to the lock itself
+				<br>
+				Kagi is a module for Laravel 5 Authentification and Authorization
 			</div>
 		</div>
-	</body>
-</html>
+	</div>
+
+@stop

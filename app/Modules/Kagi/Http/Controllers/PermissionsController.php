@@ -97,7 +97,24 @@ dd("show");
 	public function edit($id)
 	{
 //dd("edit");
-		return View('kagi::permissions.edit',  $this->permission->edit($id));
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.permissions.destroy';
+		$modal_id = $id;
+		$model = '$permission';
+//dd($modal_body);
+
+		return View('kagi::permissions.edit',
+//		return Theme::View('modules.general.statuses.edit',
+			$this->permission->edit($id),
+				compact(
+					'modal_title',
+					'modal_body',
+					'modal_route',
+					'modal_id',
+					'model'
+			));
+//		return View('kagi::permissions.edit',  $this->permission->edit($id));
 	}
 
 	/**
