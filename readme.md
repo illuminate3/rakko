@@ -77,50 +77,27 @@ These are included.
 
 ## Packages
 ```
+"laravel/framework": "5.0.*",
 "illuminate3/kotoba": "dev-master",
 "caffeinated/modules": "dev-master",
-"caffeinated/themes": "~1.0",
+"caffeinated/themes": "~1.2",
 "caffeinated/flash": "dev-master",
 "caffeinated/shinobi": "dev-master",
-"caffeinated/menus": "~1.0@dev",
+"caffeinated/menus": "~1.0",
+"caffeinated/plugins": "dev-master",
 "laravel/socialite": "~2.0",
-"chumper/datatable": "dev-master",
 "laravelcollective/html": "~5.0",
 "laracasts/presenter": "dev-master",
-"yajra/laravel-datatables-oracle" : ">=v4.0.1",
+"yajra/laravel-datatables-oracle" : "~4.0",
 "graham-campbell/throttle": "~3.0",
 "intervention/image": "~2.1",
-"intervention/imagecache": "~2.1"
+"intervention/imagecache": "~2.1",
+"wikimedia/composer-merge-plugin": "~1.0",
+"kalnoy/nestedset": "dev-master",
+"arrilot/laravel-widgets": "~2.2"
 ```
 
 These are packages that are included with Rakko.
-
-
-## Easy Install [still testing, installer may timeout or just stall before running migrations]
-
-1. Down load and upload to server
-2. Run composer install
-3. Create the database
-4. copy paste the .env information and set to your specific server (provide below)
-5. go to http://name-of-your-site/install
-6. log in with the login and password provided at the last screen
-
-
-* This might fail since the installer is actually still in development.
-
-
-# add other modules
-
-```
-https://github.com/illuminate3/kantoku
-
-https://github.com/illuminate3/origami
-```
-
-Just download these, unzip and upload to the modules directory.
-The installer will have already added the permissions.
-
-I will fix the installer in up-coming updates to solve this issue.
 
 
 
@@ -129,38 +106,7 @@ I will fix the installer in up-coming updates to solve this issue.
 1. Down load and upload to server
 2. Run composer install
 3. Create the database
-4. download and upload the modules listed above
-5. Copy paste the .env information and set to your specific server (provide below)
-6. Run the following:
-
-a.
-```
-php artisan module:migrate Kagi
-php artisan module:seed Kagi
-```
-b.
-```
-php artisan module:migrate Profiles
-php artisan module:seed Profiles
-```
-c.
-```
-php artisan module:seed Kantoku
-```
-d.
-```
-php artisan module:seed Origami
-```
-
-6. login at http://yoursite/auth/login
-	login:		admin@admin.com
-	password:	kagiadmin
-
-	login:		user@user.com
-	password:	kagiuser
-
-
-# .env file
+4. Edit .env file
 ```
 APP_ENV=local
 APP_DEBUG=false
@@ -192,6 +138,63 @@ GOOGLE_REDIRECT=http://www.site.com/social/login
 STRIPE_MODEL=User
 STRIPE_SECRET=
 ```
+5. download and upload the modules below
+```
+https://github.com/illuminate3/kantoku
+
+https://github.com/illuminate3/origami
+```
+
+Just download these, upload to the modules directory, and unzip.
+
+6. Run the following:
+
+a.
+```
+php artisan module:migrate Kagi
+php artisan module:seed Kagi
+```
+b.
+```
+php artisan module:migrate Profiles
+php artisan module:seed Profiles
+```
+c.
+```
+php artisan module:migrate General
+php artisan module:seed General
+```
+d.
+```
+php artisan module:seed Kantoku
+```
+e.
+```
+php artisan module:seed Origami
+```
+
+6. login at http://yoursite/auth/login
+	login:		admin@admin.com
+	password:	kagiadmin
+
+	login:		user@user.com
+	password:	kagiuser
+
+
+
+## Easy Install [still testing, installer may timeout or just stall before running migrations]
+
+1. Down load and upload to server
+2. Run composer install
+3. Create the database
+4. copy paste the .env information and set to your specific server (provide below)
+5. go to http://name-of-your-site/install
+6. log in with the login and password provided at the last screen
+
+
+* This might fail since the installer is actually still in development.
+
+
 
 # module publish command
 ```
