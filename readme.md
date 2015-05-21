@@ -6,6 +6,7 @@
 > Rakko is the name of a river in Hokkaido, Japan. ( http://ja.wikipedia.org/wiki/楽古川 )
 
 
+
 ## About
 Rakko is the start of a platform to be used with Laravel 5.
 At the moment, however, Rakko is more of a bootstrap starter kit than a platform.
@@ -14,14 +15,6 @@ At the moment, however, Rakko is more of a bootstrap starter kit than a platform
 Rakko essentially uses translations based on the Kotoba package that is listed in composer.json.
 However, full multilingual ability still needs to be implemented.
 
-
-# Help
-I'm still a basic user regarding github and git.
-So I could use some help with splitting the modules into their own repositories.
-The same goes for tagging.
-
-
-I would also appreciate issues and pull requests.
 
 
 ## Version
@@ -35,11 +28,6 @@ However, even with tests things still break due to the nature of programing.
 I do use this as my base code on a daily basis so expect progression and vetting.
 
 
-# Future
-- [ ] website
-- [ ] demo site or video
-- [ ] clean up code
-- [ ] fix deletes in the modules
 
 ## Screen Shots
 
@@ -59,11 +47,18 @@ I do use this as my base code on a daily basis so expect progression and vetting
 ![alt tag](https://raw.github.com/illuminate3/rakko/master/public/images/screenshots/profile.png)
 
 
-## Modules
+
+## Modules (included)
 * Installer - a simple installer for Rakko
 * Manager - a simple module manager
 * Kagi - authentification and Authorization
 * Profiles - basic profiles to extend Kagi
+
+
+
+## Modules (to add)
+* Kantoku - a simple Module Manager for Rakko
+* Origami - a simple Theme Manager for Rakko
 
 
 ## Front End Requirements
@@ -202,6 +197,16 @@ vendor:publish --provider="App\Modules\ModuleName\Providers\ModuleNameServicePro
 ```
 The config files for each module has the vendor:publish code included.
 
+
+
+# Future
+- [ ] website
+- [ ] demo site or video
+- [ ] clean up code
+- [ ] fix deletes in the modules
+
+
+
 # Coding Standards
 I've been trying my best to confirm ro PSR-0-4 standards.
 
@@ -213,6 +218,7 @@ Want me to kick my addiction to tabs, well, yeah, try.
 I promise you that it'll take more than a few beers!
 
 
+
 ## Mentions
 A very special thanks and arigatou! to Kai over at ( https://github.com/caffeinated )
 Thanks for your patience and help!
@@ -222,6 +228,7 @@ I also should mention the 2 starter kits for L4. Without them I would never have
 Also, to Laravel. Besides being a "y'all" know a killer framework from Arkansas,
 but also for making me have to drive on the opposite side of the road again ... or if you rather say,
 the correct side of the road.
+
 
 
 # License
