@@ -39,9 +39,6 @@
 	@if ( !empty($profile->last_name ) )
 		&nbsp;{{{ $profile->last_name }}}
 	@endif
-	@if ( !empty($profile->prefix ) )
-		&nbsp;{{{ $profile->prefix }}}
-	@endif
 	@if ( !empty($profile->suffix ) )
 		&nbsp;{{{ $profile->suffix }}}
 	@endif
@@ -67,8 +64,8 @@
 					{{ trans('kotoba::account.primary_phone') }}:
 				</strong>
 				<br>
-				@if ( !empty($profile->primary_phone ) )
-					{{{ $profile->primary_phone }}}
+				@if ( !empty($profile->phone_1 ) )
+					{{{ $profile->phone_1 }}}
 				@endif
 				<br>
 				<br>
@@ -76,8 +73,8 @@
 					{{ trans('kotoba::account.secondary_phone') }}:
 				</strong>
 				<br>
-				@if ( !empty($profile->secondary_phone ) )
-					{{{ $profile->secondary_phone }}}
+				@if ( !empty($profile->phone_2 ) )
+					{{{ $profile->phone_2 }}}
 				@endif
 				<br>
 				<br>
@@ -104,11 +101,8 @@
 					{{ trans('kotoba::account.primary_email') }}:
 				</strong>
 				<br>
-				@if ( !empty($profile->email ) )
-					{{{ $profile->email }}}
-				@endif
-				@if ( !empty($profile->email ) )
-					{{{ $profile->user->email }}}
+				@if ( !empty($profile->email_1 ) )
+					{{{ $profile->email_1 }}}
 				@endif
 				<br>
 				<br>
@@ -116,8 +110,8 @@
 					{{ trans('kotoba::account.secondary_email') }}:
 				</strong>
 				<br>
-				@if ( !empty($profile->secondary_email ) )
-					{{{ $profile->secondary_email }}}
+				@if ( !empty($profile->email_2 ) )
+					{{{ $profile->email_2 }}}
 				@endif
 			</div>
 		</div>
@@ -144,7 +138,7 @@
 		</strong>
 		<br>
 		@if ( !empty($profile->notes ) )
-			{{{ $profile->user->notes }}}
+			{{{ $profile->notes }}}
 		@endif
 		<br>
 	</div><!-- ./panel-body -->

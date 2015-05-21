@@ -41,6 +41,7 @@ class Profile extends Model {
 		'address',
 		'city',
 		'state',
+		'zipcode',
 		'avatar',
 		'prefix',
 		'notes'

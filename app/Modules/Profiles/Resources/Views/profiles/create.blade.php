@@ -56,7 +56,7 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-arrows-h fa-fw"></i></span>
-		<input type="text" id="middle_name" name="middle_name" placeholder="{{ trans('kotoba::account.middle_name') }}" class="form-control">
+		<input type="text" id="middle_initial" name="middle_initial" placeholder="{{ trans('kotoba::account.middle_name') }}" class="form-control">
 </div>
 </div>
 <div class="form-group">
