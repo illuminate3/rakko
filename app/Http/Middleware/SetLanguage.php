@@ -21,9 +21,10 @@ class SetLanguage implements Middleware {
 
 // fix for setting App::locale
 		$lang = Session::get('locale');
-		if ($lang != null) {
+		if ($lang == null) {
 //			\App::setLocale($lang);
-//\App::setLocale(Session::get('locale'));
+//			\App::setLocale(Session::get('locale'));
+			Session::set('locale', Config::get('app.locale'));
 		}
 	}
 
@@ -37,11 +38,23 @@ class SetLanguage implements Middleware {
 	public function handle($request, Closure $next)
 	{
 
-		if ( !(Session::has('locale')) ) {
-			Session::put('locale', Config::get('app.locale'));
+//dd(Config::get('app.locale'));
+//dd(Session::get('locale'));
+//dd(Session::has('locale'));
+
+
+		$lang = Session::get('locale');
+		if ( $lang != App::getLocale() ) {
+			if ( Session::has('locale') && array_key_exists(Session::get('locale'), Config::get('languages.supportedLocales')) ) {
+				App::setLocale(Session::get('locale'));
+//dd('here');
+			} else {
+				App::setLocale(Config::get('app.fallback_locale'));
+			}
 		}
 
 		return $next($request);
+
 	}
 
 
