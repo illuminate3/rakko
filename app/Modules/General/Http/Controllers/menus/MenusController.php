@@ -1,18 +1,46 @@
 <?php
-namespace TypiCMS\Modules\Menus\Http\Controllers;
+namespace App\Modules\General\Http\Controllers;
 
-use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Menus\Http\Requests\FormRequest;
-use TypiCMS\Modules\Menus\Repositories\MenuInterface;
-use View;
+// use App\Modules\General\Http\Domain\Models\Status;
+// use App\Modules\General\Http\Domain\Repositories\StatusRepository;
 
-class AdminController extends BaseAdminController
-{
+use Illuminate\Http\Request;
+use App\Modules\General\Http\Requests\DeleteRequest;
+// use App\Modules\General\Http\Requests\StatusCreateRequest;
+// use App\Modules\General\Http\Requests\StatusUpdateRequest;
 
-    public function __construct(MenuInterface $menu)
-    {
-        parent::__construct($menu);
-    }
+// use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
+// use TypiCMS\Modules\Menus\Http\Requests\FormRequest;
+// use TypiCMS\Modules\Menus\Repositories\MenuInterface;
+
+
+use Datatables;
+use Flash;
+use Theme;
+
+class MenusController extends GeneralController {
+
+	/**
+	 * Status Repository
+	 *
+	 * @var Status
+	 */
+	protected $status;
+
+	public function __construct(
+			StatusRepository $status
+		)
+	{
+		$this->status = $status;
+// middleware
+		$this->middleware('admin');
+	}
+
+
+//     public function __construct(MenuInterface $menu)
+//     {
+//         parent::__construct($menu);
+//     }
 
     /**
      * List models
@@ -52,4 +80,6 @@ class AdminController extends BaseAdminController
         $this->repository->update($request->all());
         return $this->redirect($request, $model);
     }
+
+
 }
