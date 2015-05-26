@@ -33,7 +33,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return Theme::View('general.welcome');
+		return Theme::View('welcome');
 	}
 
 
