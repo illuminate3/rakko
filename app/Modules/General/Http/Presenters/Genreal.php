@@ -18,5 +18,13 @@ class General extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+    public function menuclass()
+    {
+        return $this->entity->menuclass;
+    }
+    public function title()
+    {
+        return $this->entity->name;
+    }
 
 }
