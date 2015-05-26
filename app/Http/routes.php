@@ -28,7 +28,7 @@ Route::pattern('lang', '[0-9a-z]+');
 Route::get('/language/{lang}', function ($lang) {
 	Session::put('locale', $lang);
 //	App::setLocale($lang);
-	return redirect('/');
+	return Redirect::back();
 	});
 // dd(Session::get('locale'));
 // \App::setLocale(Session::get('locale'));

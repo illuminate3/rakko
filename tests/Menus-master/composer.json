@@ -1,0 +1,22 @@
+{
+    "name": "typicms/menus",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samuel De Backer",
+            "email": "sdebacker@gmail.com"
+        }
+    ],
+    "require": {
+        "typicms/core": "~2.2.0",
+        "typicms/menulinks": "~2.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TypiCMS\\Modules\\Menus\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
