@@ -100,7 +100,7 @@ class MenusController extends GeneralController {
 		$modal_route = 'admin.menus.destroy';
 		$modal_id = $id;
 		$model = '$menu';
-//dd($modal_body);
+//dd($id);
 
 		return View('general::menus.edit',
 //		return Theme::View('modules.general.menus.edit',

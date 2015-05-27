@@ -69,9 +69,11 @@ class MenuRepository extends BaseRepository {
 	public function edit($id)
 	{
 		$menu = $this->model->find($id);
-//dd($module);
+		$lang = Session::get('locale');
+		$locales = $this->getLocales();
+//dd($locales);
 
-		return compact('menu');
+		return compact('menu', 'locales', 'lang');
 	}
 
 	/**

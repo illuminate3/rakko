@@ -48,20 +48,20 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.status') }}</th>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.title') }}</th>
+			<th>{{ trans('kotoba::table.status') }}</th>
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach ($menus as $menu)
 			<tr>
-				<td>{{ $menu->status }}</td>
 				<td>{{ $menu->name }}</td>
 				<td>{{ $menu->title }}</td>
+				<td>{{ $menu->status }}</td>
 				<td>
-					<a href="/admin/menus/{{ $menu_.id }}" class="btn btn-primary" title="{{ trans('kotoba::button.edit') }}">
+					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-primary" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
 						{{ trans('kotoba::button.edit') }}
 					</a>
