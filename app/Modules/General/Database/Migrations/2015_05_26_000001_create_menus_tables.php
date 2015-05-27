@@ -57,8 +57,8 @@ class CreateMenusTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'menus');
 		Schema::drop($this->prefix . 'menu_translations');
+		Schema::drop($this->prefix . 'menus');
 	}
 
 
