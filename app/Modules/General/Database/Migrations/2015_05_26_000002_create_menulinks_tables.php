@@ -24,17 +24,17 @@ class CreateMenulinksTables extends Migration
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-            $table->integer('menu_id')->unsigned();
-            $table->integer('page_id')->unsigned()->nullable();
-            $table->integer('parent_id')->unsigned()->nullable()->default(null);
-            $table->integer('position')->unsigned()->default(0);
-            $table->string('target', 10)->nullable();
-            $table->string('class')->nullable();
-            $table->string('icon_class')->nullable();
-            $table->boolean('has_categories')->nullable();
+			$table->integer('menu_id')->unsigned();
+			$table->integer('page_id')->unsigned()->nullable();
+			$table->integer('parent_id')->unsigned()->nullable()->default(null);
+			$table->integer('position')->unsigned()->default(0);
+			$table->string('target', 10)->nullable();
+			$table->string('class')->nullable();
+			$table->string('icon_class')->nullable();
+			$table->boolean('has_categories')->nullable();
 
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
-            $table->foreign('parent_id')->references('id')->on('menulinks')->onDelete('cascade');
+			$table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+			$table->foreign('parent_id')->references('id')->on('menulinks')->onDelete('cascade');
 
 			$table->softDeletes();
 			$table->timestamps();
@@ -46,7 +46,7 @@ class CreateMenulinksTables extends Migration
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->integer('menu_id')->unsigned();
+			$table->integer('menulink_id')->unsigned();
 			$table->string('locale')->index();
 			$table->boolean('status')->default(0);
 			$table->string('title', 100);
@@ -68,7 +68,7 @@ class CreateMenulinksTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop($this->prefix . 'menu_translations');
+		Schema::drop($this->prefix . 'menulink_translations');
 		Schema::drop($this->prefix . 'menulinks');
 	}
 
