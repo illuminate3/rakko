@@ -1,38 +1,86 @@
-<div ng-app="typicms" ng-cloak ng-controller="ListController">
+@extends('app')
 
-    <h1>
-        <a href="{{ route('admin.' . $module . '.create') }}" class="btn-add"><i class="fa fa-plus-circle"></i><span class="sr-only">New</span></a>
-        <span>@{{ models.length }} @choice('menus::global.menus', 2)</span>
-    </h1>
+{{-- Web site Title --}}
+@section('title')
+{{ Lang::choice('kotoba::cms.menu', 2) }} :: @parent
+@stop
 
-    <div class="btn-toolbar" role="toolbar" ng-include="'/views/partials/btnLocales.html'"></div>
+@section('styles')
+	<link href="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
+@stop
 
-    <div class="table-responsive">
+@section('scripts')
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+@stop
 
-        <table st-table="displayedModels" st-safe-src="models" st-order st-filter class="table table-condensed table-main">
-            <thead>
-                <tr>
-                    <th class="delete"></th>
-                    <th class="edit"></th>
-                    <th st-sort="status" class="status st-sort">Status</th>
-                    <th st-sort="name" st-sort-default="true" class="name st-sort">Name</th>
-                    <th st-sort="title" class="title st-sort">Title</th>
-                </tr>
-            </thead>
+@section('inline-scripts')
+$(document).ready(function() {
+oTable =
+	$('#table').DataTable({
+	});
+});
+@stop
 
-            <tbody>
-                <tr ng-repeat="model in displayedModels">
-                    <td typi-btn-delete action="delete(model)"></td>
-                    <td>
-                        @include('core::admin._button-edit')
-                    </td>
-                    <td typi-btn-status action="toggleStatus(model)" model="model"></td>
-                    <td>@{{ model.name }}</td>
-                    <td>@{{ model.title }}</td>
-                </tr>
-            </tbody>
-        </table>
 
-    </div>
 
+{{-- Content --}}
+@section('content')
+
+<div class="row">
+<h1>
+	<p class="pull-right">
+	<a href="/admin/menus/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+		<i class="fa fa-plus fa-fw"></i>
+		{{ trans('kotoba::button.new') }}
+	</a>
+	</p>
+	<i class="fa fa-gears fa-lg"></i>
+		{{ Lang::choice('kotoba::cms.menu', 2) }}
+	<hr>
+</h1>
 </div>
+
+
+@if (count($menus))
+
+<div class="row">
+<table id="table" class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>{{ trans('kotoba::table.status') }}</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.title') }}</th>
+			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach ($menus as $menu)
+			<tr>
+				<td>{{ $menu->status }}</td>
+				<td>{{ $menu->name }}</td>
+				<td>{{ $menu->title }}</td>
+				<td>
+					<a href="/admin/menus/{{ $menu_.id }}" class="btn btn-primary" title="{{ trans('kotoba::button.edit') }}">
+						<i class="fa fa-pencil fa-fw"></i>
+						{{ trans('kotoba::button.edit') }}
+					</a>
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>
+</div>
+
+
+@else
+<div class="alert alert-info">
+</div>
+	{{ trans('kotoba::general.error.not_found') }}
+@endif
+</div>
+@stop
+
+
+
+@stop

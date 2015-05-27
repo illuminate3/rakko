@@ -27,6 +27,7 @@ class GeneralMenuProvider extends MenuServiceProvider {
 // right side drop down
 		$menu = Menu::get('admin');
 		$menu->add(Lang::choice('kotoba::general.status', 2), 'admin/statuses');
+		$menu->add(Lang::choice('kotoba::cms.menu', 2), 'admin/menus');
 //		$menu->add(Lang::choice('kotoba::hr.employee', 2), 'admin/statuses');
 
 	}

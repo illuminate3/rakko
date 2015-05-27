@@ -9,17 +9,12 @@ use App\Modules\General\Http\Requests\DeleteRequest;
 use App\Modules\General\Http\Requests\MenuCreateRequest;
 use App\Modules\General\Http\Requests\MenuUpdateRequest;
 
-
-use Illuminate\Http\Request;
-use App\Modules\General\Http\Requests\DeleteRequest;
-use App\Modules\General\Http\Requests\MenuCreateRequest;
-use App\Modules\General\Http\Requests\MenuUpdateRequest;
-
 use Datatables;
 use Flash;
 use Theme;
 
 class MenusController extends GeneralController {
+
 
 	/**
 	 * Menu Repository
@@ -34,8 +29,9 @@ class MenusController extends GeneralController {
 	{
 		$this->menu = $menu;
 // middleware
-		$this->middleware('admin');
+//		$this->middleware('admin');
 	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -44,8 +40,12 @@ class MenusController extends GeneralController {
 	 */
 	public function index()
 	{
-		return Theme::View('modules.general.menus.index');
+		$menus = $this->menu->all();
+//dd($locales);
+
+		return Theme::View('modules.general.menus.index', compact('menus', 'locales'));
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -66,9 +66,11 @@ class MenusController extends GeneralController {
 		MenuCreateRequest $request
 		)
 	{
+//dd($request);
+
 		$this->menu->store($request->all());
 
-		Flash::success( trans('kotoba::hr.success.menu_create') );
+		Flash::success( trans('kotoba::cms.success.menu_create') );
 		return redirect('admin/menus');
 	}
 

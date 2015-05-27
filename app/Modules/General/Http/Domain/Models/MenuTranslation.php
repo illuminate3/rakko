@@ -2,25 +2,25 @@
 namespace App\Modules\General\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Laracasts\Presenter\PresentableTrait;
-use Dimsav\Translatable\Translatable;
+// use Laracasts\Presenter\PresentableTrait;
+// use Dimsav\Translatable\Translatable;
 
 
 
-class Menu extends Model {
+class MenuTranslation extends Model {
 
 // use Historable;
-	use Translatable;
-	use PresentableTrait;
+// 	use Translatable;
+// 	use PresentableTrait;
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'menus';
+	protected $table = 'menu_translations';
 
-	protected $presenter = 'App\Modules\General\Http\Presenters\General';
+// 	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -30,10 +30,10 @@ class Menu extends Model {
 //	protected $hidden = ['password', 'remember_token'];
 
 
-	public $translatedAttributes = [
-		'title',
-		'status',
-		];
+// 	public $translatedAttributes = [
+// 		'title',
+// 		'status',
+// 		];
 
 // protected $appends = ['status', 'title'];
 
@@ -44,18 +44,19 @@ class Menu extends Model {
 			$table->string('description')->nullable();
 */
 	protected $fillable = [
-		'name',
-		'class',
-		// Translatable columns
-		'title',
-		'status',
+// 		'name',
+// 		'class',
+// 		// Translatable columns
+// 		'title',
+// 		'status',
 		];
 
 // DEFINE Relationships --------------------------------------------------
 
-	public function menulinks()
+//	public function owner()
+	public function menu()
 	{
-		return $this->hasMany('App\Modules\General\Http\Domain\Models\Menulink')->orderBy('position', 'asc');
+		return $this->belongsTo('App\Modules\General\Http\Domain\Models\Menu', 'menu_id');
 	}
 
 

@@ -18,7 +18,7 @@ use Datatables;
 use Flash;
 use Theme;
 
-class MenusController extends GeneralController {
+class MenusaController extends GeneralController {
 
 	/**
 	 * Status Repository

@@ -3,7 +3,9 @@ namespace App\Modules\General\Http\Domain\Repositories;
 
 use App\Modules\General\Http\Domain\Models\Menu;
 
+use App;
 use DB;
+use Session;
 //use Hash, DB, Auth;
 //use DateTime;
 //use File, Auth;
@@ -37,10 +39,11 @@ class MenuRepository extends BaseRepository {
 	 */
 	public function create()
 	{
-//		$allPermissions =  $this->permission->all()->lists('name', 'id');
-//dd($allPermissions);
+		$lang = Session::get('locale');
+		$locales = $this->getLocales();
+//dd($locales);
 
-		return compact('');
+		return compact('locales', 'lang');
 	}
 
 	/**
@@ -95,6 +98,21 @@ class MenuRepository extends BaseRepository {
 //dd($input['enabled']);
 		$menu = Menu::find($id);
 		$menu->update($input);
+	}
+
+
+	public function getLocales()
+	{
+
+		$config = App::make('config');
+//		$locales = (array) $config->get('translatable.locales', []);
+		$locales = (array) $config->get('languages.supportedLocales', []);
+
+	if ( empty($locales) ) {
+		throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');
+	}
+
+	return $locales;
 	}
 
 

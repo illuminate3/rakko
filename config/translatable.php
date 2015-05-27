@@ -10,7 +10,9 @@ return [
     | Contains an array with the applications available locales.
     |
     */
-    'locales' => ['en', 'es'],
+   'locales' => ['en', 'es'],
+// use
+// supportedLocales
 
     /*
     |--------------------------------------------------------------------------

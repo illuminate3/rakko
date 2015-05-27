@@ -37,7 +37,7 @@
 {!! Form::open([
 	'url' => 'admin/menus',
 	'method' => 'POST',
-	'class' => 'form'
+	'class' => 'form-horizontal'
 ]) !!}
 
 
@@ -52,9 +52,48 @@
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
-		<input type="text" id="description" name="description" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
+		<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::cms.class') }}" class="form-control">
 </div>
 </div>
+
+@if (count($locales))
+
+<ul class="nav nav-tabs">
+	@foreach( $locales as $locale => $properties)
+		<li role="presentation" class="@if ($locale === $lang)active @endif" aria-controls="{{{ $locale }}}" role="tab" data-toggle="tab"><a href="#{{{ $locale }}}">{{{ $properties['native'] }}}</a></li>
+	@endforeach
+</ul>
+
+<div class="tab-content margin-bottom-xl">
+
+@foreach( $locales as $locale => $properties)
+	<div class="tab-pane padding-md @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" name="{{ $lang.'[title]' }}" id="{{ $lang.'[title]' }}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
+			<div class="col-sm-11">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"  name="{{ $lang.'[status]' }}"  name="{{ $lang.'[status]' }}" value="1">
+					</label>
+				</div>
+			</div>
+		</div>
+
+	</div>
+@endforeach
+
+</div>
+
+@endif
+
 
 
 <hr>
