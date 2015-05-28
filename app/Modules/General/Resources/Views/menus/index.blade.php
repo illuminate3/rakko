@@ -61,9 +61,13 @@ oTable =
 				<td>{{ $menu->title }}</td>
 				<td>{{ $menu->status }}</td>
 				<td>
-					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-primary" title="{{ trans('kotoba::button.edit') }}">
+					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
 						{{ trans('kotoba::button.edit') }}
+					</a>
+					<a href="/admin/menulinks/{{ $menu->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
+						<i class="fa fa-search fa-fw"></i>
+						{{ Lang::choice('kotoba::button.link', 2) }}
 					</a>
 				</td>
 			</tr>
@@ -75,12 +79,10 @@ oTable =
 
 @else
 <div class="alert alert-info">
-</div>
 	{{ trans('kotoba::general.error.not_found') }}
-@endif
 </div>
-@stop
+@endif
 
 
-
+</div>
 @stop

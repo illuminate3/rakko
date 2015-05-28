@@ -2,6 +2,7 @@
 namespace App\Modules\General\Http\Domain\Repositories;
 
 use App\Modules\General\Http\Domain\Models\Menu;
+use Illuminate\Support\Collection;
 
 use App;
 use DB;
@@ -55,9 +56,14 @@ class MenuRepository extends BaseRepository {
 	public function show($id)
 	{
 		$menu = $this->model->find($id);
-//dd($module);
+		$links = Menu::find($id)->menulinks;
+//$menu = $this->menu->show($id);
 
-		return compact('menu');
+//$menu = $this->model->where('id', $id)->first();
+//		$menu = new Collection($menu);
+//dd($menu);
+
+		return compact('menu', 'links');
 	}
 
 	/**

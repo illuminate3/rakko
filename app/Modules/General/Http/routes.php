@@ -34,6 +34,10 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::resource('statuses', 'StatusesController');
 	Route::resource('menus', 'MenusController');
 	Route::resource('menulinks', 'MenuLinksController');
+	Route::get('menulinks/{id}/new_link', [
+//		'as' => 'builds.group',
+		'uses' => 'MenuLinksController@create',
+		]);
 
 // Controllers
 // API DATA

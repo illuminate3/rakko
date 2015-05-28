@@ -6,18 +6,18 @@ use App\Modules\General\Http\Domain\Repositories\MenuRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\General\Http\Requests\DeleteRequest;
-use App\Modules\General\Http\Requests\MenuCreateRequest;
-use App\Modules\General\Http\Requests\MenuUpdateRequest;
+use App\Modules\General\Http\Requests\MenuLinkCreateRequest;
+use App\Modules\General\Http\Requests\MenuLinkUpdateRequest;
 
 use Datatables;
 use Flash;
 use Theme;
 
-class MenusController extends GeneralController {
+class MenuLinksController extends GeneralController {
 
 
 	/**
-	 * Menu Repository
+	 * MenuLink Repository
 	 *
 	 * @var Menu
 	 */
@@ -54,7 +54,7 @@ class MenusController extends GeneralController {
 	 */
 	public function create()
 	{
-		return Theme::View('modules.general.menus.create',  $this->menu->create());
+		return Theme::View('modules.general.menulinks.create',  $this->menu->create());
 	}
 
 	/**
@@ -63,7 +63,7 @@ class MenusController extends GeneralController {
 	 * @return Response
 	 */
 	public function store(
-		MenuCreateRequest $request
+		MenuLinkCreateRequest $request
 		)
 	{
 //dd($request);
@@ -82,8 +82,12 @@ class MenusController extends GeneralController {
 	 */
 	public function show($id)
 	{
-// 		$menu = $this->menu->findOrFail($id);
-//
+// $links = Menu::find($id)->menulinks;
+// $menu = $this->menu->show($id);
+//dd($menu);
+
+//		return Theme::View('modules.general.menulinks.index',  compact('menu', 'links'));
+		return Theme::View('modules.general.menulinks.index',  $this->menu->show($id));
 // 		return View::make('HR::menus.show', compact('menu'));
 	}
 
@@ -121,7 +125,7 @@ class MenusController extends GeneralController {
 	 * @return Response
 	 */
 	public function update(
-		MenuUpdateRequest $request,
+		MenuLinkUpdateRequest $request,
 		$id
 		)
 	{

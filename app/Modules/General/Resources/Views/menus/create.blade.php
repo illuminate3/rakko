@@ -40,61 +40,67 @@
 	'class' => 'form-horizontal'
 ]) !!}
 
+<div class="col-sm-6">
 
-<div class="form-group">
-<div class="input-group">
-	<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
-		<input type="text" id="name" name="name" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+			<input type="text" id="name" name="name" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+	</div>
+	</div>
+
+
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
+			<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::cms.class') }}" class="form-control">
+	</div>
+	</div>
+
 </div>
-</div>
+<div class="col-sm-6">
 
+	@if (count($locales))
 
-<div class="form-group">
-<div class="input-group">
-	<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
-		<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::cms.class') }}" class="form-control">
-</div>
-</div>
+	<ul class="nav nav-tabs">
+		@foreach( $locales as $locale => $properties)
+			<li class="@if ($locale == $lang)active @endif">
+				<a href="#{{ $locale }}" data-target="#{{ $locale }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+			</li>
+		@endforeach
+	</ul>
 
-@if (count($locales))
+	<div class="tab-content padding-lg margin-bottom-xl">
 
-<ul class="nav nav-tabs">
 	@foreach( $locales as $locale => $properties)
-		<li class="@if ($locale == $lang)active @endif">
-			<a href="#{{ $locale }}" data-target="#{{ $locale }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
-		</li>
-	@endforeach
-</ul>
+		<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
 
-<div class="tab-content padding-lg margin-bottom-xl">
-
-@foreach( $locales as $locale => $properties)
-	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
-
-		<div class="form-group">
-			<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
-			<div class="col-sm-11">
-				<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
-			<div class="col-sm-11">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"  name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1">
-					</label>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
+				<div class="col-sm-11">
+					<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}">
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
+				<div class="col-sm-11">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"  name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1">
+						</label>
+					</div>
+				</div>
+			</div>
+
 		</div>
+	@endforeach
 
 	</div>
-@endforeach
+
+	@endif
 
 </div>
-
-@endif
 
 
 <hr>
