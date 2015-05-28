@@ -5,8 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Dimsav\Translatable\Translatable;
 
-
-
 class Menu extends Model {
 
 // use Historable;
@@ -35,7 +33,10 @@ class Menu extends Model {
 		'status',
 		];
 
-// protected $appends = ['status', 'title'];
+	protected $appends = [
+		'title',
+		'status'
+		];
 
 
 // DEFINE Fillable -------------------------------------------------------

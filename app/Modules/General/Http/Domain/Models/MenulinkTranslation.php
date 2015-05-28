@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class MenuTranslation extends Model {
+class MenulinkTranslation extends Model {
 
 // use Historable;
 // 	use Translatable;
@@ -18,7 +18,7 @@ class MenuTranslation extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'menu_translations';
+	protected $table = 'menulink_translations';
 
 // 	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 
@@ -53,10 +53,13 @@ class MenuTranslation extends Model {
 
 // DEFINE Relationships --------------------------------------------------
 
-	public function owner()
-//	public function menu()
+	public function menulink()
 	{
-		return $this->belongsTo('App\Modules\General\Http\Domain\Models\Menu', 'menu_id');
+		return $this->belongsTo('App\Modules\General\Http\Domain\Models\Menulink');
+	}
+	public function owner()
+	{
+		return $this->belongsTo('App\Modules\General\Http\Domain\Models\Menulink', 'menulink_id');
 	}
 
 

@@ -60,19 +60,21 @@
 
 <ul class="nav nav-tabs">
 	@foreach( $locales as $locale => $properties)
-		<li role="presentation" class="@if ($locale === $lang)active @endif" aria-controls="{{{ $locale }}}" role="tab" data-toggle="tab"><a href="#{{{ $locale }}}">{{{ $properties['native'] }}}</a></li>
+		<li class="@if ($locale == $lang)active @endif">
+			<a href="#{{ $locale }}" data-target="#{{ $locale }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+		</li>
 	@endforeach
 </ul>
 
-<div class="tab-content margin-bottom-xl">
+<div class="tab-content padding-lg margin-bottom-xl">
 
 @foreach( $locales as $locale => $properties)
-	<div class="tab-pane padding-md @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
 
 		<div class="form-group">
 			<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
 			<div class="col-sm-11">
-				<input type="text" class="form-control" name="{{ $lang.'[title]' }}" id="{{ $lang.'[title]' }}">
+				<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}">
 			</div>
 		</div>
 
@@ -81,7 +83,7 @@
 			<div class="col-sm-11">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox"  name="{{ $lang.'[status]' }}"  name="{{ $lang.'[status]' }}" value="1">
+						<input type="checkbox"  name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1">
 					</label>
 				</div>
 			</div>

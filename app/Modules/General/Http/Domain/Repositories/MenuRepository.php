@@ -97,7 +97,8 @@ class MenuRepository extends BaseRepository {
 	 */
 	public function update($input, $id)
 	{
-//dd($input['enabled']);
+//dd($input);
+
 		$menu = Menu::find($id);
 		$menu->update($input);
 	}

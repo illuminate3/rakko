@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::resource('statuses', 'StatusesController');
 	Route::resource('menus', 'MenusController');
+	Route::resource('menulinks', 'MenuLinksController');
 
 // Controllers
 // API DATA
