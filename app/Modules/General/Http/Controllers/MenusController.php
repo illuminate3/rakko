@@ -99,8 +99,9 @@ class MenusController extends GeneralController {
 		$modal_body = trans('kotoba::general.ask.delete');
 		$modal_route = 'admin.menus.destroy';
 		$modal_id = $id;
-		$model = '$menu';
-//dd($id);
+//		$model = '$menu';
+		$model = 'menu';
+//dd($model);
 
 		return View('general::menus.edit',
 //		return Theme::View('modules.general.menus.edit',

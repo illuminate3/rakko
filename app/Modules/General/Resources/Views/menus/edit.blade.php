@@ -90,7 +90,7 @@
 				<div class="col-sm-11">
 					<div class="checkbox">
 						<label>
-							<input type="checkbox"  name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="{{ $menu->status }}">
+							<input type="checkbox" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="{{ $menu->status }}" @if($menu->status==1) checked @endif>
 						</label>
 					</div>
 				</div>

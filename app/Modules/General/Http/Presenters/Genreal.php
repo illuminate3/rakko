@@ -18,6 +18,18 @@ class General extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+	public function checked()
+	{
+//dd("loaded");
+		$return = '';
+		$activated = $this->entity->activated;
+		if ( $activated == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
+	}
+
     public function menuclass()
     {
         return $this->entity->menuclass;

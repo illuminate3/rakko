@@ -35,29 +35,13 @@
 
 <div class="row">
 {!! Form::open([
-	'url' => 'admin/menus',
+	'url' => 'admin/menulinks',
 	'method' => 'POST',
 	'class' => 'form-horizontal'
 ]) !!}
-
-<div class="col-sm-6">
-
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
-			<input type="text" id="name" name="name" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
-	</div>
-	</div>
+{{ Form::hidden('menu_id', $menu_id) }}
 
 
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
-			<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::cms.class') }}" class="form-control">
-	</div>
-	</div>
-
-</div>
 <div class="col-sm-6">
 
 	@if (count($locales))
@@ -83,6 +67,13 @@
 			</div>
 
 			<div class="form-group">
+				<label class="col-sm-1 control-label">{{ trans('kotoba::general.url') }}</label>
+				<div class="col-sm-11">
+					<input type="text" class="form-control" name="{{ $locale.'[url]' }}" id="{{ $locale.'[url]' }}">
+				</div>
+			</div>
+
+			<div class="form-group">
 				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
 				<div class="col-sm-11">
 					<div class="checkbox">
@@ -100,6 +91,8 @@
 
 	@endif
 
+</div>
+<div class="col-sm-6">
 </div>
 
 

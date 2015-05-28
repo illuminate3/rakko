@@ -86,7 +86,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
+				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>{{ $menu->present()->checked($menu->status) }}
 				<div class="col-sm-11">
 					<div class="checkbox">
 						<label>

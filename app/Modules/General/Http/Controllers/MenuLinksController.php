@@ -52,9 +52,18 @@ class MenuLinksController extends GeneralController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
-		return Theme::View('modules.general.menulinks.create',  $this->menu->create());
+//dd($id);
+		$menu_id = $id;
+
+//		return Theme::View('modules.general.menulinks.create',  $this->menu->create(), 'menu_id');
+		return Theme::View('modules.general.menulinks.create',
+			$this->menu->create($id),
+				compact(
+					'menu_id'
+//					'model'
+			));
 	}
 
 	/**
@@ -70,7 +79,7 @@ class MenuLinksController extends GeneralController {
 
 		$this->menu->store($request->all());
 
-		Flash::success( trans('kotoba::cms.success.menu_create') );
+		Flash::success( trans('kotoba::cms.success.menulink_create') );
 		return redirect('admin/menus');
 	}
 

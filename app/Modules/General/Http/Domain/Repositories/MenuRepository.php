@@ -77,7 +77,7 @@ class MenuRepository extends BaseRepository {
 		$menu = $this->model->find($id);
 		$lang = Session::get('locale');
 		$locales = $this->getLocales();
-//dd($locales);
+//dd($menu);
 
 		return compact('menu', 'locales', 'lang');
 	}
