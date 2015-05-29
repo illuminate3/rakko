@@ -30,6 +30,18 @@ class General extends Presenter {
 		return $return;
 	}
 
+	public function status($status)
+	{
+//dd($status);
+
+		$return = trans('kotoba::general.enabled');
+		if ( $status == 0 ) {
+			$return = trans('kotoba::general.disabled');
+		}
+
+		return $return;
+	}
+
     public function menuclass()
     {
         return $this->entity->menuclass;

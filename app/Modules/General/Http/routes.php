@@ -38,6 +38,10 @@ Route::group(['prefix' => 'admin'], function() {
 //		'as' => 'builds.group',
 		'uses' => 'MenuLinksController@create',
 		]);
+	Route::post('menu/save', [
+		'as' => 'admin.menu.save',
+		'uses' => 'MenuLinksController@save'
+		]);
 
 // Controllers
 // API DATA

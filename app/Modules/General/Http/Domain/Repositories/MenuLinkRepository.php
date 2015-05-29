@@ -122,5 +122,17 @@ class MenuLinkRepository extends BaseRepository {
 	return $locales;
 	}
 
+	public function changeParentById($data) {
+
+		foreach($data as $k => $v) {
+
+			$item = $this->find($v['id']);
+			$item->parent_id = $v['parentID'];
+			$item->position = $k + 1;
+			$item->save();
+		}
+	}
+
+
 
 }

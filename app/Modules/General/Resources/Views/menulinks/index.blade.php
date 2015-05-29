@@ -6,12 +6,50 @@
 @stop
 
 @section('styles')
+	<link href="{{ asset('assets/vendors/Nestable/menu-managment.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
+	<script src="{{ asset('assets/vendors/Nestable/jquery.nestable.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+$(document).ready(function () {
+
+var updateOutput = function (e) {
+	var list = e.length ? e : $(e.target), output = list.data('output');
+
+	if (window.JSON) {
+		var jsonData = window.JSON.stringify(list.nestable('serialize'));
+		//console.log(window.JSON.stringify(list.nestable('serialize')));
+		$.ajax({
+			type: "POST",
+			url: "{!! URL::route('admin.menu.save') !!}",
+			data: {'json': jsonData},
+			headers: {
+				'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+			},
+			success: function (response) {
+
+				//$("#msg").append('<div class="alert alert-success msg-save">Saved!</div>');
+				$("#msg").append('<div class="msg-save" style="float:right; color:red;">Saving!</div>');
+				$('.msg-save').delay(1000).fadeOut(500);
+			},
+			error: function () {
+				alert("error");
+			}
+		});
+	} else {
+		alert('error');
+	}
+
+};
+
+$('#nestable').nestable({
+	group: 1
+}).on('change', updateOutput);
+
+});
 @stop
 
 
@@ -36,6 +74,10 @@
 </div>
 
 
+
+
+
+
 @if (count($locales))
 
 <ul class="nav nav-tabs">
@@ -50,6 +92,48 @@
 
 @foreach( $locales as $locale => $properties)
 	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+
+
+
+<div class="dd" id="nestable">
+<ol class="dd-list">
+	@foreach ($links as $link)
+		<li class="dd-item" data-id="{{ $link->id }}">
+			<button type="button" data-action="collapse">Collapse</button>
+			<button type="button" data-action="expand" style="display: none;">Expand</button>
+			<div class="dd-handle"></div>
+				<div class="dd-content">
+				<span>{{ $link->{'title:'.$locale} }}</span>
+				<div class="ns-actions">
+					<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
+						<i class="fa fa-pencil fa-fw"></i>
+						{{ trans('kotoba::button.edit') }}
+					</a>
+					<a href="/admin/menulinks/{{ $link->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
+						<i class="fa fa-search fa-fw"></i>
+						{{ Lang::choice('kotoba::button.link', 2) }}
+					</a>
+				</div>
+			</div>
+		</li>
+	@endforeach
+</ol>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 
 
@@ -72,7 +156,7 @@
 				<td>{{ $link->position}}</td>
 				<td>{{ $link->{'title:'.$locale} }}</td>
 				<td>{{ $link->{'url:'.$locale} }}</td>
-				<td>{{ $link->{'status:'.$locale} }}</td>
+				<td>{{ $link->present()->status($link->{'status:'.$locale}) }}</td>
 				<td>
 					<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>

@@ -183,5 +183,12 @@ dd($menulinks);
 			->make(true);
 	}
 
+	public function save()
+	{
+		$this->menulink->changeParentById($this->menu->parseJsonArray(json_decode(Input::get('json'), true)));
+		return Response::json(array('result' => 'success'));
+	}
+
+
 
 }
