@@ -1,8 +1,8 @@
 <?php
 namespace App\Modules\General\Http\Controllers;
 
-use App\Modules\General\Http\Domain\Models\Menu;
-use App\Modules\General\Http\Domain\Repositories\MenuRepository;
+use App\Modules\General\Http\Domain\Models\MenuLink;
+use App\Modules\General\Http\Domain\Repositories\MenuLinkRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\General\Http\Requests\DeleteRequest;
@@ -11,6 +11,7 @@ use App\Modules\General\Http\Requests\MenuLinkUpdateRequest;
 
 use Datatables;
 use Flash;
+use Session;
 use Theme;
 
 class MenuLinksController extends GeneralController {
@@ -21,13 +22,13 @@ class MenuLinksController extends GeneralController {
 	 *
 	 * @var Menu
 	 */
-	protected $menu;
+	protected $menulink;
 
 	public function __construct(
-			MenuRepository $menu
+			MenuLinkRepository $menulink
 		)
 	{
-		$this->menu = $menu;
+		$this->menulink = $menulink;
 // middleware
 //		$this->middleware('admin');
 	}
@@ -40,10 +41,10 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function index()
 	{
-		$menus = $this->menu->all();
-//dd($locales);
+		$menulinks = $this->menulink->all();
+dd($menulinks);
 
-		return Theme::View('modules.general.menus.index', compact('menus', 'locales'));
+		return Theme::View('modules.general.menulinks.index', compact('menulinks', 'locales'));
 	}
 
 
@@ -54,15 +55,16 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function create($id)
 	{
-//dd($id);
+		$lang = Session::get('locale');
+		$locales = $this->menulink->getLocales();
 		$menu_id = $id;
+//dd($menu_id);
 
-//		return Theme::View('modules.general.menulinks.create',  $this->menu->create(), 'menu_id');
 		return Theme::View('modules.general.menulinks.create',
-			$this->menu->create($id),
-				compact(
-					'menu_id'
-//					'model'
+			compact(
+				'lang',
+				'locales',
+				'menu_id'
 			));
 	}
 
@@ -77,10 +79,10 @@ class MenuLinksController extends GeneralController {
 	{
 //dd($request);
 
-		$this->menu->store($request->all());
+		$this->menulink->store($request->all());
 
 		Flash::success( trans('kotoba::cms.success.menulink_create') );
-		return redirect('admin/menus');
+		return redirect('admin/menulinks');
 	}
 
 	/**
@@ -91,13 +93,7 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function show($id)
 	{
-// $links = Menu::find($id)->menulinks;
-// $menu = $this->menu->show($id);
-//dd($menu);
-
-//		return Theme::View('modules.general.menulinks.index',  compact('menu', 'links'));
-		return Theme::View('modules.general.menulinks.index',  $this->menu->show($id));
-// 		return View::make('HR::menus.show', compact('menu'));
+		return Theme::View('modules.general.menulinks.index',  $this->menulink->show($id));
 	}
 
 	/**
@@ -110,14 +106,14 @@ class MenuLinksController extends GeneralController {
 	{
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
-		$modal_route = 'admin.menus.destroy';
+		$modal_route = 'admin.menulinks.destroy';
 		$modal_id = $id;
-		$model = '$menu';
+		$model = '$menulink';
 //dd($id);
 
-		return View('general::menus.edit',
+		return View('general::menulinks.edit',
 //		return Theme::View('modules.general.menus.edit',
-			$this->menu->edit($id),
+			$this->menulink->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -139,10 +135,10 @@ class MenuLinksController extends GeneralController {
 		)
 	{
 //dd("update");
-		$this->menu->update($request->all(), $id);
+		$this->menulink->update($request->all(), $id);
 
-		Flash::success( trans('kotoba::hr.success.menu_update') );
-		return redirect('admin/menus');
+		Flash::success( trans('kotoba::cms.success.menulink_update') );
+		return redirect('admin/menulinks');
 	}
 
 	/**
@@ -153,9 +149,9 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function destroy($id)
 	{
-		$this->menu->find($id)->delete();
+		$this->menulink->find($id)->delete();
 
-		return Redirect::route('admin.menus.index');
+		return Redirect::route('admin.menulinks.index');
 	}
 
 	/**
@@ -165,11 +161,11 @@ class MenuLinksController extends GeneralController {
 	*/
 	public function data()
 	{
-//		$query = Menu::select(array('menus.id','menus.name','menus.description'))
+//		$query = Menu::select(array('menulinks.id','menus.name','menus.description'))
 //			->orderBy('menus.name', 'ASC');
 //		$query = Menu::select('id', 'name' 'description', 'updated_at');
 //			->orderBy('name', 'ASC');
-		$query = Menu::select('id', 'name', 'description', 'updated_at');
+		$query = MenuLink::select('id', 'name', 'description', 'updated_at');
 //dd($query);
 
 		return Datatables::of($query)
@@ -178,7 +174,7 @@ class MenuLinksController extends GeneralController {
 			->addColumn(
 				'actions',
 				'
-					<a href="{{ URL::to(\'admin/menus/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<a href="{{ URL::to(\'admin/menulinks/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 					</a>
 				'

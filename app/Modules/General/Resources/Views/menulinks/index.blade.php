@@ -6,20 +6,12 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
 @stop
 
 @section('scripts')
-	<script src="{{ asset('assets/vendors/DataTables-1.10.5/media/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('assets/vendors/DataTables-1.10.5/plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-$(document).ready(function() {
-oTable =
-	$('#table').DataTable({
-	});
-});
 @stop
 
 
@@ -44,30 +36,49 @@ oTable =
 </div>
 
 
+@if (count($locales))
+
+<ul class="nav nav-tabs">
+	@foreach( $locales as $locale => $properties)
+		<li class="@if ($locale == $lang)active @endif">
+			<a href="#{{ $locale }}" data-target="#{{ $locale }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+		</li>
+	@endforeach
+</ul>
+
+<div class="tab-content padding-lg margin-bottom-xl">
+
+@foreach( $locales as $locale => $properties)
+	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+
+
+
 @if (count($links))
 
 <div class="row">
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.name') }}</th>
+			<th>{{ trans('kotoba::table.position') }}</th>
 			<th>{{ trans('kotoba::table.title') }}</th>
+			<th>{{ trans('kotoba::table.url') }}</th>
 			<th>{{ trans('kotoba::table.status') }}</th>
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach ($links as $menu)
+		@foreach ($links as $link)
 			<tr>
-				<td>{{ $menu->name }}</td>
-				<td>{{ $menu->title }}</td>
-				<td>{{ $menu->status }}</td>
+				<td>{{ $link->position}}</td>
+				<td>{{ $link->{'title:'.$locale} }}</td>
+				<td>{{ $link->{'url:'.$locale} }}</td>
+				<td>{{ $link->{'status:'.$locale} }}</td>
 				<td>
-					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
+					<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
 						{{ trans('kotoba::button.edit') }}
 					</a>
-					<a href="/admin/menulinks/{{ $menu->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
+					<a href="/admin/menulinks/{{ $link->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-search fa-fw"></i>
 						{{ Lang::choice('kotoba::button.link', 2) }}
 					</a>
@@ -84,6 +95,18 @@ oTable =
 	{{ trans('kotoba::general.error.not_found') }}
 </div>
 @endif
+
+
+
+	</div>
+@endforeach
+
+</div>
+
+@endif
+
+
+
 
 
 </div>

@@ -39,7 +39,7 @@
 	'method' => 'POST',
 	'class' => 'form-horizontal'
 ]) !!}
-{{ Form::hidden('menu_id', $menu_id) }}
+{!! Form::hidden('menu_id', $menu_id) !!}
 
 
 <div class="col-sm-6">
@@ -74,12 +74,16 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
+				<label class="col-sm-1 control-label"></label>
 				<div class="col-sm-11">
 					<div class="checkbox">
-						<label>
-							<input type="checkbox"  name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1">
-						</label>
+							{{ trans('kotoba::general.enabled') }}
+							&nbsp;
+							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1">
+							&nbsp;
+							{{ trans('kotoba::general.disabled') }}
+							&nbsp;
+							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="0">
 					</div>
 				</div>
 			</div>

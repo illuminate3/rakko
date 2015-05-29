@@ -4,7 +4,7 @@ namespace App\Modules\General\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Config;
 
-class MenuLiinkUpdateRequest extends FormRequest {
+class MenuLinkUpdateRequest extends FormRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.

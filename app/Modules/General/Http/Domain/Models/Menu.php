@@ -29,13 +29,13 @@ class Menu extends Model {
 
 
 	public $translatedAttributes = [
-		'title',
 		'status',
+		'title'
 		];
 
 	protected $appends = [
-		'title',
-		'status'
+		'status',
+		'title'
 		];
 
 
@@ -45,11 +45,11 @@ class Menu extends Model {
 			$table->string('description')->nullable();
 */
 	protected $fillable = [
-		'name',
 		'class',
+		'name',
 		// Translatable columns
-		'title',
 		'status',
+		'title'
 		];
 
 // DEFINE Relationships --------------------------------------------------

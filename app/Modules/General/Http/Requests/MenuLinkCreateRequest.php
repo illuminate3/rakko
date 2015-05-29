@@ -4,7 +4,7 @@ namespace App\Modules\General\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Config;
 
-class MenuLiinkCreateRequest extends FormRequest {
+class MenuLinkCreateRequest extends FormRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.

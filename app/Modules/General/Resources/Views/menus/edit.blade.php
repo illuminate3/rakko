@@ -81,17 +81,21 @@
 			<div class="form-group">
 				<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
 				<div class="col-sm-11">
-					<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}" value="{{ $menu->title }}">
+					<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}" value="{{ $menu->{'title:'.$locale} }}">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label">{{ trans('kotoba::general.enabled') }}</label>
+				<label class="col-sm-1 control-label"></label>
 				<div class="col-sm-11">
 					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="{{ $menu->status }}" @if($menu->status==1) checked @endif>
-						</label>
+							{{ trans('kotoba::general.enabled') }}
+							&nbsp;
+							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1" @if($menu->{'status:'.$locale}===1) checked @endif>
+							&nbsp;
+							{{ trans('kotoba::general.disabled') }}
+							&nbsp;
+							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="0">
 					</div>
 				</div>
 			</div>

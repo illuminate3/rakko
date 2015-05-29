@@ -126,10 +126,11 @@ class MenusController extends GeneralController {
 		$id
 		)
 	{
-//dd("update");
+//dd($request);
+
 		$this->menu->update($request->all(), $id);
 
-		Flash::success( trans('kotoba::hr.success.menu_update') );
+		Flash::success( trans('kotoba::cms.success.menu_update') );
 		return redirect('admin/menus');
 	}
 

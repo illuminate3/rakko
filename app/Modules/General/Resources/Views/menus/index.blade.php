@@ -50,7 +50,6 @@ oTable =
 		<tr>
 			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.title') }}</th>
-			<th>{{ trans('kotoba::table.status') }}</th>
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
@@ -59,7 +58,6 @@ oTable =
 			<tr>
 				<td>{{ $menu->name }}</td>
 				<td>{{ $menu->title }}</td>
-				<td>{{ $menu->status }}</td>
 				<td>
 					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
