@@ -42,7 +42,7 @@ class MenuLinksController extends GeneralController {
 	public function index()
 	{
 		$menulinks = $this->menulink->all();
-dd($menulinks);
+//dd($menulinks);
 
 		return Theme::View('modules.general.menulinks.index', compact('menulinks', 'locales'));
 	}
@@ -78,11 +78,11 @@ dd($menulinks);
 		)
 	{
 //dd($request);
-
+//dd($request->menu_id);
 		$this->menulink->store($request->all());
 
 		Flash::success( trans('kotoba::cms.success.menulink_create') );
-		return redirect('admin/menulinks');
+		return redirect('admin/menulinks/' . $request->menu_id);
 	}
 
 	/**
@@ -185,7 +185,8 @@ dd($menulinks);
 
 	public function save()
 	{
-		$this->menulink->changeParentById($this->menu->parseJsonArray(json_decode(Input::get('json'), true)));
+//dd(Input::get('json'));
+		$this->menulink->changeParentById($this->menulink->parseJsonArray(json_decode(Input::get('json'), true)));
 		return Response::json(array('result' => 'success'));
 	}
 

@@ -101,20 +101,20 @@
 //				showRight = document.getElementById( 'showRight' ),
 				body = document.body;
 
-				menuLeft.onclick = function () {
-					classie.toggle( this, 'active' );
-					classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				};
+// 				menuLeft.onclick = function () {
+// 					classie.toggle( this, 'active' );
+// 					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+// 				};
 // 				menuRight.onclick = function () {
 // 					classie.toggle( this, 'active' );
 // 					classie.toggle( menuRight, 'cbp-spmenu-open' );
 // 				};
 
-			showLeft.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeft' );
-			};
+// 			showLeft.onclick = function() {
+// 				classie.toggle( this, 'active' );
+// 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+// 				disableOther( 'showLeft' );
+// 			};
 // 			showRight.onclick = function() {
 // 				classie.toggle( this, 'active' );
 // 				classie.toggle( menuRight, 'cbp-spmenu-open' );

@@ -24,7 +24,7 @@ var updateOutput = function (e) {
 		//console.log(window.JSON.stringify(list.nestable('serialize')));
 		$.ajax({
 			type: "POST",
-			url: "{!! URL::route('admin.menulinks.save') !!}",
+			url: "{!! URL::route('admin.menu.save') !!}",
 			data: {'json': jsonData},
 			headers: {
 				'X-CSRF-Token': $('meta[name="_token"]').attr('content')
@@ -36,11 +36,11 @@ var updateOutput = function (e) {
 				$('.msg-save').delay(1000).fadeOut(500);
 			},
 			error: function () {
-				alert("error on saving");
+				alert("error");
 			}
 		});
 	} else {
-		alert('error serialize');
+		alert('error');
 	}
 
 };
@@ -74,9 +74,6 @@ $('#nestable').nestable({
 </div>
 
 
-<div class="dd" id="nestable">
-	{!! $menus !!}
-</div>
 
 
 
@@ -95,6 +92,7 @@ $('#nestable').nestable({
 
 @foreach( $locales as $locale => $properties)
 	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+
 
 
 
