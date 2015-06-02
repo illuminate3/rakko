@@ -43,14 +43,14 @@ Route::group(['prefix' => 'admin'], function() {
 		'uses' => 'MenuLinksController@save'
 		]);
 
-// 	Route::post("menulinks/{id}/up", array(
-// 		'as' => "menulinks.up",
-// 		'uses' => "MenuLinksController@up",
-// 	));
-// 	Route::post("menulinks/{id}/down", array(
-// 		'as' => "menulinks.down",
-// 		'uses' => "MenuLinksController@down",
-// 	));
+	Route::post('menulinks/{id}/delete', [
+		'as' => 'admin.menulinks.delete',
+		'uses' => 'MenuLinksController@confirmDestroy'
+		]);
+	Route::post('menulinks/{id}/toggle-publish', [
+		'as' => 'admin.menulinks.toggle-publish',
+		'uses' => 'MenuLinksController@togglePublish'
+		]);
 
 
 // Controllers

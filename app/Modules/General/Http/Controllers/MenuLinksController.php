@@ -1,6 +1,8 @@
 <?php
 namespace App\Modules\General\Http\Controllers;
 
+use App\Modules\General\Http\Domain\Models\Menu;
+use App\Modules\General\Http\Domain\Repositories\MenuRepository;
 use App\Modules\General\Http\Domain\Models\MenuLink;
 use App\Modules\General\Http\Domain\Repositories\MenuLinkRepository;
 
@@ -41,10 +43,13 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function index()
 	{
-		$menulinks = $this->menulink->all();
-//dd($menulinks);
+//		$menulinks = $this->menulink->all();
+		$links = MenuLink::with('menu')->get();
+		$lang = Session::get('locale');
+		$locales = $this->menulink->getLocales();
+//dd($links);
 
-		return Theme::View('modules.general.menulinks.index', compact('menulinks', 'locales'));
+		return Theme::View('modules.general.menulinks.index', compact('links', 'locales', 'lang'));
 	}
 
 
@@ -53,18 +58,18 @@ class MenuLinksController extends GeneralController {
 	 *
 	 * @return Response
 	 */
-	public function create($id)
+	public function create()
 	{
 		$lang = Session::get('locale');
 		$locales = $this->menulink->getLocales();
-		$menu_id = $id;
+//		$menu_id = $id;
 //dd($menu_id);
 
 		return Theme::View('modules.general.menulinks.create',
 			compact(
 				'lang',
-				'locales',
-				'menu_id'
+				'locales'
+//				'menu_id'
 			));
 	}
 

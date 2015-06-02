@@ -21,7 +21,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/admin/menus" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/admin/menulinks" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -39,7 +39,7 @@
 	'method' => 'POST',
 	'class' => 'form-horizontal'
 ]) !!}
-{!! Form::hidden('menu_id', $menu_id) !!}
+{{-- Form::hidden('menu_id', $menu_id) --}}
 
 
 <div class="col-sm-6">

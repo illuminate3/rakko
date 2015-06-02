@@ -55,7 +55,7 @@
 
 	<div class="form-group">
 	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
+		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
 			<input type="text" id="class" name="class" value="{{ $menu->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
 	</div>
 	</div>

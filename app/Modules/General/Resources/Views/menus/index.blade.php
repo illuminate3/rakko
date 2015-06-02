@@ -35,7 +35,7 @@ oTable =
 		{{ trans('kotoba::button.new') }}
 	</a>
 	</p>
-	<i class="fa fa-gears fa-lg"></i>
+	<i class="fa fa-paperclip fa-lg"></i>
 		{{ Lang::choice('kotoba::cms.menu', 2) }}
 	<hr>
 </h1>
@@ -63,8 +63,8 @@ oTable =
 						<i class="fa fa-pencil fa-fw"></i>
 						{{ trans('kotoba::button.edit') }}
 					</a>
-					<a href="/admin/menulinks/{{ $menu->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
-						<i class="fa fa-search fa-fw"></i>
+					<a href="/admin/menulinks" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
+						<i class="fa fa-link fa-fw"></i>
 						{{ Lang::choice('kotoba::button.link', 2) }}
 					</a>
 				</td>

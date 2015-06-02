@@ -6,12 +6,18 @@
 @stop
 
 @section('styles')
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.4.1/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.4.1/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+	jQuery(document).ready(function($) {
+		$(".chosen-select").chosen();
+	});
 @stop
 
 
@@ -35,9 +41,9 @@
 
 <div class="row">
 {!! Form::model(
-	$menu,
+	$link,
 	[
-		'route' => ['admin.menus.update', $menu->id],
+		'route' => ['admin.menulinks.update', $link->id],
 		'method' => 'PATCH',
 		'class' => 'form'
 	]
@@ -47,17 +53,33 @@
 
 	<div class="form-group">
 	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
-			<input type="text" id="name" name="name" value="{{ $menu->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+		<span class="input-group-addon"><i class="fa fa-sort-numeric-asc fa-fw"></i></span>
+			<input type="text" id="position" name="position" value="{{ $link->position }}" placeholder="{{ trans('kotoba::cms.position') }}" class="form-control" autofocus="autofocus">
 	</div>
 	</div>
 
 
 	<div class="form-group">
 	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-info fa-fw"></i></span>
-			<input type="text" id="class" name="class" value="{{ $menu->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
+		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
+			<input type="text" id="class" name="class" value="{{ $link->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
 	</div>
+	</div>
+
+	<div class="form-group padding-bottom-xl">
+		<label for="inputDivision" class="col-sm-1 control-label">{{ Lang::choice('kotoba::cms.menu', 1) }}:</label>
+		<div class="col-sm-11">
+			{!!
+				Form::select(
+					'menu_id',
+					$menus,
+					$link->menu_id,
+					array(
+						'class' => 'form-control chosen-select'
+					)
+				)
+			!!}
+		</div>
 	</div>
 
 </div>
@@ -81,9 +103,23 @@
 			<div class="form-group">
 				<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
 				<div class="col-sm-11">
-					<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}" value="{{ $menu->title }}">
+					<input type="text" class="form-control" name="{{ $locale.'[title]' }}" id="{{ $locale.'[title]' }}" value="{{ $link->{'title:'.$locale} }}">
 				</div>
 			</div>
+
+<br>
+<br>
+<br>
+
+			<div class="form-group">
+				<label class="col-sm-1 control-label">{{ trans('kotoba::general.url') }}</label>
+				<div class="col-sm-11">
+					<input type="text" class="form-control" name="{{ $locale.'[url]' }}" id="{{ $locale.'[url]' }}" value="{{ $link->{'url:'.$locale} }}">
+				</div>
+			</div>
+
+<br>
+<br>
 
 			<div class="form-group">
 				<label class="col-sm-1 control-label"></label>
@@ -91,7 +127,7 @@
 					<div class="checkbox">
 							{{ trans('kotoba::general.enabled') }}
 							&nbsp;
-							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1" @if($menu->{'status:'.$locale}===1) checked @endif>
+							<input type="radio" name="{{ $locale.'[status]' }}"  name="{{ $locale.'[status]' }}" value="1" @if($link->{'status:'.$locale}===1) checked @endif>
 							&nbsp;
 							{{ trans('kotoba::general.disabled') }}
 							&nbsp;
@@ -122,7 +158,7 @@
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/admin/menus" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+	<a href="/admin/menulinks" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>

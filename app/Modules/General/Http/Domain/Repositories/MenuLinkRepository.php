@@ -7,9 +7,7 @@ use Illuminate\Support\Collection;
 use App;
 use DB;
 use Session;
-//use Hash, DB, Auth;
-//use DateTime;
-//use File, Auth;
+use Lang;
 
 class MenuLinkRepository extends BaseRepository {
 
@@ -57,14 +55,15 @@ class MenuLinkRepository extends BaseRepository {
 	{
 		$menu = $this->model->find($id);
 		$links = MenuLink::all();
+//		$links = MenuLink::has('menu')->get();
 		$lang = Session::get('locale');
 		$locales = $this->getLocales();
-//dd($links);
-$items = $this->all();
-//$items = MenuLink::all();
-$menus = $this->getMenuHTML($items);
+//dd($menu);
 
-		return compact('menu', 'links', 'locales', 'lang', 'items', 'menus');
+		return compact('menu', 'links', 'locales', 'lang');
+// 		$items = $this->all();
+// 		$menus = $this->getMenuHTML($items);
+// 		return compact('menu', 'links', 'locales', 'lang', 'items', 'menus');
 	}
 
 	/**
@@ -75,12 +74,14 @@ $menus = $this->getMenuHTML($items);
 	 */
 	public function edit($id)
 	{
-		$menu = $this->model->find($id);
+		$link = $this->model->find($id);
 		$lang = Session::get('locale');
 		$locales = $this->getLocales();
 //dd($menu);
+		$menus = $this->getMenus();
+		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
-		return compact('menu', 'locales', 'lang');
+		return compact('link', 'locales', 'lang', 'menus');
 	}
 
 	/**
@@ -108,6 +109,15 @@ $menus = $this->getMenuHTML($items);
 
 		$menu = MenuLink::find($id);
 		$menu->update($input);
+	}
+
+
+// Functions --------------------------------------------------
+
+	public function getMenus()
+	{
+		$sites = DB::table('menus')->lists('name', 'id');
+		return $sites;
 	}
 
 
