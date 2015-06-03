@@ -125,4 +125,15 @@ class MenuRepository extends BaseRepository {
 	}
 
 
+	public function getMenuID($name)
+	{
+
+		$id = DB::table('menus')
+			->where('name', '=', $name)
+			->pluck('id');
+
+		return $id;
+	}
+
+
 }

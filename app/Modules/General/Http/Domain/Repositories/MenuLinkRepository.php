@@ -211,4 +211,72 @@ dd($subArray);
 	}
 
 
+
+	// Recursive function that builds the menu from an array or object of items
+	// In a perfect world some parts of this function would be in a custom Macro or a View
+	public function buildMenu($items, $locale, $parentid = 0)
+	{
+//dd($items);
+
+		$result = null;
+
+		foreach ($items as $item)
+		{
+//			if ($item->parent_id == $parentid) {
+
+		$result .= '<li>' . $item->{'title:'.$locale};
+		$result .= '<a href="' . $item->url . '">' . $item->{'title:'.$locale} . '</a>';
+//		" . $this->buildMenu($items, $item->id)
+		$result .= '</li>';
+
+//			}
+		}
+//dd($result);
+
+			return $result ?  $result : null;
+
+
+// 		$result .= "<li class='dd-item nested-list-item' data-order='{$item->order}' data-id='{$item->id}'>
+// 		<div class='dd-handle nested-list-handle'>
+// 		<span class='glyphicon glyphicon-move'></span>
+// 		</div>
+// 		<div class='nested-list-content'>{$item->label}
+// 		<div class='pull-right'>
+// 		<a href='".url("admin/menu/edit/{$item->id}")."'>Edit</a> |
+// 		<a href='#' class='delete_toggle' rel='{$item->id}'>Delete</a>
+// 		</div>
+// 		</div>".$this->buildMenu($menu, $item->id) . "</li>";
+// 		}
+// 		return $result ?  "\n<ol class=\"dd-list\">\n$result</ol>\n" : null;
+	}
+
+	// Getter for the HTML menu builder
+	public function getHTML($items, $locale)
+	{
+		return $this->buildMenu($items, $locale);
+	}
+
+
+	public function getLinks($menu_id, $locale)
+	{
+		$query = $this->model
+//		->with('translations')
+		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
+		->where('menu_id', $menu_id)
+		->where('menulink_translations.status', '=', 1, 'AND')
+		->where('menulink_translations.locale', '=', $locale, 'AND')
+		->orderBy('menulinks.position');
+//dd($query);
+//		$query->where('status', 1);
+//dd($query);
+
+		$models = $query->get();
+//dd($models);
+
+		return $models;
+	}
+
+
+
+
 }

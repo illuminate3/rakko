@@ -14,8 +14,8 @@
 	{!! Menus::render('footer') !!}
 </nav>
 --}}
-<ul>
-	{!! $menu !!}
+<ul class="list-unstyled">
+	{!! $footer !!}
 </ul>
 
 

@@ -20,20 +20,14 @@ class ComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		// Using class based composers...
-//		View::composer('profile', 'App\Http\ViewComposers\ProfileComposer');
+		View::composer('_partials.menu_links', 'App\Modules\General\Http\ViewComposers\HeaderComposer');
+		View::composer('_partials.footer', 'App\Modules\General\Http\ViewComposers\FooterComposer');
 
 		// Using Closure based composers...
-		View::composer('_partials.footer', function ($view)
-		{
-
-$items = MenuLink::orderBy('position')->get();
-$menu  = new MenuLink;
-$menu = $menu->getHTML($items);
-//dd($menu);
-
-
-			$view->with('menu', $menu);
-		});
+// 		View::composer('dashboard', function($view)
+// 		{
+// 			//
+// 		});
 	}
 
 	/**
