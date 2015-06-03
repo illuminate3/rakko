@@ -6,13 +6,17 @@
 		<div class="row">
 			<div class="col-sm-4">
 
+{{--
 <nav class="nav-social">
 	{!! Menus::render('social') !!}
 </nav>
 <nav class="nav-footer" role="navigation">
 	{!! Menus::render('footer') !!}
 </nav>
-
+--}}
+<ul>
+	{!! $menu !!}
+</ul>
 
 
 

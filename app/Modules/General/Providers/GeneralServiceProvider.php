@@ -22,6 +22,7 @@ class GeneralServiceProvider extends ServiceProvider
 	{
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
 		App::register('App\Modules\General\Providers\GeneralMenuProvider');
+		App::register('App\Modules\General\Providers\ComposerServiceProvider');
 
 		$this->registerNamespaces();
 	}
@@ -57,6 +58,8 @@ class GeneralServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../Resources/Views/' => public_path('/themes/default/views/modules/general/')
 		], 'views');
+
+//		require app_path().'/Modules/General/Http/composers.php';
 
 	}
 
