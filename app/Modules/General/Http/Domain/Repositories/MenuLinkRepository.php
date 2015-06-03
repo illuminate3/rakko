@@ -262,11 +262,11 @@ dd($subArray);
 		$query = $this->model
 //		->with('translations')
 		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
-		->where('menu_id', $menu_id)
+		->where('menulinks.menu_id', '=', $menu_id)
 		->where('menulink_translations.status', '=', 1, 'AND')
-		->where('menulink_translations.locale', '=', $locale, 'AND')
+		->where('menulink_translations.locale', '=', $locale)
 		->orderBy('menulinks.position');
-//dd($query);
+dd($query);
 //		$query->where('status', 1);
 //dd($query);
 
