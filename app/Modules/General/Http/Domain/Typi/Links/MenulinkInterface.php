@@ -1,5 +1,5 @@
 <?php
-namespace TypiCMS\Modules\Menulinks\Repositories;
+namespace App\Modules\General\Http\Domain\Typi\Links;
 
 use Illuminate\Database\Eloquent\Collection;
 use TypiCMS\Modules\Core\Repositories\RepositoryInterface;
@@ -7,12 +7,15 @@ use TypiCMS\Modules\Core\Repositories\RepositoryInterface;
 interface MenulinkInterface extends RepositoryInterface
 {
 
-    /**
-     * Get a menu’s items and children
-     *
-     * @param  integer  $id
-     * @param  boolean  $all published or all
-     * @return Collection
-     */
-    public function allFromMenu($id = null, $all = false);
+
+	/**
+	 * Get a menu’s items and children
+	 *
+	 * @param  integer  $id
+	 * @param  boolean  $all published or all
+	 * @return Collection
+	 */
+	public function allFromMenu($id = null, $all = false);
+
+
 }

@@ -22,6 +22,8 @@
 		"intervention/imagecache": "~2.1",
 		"wikimedia/composer-merge-plugin": "~1.0",
 		"kalnoy/nestedset": "dev-master",
+		"typicms/nestablecollection": "1.*",
+		"vespakoen/menu": "3.*",
 		"arrilot/laravel-widgets": "~2.2"
 	},
 	"require-dev": {

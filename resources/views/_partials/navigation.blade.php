@@ -33,7 +33,9 @@
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
 			@include('_partials.menu', ['items'=> $menu_navbar->roots()])
+{{--
 			@include('_partials.menu_links')
+--}}
 		</ul>
 	@endif
 	<ul class="nav navbar-nav navbar-right">

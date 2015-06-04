@@ -1,5 +1,5 @@
 <?php
-namespace TypiCMS\Modules\Menulinks\Repositories;
+namespace App\Modules\General\Http\Domain\Typi\Links;
 
 use Illuminate\Database\Eloquent\Collection;
 use TypiCMS\Modules\Core\Repositories\CacheAbstractDecorator;
@@ -8,32 +8,35 @@ use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
 class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
 {
 
-    public function __construct(MenulinkInterface $repo, CacheInterface $cache)
-    {
-        $this->repo = $repo;
-        $this->cache = $cache;
-    }
 
-    /**
-     * Get a menu’s items and children
-     *
-     * @param  integer  $id
-     * @param  boolean  $all published or all
-     * @return Collection
-     */
-    public function allFromMenu($id = null, $all = false)
-    {
-        $cacheKey = md5(config('app.locale').'all'.$all.$id);
+	public function __construct(MenulinkInterface $repo, CacheInterface $cache)
+	{
+		$this->repo = $repo;
+		$this->cache = $cache;
+	}
 
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
+	/**
+	 * Get a menu’s items and children
+	 *
+	 * @param  integer  $id
+	 * @param  boolean  $all published or all
+	 * @return Collection
+	 */
+	public function allFromMenu($id = null, $all = false)
+	{
+		$cacheKey = md5(config('app.locale').'all'.$all.$id);
 
-        $models = $this->repo->allFromMenu($id, $all);
+		if ($this->cache->has($cacheKey)) {
+			return $this->cache->get($cacheKey);
+		}
 
-        // Store in cache for next request
-        $this->cache->put($cacheKey, $models);
+		$models = $this->repo->allFromMenu($id, $all);
 
-        return $models;
-    }
+		// Store in cache for next request
+		$this->cache->put($cacheKey, $models);
+
+		return $models;
+	}
+
+
 }

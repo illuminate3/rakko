@@ -27,8 +27,8 @@ class RouteServiceProvider extends ServiceProvider
 	public function boot(Router $router)
 	{
 		parent::boot($router);
-
 		//
+//		$router->model('menus', 'App\Modules\General\Http\Domain\Models\Menu');
 	}
 
 

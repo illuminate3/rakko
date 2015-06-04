@@ -1,5 +1,5 @@
 <?php
-namespace TypiCMS\Modules\Menulinks\Repositories;
+namespace App\Modules\General\Http\Domain\Typi\Links;
 
 use DB;
 use Exception;
@@ -11,46 +11,49 @@ use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
 {
 
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
 
-    /**
-     * Get a menu’s items and children
-     *
-     * @param  integer  $id
-     * @param  boolean  $all published or all
-     * @return Collection
-     */
-    public function allFromMenu($id = null, $all = false)
-    {
-        $query = $this->model->with('translations')
-            ->order()
-            ->where('menu_id', $menuId);
+	public function __construct(Model $model)
+	{
+		$this->model = $model;
+	}
 
-        // All posts or only published
-        if (! $all) {
-            $query->where('status', 1);
-        }
+	/**
+	 * Get a menu’s items and children
+	 *
+	 * @param  integer  $id
+	 * @param  boolean  $all published or all
+	 * @return Collection
+	 */
+	public function allFromMenu($id = null, $all = false)
+	{
+		$query = $this->model->with('translations')
+			->order()
+			->where('menu_id', $menuId);
 
-        $models = $query->get()->nest();
+		// All posts or only published
+		if (! $all) {
+			$query->where('status', 1);
+		}
 
-        return $models;
-    }
+		$models = $query->get()->nest();
 
-    /**
-     * Get sort data
-     *
-     * @param  integer $position
-     * @param  array   $item
-     * @return array
-     */
-    protected function getSortData($position, $item)
-    {
-        return [
-            'position' => $position,
-            'parent_id' => $item['parent_id']
-        ];
-    }
+		return $models;
+	}
+
+	/**
+	 * Get sort data
+	 *
+	 * @param  integer $position
+	 * @param  array   $item
+	 * @return array
+	 */
+	protected function getSortData($position, $item)
+	{
+		return [
+			'position' => $position,
+			'parent_id' => $item['parent_id']
+		];
+	}
+
+
 }

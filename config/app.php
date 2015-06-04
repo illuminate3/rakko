@@ -173,6 +173,7 @@ return [
 'yajra\Datatables\DatatablesServiceProvider',
 'Intervention\Image\ImageServiceProvider',
 //'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+'Menu\MenuServiceProvider',
 
 	],
 
@@ -240,6 +241,9 @@ return [
 //'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 'Node'					=> 'Kalnoy\Nestedset\Node',
+//'Linker'					=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
+//'Menus'					=> 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface',
+'VMenu'					=> 'Menu\Menu',
 
 /*
  * DEV Package Alias

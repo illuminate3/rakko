@@ -1,466 +1,495 @@
 <?php
-namespace TypiCMS\Modules\Core\Repositories;
+namespace App\Modules\General\Http\Domain\Typi\Core;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
 use stdClass;
-use TypiCMS\Modules\Pages\Models\Page;
+//use TypiCMS\Modules\Pages\Models\Page;
 use TypiCMS\NestedCollection;
 
-abstract class RepositoriesAbstract implements RepositoryInterface
+abstract class RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Core\RepositoryInterface
 {
-    protected $model;
 
-    /**
-     * Get empty model
-     *
-     * @return Model
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
 
-    /**
-     * Get table name
-     *
-     * @return string
-     */
-    public function getTable()
-    {
-        return $this->model->getTable();
-    }
+	protected $model;
 
-    /**
-     * Make a new instance of the entity to query on
-     *
-     * @param array $with
-     */
-    public function make(array $with = array())
-    {
-        if (method_exists($this->model, 'translations')) {
-            if (! in_array('translations', $with)) {
-                $with[] = 'translations';
-            }
-        }
-        return $this->model->with($with);
-    }
+	/**
+	 * Get empty model
+	 *
+	 * @return Model
+	 */
+	public function getModel()
+	{
+dd('here');
+		return $this->model;
+	}
 
-    /**
-     * Find a single entity by key value
-     *
-     * @param string $key
-     * @param string $value
-     * @param array  $with
-     */
-    public function getFirstBy($key, $value, array $with = array(), $all = false)
-    {
-        $query = $this->make($with);
-        if (! $all) {
-            $query->online();
-        }
-        return $query->where($key, '=', $value)->first();
-    }
+	/**
+	 * Get table name
+	 *
+	 * @return string
+	 */
+	public function getTable()
+	{
+dd('here');
+		return $this->model->getTable();
+	}
 
-    /**
-     * Retrieve model by id
-     * regardless of status
-     *
-     * @param  int       $id model ID
-     * @return Model
-     */
-    public function byId($id, array $with = array())
-    {
-        $query = $this->make($with)->where('id', $id);
+	/**
+	 * Make a new instance of the entity to query on
+	 *
+	 * @param array $with
+	 */
+	public function make(array $with = array())
+	{
+dd('here');
+		if (method_exists($this->model, 'translations')) {
+			if (! in_array('translations', $with)) {
+				$with[] = 'translations';
+			}
+		}
+		return $this->model->with($with);
+	}
 
-        $model = $query->firstOrFail();
+	/**
+	 * Find a single entity by key value
+	 *
+	 * @param string $key
+	 * @param string $value
+	 * @param array  $with
+	 */
+	public function getFirstBy($key, $value, array $with = array(), $all = false)
+	{
+dd('here');
+		$query = $this->make($with);
+		if (! $all) {
+			$query->online();
+		}
+		return $query->where($key, '=', $value)->first();
+	}
 
-        return $model;
-    }
+	/**
+	 * Retrieve model by id
+	 * regardless of status
+	 *
+	 * @param  int       $id model ID
+	 * @return Model
+	 */
+	public function byId($id, array $with = array())
+	{
+dd('here');
+		$query = $this->make($with)->where('id', $id);
 
-    /**
-     * Get next model
-     *
-     * @param  Model      $model
-     * @param  array      $with
-     * @param  boolean    $all
-     * @return Collection
-     */
-    public function next($model, array $with = [], $all = false)
-    {
-        return $this->adjacent(1, $model, $with, $all);
-    }
+		$model = $query->firstOrFail();
 
-    /**
-     * Get prev model
-     *
-     * @param  Model      $model
-     * @param  array      $with
-     * @param  boolean    $all
-     * @return Collection
-     */
-    public function prev($model, array $with = [], $all = false)
-    {
-        return $this->adjacent(-1, $model, $with, $all);
-    }
+		return $model;
+	}
 
-    /**
-     * Get prev model
-     *
-     * @param  Model      $model
-     * @param  array      $with
-     * @return Collection
-     */
-    private function adjacent($direction, $model, array $with = [], $all = false)
-    {
-        $currentModel = $model;
-        $models = $this->all($with, $all);
-        foreach ($models as $key => $model) {
-            if ($currentModel->id == $model->id) {
-                $adjacentKey = $key + $direction;
-                return isset($models[$adjacentKey]) ? $models[$adjacentKey] : null ;
-            }
-        }
-        return null;
-    }
+	/**
+	 * Get next model
+	 *
+	 * @param  Model      $model
+	 * @param  array      $with
+	 * @param  boolean    $all
+	 * @return Collection
+	 */
+	public function next($model, array $with = [], $all = false)
+	{
+dd('here');
+		return $this->adjacent(1, $model, $with, $all);
+	}
 
-    /**
-     * Get paginated models
-     *
-     * @param  int      $page  Number of models per page
-     * @param  int      $limit Results per page
-     * @param  boolean  $all   get published models or all
-     * @param  array    $with  Eager load related models
-     * @return stdClass Object with $items && $totalItems for pagination
-     */
-    public function byPage($page = 1, $limit = 10, array $with = array(), $all = false)
-    {
-        $result = new stdClass;
-        $result->page = $page;
-        $result->limit = $limit;
-        $result->totalItems = 0;
-        $result->items = array();
+	/**
+	 * Get prev model
+	 *
+	 * @param  Model      $model
+	 * @param  array      $with
+	 * @param  boolean    $all
+	 * @return Collection
+	 */
+	public function prev($model, array $with = [], $all = false)
+	{
+dd('here');
+		return $this->adjacent(-1, $model, $with, $all);
+	}
 
-        $query = $this->make($with);
+	/**
+	 * Get prev model
+	 *
+	 * @param  Model      $model
+	 * @param  array      $with
+	 * @return Collection
+	 */
+	private function adjacent($direction, $model, array $with = [], $all = false)
+	{
+dd('here');
+		$currentModel = $model;
+		$models = $this->all($with, $all);
+		foreach ($models as $key => $model) {
+			if ($currentModel->id == $model->id) {
+				$adjacentKey = $key + $direction;
+				return isset($models[$adjacentKey]) ? $models[$adjacentKey] : null ;
+			}
+		}
+		return null;
+	}
 
-        if (! $all) {
-            $query->online();
-        }
+	/**
+	 * Get paginated models
+	 *
+	 * @param  int      $page  Number of models per page
+	 * @param  int      $limit Results per page
+	 * @param  boolean  $all   get published models or all
+	 * @param  array    $with  Eager load related models
+	 * @return stdClass Object with $items && $totalItems for pagination
+	 */
+	public function byPage($page = 1, $limit = 10, array $with = array(), $all = false)
+	{
+dd('here');
+		$result = new stdClass;
+		$result->page = $page;
+		$result->limit = $limit;
+		$result->totalItems = 0;
+		$result->items = array();
 
-        $totalItems = $query->count();
+		$query = $this->make($with);
 
-        $query->order()
-            ->skip($limit * ($page - 1))
-            ->take($limit);
+		if (! $all) {
+			$query->online();
+		}
 
-        $models = $query->get();
+		$totalItems = $query->count();
 
-        // Put items and totalItems in stdClass
-        $result->totalItems = $totalItems;
-        $result->items = $models->all();
+		$query->order()
+			->skip($limit * ($page - 1))
+			->take($limit);
 
-        return $result;
-    }
+		$models = $query->get();
 
-    /**
-     * Get all models
-     *
-     * @param  array       $with Eager load related models
-     * @param  boolean     $all  Show published or all
-     * @return Collection|NestedCollection
-     */
-    public function all(array $with = array(), $all = false)
-    {
-        $query = $this->make($with);
+		// Put items and totalItems in stdClass
+		$result->totalItems = $totalItems;
+		$result->items = $models->all();
 
-        if (! $all) {
-            $query->online();
-        }
+		return $result;
+	}
 
-        // Query ORDER BY
-        $query->order();
+	/**
+	 * Get all models
+	 *
+	 * @param  array       $with Eager load related models
+	 * @param  boolean     $all  Show published or all
+	 * @return Collection|NestedCollection
+	 */
+	public function all(array $with = array(), $all = false)
+	{
+dd('here');
+		$query = $this->make($with);
 
-        // Get
-        return $query->get();
-    }
+		if (! $all) {
+			$query->online();
+		}
 
-    /**
-     * Get all models and nest
-     *
-     * @param  boolean                    $all  Show published or all
-     * @param  array                      $with Eager load related models
-     * @return NestedCollection
-     */
-    public function allNested(array $with = array(), $all = false)
-    {
-        // Get
-        return $this->all($with, $all)->nest();
-    }
+		// Query ORDER BY
+		$query->order();
 
-    /**
-     * Get all models by key/value
-     *
-     * @param  string     $key
-     * @param  string     $value
-     * @param  array      $with
-     * @param  boolean    $all
-     * @return Collection
-     */
-    public function allBy($key, $value, array $with = array(), $all = false)
-    {
-        $query = $this->make($with);
+		// Get
+		return $query->get();
+	}
 
-        if (! $all) {
-            $query->online();
-        }
+	/**
+	 * Get all models and nest
+	 *
+	 * @param  boolean                    $all  Show published or all
+	 * @param  array                      $with Eager load related models
+	 * @return NestedCollection
+	 */
+	public function allNested(array $with = array(), $all = false)
+	{
+dd('here');
+		// Get
+		return $this->all($with, $all)->nest();
+	}
 
-        $query->where($key, $value);
+	/**
+	 * Get all models by key/value
+	 *
+	 * @param  string     $key
+	 * @param  string     $value
+	 * @param  array      $with
+	 * @param  boolean    $all
+	 * @return Collection
+	 */
+	public function allBy($key, $value, array $with = array(), $all = false)
+	{
+dd('here');
+		$query = $this->make($with);
 
-        // Query ORDER BY
-        $query->order();
+		if (! $all) {
+			$query->online();
+		}
 
-        // Get
-        $models = $query->get();
+		$query->where($key, $value);
 
-        return $models;
-    }
+		// Query ORDER BY
+		$query->order();
 
-    /**
-     * Get all models by key/value and nest collection
-     *
-     * @param  string     $key
-     * @param  string     $value
-     * @param  array      $with
-     * @param  boolean    $all
-     * @return Collection
-     */
-    public function allNestedBy($key, $value, array $with = array(), $all = false)
-    {
-        // Get
-        return $this->allBy($key, $value, $with, $all)->nest();
-    }
+		// Get
+		$models = $query->get();
 
-    /**
-     * Get latest models
-     *
-     * @param  integer      $number number of items to take
-     * @param  array        $with array of related items
-     * @return Collection
-     */
-    public function latest($number = 10, array $with = array())
-    {
-        $query = $this->make($with);
-        return $query->online()->order()->take($number)->get();
-    }
+		return $models;
+	}
 
-    /**
-     * Get single model by Slug
-     *
-     * @param  string $slug slug
-     * @param  array  $with related tables
-     * @return mixed
-     */
-    public function bySlug($slug, array $with = array())
-    {
-        $model = $this->make($with)
-            ->whereHas(
-                'translations',
-                function (Builder $query) use ($slug) {
-                    if (! Input::get('preview')) {
-                        $query->where('status', 1);
-                    }
-                    $query->where('locale', config('app.locale'));
-                    $query->where('slug', '=', $slug);
-                }
-            )
-            ->firstOrFail();
+	/**
+	 * Get all models by key/value and nest collection
+	 *
+	 * @param  string     $key
+	 * @param  string     $value
+	 * @param  array      $with
+	 * @param  boolean    $all
+	 * @return Collection
+	 */
+	public function allNestedBy($key, $value, array $with = array(), $all = false)
+	{
+dd('here');
+		// Get
+		return $this->allBy($key, $value, $with, $all)->nest();
+	}
 
-        if (! count($model->translations)) {
-            abort(404);
-        }
+	/**
+	 * Get latest models
+	 *
+	 * @param  integer      $number number of items to take
+	 * @param  array        $with array of related items
+	 * @return Collection
+	 */
+	public function latest($number = 10, array $with = array())
+	{
+dd('here');
+		$query = $this->make($with);
+		return $query->online()->order()->take($number)->get();
+	}
 
-        return $model;
+	/**
+	 * Get single model by Slug
+	 *
+	 * @param  string $slug slug
+	 * @param  array  $with related tables
+	 * @return mixed
+	 */
+	public function bySlug($slug, array $with = array())
+	{
+dd('here');
+		$model = $this->make($with)
+			->whereHas(
+				'translations',
+				function (Builder $query) use ($slug) {
+					if (! Input::get('preview')) {
+						$query->where('status', 1);
+					}
+					$query->where('locale', config('app.locale'));
+					$query->where('slug', '=', $slug);
+				}
+			)
+			->firstOrFail();
 
-    }
+		if (! count($model->translations)) {
+			abort(404);
+		}
 
-    /**
-     * Return all results that have a required relationship
-     *
-     * @param string $relation
-     * @param array  $with
-     * @return Collection
-     */
-    public function has($relation, array $with = array())
-    {
-        $entity = $this->make($with);
+		return $model;
 
-        return $entity->has($relation)->get();
-    }
+	}
 
-    /**
-     * Create a new model
-     *
-     * @param  array $data
-     * @return mixed Model or false on error during save
-     */
-    public function create(array $data)
-    {
-        // Create the model
-        $model = $this->model->fill($data);
+	/**
+	 * Return all results that have a required relationship
+	 *
+	 * @param string $relation
+	 * @param array  $with
+	 * @return Collection
+	 */
+	public function has($relation, array $with = array())
+	{
+dd('here');
+		$entity = $this->make($with);
 
-        if ($model->save()) {
-            $this->syncRelation($model, $data, 'galleries');
-            return $model;
-        }
+		return $entity->has($relation)->get();
+	}
 
-        return false;
-    }
+	/**
+	 * Create a new model
+	 *
+	 * @param  array $data
+	 * @return mixed Model or false on error during save
+	 */
+	public function create(array $data)
+	{
+dd('here');
+		// Create the model
+		$model = $this->model->fill($data);
 
-    /**
-     * Update an existing model
-     *
-     * @param  array  $data
-     * @return boolean
-     */
-    public function update(array $data)
-    {
-        $model = $this->model->find($data['id']);
+		if ($model->save()) {
+			$this->syncRelation($model, $data, 'galleries');
+			return $model;
+		}
 
-        $model->fill($data);
+		return false;
+	}
 
-        $this->syncRelation($model, $data, 'galleries');
+	/**
+	 * Update an existing model
+	 *
+	 * @param  array  $data
+	 * @return boolean
+	 */
+	public function update(array $data)
+	{
+dd('here');
+		$model = $this->model->find($data['id']);
 
-        if ($model->save()) {
-            return true;
-        }
+		$model->fill($data);
 
-        return false;
+		$this->syncRelation($model, $data, 'galleries');
 
-    }
+		if ($model->save()) {
+			return true;
+		}
 
-    /**
-     * Sort models
-     *
-     * @param  array $data updated data
-     * @return void
-     */
-    public function sort(array $data)
-    {
-        foreach ($data['item'] as $position => $item) {
+		return false;
 
-            $page = $this->model->find($item['id']);
+	}
 
-            $sortData = $this->getSortData($position + 1, $item);
+	/**
+	 * Sort models
+	 *
+	 * @param  array $data updated data
+	 * @return void
+	 */
+	public function sort(array $data)
+	{
+dd('here');
+		foreach ($data['item'] as $position => $item) {
 
-            $page->update($sortData);
+			$page = $this->model->find($item['id']);
 
-            if ($data['moved'] == $item['id']) {
-                $this->fireResetChildrenUriEvent($page);
-            }
+			$sortData = $this->getSortData($position + 1, $item);
 
-        }
+			$page->update($sortData);
 
-    }
+			if ($data['moved'] == $item['id']) {
+				$this->fireResetChildrenUriEvent($page);
+			}
 
-    /**
-     * Get sort data
-     *
-     * @param  integer $position
-     * @param  array   $item
-     * @return array
-     */
-    protected function getSortData($position, $item)
-    {
-        return [
-            'position' => $position
-        ];
-    }
+		}
 
-    /**
-     * Fire event to reset children’s uri
-     * Only applicable on nestable collections
-     *
-     * @param  Page    $page
-     * @return void|null
-     */
-    protected function fireResetChildrenUriEvent($page)
-    {
-        return null;
-    }
+	}
 
-    /**
-     * Build a select menu for a module
-     *
-     * @param  string  $method     with method to call from the repository ?
-     * @param  boolean $firstEmpty generate an empty item
-     * @param  string  $value      witch column as value ?
-     * @param  string  $key        witch column as key ?
-     * @return array               array with key = $key and value = $value
-     */
-    public function select($method = 'all', $firstEmpty = false, $value = 'title', $key = 'id')
-    {
-        $items = $this->$method()->lists($value, $key);
-        if ($firstEmpty) {
-            $items = ['' => ''] + $items;
-        }
-        return $items;
-    }
+	/**
+	 * Get sort data
+	 *
+	 * @param  integer $position
+	 * @param  array   $item
+	 * @return array
+	 */
+	protected function getSortData($position, $item)
+	{
+dd('here');
+		return [
+			'position' => $position
+		];
+	}
 
-    /**
-     * Get all translated pages for a select/options
-     *
-     * @return array
-     */
-    public function getPagesForSelect()
-    {
-        $pages = app('TypiCMS\Modules\Pages\Repositories\PageInterface')
-            ->all([], true)
-            ->nest()
-            ->listsFlattened();
-        $pages = ['' => ' '] + $pages;
-        return $pages;
-    }
+	/**
+	 * Fire event to reset children’s uri
+	 * Only applicable on nestable collections
+	 *
+	 * @param  Page    $page
+	 * @return void|null
+	 */
+	protected function fireResetChildrenUriEvent($page)
+	{
+dd('here');
+		return null;
+	}
 
-    /**
-     * Delete model
-     *
-     * @return boolean
-     */
-    public function delete($model)
-    {
-        if ($model->delete()) {
-            return true;
-        }
+	/**
+	 * Build a select menu for a module
+	 *
+	 * @param  string  $method     with method to call from the repository ?
+	 * @param  boolean $firstEmpty generate an empty item
+	 * @param  string  $value      witch column as value ?
+	 * @param  string  $key        witch column as key ?
+	 * @return array               array with key = $key and value = $value
+	 */
+	public function select($method = 'all', $firstEmpty = false, $value = 'title', $key = 'id')
+	{
+dd('here');
+		$items = $this->$method()->lists($value, $key);
+		if ($firstEmpty) {
+			$items = ['' => ''] + $items;
+		}
+		return $items;
+	}
 
-        return false;
-    }
+	/**
+	 * Get all translated pages for a select/options
+	 *
+	 * @return array
+	 */
+	public function getPagesForSelect()
+	{
+dd('here');
+		$pages = app('TypiCMS\Modules\Pages\Repositories\PageInterface')
+			->all([], true)
+			->nest()
+			->listsFlattened();
+		$pages = ['' => ' '] + $pages;
+		return $pages;
+	}
 
-    /**
-     * Sync related items for model
-     *
-     * @param  Model $model
-     * @param  array                               $data
-     * @param  string                              $table
-     * @return false|null
-     */
-    protected function syncRelation($model, array $data, $table = null)
-    {
-        if (! method_exists($model, $table)) {
-            return false;
-        }
+	/**
+	 * Delete model
+	 *
+	 * @return boolean
+	 */
+	public function delete($model)
+	{
+dd('here');
+		if ($model->delete()) {
+			return true;
+		}
 
-        // add related items
-        $pivotData = array();
-        $position = 0;
-        if (isset($data[$table])) {
-            foreach ($data[$table] as $id) {
-                $pivotData[$id] = ['position' => $position++];
-            }
-        }
+		return false;
+	}
 
-        // Sync related items
-        $model->$table()->sync($pivotData);
-    }
+	/**
+	 * Sync related items for model
+	 *
+	 * @param  Model $model
+	 * @param  array                               $data
+	 * @param  string                              $table
+	 * @return false|null
+	 */
+	protected function syncRelation($model, array $data, $table = null)
+	{
+dd('here');
+		if (! method_exists($model, $table)) {
+			return false;
+		}
+
+		// add related items
+		$pivotData = array();
+		$position = 0;
+		if (isset($data[$table])) {
+			foreach ($data[$table] as $id) {
+				$pivotData[$id] = ['position' => $position++];
+			}
+		}
+
+		// Sync related items
+		$model->$table()->sync($pivotData);
+	}
+
+
 }
