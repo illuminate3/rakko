@@ -16,10 +16,10 @@
 <ul class="list-unstyled">
 	{!! $footer !!}
 </ul>
---}}
 <nav class="nav-footer" role="navigation">
 	{!! Linker::render('footer') !!}
 </nav>
+--}}
 
 
 
