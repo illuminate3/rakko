@@ -40,8 +40,8 @@ class GeneralServiceProvider extends ServiceProvider
 // );
 AliasLoader::getInstance()->alias(
 	'Linker',
-//			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-	'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
+			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
+//			'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
 );
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',

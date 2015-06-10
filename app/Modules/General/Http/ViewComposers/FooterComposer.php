@@ -53,9 +53,12 @@ class FooterComposer {
 		if ($footer_items->count()) {
 			$menu  = new MenuLink;
 			$footer = $this->link->getHTML($footer_items, $locale);
+//dd($footer);
 		}
 
 		$view->with('footer', $footer);
+//dd($view->with('footer', $footer));
+
 	}
 
 

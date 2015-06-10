@@ -266,7 +266,7 @@ dd($subArray);
 		->where('menulink_translations.status', '=', 1, 'AND')
 		->where('menulink_translations.locale', '=', $locale)
 		->orderBy('menulinks.position');
-dd($query);
+//dd($query);
 //		$query->where('status', 1);
 //dd($query);
 

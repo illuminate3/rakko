@@ -8,6 +8,8 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 //use Log;
 use Request;
+use Theme;
+
 use App\Modules\General\Http\Domain\Models\Menu;
 use App\Modules\General\Http\Domain\Typi\Core\RepositoriesAbstract;
 
@@ -55,7 +57,8 @@ class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\H
 	{
 //dd('here');
 //dd($name);
-		return view('modules.general.typi._menu', ['name' => $name]);
+//dd(Theme::View('modules.general.typi._menu', ['name' => $name]));
+		return Theme::View('modules.general.typi._menu', ['name' => $name]);
 	}
 
 	/**

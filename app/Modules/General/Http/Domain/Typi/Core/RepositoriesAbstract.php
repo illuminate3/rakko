@@ -9,7 +9,7 @@ use stdClass;
 //use TypiCMS\Modules\Pages\Models\Page;
 use TypiCMS\NestedCollection;
 
-abstract class RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Core\RepositoryInterface
+abstract class RepositoriesAbstract implements RepositoryInterface
 {
 
 

@@ -4,7 +4,7 @@ namespace App\Modules\General\Providers;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
-//use App\Modules\General\Http\Domain\Models\Menu;
+use App\Modules\General\Http\Domain\Models\Menu;
 use App\Modules\General\Http\Domain\Typi\Menus\EloquentMenu;
 use App\Modules\General\Http\Domain\Typi\Menus\CacheDecorator;
 use App\Modules\General\Http\Services\Cache\LaravelCache;

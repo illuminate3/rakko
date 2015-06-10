@@ -6,36 +6,12 @@
 		<div class="row">
 			<div class="col-sm-4">
 
-{{--
-<nav class="nav-social">
-	{!! Menus::render('social') !!}
-</nav>
-<nav class="nav-footer" role="navigation">
-	{!! Menus::render('footer') !!}
-</nav>
-<ul class="list-unstyled">
-	{!! $footer !!}
-</ul>
 <nav class="nav-footer" role="navigation">
 	{!! Linker::render('footer') !!}
 </nav>
---}}
-{{-- $menus --}}
 
 
 
-{{--
-<ul class="language_bar_chooser">
-@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-	<li>
-{{ $localeCode }}
-		<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-			{{{ $properties['native'] }}}
-		</a>
-	</li>
-@endforeach
-</ul>
---}}
 
 			</div>
 			<div class="col-sm-4">
