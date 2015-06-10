@@ -32,8 +32,8 @@
 
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
-			@include('_partials.menu', ['items'=> $menu_navbar->roots()])
 {{--
+			@include('_partials.menu', ['items'=> $menu_navbar->roots()])
 			@include('_partials.menu_links')
 --}}
 		</ul>
@@ -86,10 +86,12 @@
 						</a>
 					</li>
 				<li class="divider"></li>
+{{--
 					@if (count($menu_admin->roots()) != 0)
 						@include('_partials.menu', ['items'=> $menu_admin->roots()])
 						<li class="divider"></li>
 					@endif
+--}}
 @endif
 					<li>
 						<a href="/auth/logout">

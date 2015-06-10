@@ -1,6 +1,17 @@
 <?php
 namespace app\Modules\General\Helpers;
 
+
+/**
+ * @return mixed
+ */
+function getLang() {
+//	return LaravelLocalization::getCurrentLocale();
+	$lang = Session::get('locale');
+	return $lang;
+}
+
+
 if (!function_exists('gratavarUrl')) {
     /**
      * Gravatar URL from Email address
@@ -37,14 +48,6 @@ function setActive($path, $active = 'active') {
     }
 
     return call_user_func_array('Request::is', (array)$path) ? $active : '';
-}
-
-/**
- * @return mixed
- */
-function getLang() {
-
-    return LaravelLocalization::getCurrentLocale();
 }
 
 /**

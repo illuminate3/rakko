@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "68adb0214a95ef1c80349d6f55fce3cc",
+    "hash": "4201fa57397e8558db52467d15fef23e",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -2837,6 +2837,162 @@
                 "dump"
             ],
             "time": "2015-05-01 14:14:24"
+        },
+        {
+            "name": "typicms/core",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TypiCMS/Core.git",
+                "reference": "83c3b2062190bbfd1a2b7eba394e616f796580d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TypiCMS/Core/zipball/83c3b2062190bbfd1a2b7eba394e616f796580d6",
+                "reference": "83c3b2062190bbfd1a2b7eba394e616f796580d6",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.0.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TypiCMS\\Modules\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel De Backer",
+                    "email": "sdebacker@gmail.com"
+                }
+            ],
+            "time": "2015-05-29 11:58:11"
+        },
+        {
+            "name": "typicms/menulinks",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TypiCMS/Menulinks.git",
+                "reference": "45bbaea1bf470e09e9ffd10ed181934b304959ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TypiCMS/Menulinks/zipball/45bbaea1bf470e09e9ffd10ed181934b304959ac",
+                "reference": "45bbaea1bf470e09e9ffd10ed181934b304959ac",
+                "shasum": ""
+            },
+            "require": {
+                "typicms/core": "~2.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TypiCMS\\Modules\\Menulinks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel De Backer",
+                    "email": "sdebacker@gmail.com"
+                }
+            ],
+            "time": "2015-05-19 13:02:23"
+        },
+        {
+            "name": "typicms/menus",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TypiCMS/Menus.git",
+                "reference": "8641e0ac09b8cb5b6b5cbcbb913b193ce8147fb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TypiCMS/Menus/zipball/8641e0ac09b8cb5b6b5cbcbb913b193ce8147fb4",
+                "reference": "8641e0ac09b8cb5b6b5cbcbb913b193ce8147fb4",
+                "shasum": ""
+            },
+            "require": {
+                "typicms/core": "~2.2.0",
+                "typicms/menulinks": "~2.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TypiCMS\\Modules\\Menus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel De Backer",
+                    "email": "sdebacker@gmail.com"
+                }
+            ],
+            "time": "2015-05-10 14:58:59"
+        },
+        {
+            "name": "typicms/nestablecollection",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TypiCMS/NestableCollection.git",
+                "reference": "e75ed5efaf7cf8d98a44fd31e0435352a3bae0ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TypiCMS/NestableCollection/zipball/e75ed5efaf7cf8d98a44fd31e0435352a3bae0ff",
+                "reference": "e75ed5efaf7cf8d98a44fd31e0435352a3bae0ff",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~4.2.0|~5.0",
+                "illuminate/support": "~4.2.0|~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TypiCMS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel De Backer",
+                    "email": "sdebacker@gmail.com"
+                }
+            ],
+            "description": "A Laravel Package that extends Collection to handle unlimited nested items following adjacency list model.",
+            "keywords": [
+                "TypiCMS",
+                "adjacency list",
+                "collection",
+                "eloquent",
+                "laravel",
+                "nested set",
+                "tree"
+            ],
+            "time": "2015-05-13 20:26:35"
         },
         {
             "name": "vlucas/phpdotenv",

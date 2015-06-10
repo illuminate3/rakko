@@ -21,8 +21,8 @@ class ComposerServiceProvider extends ServiceProvider {
 	{
 		// Using class based composers...
 // 		View::composer('_partials.menu_links', 'App\Modules\General\Http\ViewComposers\HeaderComposer');
-// 		View::composer('_partials.footer', 'App\Modules\General\Http\ViewComposers\FooterComposer');
-		View::composer('_partials.footer', 'App\Modules\General\Http\ViewComposers\MenuComposer');
+		View::composer('_partials.footer', 'App\Modules\General\Http\ViewComposers\FooterComposer');
+//		View::composer('_partials.footer', 'App\Modules\General\Http\ViewComposers\MenuComposer');
 
 		// Using Closure based composers...
 // 		View::composer('dashboard', function($view)

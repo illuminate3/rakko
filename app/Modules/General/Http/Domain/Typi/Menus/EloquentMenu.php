@@ -2,11 +2,11 @@
 namespace App\Modules\General\Http\Domain\Typi\Menus;
 
 use App;
-// use Categories;
+//use Categories;
 use Config;
 use ErrorException;
 use Illuminate\Database\Eloquent\Model;
-// use Log;
+//use Log;
 use Request;
 use App\Modules\General\Http\Domain\Models\Menu;
 use App\Modules\General\Http\Domain\Typi\Core\RepositoriesAbstract;
@@ -18,7 +18,7 @@ class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\H
 
 	public function __construct(Model $model)
 	{
-dd('here');
+////dd('here');
 		$this->model = $model;
 	}
 
@@ -31,17 +31,17 @@ dd('here');
 	 */
 	public function all(array $with = array(), $all = false)
 	{
-dd('here');
+////dd('here');
 		$query = $this->make($with);
 
 		if (! $all) {
 			$query->online();
 		}
 
-		// Query ORDER BY
+		//Query ORDER BY
 		$query->order();
 
-		// Get
+		//Get
 		return $query->get();
 	}
 
@@ -53,9 +53,9 @@ dd('here');
 	 */
 	public function render($name)
 	{
-dd('here');
-dd($name);
-		return view('menus::public._menu', ['name' => $name]);
+//dd('here');
+//dd($name);
+		return view('modules.general.typi._menu', ['name' => $name]);
 	}
 
 	/**
@@ -67,7 +67,7 @@ dd($name);
 	 */
 	public function build($name)
 	{
-dd('here');
+//dd('here');
 		return $this->render($name);
 	}
 
@@ -79,7 +79,7 @@ dd('here');
 	 */
 	public function getMenu($name)
 	{
-dd('here');
+//dd('here');
 		try {
 			$menu = app('TypiCMS.menus')->filter(function(Menu $menu) use ($name) {
 				return $menu->name == $name;
@@ -98,7 +98,7 @@ dd('here');
 
 	public function prepare($items = null)
 	{
-dd('here');
+//dd('here');
 		$items->each(function ($item) {
 			if ($item->has_categories) {
 				$item->items = $this->prepare(Categories::allForMenu($item->page->uri));
@@ -119,7 +119,7 @@ dd('here');
 	 */
 	public function setHref($menulink)
 	{
-dd('here');
+//dd('here');
 		if ($menulink->url) {
 			return $menulink->url;
 		}
@@ -148,12 +148,12 @@ dd('here');
 	 */
 	public function setClass($menulink)
 	{
-dd('here');
+//dd('here');
 		$activeUri = Request::getRequestUri();
 		$classArray = preg_split('/ /', $menulink->class, null, PREG_SPLIT_NO_EMPTY);
-		// add active class if item uri equals current uri
-		// or current uri contain item uri
-		// item uri must be bigger than 3 to avoid homepage link always active ('/', '/lg')
+		//add active class if item uri equals current uri
+		//or current uri contain item uri
+		//item uri must be bigger than 3 to avoid homepage link always active ('/', '/lg')
 		if ($menulink->href == $activeUri ||
 				(
 					strlen($menulink->href) > 3 &&

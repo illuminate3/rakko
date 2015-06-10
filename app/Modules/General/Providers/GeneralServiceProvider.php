@@ -38,11 +38,11 @@ class GeneralServiceProvider extends ServiceProvider
 // 	'Menus',
 // 	'TypiCMS\Modules\Menus\Facades\Facade'
 // );
-// 		AliasLoader::getInstance()->alias(
-// 			'Linker',
-// //			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-// 			'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
-// 		);
+AliasLoader::getInstance()->alias(
+	'Linker',
+//			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
+	'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
+);
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
 // $this->app->bind(
@@ -88,6 +88,8 @@ class GeneralServiceProvider extends ServiceProvider
 
 //		require app_path().'/Modules/General/Http/composers.php';
 
+//		include __DIR__.'/../Helpers/Helpers.php';
+		require app_path().'/Modules/General/Helpers/Helpers.php';
 
 //App::bind('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface', 'Menus');
 // $loader = \Illuminate\Foundation\AliasLoader::getInstance();

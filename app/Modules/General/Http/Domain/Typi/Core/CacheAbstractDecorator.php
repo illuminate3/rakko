@@ -20,7 +20,7 @@ abstract class CacheAbstractDecorator implements RepositoryInterface
 	 */
 	public function getModel()
 	{
-dd('here');
+//dd('here');
 		return $this->repo->getModel();
 	}
 
@@ -31,7 +31,7 @@ dd('here');
 	 */
 	public function getTable()
 	{
-dd('here');
+//dd('here');
 		return $this->repo->getTable();
 	}
 
@@ -42,7 +42,7 @@ dd('here');
 	 */
 	public function make(array $with = array())
 	{
-dd('here');
+//dd('here');
 		return $this->repo->make($with);
 	}
 
@@ -55,7 +55,7 @@ dd('here');
 	 */
 	public function byId($id, array $with = array())
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale') . 'id.' . implode('.', $with) . $id . implode('.', Input::all()));
 
@@ -81,7 +81,7 @@ dd('here');
 	 */
 	public function next($model, array $with = [], $all = false)
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale') . 'next.' . $model->id . $all . implode('.', $with));
 		if ($this->cache->has($cacheKey)) {
@@ -105,7 +105,7 @@ dd('here');
 	 */
 	public function prev($model, array $with = [], $all = false)
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale') . 'prev.' . $model->id . $all . implode('.', $with));
 		if ($this->cache->has($cacheKey)) {
@@ -128,7 +128,7 @@ dd('here');
 	 */
 	public function getFirstBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale').'getFirstBy'.$key.$value.implode('.', $with).$all.implode('.', Input::all()));
 
@@ -155,7 +155,7 @@ dd('here');
 	 */
 	public function byPage($page = 1, $limit = 10, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale').'byPage'.$page.$limit.implode('.', $with).$all.implode('.', Input::except('page')));
 
 		if ($this->cache->has($cacheKey)) {
@@ -179,7 +179,7 @@ dd('here');
 	 */
 	public function all(array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale') . 'all' . implode('.', $with) . $all . implode('.', Input::except('page')));
 
 		if ($this->cache->has($cacheKey)) {
@@ -204,7 +204,7 @@ dd('here');
 	 */
 	public function allNested(array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale') . 'allNested' . implode('.', $with) . $all . implode('.', Input::except('page')));
 
 		if ($this->cache->has($cacheKey)) {
@@ -231,7 +231,7 @@ dd('here');
 	 */
 	public function allBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale').'allBy'.$key.$value.implode('.', $with).$all.implode('.', Input::all()));
 
 		if ($this->cache->has($cacheKey)) {
@@ -258,7 +258,7 @@ dd('here');
 	 */
 	public function allNestedBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale').'allNestedBy'.$key.$value.implode('.', $with).$all.implode('.', Input::all()));
 
 		if ($this->cache->has($cacheKey)) {
@@ -283,7 +283,7 @@ dd('here');
 	 */
 	public function latest($number = 10, array $with = array())
 	{
-dd('here');
+//dd('here');
 		$cacheKey = md5(config('app.locale') . 'latest' . $number . implode('.', $with) . implode('.', Input::all()));
 
 		if ($this->cache->has($cacheKey)) {
@@ -308,7 +308,7 @@ dd('here');
 	 */
 	public function bySlug($slug, array $with = array())
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale') . 'bySlug' . $slug . implode('.', $with) . implode('.', Input::all()));
 
@@ -334,7 +334,7 @@ dd('here');
 	 */
 	public function has($relation, array $with = array())
 	{
-dd('here');
+//dd('here');
 		// Build the cache key, unique per model slug
 		$cacheKey = md5(config('app.locale') . 'has' . implode('.', $with) . $relation);
 
@@ -360,7 +360,7 @@ dd('here');
 	 */
 	public function create(array $data)
 	{
-dd('here');
+//dd('here');
 		$this->cache->flush();
 		$this->cache->flush('dashboard');
 		return $this->repo->create($data);
@@ -374,7 +374,7 @@ dd('here');
 	 */
 	public function update(array $data)
 	{
-dd('here');
+//dd('here');
 		$this->cache->flush();
 		return $this->repo->update($data);
 	}
@@ -387,7 +387,7 @@ dd('here');
 	 */
 	public function sort(array $data)
 	{
-dd('here');
+//dd('here');
 		$this->cache->flush();
 		$this->repo->sort($data);
 	}
@@ -403,7 +403,7 @@ dd('here');
 	 */
 	public function select($method = 'all', $firstEmpty = false, $value = 'title', $key = 'id')
 	{
-dd('here');
+//dd('here');
 		return $this->repo->select($method, $firstEmpty, $value, $key);
 	}
 
@@ -414,7 +414,7 @@ dd('here');
 	 */
 	public function getPagesForSelect()
 	{
-dd('here');
+//dd('here');
 		return $this->repo->getPagesForSelect();
 	}
 
@@ -425,7 +425,7 @@ dd('here');
 	 */
 	public function delete($model)
 	{
-dd('here');
+//dd('here');
 		$this->cache->flush();
 		$this->cache->flush('dashboard');
 		return $this->repo->delete($model);
@@ -441,7 +441,7 @@ dd('here');
 	 */
 	protected function syncRelation($model, array $data, $table = null)
 	{
-dd('here');
+//dd('here');
 		return $this->repo->syncRelation($model, $data, $table);
 	}
 

@@ -19,7 +19,7 @@ class AuthenticateAdmin implements Middleware
 	public function handle($request, Closure $next)
 	{
 //dd($request);
-dd('used');
+//dd('used');
 /*
 		if (! Auth::user()->can('manage_admin')) {
 			Flash::error(trans('kotoba::auth.error.permission'));

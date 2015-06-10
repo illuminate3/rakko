@@ -1,6 +1,8 @@
 <?php
 namespace App\Modules\General\Http\Domain\Menu;
 
+use Session;
+
 /**
  * Class RepositoryAbstract
  * @package Fully\Repositories
@@ -14,8 +16,9 @@ abstract class RepositoryAbstract extends AbstractValidator {
 	 * @return mixed
 	 */
 	protected function getLang(){
-
-		return getLang();
+//		return getLang();
+		$lang = Session::get('locale');
+		return $lang;
 	}
 
 	/**

@@ -6,7 +6,7 @@ namespace App\Modules\General\Http\Services\Cache;
  * @package Fully\Interfaces
  * @author Sefa Karagöz
  */
-interface CacheInterface {
+interface CacheInterface11 {
 
 
 	/**

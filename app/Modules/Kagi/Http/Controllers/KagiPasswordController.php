@@ -29,8 +29,8 @@ class KagiPasswordController extends Controller {
 	 * @return void
 	 */
 	public function __construct(
-// 		Guard $auth,
-// 		PasswordBroker $passwords
+		Guard $auth,
+		PasswordBroker $passwords
 	)
 	{
 		$this->auth = $auth;

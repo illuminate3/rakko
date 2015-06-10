@@ -1,9 +1,14 @@
 <?php
 namespace App\Modules\General\Providers;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
-use App\Modules\General\Http\Domain\Models\Menu;
+//use App\Modules\General\Http\Domain\Models\Menu;
+use App\Modules\General\Http\Domain\Typi\Menus\EloquentMenu;
+use App\Modules\General\Http\Domain\Typi\Menus\CacheDecorator;
+use App\Modules\General\Http\Services\Cache\LaravelCache;
+
 /*
 use Fully\Models\Article;
 use Fully\Models\Category;
@@ -18,8 +23,8 @@ use Fully\Models\Slider;
 use Fully\Models\Setting;
 */
 
-use App\Modules\General\Http\Domain\Menu\MenuRepository;
-use App\Modules\General\Http\Domain\Menu\CacheDecorator as MenuCacheDecorator;
+// use App\Modules\General\Http\Domain\Menu\MenuRepository;
+// use App\Modules\General\Http\Domain\Menu\CacheDecorator as MenuCacheDecorator;
 
 /*
 use Fully\Repositories\Article\ArticleRepository;
@@ -56,7 +61,7 @@ use Fully\Repositories\Setting\SettingRepository;
 use Fully\Repositories\Setting\CacheDecorator as SettingCacheDecorator;
 */
 
-use App\Modules\General\Http\Services\Cache\FullyCache;
+//use App\Modules\General\Http\Services\Cache\FullyCache;
 
 /**
  * Class RepositoryServiceProvider
@@ -75,7 +80,7 @@ class RepositoryServiceProvider extends ServiceProvider {
 		$app = $this->app;
 
 		//dd($app['config']->get('fully.cache'));
-
+/*
 		// menu
 		$app->bind('App\Modules\General\Http\Domain\Menu\MenuInterface', function ($app) {
 
@@ -93,6 +98,27 @@ class RepositoryServiceProvider extends ServiceProvider {
 
 			return $menu;
 		});
+*/
+
+//		$app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Menus\Composers\SidebarViewComposer');
+
+		$app->bind('App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface', function (Application $app) {
+
+			$repository = new EloquentMenu(new Menu);
+			if (! config('typicms.cache')) {
+				return $repository;
+			}
+//dd($repository);
+
+//			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks', 'pages'], 10);
+			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks'], 10);
+
+			return new CacheDecorator($repository, $laravelCache);
+
+		});
+
+
+
 /*
 		// article
 		$app->bind('Fully\Repositories\Article\ArticleInterface', function ($app) {

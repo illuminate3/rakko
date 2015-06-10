@@ -22,7 +22,7 @@ abstract class RepositoriesAbstract implements App\Modules\General\Http\Domain\T
 	 */
 	public function getModel()
 	{
-dd('here');
+//dd('here');
 		return $this->model;
 	}
 
@@ -33,7 +33,7 @@ dd('here');
 	 */
 	public function getTable()
 	{
-dd('here');
+//dd('here');
 		return $this->model->getTable();
 	}
 
@@ -44,7 +44,7 @@ dd('here');
 	 */
 	public function make(array $with = array())
 	{
-dd('here');
+//dd('here');
 		if (method_exists($this->model, 'translations')) {
 			if (! in_array('translations', $with)) {
 				$with[] = 'translations';
@@ -62,7 +62,7 @@ dd('here');
 	 */
 	public function getFirstBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$query = $this->make($with);
 		if (! $all) {
 			$query->online();
@@ -79,7 +79,7 @@ dd('here');
 	 */
 	public function byId($id, array $with = array())
 	{
-dd('here');
+//dd('here');
 		$query = $this->make($with)->where('id', $id);
 
 		$model = $query->firstOrFail();
@@ -97,7 +97,7 @@ dd('here');
 	 */
 	public function next($model, array $with = [], $all = false)
 	{
-dd('here');
+//dd('here');
 		return $this->adjacent(1, $model, $with, $all);
 	}
 
@@ -111,7 +111,7 @@ dd('here');
 	 */
 	public function prev($model, array $with = [], $all = false)
 	{
-dd('here');
+//dd('here');
 		return $this->adjacent(-1, $model, $with, $all);
 	}
 
@@ -124,7 +124,7 @@ dd('here');
 	 */
 	private function adjacent($direction, $model, array $with = [], $all = false)
 	{
-dd('here');
+//dd('here');
 		$currentModel = $model;
 		$models = $this->all($with, $all);
 		foreach ($models as $key => $model) {
@@ -147,7 +147,7 @@ dd('here');
 	 */
 	public function byPage($page = 1, $limit = 10, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$result = new stdClass;
 		$result->page = $page;
 		$result->limit = $limit;
@@ -184,7 +184,7 @@ dd('here');
 	 */
 	public function all(array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$query = $this->make($with);
 
 		if (! $all) {
@@ -207,7 +207,7 @@ dd('here');
 	 */
 	public function allNested(array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		// Get
 		return $this->all($with, $all)->nest();
 	}
@@ -223,7 +223,7 @@ dd('here');
 	 */
 	public function allBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		$query = $this->make($with);
 
 		if (! $all) {
@@ -252,7 +252,7 @@ dd('here');
 	 */
 	public function allNestedBy($key, $value, array $with = array(), $all = false)
 	{
-dd('here');
+//dd('here');
 		// Get
 		return $this->allBy($key, $value, $with, $all)->nest();
 	}
@@ -266,7 +266,7 @@ dd('here');
 	 */
 	public function latest($number = 10, array $with = array())
 	{
-dd('here');
+//dd('here');
 		$query = $this->make($with);
 		return $query->online()->order()->take($number)->get();
 	}
@@ -280,7 +280,7 @@ dd('here');
 	 */
 	public function bySlug($slug, array $with = array())
 	{
-dd('here');
+//dd('here');
 		$model = $this->make($with)
 			->whereHas(
 				'translations',
@@ -311,7 +311,7 @@ dd('here');
 	 */
 	public function has($relation, array $with = array())
 	{
-dd('here');
+//dd('here');
 		$entity = $this->make($with);
 
 		return $entity->has($relation)->get();
@@ -325,7 +325,7 @@ dd('here');
 	 */
 	public function create(array $data)
 	{
-dd('here');
+//dd('here');
 		// Create the model
 		$model = $this->model->fill($data);
 
@@ -345,7 +345,7 @@ dd('here');
 	 */
 	public function update(array $data)
 	{
-dd('here');
+//dd('here');
 		$model = $this->model->find($data['id']);
 
 		$model->fill($data);
@@ -368,7 +368,7 @@ dd('here');
 	 */
 	public function sort(array $data)
 	{
-dd('here');
+//dd('here');
 		foreach ($data['item'] as $position => $item) {
 
 			$page = $this->model->find($item['id']);
@@ -394,7 +394,7 @@ dd('here');
 	 */
 	protected function getSortData($position, $item)
 	{
-dd('here');
+//dd('here');
 		return [
 			'position' => $position
 		];
@@ -409,7 +409,7 @@ dd('here');
 	 */
 	protected function fireResetChildrenUriEvent($page)
 	{
-dd('here');
+//dd('here');
 		return null;
 	}
 
@@ -424,7 +424,7 @@ dd('here');
 	 */
 	public function select($method = 'all', $firstEmpty = false, $value = 'title', $key = 'id')
 	{
-dd('here');
+//dd('here');
 		$items = $this->$method()->lists($value, $key);
 		if ($firstEmpty) {
 			$items = ['' => ''] + $items;
@@ -439,7 +439,7 @@ dd('here');
 	 */
 	public function getPagesForSelect()
 	{
-dd('here');
+//dd('here');
 		$pages = app('TypiCMS\Modules\Pages\Repositories\PageInterface')
 			->all([], true)
 			->nest()
@@ -455,7 +455,7 @@ dd('here');
 	 */
 	public function delete($model)
 	{
-dd('here');
+//dd('here');
 		if ($model->delete()) {
 			return true;
 		}
@@ -473,7 +473,7 @@ dd('here');
 	 */
 	protected function syncRelation($model, array $data, $table = null)
 	{
-dd('here');
+//dd('here');
 		if (! method_exists($model, $table)) {
 			return false;
 		}
