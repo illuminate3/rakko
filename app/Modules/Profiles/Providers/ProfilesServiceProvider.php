@@ -23,7 +23,7 @@ class ProfilesServiceProvider extends ServiceProvider
 		// methods or service providers to keep the code more focused and granular.
 		App::register('App\Modules\Profiles\Providers\RouteServiceProvider');
 		App::register('App\Modules\Profiles\Providers\ProfileEventServiceProvider');
-		App::register('App\Modules\Profiles\Providers\ProfileMenuProvider');
+//		App::register('App\Modules\Profiles\Providers\ProfileMenuProvider');
 
 		$this->registerNamespaces();
 	}
@@ -50,9 +50,9 @@ class ProfilesServiceProvider extends ServiceProvider
 			__DIR__.'/../Config/profiles.php' => config_path('profiles.php'),
 		]);
 
-		Menu::make('public', function($menu) {
-			$menu->add('Profiles', 'profiles');
-		});
+// 		Menu::make('public', function($menu) {
+// 			$menu->add('Profiles', 'profiles');
+// 		});
 
 	}
 

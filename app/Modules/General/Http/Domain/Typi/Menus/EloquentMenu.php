@@ -11,7 +11,8 @@ use Request;
 use App\Modules\General\Http\Domain\Models\Menu;
 use App\Modules\General\Http\Domain\Typi\Core\RepositoriesAbstract;
 
-class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\MenuInterface
+//class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\MenuInterface
+class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface
 {
 
 

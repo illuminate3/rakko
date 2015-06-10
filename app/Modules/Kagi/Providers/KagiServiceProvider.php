@@ -18,7 +18,7 @@ class KagiServiceProvider extends ServiceProvider
 	{
 
 		App::register('App\Modules\Kagi\Providers\RouteServiceProvider');
-		App::register('App\Modules\Kagi\Providers\KagiMenuProvider');
+//		App::register('App\Modules\Kagi\Providers\KagiMenuProvider');
 
 		$this->mergeConfigFrom(
 			__DIR__.'/../Config/kagi.php', 'kagi'

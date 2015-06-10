@@ -1,9 +1,9 @@
 <?php
 namespace App\Modules\General\Http\Domain\Typi\Facades;
 
-use Illuminate\Support\Facades\Facade as Facade;
+use Illuminate\Support\Facades\Facade as MainFacade;
 
-class TypiFacade extends Facade
+class TypiFacade extends MainFacade
 {
 
 

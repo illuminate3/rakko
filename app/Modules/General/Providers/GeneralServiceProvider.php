@@ -22,19 +22,29 @@ class GeneralServiceProvider extends ServiceProvider
 	public function register()
 	{
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
-		App::register('App\Modules\General\Providers\GeneralMenuProvider');
+//		App::register('App\Modules\General\Providers\GeneralMenuProvider');
 		App::register('App\Modules\General\Providers\ComposerServiceProvider');
+		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
+//		App::register('App\Modules\General\Helpers\Helpers.php');
 
 		$this->registerNamespaces();
 //		$this->registerMenus();
-//App::bind('App\Modules\General\Http\Domain\Typi\Facades\TypiFacade', 'Menus');
+// App::bind('App\Modules\General\Http\Domain\Typi\Facades\TypiFacade', 'Linker');
+// App::bind('App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface', 'Linker');
 // $app = $this->app;
 // $app->bind('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface', function (Application $app) {});
 
+// AliasLoader::getInstance()->alias(
+// 	'Menus',
+// 	'TypiCMS\Modules\Menus\Facades\Facade'
+// );
 // 		AliasLoader::getInstance()->alias(
 // 			'Linker',
-// 			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
+// //			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
+// 			'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
 // 		);
+//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
+//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
 // $this->app->bind(
 // 	'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
 // );

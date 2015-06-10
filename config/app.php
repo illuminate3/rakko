@@ -147,7 +147,7 @@ return [
 /*
  * Extend Application Service Providers...
  */
-'App\Providers\MenuServiceProvider',
+//'App\Providers\MenuServiceProvider',
 'App\Providers\ViewComposerServiceProvider',
 //'App\Providers\ConfigWriterServiceProvider',
 //'App\Providers\ConfigServiceProvider',
@@ -166,14 +166,15 @@ return [
 'Caffeinated\Themes\ThemesServiceProvider',
 'Caffeinated\Flash\FlashServiceProvider',
 'Caffeinated\Shinobi\ShinobiServiceProvider',
-'Caffeinated\Menus\MenusServiceProvider',
+//'Caffeinated\Menus\MenusServiceProvider',
 'Laravel\Socialite\SocialiteServiceProvider',
 'Collective\Html\HtmlServiceProvider',
 'GrahamCampbell\Throttle\ThrottleServiceProvider',
 'yajra\Datatables\DatatablesServiceProvider',
 'Intervention\Image\ImageServiceProvider',
 //'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-'Menu\MenuServiceProvider',
+//'Menu\MenuServiceProvider',
+'Dimsav\Translatable\TranslatableServiceProvider',
 
 	],
 
@@ -231,7 +232,7 @@ return [
 'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
 'Component'				=> 'Caffeinated\Themes\Facades\Component',
 'Flash'					=> 'Caffeinated\Flash\Facades\Flash',
-'Menu'					=> 'Caffeinated\Menus\Facades\Menu',
+//'Menu'					=> 'Caffeinated\Menus\Facades\Menu',
 'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 'Form'					=> 'Collective\Html\FormFacade',
 'Html'					=> 'Collective\Html\HtmlFacade',
@@ -241,9 +242,11 @@ return [
 //'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
 'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 'Node'					=> 'Kalnoy\Nestedset\Node',
-//'Linker'					=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
-//'Menus'					=> 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface',
-'VMenu'					=> 'Menu\Menu',
+//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
+//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
+//'Menus'				=> 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface',
+//'VMenu'				=> 'Menu\Menu',
+'Translatable'    => 'Dimsav\Translatable\Translatable',
 
 /*
  * DEV Package Alias

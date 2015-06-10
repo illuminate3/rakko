@@ -1,4 +1,5 @@
 <?php
+namespace app\Modules\General\Helpers;
 
 if (!function_exists('gratavarUrl')) {
     /**

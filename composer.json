@@ -7,11 +7,10 @@
 	"require": {
 		"laravel/framework": "5.0.*",
 		"illuminate3/kotoba": "dev-master",
-		"caffeinated/modules": "dev-master",
+		"caffeinated/modules": "~1.0",
 		"caffeinated/themes": "~1.2",
 		"caffeinated/flash": "dev-master",
 		"caffeinated/shinobi": "dev-master",
-		"caffeinated/menus": "~1.0",
 		"caffeinated/plugins": "dev-master",
 		"laravel/socialite": "~2.0",
 		"laravelcollective/html": "~5.0",
@@ -22,8 +21,7 @@
 		"intervention/imagecache": "~2.1",
 		"wikimedia/composer-merge-plugin": "~1.0",
 		"kalnoy/nestedset": "dev-master",
-		"typicms/nestablecollection": "1.*",
-		"vespakoen/menu": "3.*",
+		"dimsav/laravel-translatable": "5.0.*",
 		"arrilot/laravel-widgets": "~2.2"
 	},
 	"require-dev": {

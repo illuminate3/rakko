@@ -17,9 +17,10 @@
 	{!! $footer !!}
 </ul>
 <nav class="nav-footer" role="navigation">
-	{!! Linker::render('footer') !!}
+	{!! Menus::render('footer') !!}
 </nav>
 --}}
+{!! $menus !!}
 
 
 
