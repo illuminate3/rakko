@@ -1,4 +1,4 @@
-@if ($menu = Linker::getMenu($name))
+@if ($menu = Menus::getMenu($name))
 
 	@if ($menu->menulinks->count())
 	<ul class="{{ $menu->class }}">

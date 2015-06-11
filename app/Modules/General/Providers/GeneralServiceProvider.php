@@ -38,10 +38,16 @@ class GeneralServiceProvider extends ServiceProvider
 // 	'Menus',
 // 	'TypiCMS\Modules\Menus\Facades\Facade'
 // );
+
+$app = $this->app;
+$app['typicms'] = $this->app->share(function ($app) {
+	return new TypiCMS;
+});
+
 AliasLoader::getInstance()->alias(
-	'Linker',
+	'Menus',
 			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-//			'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface'
+//			'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface'
 );
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
 //'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',

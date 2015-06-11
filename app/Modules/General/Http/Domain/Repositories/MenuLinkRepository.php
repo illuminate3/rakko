@@ -78,7 +78,7 @@ class MenuLinkRepository extends BaseRepository {
 		$lang = Session::get('locale');
 		$locales = $this->getLocales();
 //dd($menu);
-		$menus = $this->getMenus();
+		$menus = $this->menu->all()->lists('name', 'id');
 		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
 		return compact('link', 'locales', 'lang', 'menus');
@@ -91,7 +91,7 @@ class MenuLinkRepository extends BaseRepository {
 	 */
 	public function store($input)
 	{
-//dd($input['menu_id']);
+//dd($input);
 		$this->model = new MenuLink;
 		$this->model->create($input);
 	}
@@ -114,11 +114,11 @@ class MenuLinkRepository extends BaseRepository {
 
 // Functions --------------------------------------------------
 
-	public function getMenus()
-	{
-		$sites = DB::table('menus')->lists('name', 'id');
-		return $sites;
-	}
+// 	public function getMenus()
+// 	{
+// 		$sites = DB::table('menus')->lists('name', 'id');
+// 		return $sites;
+// 	}
 
 
 	public function getLocales()

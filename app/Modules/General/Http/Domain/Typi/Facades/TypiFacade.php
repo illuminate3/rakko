@@ -15,8 +15,8 @@ class TypiFacade extends MainFacade
 	protected static function getFacadeAccessor()
 	{
 //dd('here');
-//		return 'menus';
-		return 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface';
+//		return 'Menus';
+		return 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface';
 	}
 
 

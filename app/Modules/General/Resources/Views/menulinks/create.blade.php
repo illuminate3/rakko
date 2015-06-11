@@ -44,6 +44,25 @@
 
 <div class="col-sm-6">
 
+<div class="form-group padding-bottom-xl">
+	<label for="inputJobTitle1" class="col-sm-2 control-label">{{ Lang::choice('kotoba::cms.menu', 2) }}:</label>
+	<div class="col-sm-10">
+		{!!
+			Form::select(
+				'menu_id',
+				$menus,
+				Input::old('menu_id'),
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
+
+</div>
+<div class="col-sm-6">
+
 	@if (count($locales))
 
 	<ul class="nav nav-tabs">
@@ -95,8 +114,6 @@
 
 	@endif
 
-</div>
-<div class="col-sm-6">
 </div>
 
 

@@ -68,5 +68,6 @@ return [
 | General views and standard package views
 |--------------------------------------------------------------------------
 */
+	'cache' => false,
 
 ];

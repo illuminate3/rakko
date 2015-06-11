@@ -7,7 +7,7 @@
 			<div class="col-sm-4">
 
 <nav class="nav-footer" role="navigation">
-	{!! Linker::render('footer') !!}
+	{!! Menus::render('footer') !!}
 </nav>
 
 

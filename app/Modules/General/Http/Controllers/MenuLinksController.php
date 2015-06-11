@@ -13,6 +13,7 @@ use App\Modules\General\Http\Requests\MenuLinkUpdateRequest;
 
 use Datatables;
 use Flash;
+use Lang;
 use Session;
 use Theme;
 
@@ -27,10 +28,12 @@ class MenuLinksController extends GeneralController {
 	protected $menulink;
 
 	public function __construct(
-			MenuLinkRepository $menulink
+			MenuLinkRepository $menulink,
+			MenuRepository $menu
 		)
 	{
 		$this->menulink = $menulink;
+		$this->menu = $menu;
 // middleware
 //		$this->middleware('admin');
 	}
@@ -62,14 +65,14 @@ class MenuLinksController extends GeneralController {
 	{
 		$lang = Session::get('locale');
 		$locales = $this->menulink->getLocales();
-//		$menu_id = $id;
-//dd($menu_id);
+		$menus = $this->menu->all()->lists('name', 'id');
+		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
 		return Theme::View('modules.general.menulinks.create',
 			compact(
 				'lang',
-				'locales'
-//				'menu_id'
+				'locales',
+				'menus'
 			));
 	}
 

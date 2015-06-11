@@ -6,7 +6,7 @@ use App;
 use Config;
 use ErrorException;
 use Illuminate\Database\Eloquent\Model;
-//use Log;
+use Log;
 use Request;
 use Theme;
 
@@ -14,7 +14,8 @@ use App\Modules\General\Http\Domain\Models\Menu;
 use App\Modules\General\Http\Domain\Typi\Core\RepositoriesAbstract;
 
 //class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\MenuInterface
-class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface
+//class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface
+class EloquentMenu extends RepositoriesAbstract implements MenuInterface
 {
 
 
@@ -70,7 +71,7 @@ class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\H
 	 */
 	public function build($name)
 	{
-//dd('here');
+dd('here');
 		return $this->render($name);
 	}
 
@@ -82,11 +83,14 @@ class EloquentMenu extends RepositoriesAbstract implements App\Modules\General\H
 	 */
 	public function getMenu($name)
 	{
-//dd('here');
+dd(app());
+dd('here');
 		try {
-			$menu = app('TypiCMS.menus')->filter(function(Menu $menu) use ($name) {
+			$menu = app('General.menus')->filter(function(Menu $menu) use ($name) {
+dd($menu);
 				return $menu->name == $name;
 			})->first();
+dd('here');
 		} catch (ErrorException $e) {
 			Log::info('No menu found with name “' . $name . '”');
 			return null;

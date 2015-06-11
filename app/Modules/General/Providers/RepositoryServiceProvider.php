@@ -78,7 +78,7 @@ class RepositoryServiceProvider extends ServiceProvider {
 	public function register() {
 
 		$app = $this->app;
-
+//dd($app);
 		//dd($app['config']->get('fully.cache'));
 /*
 		// menu
@@ -102,16 +102,19 @@ class RepositoryServiceProvider extends ServiceProvider {
 
 //		$app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Menus\Composers\SidebarViewComposer');
 
-		$app->bind('App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface', function (Application $app) {
+		$app->bind('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface', function (Application $app) {
 
 			$repository = new EloquentMenu(new Menu);
-			if (! config('typicms.cache')) {
+//dd($repository);
+			if ( !config('general.cache') ) {
+//dd($repository);
 				return $repository;
 			}
 //dd($repository);
 
 //			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks', 'pages'], 10);
 			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks'], 10);
+//dd($laravelCache);
 
 			return new CacheDecorator($repository, $laravelCache);
 

@@ -4,7 +4,7 @@ namespace App\Modules\General\Http\Domain\Typi\Menus;
 use App\Modules\General\Http\Domain\Typi\Core\RepositoryInterface;
 
 //interface LinkerInterface extends RepositoryInterface
-interface LinkerInterface
+interface MenuInterface
 {
 
 
