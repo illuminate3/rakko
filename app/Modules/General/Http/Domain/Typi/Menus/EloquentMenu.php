@@ -71,7 +71,7 @@ class EloquentMenu extends RepositoriesAbstract implements MenuInterface
 	 */
 	public function build($name)
 	{
-dd('here');
+//dd('here');
 		return $this->render($name);
 	}
 
@@ -83,21 +83,23 @@ dd('here');
 	 */
 	public function getMenu($name)
 	{
-dd(app('app'));
+//dd(app());
+//dd(app('TypiCMS.menus'));
 // dd('here');
 		try {
-			$menu = app('General.menus')->filter(function(Menu $menu) use ($name) {
-dd(app());
+			$menu = app('TypiCMS.menus')->filter(function(Menu $menu) use ($name) {
+//dd(app());
 				return $menu->name == $name;
 			})->first();
-dd('here');
+//dd('here');
 		} catch (ErrorException $e) {
 			Log::info('No menu found with name “' . $name . '”');
 			return null;
 		}
 
+//dd($menu->menulinks);
 		$menu->menulinks = $this->prepare($menu->menulinks);
-
+//dd($menu->menulinks);
 		$menu->menulinks->nest();
 
 		return $menu;
@@ -108,11 +110,14 @@ dd('here');
 //dd('here');
 		$items->each(function ($item) {
 			if ($item->has_categories) {
+//dd($item->has_categories);
 				$item->items = $this->prepare(Categories::allForMenu($item->page->uri));
 			}
 			$item->href = $this->setHref($item);
 			$item->class = $this->setClass($item);
+//dd($item->class);
 		});
+//dd($items);
 
 		return $items;
 	}
@@ -135,7 +140,7 @@ dd('here');
 			$langPrefix = null;
 			if (
 				config('app.fallback_locale') != config('app.locale') ||
-				config('typicms.main_locale_in_url')
+				config('general.main_locale_in_url')
 			) {
 				$langPrefix = '/' . config('app.locale');
 			}

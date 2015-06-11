@@ -1,7 +1,9 @@
 <?php
 namespace App\Modules\General\Http\Domain\Models;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+
+use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 use Laracasts\Presenter\PresentableTrait;
 use Dimsav\Translatable\Translatable;
 
@@ -14,7 +16,7 @@ use Dimsav\Translatable\Translatable;
 // use TypiCMS\NestableTrait;
 
 
-class Menulink extends Model {
+class Menulink extends Base {
 
 // use Historable;
 	use Translatable;

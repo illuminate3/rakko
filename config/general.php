@@ -69,5 +69,7 @@ return [
 |--------------------------------------------------------------------------
 */
 	'cache' => false,
+	'html_cache' => false,
+	'main_locale_in_url' => false,
 
 ];

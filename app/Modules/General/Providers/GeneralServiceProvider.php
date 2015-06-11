@@ -1,14 +1,16 @@
 <?php
 namespace App\Modules\General\Providers;
 
+use Exception;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 use App\Modules\General\Http\Domain\Models\Menu;
+use App\Modules\General\Http\Services\Cache\LaravelCache;
 use App\Modules\General\Http\Domain\Typi\Menus\CacheDecorator;
 use App\Modules\General\Http\Domain\Typi\Menus\EloquentMenu;
-use App\Modules\General\Http\Services\Cache\LaravelCache;
 
 use App;
 use Config;
@@ -29,9 +31,6 @@ class GeneralServiceProvider extends ServiceProvider
 	{
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
 //		App::register('App\Modules\General\Providers\GeneralMenuProvider');
-		App::register('App\Modules\General\Providers\ComposerServiceProvider');
-		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
-//		App::register('App\Modules\General\Helpers\Helpers.php');
 
 		$this->registerNamespaces();
 //		$this->registerMenus();
@@ -45,10 +44,10 @@ class GeneralServiceProvider extends ServiceProvider
 // 	'TypiCMS\Modules\Menus\Facades\Facade'
 // );
 
-$app = $this->app;
-$app['typicms'] = $this->app->share(function ($app) {
-	return new TypiCMS;
-});
+		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
+//		App::register('App\Modules\General\Helpers\Helpers.php');
+//		App::register('App\Modules\General\Providers\ComposerServiceProvider');
+
 
 AliasLoader::getInstance()->alias(
 	'Menus',
@@ -60,6 +59,12 @@ AliasLoader::getInstance()->alias(
 // $this->app->bind(
 // 	'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
 // );
+
+
+// $app = $this->app;
+// $app['TypiCMS'] = $this->app->share(function ($app) {
+// 	return new TypiCMS;
+// });
 
 	}
 
@@ -128,20 +133,20 @@ AliasLoader::getInstance()->alias(
 
 
 
-	protected function registerMenus()
-	{
-
-		$app->bind('App\Modules\General\Http\Domain\Typi\menus\MenuInterface', function (Application $app) {
-			$repository = new EloquentMenu(new Menu);
-			if (! config('typicms.cache')) {
-				return $repository;
-			}
-			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks', 'pages'], 10);
-
-			return new CacheDecorator($repository, $laravelCache);
-		});
-
-	}
+// 	protected function registerMenus()
+// 	{
+//
+// 		$app->bind('App\Modules\General\Http\Domain\Typi\menus\MenuInterface', function (Application $app) {
+// 			$repository = new EloquentMenu(new Menu);
+// 			if (! config('typicms.cache')) {
+// 				return $repository;
+// 			}
+// 			$laravelCache = new LaravelCache($app['cache'], ['menus', 'menulinks', 'pages'], 10);
+//
+// 			return new CacheDecorator($repository, $laravelCache);
+// 		});
+//
+// 	}
 
 
 
@@ -161,9 +166,10 @@ AliasLoader::getInstance()->alias(
 					$query->online();
 				},
 				'menulinks.translations',
-				'menulinks.page.translations',
+//				'menulinks.page.translations',
 			];
 			$menus = $this->app->make('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface')->all($with);
+//dd($menus);
 			$this->app->instance('TypiCMS.menus', $menus);
 		} catch (Exception $e) {
 			Log::error($e->getMessage());
