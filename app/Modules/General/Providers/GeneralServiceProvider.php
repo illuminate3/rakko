@@ -2,12 +2,18 @@
 namespace App\Modules\General\Providers;
 
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+
+use App\Modules\General\Http\Domain\Models\Menu;
+use App\Modules\General\Http\Domain\Typi\Menus\CacheDecorator;
+use App\Modules\General\Http\Domain\Typi\Menus\EloquentMenu;
+use App\Modules\General\Http\Services\Cache\LaravelCache;
 
 use App;
 use Config;
 use Lang;
-use Menu;
+use Log;
 use View;
 
 class GeneralServiceProvider extends ServiceProvider
@@ -78,7 +84,7 @@ AliasLoader::getInstance()->alias(
 	public function boot()
 	{
 
-//		$this->storeAllMenus();
+		$this->storeAllMenus();
 
 
 // config
@@ -157,7 +163,7 @@ AliasLoader::getInstance()->alias(
 				'menulinks.translations',
 				'menulinks.page.translations',
 			];
-			$menus = $this->app->make('TypiCMS\Modules\Menus\Repositories\MenuInterface')->all($with);
+			$menus = $this->app->make('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface')->all($with);
 			$this->app->instance('TypiCMS.menus', $menus);
 		} catch (Exception $e) {
 			Log::error($e->getMessage());

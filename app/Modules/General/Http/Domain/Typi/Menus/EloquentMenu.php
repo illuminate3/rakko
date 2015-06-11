@@ -83,11 +83,11 @@ dd('here');
 	 */
 	public function getMenu($name)
 	{
-dd(app());
-dd('here');
+dd(app('app'));
+// dd('here');
 		try {
 			$menu = app('General.menus')->filter(function(Menu $menu) use ($name) {
-dd($menu);
+dd(app());
 				return $menu->name == $name;
 			})->first();
 dd('here');
