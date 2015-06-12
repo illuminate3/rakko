@@ -6,10 +6,11 @@
 		<div class="row">
 			<div class="col-sm-4">
 
+{{--
 <nav class="nav-footer" role="navigation">
 	{!! Menus::render('footer') !!}
 </nav>
-
+--}}
 
 
 

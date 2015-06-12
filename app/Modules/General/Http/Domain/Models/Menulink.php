@@ -7,13 +7,12 @@ use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 use Laracasts\Presenter\PresentableTrait;
 use Dimsav\Translatable\Translatable;
 
-// use Illuminate\Database\Eloquent\Builder;
-// use InvalidArgumentException;
-// use Laracasts\Presenter\PresentableTrait;
-// use Log;
-// use TypiCMS\Modules\Core\Models\Base;
+use Illuminate\Database\Eloquent\Builder;
+use InvalidArgumentException;
+
 // use TypiCMS\Modules\History\Traits\Historable;
-// use TypiCMS\NestableTrait;
+use TypiCMS\NestableTrait;
+use Log;
 
 
 class Menulink extends Base {

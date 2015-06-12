@@ -1,13 +1,15 @@
 <?php
 namespace App\Modules\General\Http\Domain\Models;
 
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
+//use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 
-use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 use Laracasts\Presenter\PresentableTrait;
 use Dimsav\Translatable\Translatable;
 
-class Menu extends Base {
+//class MenuTranslation extends Eloquent {
+class Menu extends Model {
+//class Menu extends Base {
 
 // use Historable;
 	use Translatable;

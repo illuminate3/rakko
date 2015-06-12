@@ -85,6 +85,8 @@
 				</div>
 			</div>
 
+{{ $menu->{'title'.$locale} }}
+
 			<div class="form-group">
 				<label class="col-sm-1 control-label"></label>
 				<div class="col-sm-11">
