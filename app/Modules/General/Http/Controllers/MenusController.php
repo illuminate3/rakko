@@ -17,7 +17,7 @@ use Flash;
 use Theme;
 
 
-class MenusController extends Controller {
+class MenusController extends GeneralController {
 
 
 	/**
@@ -47,7 +47,7 @@ class MenusController extends Controller {
 		$menus = $this->menu->all();
 //dd($locales);
 
-		return Theme::View('menus.index', compact('menus', 'locales'));
+		return Theme::View('general::menus.index', compact('menus', 'locales'));
 	}
 
 
@@ -58,7 +58,7 @@ class MenusController extends Controller {
 	 */
 	public function create()
 	{
-		return Theme::View('menus.create',  $this->menu->create());
+		return Theme::View('general::menus.create',  $this->menu->create());
 	}
 
 	/**
@@ -103,12 +103,12 @@ class MenusController extends Controller {
 		$modal_body = trans('kotoba::general.ask.delete');
 		$modal_route = 'admin.menus.destroy';
 		$modal_id = $id;
-//		$model = '$menu';
-		$model = 'menu';
+		$model = '$menu';
+//		$model = 'menu';
 //dd($model);
 
-		return View('menus.edit',
-//		return Theme::View('menus.edit',
+//		return Theme::View('general::menus.edit',
+		return View('general::menus.edit',
 			$this->menu->edit($id),
 				compact(
 					'modal_title',

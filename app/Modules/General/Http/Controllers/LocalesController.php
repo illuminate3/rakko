@@ -17,7 +17,7 @@ use Flash;
 use Theme;
 
 
-class LocalesController extends Controller {
+class LocalesController extends GeneralController {
 
 	/**
 	 * Locale Repository
@@ -45,7 +45,7 @@ class LocalesController extends Controller {
 		$locales = $this->locale->all();
 //dd($locales);
 
-		return Theme::View('locales.index', compact('locales'));
+		return Theme::View('general::locales.index', compact('locales'));
 	}
 
 	/**
@@ -55,7 +55,7 @@ class LocalesController extends Controller {
 	 */
 	public function create()
 	{
-		return Theme::View('locales.create',  $this->locale->create());
+		return Theme::View('general::locales.create',  $this->locale->create());
 	}
 
 	/**
@@ -101,8 +101,8 @@ class LocalesController extends Controller {
 		$model = '$locale';
 //dd($modal_body);
 
-		return View('locales.edit',
-//		return Theme::View('locales.edit',
+		return View('general::locales.edit',
+//		return Theme::View('general::locales.edit',
 			$this->locale->edit($id),
 				compact(
 					'modal_title',
@@ -151,8 +151,8 @@ class LocalesController extends Controller {
 	*/
 	public function data()
 	{
-//		$query = Locale::select(array('locales.id','locales.name','locales.description'))
-//			->orderBy('locales.name', 'ASC');
+//		$query = Locale::select(array('general::locales.id','general::locales.name','general::locales.description'))
+//			->orderBy('general::locales.name', 'ASC');
 //		$query = Locale::select('id', 'name' 'description', 'updated_at');
 //			->orderBy('name', 'ASC');
 		$query = Locale::select('id', 'name', 'description', 'updated_at');

@@ -95,7 +95,6 @@ class StatusesController extends GeneralController {
 //dd($modal_body);
 
 		return View('general::statuses.edit',
-//		return Theme::View('modules.general.statuses.edit',
 			$this->status->edit($id),
 				compact(
 					'modal_title',

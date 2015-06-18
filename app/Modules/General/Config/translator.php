@@ -12,7 +12,7 @@ return [
 	|
 	*/
 
-	'locale' => 'App\Models\Locale',
+	'locale' => 'App\Modules\General\Http\Domain\Models\Locale',
 
 	/*
 	|--------------------------------------------------------------------------

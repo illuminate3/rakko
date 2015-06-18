@@ -15,11 +15,11 @@ class Menulink extends Model implements TranslatableContract {
 	protected $table = 'menulinks';
 
 // Presenter -------------------------------------------------------
-	protected $presenter = 'App\Http\Presenters\General';
+	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 
 
 // Translation Model -------------------------------------------------------
-	protected $translator = 'App\Models\MenulinkTranslation';
+	protected $translator = 'App\Modules\General\Http\Domain\Models\MenulinkTranslation';
 
 
 // DEFINE Hidden -------------------------------------------------------

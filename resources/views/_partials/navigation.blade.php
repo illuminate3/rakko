@@ -111,11 +111,11 @@
 				<b class="caret"></b>
 			</a>
 			<ul class="dropdown-menu">
-				@foreach( $locales as $locale => $properties)
+				@foreach( $locales as $locale)
 					<li>
-						<a rel="alternate" hreflang="{{ $locale }}" href="/language/{{ $locale }}">
-							<img alt="{{ $locale }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $locale . '.png') }}">
-							{{{ $properties['native'] }}}
+						<a rel="alternate" hreflang="{{ $locale->locale }}" href="/language/{{ $locale->locale }}">
+							<img alt="{{ $locale->locale }}" src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . $locale->locale . '.png') }}">
+							{{{ $locale->name }}}
 						</a>
 					</li>
 				@endforeach

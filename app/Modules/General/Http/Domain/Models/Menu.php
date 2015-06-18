@@ -15,11 +15,11 @@ class Menu extends Model implements TranslatableContract {
 	protected $table = 'menus';
 
 // Presenter -------------------------------------------------------
-	protected $presenter = 'App\Http\Presenters\General';
+	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 
 
 // Translation Model -------------------------------------------------------
-	protected $translator = 'App\Models\MenuTranslation';
+	protected $translator = 'App\Modules\General\Http\Domain\Models\MenuTranslation';
 
 
 // DEFINE Hidden -------------------------------------------------------

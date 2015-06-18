@@ -21,7 +21,7 @@ use Session;
 use Theme;
 
 
-class MenuLinksController extends Controller {
+class MenuLinksController extends GeneralController {
 
 
 	/**
@@ -55,7 +55,7 @@ class MenuLinksController extends Controller {
 		$lang = Session::get('locale');
 		$locales = $this->menu->getLocales();
 
-		return View('menulinks.index', compact('links', 'locales', 'lang'));
+		return Theme::View('general::menulinks.index', compact('links', 'locales', 'lang'));
 	}
 
 
@@ -71,7 +71,7 @@ class MenuLinksController extends Controller {
 		$menus = $this->menu->all()->lists('name', 'id');
 		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
-		return View('menulinks.create',
+		return Theme::View('general::menulinks.create',
 			compact(
 				'lang',
 				'locales',
@@ -104,7 +104,7 @@ class MenuLinksController extends Controller {
 	 */
 	public function show($id)
 	{
-		return View('menulinks.index',  $this->menulink->show($id));
+		return Theme::View('general::menulinks.index',  $this->menulink->show($id));
 	}
 
 	/**
@@ -122,8 +122,8 @@ class MenuLinksController extends Controller {
 		$model = '$menulink';
 //dd($id);
 
-		return View('menulinks.edit',
-//		return View('menus.edit',
+//		return Theme::View('general::menulinks.edit',
+		return View('general::menulinks.edit',
 			$this->menulink->edit($id),
 				compact(
 					'modal_title',

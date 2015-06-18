@@ -21,7 +21,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/admin/locale" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/admin/locales" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>

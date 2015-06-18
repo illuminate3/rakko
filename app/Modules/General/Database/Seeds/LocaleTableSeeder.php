@@ -35,21 +35,3 @@ class LocaleTableSeeder extends Seeder {
 	}
 
 }
-
-/*
-use App\Models\Locale;
-use Illuminate\Database\Seeder;
-
-class LocaleTableSeeder extends Seeder
-{
-    public function run()
-    {
-        $languages = ['en', 'es', 'no'];
-
-        foreach ($languages as $locale)
-        {
-            Locale::create(compact('locale'));
-        }
-    }
-}
-*/

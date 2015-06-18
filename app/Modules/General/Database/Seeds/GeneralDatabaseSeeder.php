@@ -17,8 +17,8 @@ class GeneralDatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		$this->call('App\Modules\General\Database\Seeds\ModuleSeeder');
-		$this->call('App\Modules\General\Database\Seeds\LocaleTableSeeder');
 		$this->call('App\Modules\General\Database\Seeds\StatusesSeeder');
+		$this->call('App\Modules\General\Database\Seeds\LocaleTableSeeder');
 
 	}
 
