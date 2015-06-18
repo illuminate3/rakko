@@ -1,2 +1,1 @@
-{!! Menu::handler('admin'); !!}
-
+{!! Menu::handler('admin')->addClass('list-unstyled'); !!}

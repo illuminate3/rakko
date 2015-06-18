@@ -14,15 +14,16 @@ use Config;
 use Menu;
 use Session;
 
-class AdminMenu extends AbstractWidget
+
+class FooterMenu extends AbstractWidget
 {
 
 
 	public function run()
 	{
-		Menu::handler('admin')->hydrate(function()
+		Menu::handler('footer')->hydrate(function()
 			{
-			$main_menu_id = LMenu::where('name', '=', 'admin')->pluck('id');
+			$main_menu_id = LMenu::where('name', '=', 'footer')->pluck('id');
 			return MenuLink::where('menu_id', '=', $main_menu_id)->orderBy('position')->get();
 			},
 			function($children, $item)
@@ -30,7 +31,7 @@ class AdminMenu extends AbstractWidget
 				$children->add($item->translate(App::getLocale())->url, $item->translate(App::getLocale())->title, Menu::items($item->as));
 			});
 
-		return view("widgets.admin_menu");
+		return view("widgets.footer_menu");
 	}
 
 

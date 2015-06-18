@@ -87,7 +87,8 @@
 					</li>
 					<li class="divider"></li>
 
-					{!! Menu::handler('admin')->addClass('list-unstyled'); !!}
+{!! Widget::AdminMenu() !!}
+
 					<li class="divider"></li>
 @endif
 					<li>

@@ -10,7 +10,6 @@ use App\Modules\General\Http\Domain\Models\MenuLink;
 
 
 use App;
-use Auth;
 use Cache;
 use Config;
 use DB;
@@ -27,16 +26,17 @@ class MenuServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 
-// 		Menu::handler('admin')->hydrate(function()
-// 			{
-// 			$main_menu_id = LMenu::where('name', '=', 'admin')->pluck('id');
-// 			return MenuLink::where('menu_id', '=', $main_menu_id)->orderBy('position')->get();
-// 			},
-// 			function($children, $item)
-// 			{
-// 				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
-// 			});
 
+/*
+		Menu::handler('admin')->hydrate(function()
+			{
+			$main_menu_id = LMenu::where('name', '=', 'admin')->pluck('id');
+			return MenuLink::where('menu_id', '=', $main_menu_id)->orderBy('position')->get();
+			},
+			function($children, $item)
+			{
+				$children->add($item->translate(App::getLocale())->url, $item->translate(App::getLocale())->title, Menu::items($item->as));
+			});
 
 		Menu::handler('main')->hydrate(function()
 			{
@@ -45,22 +45,9 @@ class MenuServiceProvider extends ServiceProvider {
 			},
 			function($children, $item)
 			{
-
-			$lang = Session::get('locale');
-//dd($lang);
-//dd(App::getLocale());
-
-// dd(Session::all());
-// 			$lang = Session::get('locale');
-// dd($lang);
-
-			if ( $lang == null ) {
-//				$lang = Config::get('app.locale');
-				$lang = App::getLocale();
-			}
-				$children->add($item->translate($lang)->url, $item->translate($lang)->title, Menu::items($item->as));
+				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
 			});
-
+*/
 
 	}
 

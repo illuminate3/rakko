@@ -6,11 +6,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 
-<nav class="nav-footer" role="navigation">
-{!! Menu::handler('main'); !!}
-</nav>
-
-
+{!! Widget::FooterMenu() !!}
 
 			</div>
 			<div class="col-sm-4">
