@@ -85,13 +85,10 @@
 							{{ Lang::choice('kotoba::permission.permission', 2) }}
 						</a>
 					</li>
-				<li class="divider"></li>
-{{--
-					@if (count($menu_admin->roots()) != 0)
-						@include('_partials.menu', ['items'=> $menu_admin->roots()])
-						<li class="divider"></li>
-					@endif
---}}
+					<li class="divider"></li>
+
+					{!! Menu::handler('admin')->addClass('list-unstyled'); !!}
+					<li class="divider"></li>
 @endif
 					<li>
 						<a href="/auth/logout">

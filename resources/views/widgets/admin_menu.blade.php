@@ -1,0 +1,2 @@
+{!! Menu::handler('admin'); !!}
+

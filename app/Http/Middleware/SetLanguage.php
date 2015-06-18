@@ -44,6 +44,7 @@ class SetLanguage implements Middleware {
 
 
 		$lang = Session::get('locale');
+//dd($lang);
 		if ( $lang != App::getLocale() ) {
 			if ( Session::has('locale') && array_key_exists(Session::get('locale'), Config::get('languages.supportedLocales')) ) {
 				App::setLocale(Session::get('locale'));

@@ -9,6 +9,7 @@ use App\Modules\General\Http\Domain\Models\MenuLink;
 // use App\Models\Repositories\MenuLinkRepository;
 
 
+use App;
 use Auth;
 use Cache;
 use Config;
@@ -26,56 +27,39 @@ class MenuServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 
-//		$lang = Session::get('locale');
-//dd($main_menu_id);
-//		if ( DB::table('menus')->exists() ) {
+// 		Menu::handler('admin')->hydrate(function()
+// 			{
+// 			$main_menu_id = LMenu::where('name', '=', 'admin')->pluck('id');
+// 			return MenuLink::where('menu_id', '=', $main_menu_id)->orderBy('position')->get();
+// 			},
+// 			function($children, $item)
+// 			{
+// 				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
+// 			});
+
 
 		Menu::handler('main')->hydrate(function()
 			{
-// 			$main_menu = LMenu::where('name', '=', 'main')->get();
-// 			$main_menu_id = $main_menu[0]['id'];
-//dd($main_menu);
 			$main_menu_id = LMenu::where('name', '=', 'main')->pluck('id');
 			return MenuLink::where('menu_id', '=', $main_menu_id)->orderBy('position')->get();
-//			return MenuLink::where('menu_id', '=', $main_menu_id)->where('status', '=', 1, 'AND')->orderBy('position')->get();
 			},
 			function($children, $item)
 			{
-				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
+
+			$lang = Session::get('locale');
+//dd($lang);
+//dd(App::getLocale());
+
+// dd(Session::all());
+// 			$lang = Session::get('locale');
+// dd($lang);
+
+			if ( $lang == null ) {
+//				$lang = Config::get('app.locale');
+				$lang = App::getLocale();
+			}
+				$children->add($item->translate($lang)->url, $item->translate($lang)->title, Menu::items($item->as));
 			});
-
-//		}
-/*
-// navbar menu
-		Menu::make('navbar', function($menu) {
-			//
-		});
-
-// right side drop down
-		Menu::make('admin', function($menu) {
-			//
-		});
-*/
-
-/*
-	Menu::handler('main')->hydrate(function() {
-		$cache = Cache::remember('category.menu',Config::get('cache.stores.file.time'), function() {
-			return App\Model\Category::where('active','=',1)->get();
-		});
-		return $cache;
-	},
-
-	function($children, $item) {
-		if ($item->hasChildren()) {
-//			$children->addClass('has-children');
-			$children->add('/page/'.$item->slug, $item->name, Menu::items($item->as));
-
-		} else {
-			 $children->add('/page/'.$item->slug, $item->name, Menu::items($item->as));
-		}
-	}
-	);
-*/
 
 
 	}
