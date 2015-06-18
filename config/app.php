@@ -162,6 +162,7 @@ return [
 		 */
 		'Illuminate3\Kotoba\KotobaServiceProvider',
 
+		'Arrilot\Widgets\ServiceProvider',
 		'Caffeinated\Flash\FlashServiceProvider',
 		'Caffeinated\Modules\ModulesServiceProvider',
 		'Caffeinated\Shinobi\ShinobiServiceProvider',
@@ -250,6 +251,8 @@ return [
 		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
 		'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
+		'Widget'				=> 'Arrilot\Widgets\Facade',
+		'AsyncWidget'			=> 'Arrilot\Widgets\AsyncFacade',
 
 
 	],
