@@ -1,6 +1,7 @@
 <?php
 namespace App\Modules\General\Http\Domain\Repositories;
 
+use App\Modules\General\Http\Domain\Models\Locale;
 use App\Modules\General\Http\Domain\Models\Menu;
 use Illuminate\Support\Collection;
 
@@ -90,8 +91,37 @@ class MenuRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-		$this->model = new Menu;
-		$this->model->create($input);
+
+		$values = [
+			'name'			=> $input['name'],
+			'class'			=> $input['class']
+		];
+
+		$menu = Menu::create($values);
+
+		$locales = $this->getLocales();
+
+		foreach($locales as $locale => $properties)
+		{
+			App::setLocale($properties['locale']);
+
+			if ( !isset($input['status_'.$properties['id']]) ) {
+				$status = 0;
+			} else {
+				$status = $input['status_'.$properties['id']];
+			}
+
+			$values = [
+				'status'	=> $status,
+				'title'		=> $input['title_'.$properties['id']]
+			];
+
+			$menu->update($values);
+		}
+
+		App::setLocale('en');
+		return;
+
 	}
 
 	/**
@@ -106,16 +136,43 @@ class MenuRepository extends BaseRepository {
 //dd($input);
 
 		$menu = Menu::find($id);
-		$menu->update($input);
+
+		$values = [
+			'name'			=> $input['name'],
+			'class'			=> $input['class']
+		];
+
+		$menu->update($values);
+
+		$locales = $this->getLocales();
+
+		foreach($locales as $locale => $properties)
+		{
+			App::setLocale($properties['locale']);
+
+			$values = [
+				'status'	=> $input['status_'.$properties['id']],
+				'title'		=> $input['title_'.$properties['id']]
+			];
+
+			$menu->update($values);
+		}
+
+		App::setLocale('en');
+		return;
 	}
 
 
 	public function getLocales()
 	{
 
-		$config = App::make('config');
-//		$locales = (array) $config->get('translatable.locales', []);
-		$locales = (array) $config->get('languages.supportedLocales', []);
+// 		$config = App::make('config');
+// 		$locales = (array) $config->get('languages.supportedLocales', []);
+ 		$locales = Locale::all();
+// 		$locales = DB::table('locales')
+// 			->lists('locale');
+
+//dd($locales);
 
 	if ( empty($locales) ) {
 		throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');

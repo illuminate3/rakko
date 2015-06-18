@@ -29,42 +29,15 @@ class GeneralServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
+
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
-//		App::register('App\Modules\General\Providers\GeneralMenuProvider');
+		App::register('App\Modules\General\Providers\MenuServiceProvider');
 
 		$this->registerNamespaces();
 //		$this->registerMenus();
-// App::bind('App\Modules\General\Http\Domain\Typi\Facades\TypiFacade', 'Linker');
-// App::bind('App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface', 'Linker');
-// $app = $this->app;
-// $app->bind('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface', function (Application $app) {});
-
-// AliasLoader::getInstance()->alias(
-// 	'Menus',
-// 	'TypiCMS\Modules\Menus\Facades\Facade'
-// );
 
 		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
-//		App::register('App\Modules\General\Helpers\Helpers.php');
 //		App::register('App\Modules\General\Providers\ComposerServiceProvider');
-
-
-AliasLoader::getInstance()->alias(
-	'Menus',
-			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-//			'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface'
-);
-//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
-//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
-// $this->app->bind(
-// 	'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-// );
-
-
-// $app = $this->app;
-// $app['TypiCMS'] = $this->app->share(function ($app) {
-// 	return new TypiCMS;
-// });
 
 	}
 
@@ -103,20 +76,9 @@ AliasLoader::getInstance()->alias(
 			__DIR__.'/../Resources/Views/' => public_path('/themes/default/views/modules/general/')
 		], 'views');
 
-//		require app_path().'/Modules/General/Http/composers.php';
 
-//		include __DIR__.'/../Helpers/Helpers.php';
-		require app_path().'/Modules/General/Helpers/Helpers.php';
+//		require app_path().'/Modules/General/Helpers/Helpers.php';
 
-//App::bind('App\Modules\General\Http\Domain\Typi\Menus\MenuInterface', 'Menus');
-// $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-// $loader->alias('Menus', 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface');
-
-
-// 		AliasLoader::getInstance()->alias(
-// 			'Linker',
-// 			'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade'
-// 		);
 
 	}
 

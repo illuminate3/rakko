@@ -2,52 +2,34 @@
 namespace App\Modules\General\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 
 use Laracasts\Presenter\PresentableTrait;
-use Dimsav\Translatable\Translatable;
+use Vinkla\Translator\Translatable;
+use Vinkla\Translator\Contracts\Translatable as TranslatableContract;
 
-//class MenuTranslation extends Eloquent {
-class Menu extends Model {
-//class Menu extends Base {
+class Menu extends Model implements TranslatableContract {
 
-// use Historable;
 	use Translatable;
 	use PresentableTrait;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
 	protected $table = 'menus';
 
-	protected $presenter = 'App\Modules\General\Http\Presenters\General';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-//	protected $hidden = ['password', 'remember_token'];
+// Presenter -------------------------------------------------------
+	protected $presenter = 'App\Http\Presenters\General';
 
 
-	public $translatedAttributes = [
-		'status',
-		'title'
-		];
+// Translation Model -------------------------------------------------------
+	protected $translator = 'App\Models\MenuTranslation';
 
-	protected $appends = [
-		'status',
-		'title'
+
+// DEFINE Hidden -------------------------------------------------------
+	protected $hidden = [
+		'created_at',
+		'updated_at'
 		];
 
 
 // DEFINE Fillable -------------------------------------------------------
-/*
-			$table->string('name',100)->index();
-			$table->string('description')->nullable();
-*/
 	protected $fillable = [
 		'class',
 		'name',
@@ -56,11 +38,26 @@ class Menu extends Model {
 		'title'
 		];
 
-// DEFINE Relationships --------------------------------------------------
 
-	public function menulinks()
+// Translated Columns -------------------------------------------------------
+	protected $translatedAttributes = [
+		'status',
+		'title'
+		];
+
+// 	protected $appends = [
+// 		'status',
+// 		'title'
+// 		];
+
+	public function getStatusAttribute()
 	{
-		return $this->hasMany('App\Modules\General\Http\Domain\Models\Menulink')->orderBy('position', 'asc');
+		return $this->status;
+	}
+
+	public function getTitleAttribute()
+	{
+		return $this->title;
 	}
 
 

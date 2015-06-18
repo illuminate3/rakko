@@ -1,13 +1,13 @@
 <?php
 namespace App\Modules\General\Http\Controllers;
 
-use App\Modules\General\Http\Domain\Models\Menu;
-use App\Modules\General\Http\Domain\Repositories\MenuRepository;
+use App\Modules\General\Http\Domain\Models\Locale;
+use App\Modules\General\Http\Domain\Repositories\LocaleRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\General\Http\Requests\DeleteRequest;
-use App\Modules\General\Http\Requests\MenuCreateRequest;
-use App\Modules\General\Http\Requests\MenuUpdateRequest;
+use App\Modules\General\Http\Requests\LocaleCreateRequest;
+use App\Modules\General\Http\Requests\LocaleUpdateRequest;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
@@ -17,25 +17,23 @@ use Flash;
 use Theme;
 
 
-class MenusController extends Controller {
-
+class LocalesController extends Controller {
 
 	/**
-	 * Menu Repository
+	 * Locale Repository
 	 *
-	 * @var Menu
+	 * @var Locale
 	 */
-	protected $menu;
+	protected $locale;
 
 	public function __construct(
-			MenuRepository $menu
+			LocaleRepository $locale
 		)
 	{
-		$this->menu = $menu;
+		$this->locale = $locale;
 // middleware
 //		$this->middleware('admin');
 	}
-
 
 	/**
 	 * Display a listing of the resource.
@@ -44,12 +42,11 @@ class MenusController extends Controller {
 	 */
 	public function index()
 	{
-		$menus = $this->menu->all();
+		$locales = $this->locale->all();
 //dd($locales);
 
-		return Theme::View('menus.index', compact('menus', 'locales'));
+		return Theme::View('locales.index', compact('locales'));
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -58,7 +55,7 @@ class MenusController extends Controller {
 	 */
 	public function create()
 	{
-		return Theme::View('menus.create',  $this->menu->create());
+		return Theme::View('locales.create',  $this->locale->create());
 	}
 
 	/**
@@ -67,15 +64,13 @@ class MenusController extends Controller {
 	 * @return Response
 	 */
 	public function store(
-		MenuCreateRequest $request
+		LocaleCreateRequest $request
 		)
 	{
-//dd($request);
+		$this->locale->store($request->all());
 
-		$this->menu->store($request->all());
-
-		Flash::success( trans('kotoba::cms.success.menu_create') );
-		return redirect('admin/menus');
+		Flash::success( trans('kotoba::hr.success.locale_create') );
+		return redirect('admin/locales');
 	}
 
 	/**
@@ -86,9 +81,9 @@ class MenusController extends Controller {
 	 */
 	public function show($id)
 	{
-// 		$menu = $this->menu->findOrFail($id);
+// 		$locale = $this->locale->findOrFail($id);
 //
-// 		return View::make('HR::menus.show', compact('menu'));
+// 		return View::make('HR::locales.show', compact('locale'));
 	}
 
 	/**
@@ -101,15 +96,14 @@ class MenusController extends Controller {
 	{
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
-		$modal_route = 'admin.menus.destroy';
+		$modal_route = 'admin.locales.destroy';
 		$modal_id = $id;
-//		$model = '$menu';
-		$model = 'menu';
-//dd($model);
+		$model = '$locale';
+//dd($modal_body);
 
-		return View('menus.edit',
-//		return Theme::View('menus.edit',
-			$this->menu->edit($id),
+		return View('locales.edit',
+//		return Theme::View('locales.edit',
+			$this->locale->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -126,16 +120,15 @@ class MenusController extends Controller {
 	 * @return Response
 	 */
 	public function update(
-		MenuUpdateRequest $request,
+		LocaleUpdateRequest $request,
 		$id
 		)
 	{
-//dd($request);
+//dd("update");
+		$this->locale->update($request->all(), $id);
 
-		$this->menu->update($request->all(), $id);
-
-		Flash::success( trans('kotoba::cms.success.menu_update') );
-		return redirect('admin/menus');
+		Flash::success( trans('kotoba::hr.success.locale_update') );
+		return redirect('admin/locales');
 	}
 
 	/**
@@ -146,11 +139,9 @@ class MenusController extends Controller {
 	 */
 	public function destroy($id)
 	{
-//dd($id);
-		Menu::find($id)->delete();
+		$this->locale->find($id)->delete();
 
-		Flash::success( trans('kotoba::cms.success.menu_delete') );
-		return redirect('admin/menus');
+		return Redirect::route('admin.locales.index');
 	}
 
 	/**
@@ -160,11 +151,11 @@ class MenusController extends Controller {
 	*/
 	public function data()
 	{
-//		$query = Menu::select(array('menus.id','menus.name','menus.description'))
-//			->orderBy('menus.name', 'ASC');
-//		$query = Menu::select('id', 'name' 'description', 'updated_at');
+//		$query = Locale::select(array('locales.id','locales.name','locales.description'))
+//			->orderBy('locales.name', 'ASC');
+//		$query = Locale::select('id', 'name' 'description', 'updated_at');
 //			->orderBy('name', 'ASC');
-		$query = Menu::select('id', 'name', 'description', 'updated_at');
+		$query = Locale::select('id', 'name', 'description', 'updated_at');
 //dd($query);
 
 		return Datatables::of($query)
@@ -173,7 +164,7 @@ class MenusController extends Controller {
 			->addColumn(
 				'actions',
 				'
-					<a href="{{ URL::to(\'admin/menus/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
+					<a href="{{ URL::to(\'admin/locales/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
 						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
 					</a>
 				'

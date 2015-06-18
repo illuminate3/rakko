@@ -3,7 +3,9 @@ namespace App\Modules\General\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
+use Config;
 use DB;
+use Session;
 
 class General extends Presenter {
 
@@ -42,13 +44,20 @@ class General extends Presenter {
 		return $return;
 	}
 
-    public function menuclass()
-    {
-        return $this->entity->menuclass;
-    }
-    public function title()
-    {
-        return $this->entity->name;
-    }
+	public function menuName($id)
+	{
+		$locale = Session::get('locale', Config::get('app.locale'));
+		$locale_id = DB::table('locales')
+			->where('locale', '=', $locale)
+			->pluck('id');
+//dd($locale_id);
+
+		$name = DB::table('menu_translations')
+			->where('id', '=', $id)
+			->where('locale_id', '=', $locale_id, 'AND')
+			->pluck('title');
+		return $name;
+
+	}
 
 }

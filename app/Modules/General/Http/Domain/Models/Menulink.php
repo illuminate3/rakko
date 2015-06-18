@@ -1,54 +1,35 @@
 <?php
 namespace App\Modules\General\Http\Domain\Models;
 
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-use App\Modules\General\Http\Domain\Typi\Models\Base as Base;
 use Laracasts\Presenter\PresentableTrait;
-use Dimsav\Translatable\Translatable;
+use Vinkla\Translator\Translatable;
+use Vinkla\Translator\Contracts\Translatable as TranslatableContract;
 
-use Illuminate\Database\Eloquent\Builder;
-use InvalidArgumentException;
+class Menulink extends Model implements TranslatableContract {
 
-// use TypiCMS\Modules\History\Traits\Historable;
-use TypiCMS\NestableTrait;
-use Log;
-
-
-class Menulink extends Base {
-
-// use Historable;
 	use Translatable;
 	use PresentableTrait;
-//	use NestableTrait;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
 	protected $table = 'menulinks';
 
-	protected $presenter = 'App\Modules\General\Http\Presenters\General';
+// Presenter -------------------------------------------------------
+	protected $presenter = 'App\Http\Presenters\General';
 
 
-	public $translatedAttributes = [
-		'title',
-		'status',
-		'url'
-		];
+// Translation Model -------------------------------------------------------
+	protected $translator = 'App\Models\MenulinkTranslation';
 
-	protected $appends = [
-		'title',
-		'status'
+
+// DEFINE Hidden -------------------------------------------------------
+	protected $hidden = [
+		'created_at',
+		'updated_at'
 		];
 
 
 // DEFINE Fillable -------------------------------------------------------
-/*
-			$table->string('name',100)->index();
-			$table->string('description')->nullable();
-*/
 	protected $fillable = [
 		'menu_id',
 		'page_id',
@@ -66,69 +47,34 @@ class Menulink extends Base {
 		'url'
 		];
 
-// DEFINE Relationships --------------------------------------------------
 
-	public function menu()
+// Translated Columns -------------------------------------------------------
+	protected $translatedAttributes = [
+		'title',
+		'status',
+		'url'
+		];
+
+// 	protected $appends = [
+// 		'title',
+// 		'status',
+// 		'url'
+// 		];
+
+	public function getStatusAttribute()
 	{
-		return $this->belongsTo('App\Modules\General\Http\Domain\Models\Menu');
+		return $this->status;
 	}
 
+	public function getTitleAttribute()
+	{
+		return $this->title;
+	}
 
-
-//     /**
-//      * A menulink can belongs to a page
-//      */
-//     public function page()
-//     {
-//         return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page');
-//     }
-//
-//     /**
-//      * A menulink can have children
-//      */
-//     public function children()
-//     {
-//         return $this->hasMany('TypiCMS\Modules\Menulinks\Models\Menulink', 'parent_id');
-//     }
-//
-//     /**
-//      * A menulink can have a parent
-//      */
-//     public function parent()
-//     {
-//         return $this->belongsTo('TypiCMS\Modules\Menulinks\Models\Menulink', 'parent_id');
-//     }
-//
-//     /**
-//      * Get edit url of model
-//      *
-//      * @return string|void
-//      */
-//     public function editUrl()
-//     {
-//         try {
-//             return route('admin.menus.menulinks.edit', [$this->menu_id, $this->id]);
-//         } catch (InvalidArgumentException $e) {
-//             Log::error($e->getMessage());
-//         }
-//     }
-//
-//     /**
-//      * Get back office’s index of models url
-//      *
-//      * @return string|void
-//      */
-//     public function indexUrl()
-//     {
-//         try {
-//             return route('admin.menus.edit', $this->menu_id);
-//         } catch (InvalidArgumentException $e) {
-//             Log::error($e->getMessage());
-//         }
-//     }
-
-
-// Functions --------------------------------------------------
+	public function getUrlAttribute()
+	{
+		return $this->url;
+	}
 
 
 }

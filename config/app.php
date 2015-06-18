@@ -144,37 +144,37 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-/*
- * Extend Application Service Providers...
- */
-//'App\Providers\MenuServiceProvider',
-'App\Providers\ViewComposerServiceProvider',
-//'App\Providers\ConfigWriterServiceProvider',
-//'App\Providers\ConfigServiceProvider',
+		/*
+		 * Extend Application Service Providers...
+		 */
+		'App\Providers\ViewComposerServiceProvider',
 
-/*
- * DEV Package Service Providers
- */
-'Laracasts\Generators\GeneratorsServiceProvider',
-//'App\Providers\ErrorServiceProvider',
-'Barryvdh\Debugbar\ServiceProvider',
-/*
- * Package Service Providers
- */
-'Illuminate3\Kotoba\KotobaServiceProvider',
-'Caffeinated\Modules\ModulesServiceProvider',
-'Caffeinated\Themes\ThemesServiceProvider',
-'Caffeinated\Flash\FlashServiceProvider',
-'Caffeinated\Shinobi\ShinobiServiceProvider',
-//'Caffeinated\Menus\MenusServiceProvider',
-'Laravel\Socialite\SocialiteServiceProvider',
-'Collective\Html\HtmlServiceProvider',
-'GrahamCampbell\Throttle\ThrottleServiceProvider',
-'yajra\Datatables\DatatablesServiceProvider',
-'Intervention\Image\ImageServiceProvider',
-//'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-//'Menu\MenuServiceProvider',
-'Dimsav\Translatable\TranslatableServiceProvider',
+		/*
+		 * DEV Package Service Providers
+		 */
+		'Laracasts\Generators\GeneratorsServiceProvider',
+		//'App\Providers\ErrorServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
+
+
+		/*
+		 * Composer Service Providers...
+		 */
+		'Illuminate3\Kotoba\KotobaServiceProvider',
+
+		'Caffeinated\Flash\FlashServiceProvider',
+		'Caffeinated\Modules\ModulesServiceProvider',
+		'Caffeinated\Shinobi\ShinobiServiceProvider',
+		'Caffeinated\Themes\ThemesServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
+		'GrahamCampbell\Throttle\ThrottleServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+		'Menu\MenuServiceProvider',
+		'Laravel\Socialite\SocialiteServiceProvider',
+		'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
+		'Vinkla\Translator\TranslatorServiceProvider',
+		'yajra\Datatables\DatatablesServiceProvider',
 
 	],
 
@@ -224,34 +224,33 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-/*
- * Package Alias
- */
-'Carbon'				=> 'Carbon\Carbon',
-'Module'				=> 'Caffeinated\Modules\Facades\Module',
-'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
-'Component'				=> 'Caffeinated\Themes\Facades\Component',
-'Flash'					=> 'Caffeinated\Flash\Facades\Flash',
-//'Menu'					=> 'Caffeinated\Menus\Facades\Menu',
-'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
-'Form'					=> 'Collective\Html\FormFacade',
-'Html'					=> 'Collective\Html\HtmlFacade',
-'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
-'Datatables'			=> 'yajra\Datatables\Datatables',
-'Image'					=> 'Intervention\Image\Facades\Image',
-//'LaravelLocalization'	=> 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
-'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
-'Node'					=> 'Kalnoy\Nestedset\Node',
-//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Facades\TypiFacade',
-//'Linker'				=> 'App\Modules\General\Http\Domain\Typi\Menus\LinkerInterface',
-//'Menus'				=> 'App\Modules\General\Http\Domain\Typi\Menus\MenuInterface',
-//'VMenu'				=> 'Menu\Menu',
-'Translatable'    => 'Dimsav\Translatable\Translatable',
+		/*
+		 * DEV Package Alias
+		 */
+		'Debugbar'				=> 'Barryvdh\Debugbar\Facade',
 
-/*
- * DEV Package Alias
- */
-'Debugbar'				=> 'Barryvdh\Debugbar\Facade',
+		/*
+		 * Package Alias
+		 */
+		'Carbon'				=> 'Carbon\Carbon',
+		'Component'				=> 'Caffeinated\Themes\Facades\Component',
+		'Datatables'			=> 'yajra\Datatables\Datatables',
+		'DiffFormatter'		=> 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+		'Flash'					=> 'Caffeinated\Flash\Facades\Flash',
+// 		'Form'				=> 'Illuminate\Html\FormFacade',
+// 		'HTML'				=> 'Illuminate\Html\HtmlFacade',
+		'Form'					=> 'Collective\Html\FormFacade',
+		'Html'					=> 'Collective\Html\HtmlFacade',
+		'Image'					=> 'Intervention\Image\Facades\Image',
+		'LocalizedCarbon'		=> 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
+		'Menu'					=> 'Menu\Menu',
+		'Module'				=> 'Caffeinated\Modules\Facades\Module',
+		'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
+		'Node'					=> 'Kalnoy\Nestedset\Node',
+		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
+		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
+		'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
+
 
 	],
 

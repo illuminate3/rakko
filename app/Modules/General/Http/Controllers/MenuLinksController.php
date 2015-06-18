@@ -11,13 +11,17 @@ use App\Modules\General\Http\Requests\DeleteRequest;
 use App\Modules\General\Http\Requests\MenuLinkCreateRequest;
 use App\Modules\General\Http\Requests\MenuLinkUpdateRequest;
 
-use Datatables;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Input;
+
+//use Datatables;
 use Flash;
 use Lang;
 use Session;
 use Theme;
 
-class MenuLinksController extends GeneralController {
+
+class MenuLinksController extends Controller {
 
 
 	/**
@@ -49,10 +53,9 @@ class MenuLinksController extends GeneralController {
 //		$menulinks = $this->menulink->all();
 		$links = MenuLink::with('menu')->get();
 		$lang = Session::get('locale');
-		$locales = $this->menulink->getLocales();
-//dd($links);
+		$locales = $this->menu->getLocales();
 
-		return Theme::View('modules.general.menulinks.index', compact('links', 'locales', 'lang'));
+		return View('menulinks.index', compact('links', 'locales', 'lang'));
 	}
 
 
@@ -68,7 +71,7 @@ class MenuLinksController extends GeneralController {
 		$menus = $this->menu->all()->lists('name', 'id');
 		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
-		return Theme::View('modules.general.menulinks.create',
+		return View('menulinks.create',
 			compact(
 				'lang',
 				'locales',
@@ -101,7 +104,7 @@ class MenuLinksController extends GeneralController {
 	 */
 	public function show($id)
 	{
-		return Theme::View('modules.general.menulinks.index',  $this->menulink->show($id));
+		return View('menulinks.index',  $this->menulink->show($id));
 	}
 
 	/**
@@ -119,8 +122,8 @@ class MenuLinksController extends GeneralController {
 		$model = '$menulink';
 //dd($id);
 
-		return View('general::menulinks.edit',
-//		return Theme::View('modules.general.menus.edit',
+		return View('menulinks.edit',
+//		return View('menus.edit',
 			$this->menulink->edit($id),
 				compact(
 					'modal_title',
@@ -142,11 +145,11 @@ class MenuLinksController extends GeneralController {
 		$id
 		)
 	{
-//dd("update");
+//dd($request->menu_id);
 		$this->menulink->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::cms.success.menulink_update') );
-		return redirect('admin/menulinks');
+		return redirect('admin/menulinks/' . $request->menu_id);
 	}
 
 	/**
@@ -159,7 +162,9 @@ class MenuLinksController extends GeneralController {
 	{
 		$this->menulink->find($id)->delete();
 
-		return Redirect::route('admin.menulinks.index');
+
+		Flash::success( trans('kotoba::cms.success.menulink_delete') );
+		return redirect('admin/menus');
 	}
 
 	/**

@@ -43,7 +43,7 @@
 <ul class="nav nav-tabs">
 	@foreach( $locales as $locale => $properties)
 		<li class="@if ($locale == $lang)active @endif">
-			<a href="#{{ $locale }}" data-target="#{{ $locale }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+			<a href="#{{ $properties['id'] }}" data-target="#{{ $properties['id'] }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
 		</li>
 	@endforeach
 </ul>
@@ -51,7 +51,7 @@
 <div class="tab-content padding-lg margin-bottom-xl">
 
 @foreach( $locales as $locale => $properties)
-	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $locale }}}">
+	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $properties['id'] }}}">
 
 @if (count($links))
 
@@ -70,11 +70,23 @@
 	<tbody>
 		@foreach ($links as $link)
 			<tr>
-				<td>{{ $link->{'title:'.$locale} }}</td>
-				<td>{{ $link->{'url:'.$locale} }}</td>
-				<td>{{ $link->position }}</td>
-				<td>{{ $link->menu->{'title:'.$locale} }}</td>
-				<td>{{ $link->present()->status($link->{'status:'.$locale}) }}</td>
+				<td>
+					{{ $link->translate($properties['locale'])->title }}
+				</td>
+				<td>
+					{{ $link->translate($properties['locale'])->url }}
+				</td>
+				<td>
+					{{ $link->position }}
+				</td>
+				<td>
+					{{ $link->present()->menuName($link->menu_id) }}
+					{{-- $link->menu_id --}}
+				</td>
+				<td>
+					{{ $link->present()->status( $link->translate($properties['locale'])->status ) }}
+					{{-- $link->translate($properties['locale'])->status --}}
+				</td>
 				<td>
 					<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
