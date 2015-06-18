@@ -1,12 +1,10 @@
 <?php
+namespace App\Modules\General\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use App\Models\Locale;
 
-//use DB;
-//use Eloquent;
-//use Model;
-//use Schema;
+use DB;
+use Schema;
 
 class LocaleTableSeeder extends Seeder {
 

@@ -2,7 +2,9 @@
 namespace App\Modules\General\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-Use DB, Eloquent, Model, Schema;
+
+use DB;
+use Schema;
 
 class StatusesSeeder extends Seeder {
 

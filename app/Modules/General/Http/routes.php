@@ -32,25 +32,9 @@ Route::group(['prefix' => 'admin'], function() {
 // Resources
 
 	Route::resource('statuses', 'StatusesController');
+	Route::resource('locales', 'LocalesController');
 	Route::resource('menus', 'MenusController');
 	Route::resource('menulinks', 'MenuLinksController');
-	Route::get('menulinks/{id}/new_link', [
-//		'as' => 'builds.group',
-		'uses' => 'MenuLinksController@create',
-		]);
-	Route::post('menulinks/save', [
-		'as' => 'admin.menulinks.save',
-		'uses' => 'MenuLinksController@save'
-		]);
-
-	Route::post('menulinks/{id}/delete', [
-		'as' => 'admin.menulinks.delete',
-		'uses' => 'MenuLinksController@confirmDestroy'
-		]);
-	Route::post('menulinks/{id}/toggle-publish', [
-		'as' => 'admin.menulinks.toggle-publish',
-		'uses' => 'MenuLinksController@togglePublish'
-		]);
 
 
 // Controllers

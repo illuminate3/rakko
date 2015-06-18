@@ -31,12 +31,12 @@ class GeneralServiceProvider extends ServiceProvider
 	{
 
 		App::register('App\Modules\General\Providers\RouteServiceProvider');
-		App::register('App\Modules\General\Providers\MenuServiceProvider');
+//		App::register('App\Modules\General\Providers\MenuServiceProvider');
 
 		$this->registerNamespaces();
 //		$this->registerMenus();
 
-		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
+//		App::register('App\Modules\General\Providers\RepositoryServiceProvider');
 //		App::register('App\Modules\General\Providers\ComposerServiceProvider');
 
 	}
