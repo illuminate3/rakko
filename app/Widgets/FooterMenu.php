@@ -21,6 +21,7 @@ class FooterMenu extends AbstractWidget
 
 	public function run()
 	{
+
 		Menu::handler('footer')->hydrate(function()
 			{
 			$main_menu_id = LMenu::where('name', '=', 'footer')->pluck('id');

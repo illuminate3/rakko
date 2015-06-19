@@ -5,6 +5,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateLocalesTable extends Migration {
 
+	public function __construct()
+	{
+		// Get the prefix
+		$this->prefix = Config::get('general.general_db.prefix', '');
+	}
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,12 +18,7 @@ class CreateLocalesTable extends Migration {
 	 */
 	public function up()
 	{
-
-//		'en'          => ['name' => 'English',                'script' => 'Latn', 'native' => 'English'],
-
-
-		Schema::create('locales', function(Blueprint $table)
-		{
+		Schema::create($this->prefix . 'locales', function(Blueprint $table) {
 
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();

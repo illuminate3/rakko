@@ -87,8 +87,8 @@
 					</li>
 					<li class="divider"></li>
 
-{!! Widget::AdminMenu() !!}
-
+{{-- Widget::AdminMenu() --}}
+{!! Plugin::MenuAdmin() !!}
 					<li class="divider"></li>
 @endif
 					<li>

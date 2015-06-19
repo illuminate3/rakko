@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "371fede08c97fe65df8ecfd865cc71b6",
+    "hash": "6cd02895c8cc255e90e63d90704cd52e",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -407,7 +407,7 @@
         },
         {
             "name": "caffeinated/plugins",
-            "version": "dev-master",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/plugins.git",
@@ -1147,12 +1147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "a4080c53c4935aeb7d1f9544b4dff2da32cf5e97"
+                "reference": "15a6151463307a638267fd1a7b039c5261f15116"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/a4080c53c4935aeb7d1f9544b4dff2da32cf5e97",
-                "reference": "a4080c53c4935aeb7d1f9544b4dff2da32cf5e97",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/15a6151463307a638267fd1a7b039c5261f15116",
+                "reference": "15a6151463307a638267fd1a7b039c5261f15116",
                 "shasum": ""
             },
             "require": {
@@ -1183,7 +1183,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-06-03 18:43:39"
+            "time": "2015-06-18 18:27:10"
         },
         {
             "name": "intervention/image",
@@ -1755,16 +1755,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "15f36da073454d630bac20afef815aa9cfa4cf8f"
+                "reference": "31685e257ad092fb1a37f9d5d0d87f343e63c568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/15f36da073454d630bac20afef815aa9cfa4cf8f",
-                "reference": "15f36da073454d630bac20afef815aa9cfa4cf8f",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/31685e257ad092fb1a37f9d5d0d87f343e63c568",
+                "reference": "31685e257ad092fb1a37f9d5d0d87f343e63c568",
                 "shasum": ""
             },
             "require": {
@@ -1805,7 +1805,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-06-03 18:14:09"
+            "time": "2015-06-18 16:36:42"
         },
         {
             "name": "laravelcollective/html",
@@ -4708,7 +4708,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "caffeinated/flash": 20,
-        "caffeinated/plugins": 20,
         "illuminate3/kotoba": 20,
         "kalnoy/nestedset": 20,
         "laracasts/presenter": 20,

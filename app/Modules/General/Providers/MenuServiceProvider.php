@@ -13,7 +13,7 @@ use App;
 use Cache;
 use Config;
 use DB;
-use Menu;
+use Plugin;
 use Session;
 
 class MenuServiceProvider extends ServiceProvider {
@@ -48,6 +48,8 @@ class MenuServiceProvider extends ServiceProvider {
 				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
 			});
 */
+Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
+Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
 
 	}
 
@@ -63,6 +65,9 @@ class MenuServiceProvider extends ServiceProvider {
 	public function register()
 	{
 //
+Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
+Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
+
 	}
 
 

@@ -16,8 +16,9 @@
 			</div>
 			<div class="col-sm-4">
 
-{!! Widget::AdminMenu() !!}
 {{--
+{!! Plugin::MenuAdmin() !!}
+{!! Widget::AdminMenu() !!}
 				<ul class="pull-right">
 					<li>{!! link_to_route('dashboard', 'Home') !!}</li>
 					<li>{!! link_to_route('dashboard.faq', 'Faq') !!}</li>

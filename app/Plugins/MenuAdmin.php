@@ -1,7 +1,7 @@
 <?php
-namespace App\Widgets;
+namespace App\Plugins;
 
-use Arrilot\Widgets\AbstractWidget;
+//use Arrilot\Widgets\AbstractWidget;
 
 use App\Modules\General\Http\Domain\Models\Menu as LMenu;
 use App\Modules\General\Http\Domain\Models\MenuLink;
@@ -14,7 +14,7 @@ use Config;
 use Menu;
 use Session;
 
-class AdminMenu extends AbstractWidget
+class MenuAdmin
 {
 
 
@@ -31,7 +31,7 @@ class AdminMenu extends AbstractWidget
 				$children->add($item->translate(App::getLocale())->url, $item->translate(App::getLocale())->title, Menu::items($item->as));
 			});
 
-		return view("widgets.admin_menu");
+		return view("plugins.admin_menu");
 	}
 
 

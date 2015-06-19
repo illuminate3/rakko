@@ -53,6 +53,7 @@ return [
 	*/
 
 	'locale' => 'en',
+	'locales' => ['en', 'es'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -165,6 +166,7 @@ return [
 		'Arrilot\Widgets\ServiceProvider',
 		'Caffeinated\Flash\FlashServiceProvider',
 		'Caffeinated\Modules\ModulesServiceProvider',
+		'Caffeinated\Plugins\PluginsServiceProvider',
 		'Caffeinated\Shinobi\ShinobiServiceProvider',
 		'Caffeinated\Themes\ThemesServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
@@ -248,6 +250,7 @@ return [
 		'Module'				=> 'Caffeinated\Modules\Facades\Module',
 		'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 		'Node'					=> 'Kalnoy\Nestedset\Node',
+		'Plugin'				=> 'Caffeinated\Plugins\Facades\Plugin',
 		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
 		'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',

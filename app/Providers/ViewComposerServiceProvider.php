@@ -2,10 +2,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\MySqlConnection;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 use App\Modules\General\Http\Domain\Models\Locale;
 
 use Config;
+use Schema;
 use View;
 
 
@@ -37,13 +41,16 @@ class ViewComposerServiceProvider extends ServiceProvider
 	public function getLocales()
 	{
 
- 		$locales = Locale::all();
-
+// 			$locales = Config::get('app.locales');
+// if ( Schema::hasTable('locales') ) {
+		$locales = Locale::all();
 		if ( empty($locales) ) {
 			throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');
 		}
-
+//}
+//dd($locales);
 	return $locales;
+
 	}
 
 
