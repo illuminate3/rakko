@@ -30,6 +30,14 @@
 @endif
 
 
+<ul class="nav navbar-nav">
+	{!!
+		Menu::handler('top')
+			->getItemsAtDepth(0);
+	!!}
+</ul>
+
+
 	@if (Auth::user())
 		<ul class="nav navbar-nav">
 {{--
@@ -88,7 +96,9 @@
 					<li class="divider"></li>
 
 {{-- Widget::AdminMenu() --}}
-{!! Plugin::MenuAdmin() !!}
+{!!
+	Plugin::MenuAdmin()
+!!}
 					<li class="divider"></li>
 @endif
 					<li>

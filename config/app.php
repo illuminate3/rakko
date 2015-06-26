@@ -53,7 +53,6 @@ return [
 	*/
 
 	'locale' => 'en',
-	'locales' => ['en', 'es'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -164,10 +163,11 @@ return [
 		'Illuminate3\Kotoba\KotobaServiceProvider',
 
 		'Arrilot\Widgets\ServiceProvider',
+		'Baum\Providers\BaumServiceProvider',
 		'Caffeinated\Flash\FlashServiceProvider',
 		'Caffeinated\Modules\ModulesServiceProvider',
+		'Caffeinated\Modules\ModulesServiceProvider',
 		'Caffeinated\Plugins\PluginsServiceProvider',
-		'Caffeinated\Shinobi\ShinobiServiceProvider',
 		'Caffeinated\Themes\ThemesServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
 		'GrahamCampbell\Throttle\ThrottleServiceProvider',
@@ -238,7 +238,7 @@ return [
 		'Carbon'				=> 'Carbon\Carbon',
 		'Component'				=> 'Caffeinated\Themes\Facades\Component',
 		'Datatables'			=> 'yajra\Datatables\Datatables',
-		'DiffFormatter'		=> 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+		'DiffFormatter'			=> 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
 		'Flash'					=> 'Caffeinated\Flash\Facades\Flash',
 // 		'Form'				=> 'Illuminate\Html\FormFacade',
 // 		'HTML'				=> 'Illuminate\Html\HtmlFacade',

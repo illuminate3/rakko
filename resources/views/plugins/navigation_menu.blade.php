@@ -1,7 +1,7 @@
 <! -- Plugin -->
 {!!
 
-	Menu::handler('admin')
+	Menu::handler('navigation')
 		->getAllItems()
 		->render();
 
