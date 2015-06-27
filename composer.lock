@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6cd02895c8cc255e90e63d90704cd52e",
+    "hash": "c2fd11705499e38129bf02b5fd158d02",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -97,16 +97,16 @@
         },
         {
             "name": "arrilot/laravel-widgets",
-            "version": "2.7",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Arrilot/laravel-widgets.git",
-                "reference": "1191f54b569af4d3130fbeb8dbfd2395324b5933"
+                "reference": "20acabf50d80ca5ce074d8c8a45bda74083a035c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/1191f54b569af4d3130fbeb8dbfd2395324b5933",
-                "reference": "1191f54b569af4d3130fbeb8dbfd2395324b5933",
+                "url": "https://api.github.com/repos/Arrilot/laravel-widgets/zipball/20acabf50d80ca5ce074d8c8a45bda74083a035c",
+                "reference": "20acabf50d80ca5ce074d8c8a45bda74083a035c",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
                 "laravel",
                 "widgets"
             ],
-            "time": "2015-06-22 22:59:58"
+            "time": "2015-06-27 16:11:19"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -355,7 +355,7 @@
         },
         {
             "name": "caffeinated/flash",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/flash.git",
@@ -1202,12 +1202,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "bcf46e2e59d8d5fc07f8679737d8f5bf1a5e8340"
+                "reference": "6a8326e9a1b2d1be736894f80e94203c53d0151c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/bcf46e2e59d8d5fc07f8679737d8f5bf1a5e8340",
-                "reference": "bcf46e2e59d8d5fc07f8679737d8f5bf1a5e8340",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/6a8326e9a1b2d1be736894f80e94203c53d0151c",
+                "reference": "6a8326e9a1b2d1be736894f80e94203c53d0151c",
                 "shasum": ""
             },
             "require": {
@@ -1238,7 +1238,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-06-22 02:30:44"
+            "time": "2015-06-26 19:48:15"
         },
         {
             "name": "intervention/image",
@@ -3502,20 +3502,20 @@
         },
         {
             "name": "wikimedia/composer-merge-plugin",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wikimedia/composer-merge-plugin.git",
-                "reference": "caf5b67de61edb32c3df9dad4e67a8ecbbc69d5e"
+                "reference": "fa2079fa0bca55a9d053bfd0fb75331423260c18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/caf5b67de61edb32c3df9dad4e67a8ecbbc69d5e",
-                "reference": "caf5b67de61edb32c3df9dad4e67a8ecbbc69d5e",
+                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/fa2079fa0bca55a9d053bfd0fb75331423260c18",
+                "reference": "fa2079fa0bca55a9d053bfd0fb75331423260c18",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0",
+                "composer-plugin-api": "^1.0",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -3538,8 +3538,14 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Bryan Davis",
+                    "email": "bd808@wikimedia.org"
+                }
+            ],
             "description": "Composer plugin to merge multiple composer.json files",
-            "time": "2015-05-28 00:24:05"
+            "time": "2015-06-26 18:23:07"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
@@ -4764,13 +4770,11 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "caffeinated/flash": 20,
         "illuminate3/kotoba": 20,
         "kalnoy/nestedset": 20,
         "laracasts/presenter": 20,
         "laravelrus/localized-carbon": 20,
         "laracasts/generators": 20,
-        "vespakoen/menu": 0,
         "baum/baum": 0
     },
     "prefer-stable": false,
