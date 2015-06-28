@@ -1,2 +1,5 @@
 <! -- Plugin -->
-{!! Menu::handler('footer')->addClass('list-unstyled'); !!}
+{!!
+	Menu::handler('footer')
+	->addClass('list-unstyled');
+!!}

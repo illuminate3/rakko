@@ -16,6 +16,10 @@
 			</div>
 			<div class="col-sm-4">
 
+	{!!
+		Menu::handler('right')
+			->getItemsAtDepth(0);
+	!!}
 {{--
 {!! Plugin::MenuAdmin() !!}
 {!! Widget::AdminMenu() !!}
