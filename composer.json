@@ -6,6 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
+		"anlutro/l4-settings": "^0.4.0",
 		"caffeinated/flash": "~1.0",
 		"caffeinated/modules": "~1.0",
 		"caffeinated/plugins": "^1.0",
@@ -28,8 +29,7 @@
 		"barryvdh/laravel-httpcache": "0.2.*",
 		"illuminate/html": "^5.0",
 		"jbroadway/urlify": "~1.0",
-		"laravelrus/localized-carbon": "dev-master",
-		"anlutro/l4-settings": "^0.4.0"
+		"laravelrus/localized-carbon": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

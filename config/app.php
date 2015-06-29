@@ -236,7 +236,6 @@ return [
 		/*
 		 * Package Alias
 		 */
-		 'Setting' => 'anlutro\LaravelSettings\Facade',
 		'Carbon'				=> 'Carbon\Carbon',
 		'Component'				=> 'Caffeinated\Themes\Facades\Component',
 		'Datatables'			=> 'yajra\Datatables\Datatables',
@@ -253,6 +252,7 @@ return [
 		'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 		'Node'					=> 'Kalnoy\Nestedset\Node',
 		'Plugin'				=> 'Caffeinated\Plugins\Facades\Plugin',
+		'Setting'				=> 'anlutro\LaravelSettings\Facade',
 		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
 		'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',

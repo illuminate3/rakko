@@ -2,10 +2,10 @@
 return array(
 	/**
 	 * Which type of store to use.
-	 * 
+	 *
 	 * Valid options are 'json' and 'database'.
 	 */
-	'store' => 'json',
+	'store' => 'database',
 
 	/**
 	 * If the json store is used, give the full path to the .json file

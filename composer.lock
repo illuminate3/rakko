@@ -1248,12 +1248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "6a8326e9a1b2d1be736894f80e94203c53d0151c"
+                "reference": "3ea4030201d9fc49666c534f471f5ece45189fc6"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/3ea4030201d9fc49666c534f471f5ece45189fc6",
-                "reference": "6a8326e9a1b2d1be736894f80e94203c53d0151c",
+                "reference": "3ea4030201d9fc49666c534f471f5ece45189fc6",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1284,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-06-26 19:48:15"
+            "time": "2015-06-27 23:48:28"
         },
         {
             "name": "intervention/image",
@@ -3704,16 +3704,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "37b5e653c99cbb9113108d7dc59a0ddc306acc46"
+                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/37b5e653c99cbb9113108d7dc59a0ddc306acc46",
-                "reference": "37b5e653c99cbb9113108d7dc59a0ddc306acc46",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/72538eeb70bbfb11964412a3d098d109efd012f7",
+                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7",
                 "shasum": ""
             },
             "require": {
@@ -3758,7 +3758,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-05-29 15:12:07"
+            "time": "2015-06-29 05:42:04"
         },
         {
             "name": "laracasts/generators",
