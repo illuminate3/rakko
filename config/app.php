@@ -162,6 +162,7 @@ return [
 		 */
 		'Illuminate3\Kotoba\KotobaServiceProvider',
 
+		'anlutro\LaravelSettings\ServiceProvider',
 		'Arrilot\Widgets\ServiceProvider',
 		'Baum\Providers\BaumServiceProvider',
 		'Caffeinated\Flash\FlashServiceProvider',
@@ -235,6 +236,7 @@ return [
 		/*
 		 * Package Alias
 		 */
+		 'Setting' => 'anlutro\LaravelSettings\Facade',
 		'Carbon'				=> 'Carbon\Carbon',
 		'Component'				=> 'Caffeinated\Themes\Facades\Component',
 		'Datatables'			=> 'yajra\Datatables\Datatables',
