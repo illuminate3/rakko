@@ -6,12 +6,18 @@
 @stop
 
 @section('styles')
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.4.1/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.4.1/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
+	jQuery(document).ready(function($) {
+		$(".chosen-select").chosen();
+	});
 @stop
 
 

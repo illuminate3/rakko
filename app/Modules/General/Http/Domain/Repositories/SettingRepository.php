@@ -63,10 +63,12 @@ class SettingRepository extends BaseRepository {
 	 * @param  int  $id
 	 * @return Illuminate\Support\Collection
 	 */
-	public function edit($id)
+	public function edit($key)
 	{
-		$setting = $this->model->find($id);
-//dd($module);
+//dd($key);
+//		$setting = $this->model->find($key);
+		$setting = $this->getKeyValues($key);
+//dd($setting);
 
 		return compact('setting');
 	}
@@ -78,18 +80,6 @@ class SettingRepository extends BaseRepository {
 	 */
 	public function store($input)
 	{
-//dd($input);
-//dd($input->key);
-
-
-Registry::set( $input->key, $input->value );
-
-// 		foreach ($input as $key => $value)
-// 		{
-// 			Registry::set($key, $value);
-// 		}
-//		Setting::save();
-
 // 		$this->model = new Setting;
 // 		$this->model->create($input);
 	}
@@ -106,6 +96,17 @@ Registry::set( $input->key, $input->value );
 //dd($input['enabled']);
 		$setting = Setting::find($id);
 		$setting->update($input);
+	}
+
+
+	public function getKeyValues($key)
+	{
+
+		$values = DB::table('settings')
+			->where('key', '=', $key)
+			->first();
+
+		return $values;
 	}
 
 

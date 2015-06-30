@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "060eaf069849174efba153e68c1eff3b",
+    "hash": "7d9d51aa5a5af889803e8d13a0a0d684",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -1248,12 +1248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "3ea4030201d9fc49666c534f471f5ece45189fc6"
+                "reference": "3fe741c94585881b0e85398d4343e4390f01c919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/3ea4030201d9fc49666c534f471f5ece45189fc6",
-                "reference": "3ea4030201d9fc49666c534f471f5ece45189fc6",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/3fe741c94585881b0e85398d4343e4390f01c919",
+                "reference": "3fe741c94585881b0e85398d4343e4390f01c919",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1284,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-06-27 23:48:28"
+            "time": "2015-06-30 14:36:36"
         },
         {
             "name": "intervention/image",
@@ -3399,54 +3399,6 @@
             "time": "2015-05-01 14:14:24"
         },
         {
-            "name": "torann/registry",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Torann/laravel-registry.git",
-                "reference": "9d366fb1c0602b130324aec2a346dc4af7d19147"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Torann/laravel-registry/zipball/9d366fb1c0602b130324aec2a346dc4af7d19147",
-                "reference": "9d366fb1c0602b130324aec2a346dc4af7d19147",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Torann\\Registry\\": "src/Torann/Registry"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Stainback",
-                    "email": "daniel@lyften.com"
-                }
-            ],
-            "description": "Laravel registry manager for application configurations",
-            "keywords": [
-                "Settings",
-                "configuration",
-                "laravel",
-                "registry"
-            ],
-            "time": "2015-03-11 19:37:02"
-        },
-        {
             "name": "vespakoen/menu",
             "version": "3.0.1",
             "source": {
@@ -4076,16 +4028,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.6",
+            "version": "2.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44"
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/07e27765596d72c378a6103e80da5d84e802f1e4",
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4",
                 "shasum": ""
             },
             "require": {
@@ -4134,7 +4086,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-19 07:11:55"
+            "time": "2015-06-30 06:52:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4316,16 +4268,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.7.5",
+            "version": "4.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc"
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f6701ef3faea759acd1910a7751d8d102a7fd5bc",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
                 "shasum": ""
             },
             "require": {
@@ -4384,7 +4336,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-21 07:23:36"
+            "time": "2015-06-30 06:53:57"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4869,7 +4821,6 @@
         "kalnoy/nestedset": 20,
         "laracasts/presenter": 20,
         "laravelrus/localized-carbon": 20,
-        "torann/registry": 20,
         "laracasts/generators": 20,
         "vespakoen/menu": 0,
         "baum/baum": 0

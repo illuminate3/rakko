@@ -177,7 +177,6 @@ return [
 		'Menu\MenuServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
-		'Torann\Registry\RegistryServiceProvider',
 		'Vinkla\Translator\TranslatorServiceProvider',
 		'yajra\Datatables\DatatablesServiceProvider',
 
@@ -253,7 +252,6 @@ return [
 		'NestedSet'				=> 'Kalnoy\Nestedset\NestedSet',
 		'Node'					=> 'Kalnoy\Nestedset\Node',
 		'Plugin'				=> 'Caffeinated\Plugins\Facades\Plugin',
-		'Registry'				=> 'Torann\Registry\Facades\Registry',
 		'Setting'				=> 'anlutro\LaravelSettings\Facade',
 		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',

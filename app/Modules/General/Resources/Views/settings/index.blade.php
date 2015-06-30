@@ -48,7 +48,7 @@ oTable =
 <table id="table" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>{{ trans('kotoba::table.key') }}</th>
+			<th>{{ trans('kotoba::table.name') }}</th>
 			<th>{{ trans('kotoba::table.value') }}</th>
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
@@ -60,51 +60,13 @@ oTable =
 					{{ $setting->key }}
 				</td>
 				<td>
-					{{ $setting->value }}
-		<input type="text" id="{{ $setting->key }}" name="{{ $setting->key }}" value="{{ $setting->value }}" class="form-control">
+					{{ Setting::get($setting->key) }}
 				</td>
 				<td>
-{{--
-					<a href="/admin/settings/{{ $setting->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
+					<a href="/admin/settings/{{ $setting->key }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
 						{{ trans('kotoba::button.edit') }}
 					</a>
-					<a href="/admin/settinglinks/{{ $setting->id }}" class="btn btn-info" title="{{ trans('kotoba::button.edit') }}">
-						<i class="fa fa-link fa-fw"></i>
-						{{ Lang::choice('kotoba::button.link', 2) }}
-					</a>
---}}
-				</td>
-			</tr>
-		@endforeach
-		@foreach ($settings as $key => $value)
-			<tr>
-				<td>
-				{{ $key }} --
-					{{ Registry::get($key) }}
-				</td>
-				<td>
-				{{ $value }} --
-					{{-- $setting->value --}}
-					{!! ucfirst(str_replace('_', ' ', $key)) !!}
-				</td>
-				<td>
-		<input type="text" id="{{ $key }}" name="{{ $key }}" value="{{ $value }}" placeholder="{{ trans('kotoba::general.name') }}" class="form-control">
-
-
-					{!! Form::text($key, $value, ['class'=>'form-control']) !!}
-
-					{!!
-						Form::text(
-							$key,
-							$value,
-							array(
-								'class' => 'form-control'
-							)
-						)
-					!!}
-
-
 				</td>
 			</tr>
 		@endforeach

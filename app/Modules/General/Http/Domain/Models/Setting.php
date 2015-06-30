@@ -13,7 +13,7 @@ class Setting extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'system_registries';
+	protected $table = 'settings';
 
 	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 

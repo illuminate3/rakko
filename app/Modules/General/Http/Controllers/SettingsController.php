@@ -1,7 +1,7 @@
 <?php
 namespace App\Modules\General\Http\Controllers;
 
-use App\Modules\General\Http\Domain\Models\Setting;
+use App\Modules\General\Http\Domain\Models\Setting as Model;
 use App\Modules\General\Http\Domain\Repositories\SettingRepository;
 
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ use App\Modules\General\Http\Requests\SettingUpdateRequest;
 use Datatables;
 use Flash;
 // use Form;
-// use Registry;
+use Setting;
 use Theme;
 
 class SettingsController extends GeneralController {
@@ -22,13 +22,15 @@ class SettingsController extends GeneralController {
 	 *
 	 * @var Setting
 	 */
-	protected $setting;
+	protected $setting_repo;
 
 	public function __construct(
-			SettingRepository $setting
+			Model $model,
+			SettingRepository $setting_repo
 		)
 	{
-		$this->setting = $setting;
+		$this->model = $model;
+		$this->setting_repo = $setting_repo;
 // middleware
 		$this->middleware('admin');
 	}
@@ -40,7 +42,7 @@ class SettingsController extends GeneralController {
 	 */
 	public function index()
 	{
-		$settings = $this->setting->all();
+		$settings = $this->setting_repo->all();
 
 		return Theme::View('general::settings.index', compact('settings'));
 	}
@@ -52,7 +54,7 @@ class SettingsController extends GeneralController {
 	 */
 	public function create()
 	{
-		return Theme::View('modules.general.settings.create',  $this->setting->create());
+		return Theme::View('modules.general.settings.create',  $this->setting_repo->create());
 	}
 
 	/**
@@ -64,14 +66,12 @@ class SettingsController extends GeneralController {
 		SettingCreateRequest $request
 		)
 	{
-//		$request = $request->except('_token');
-//		$settings = Input::except('_token');
-//dd($request->key);
+//dd($request);
 
-//		$this->setting->store($request->except('_token'));
-		$this->setting->store($request);
+//		$this->setting_repo->store($request);
+		Setting::set( $request->key, $request->value );
 
-		Flash::success( trans('kotoba::hr.success.setting_create') );
+		Flash::success( trans('kotoba::cms.success.setting_create') );
 		return redirect('admin/settings');
 	}
 
@@ -94,17 +94,17 @@ class SettingsController extends GeneralController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($key)
 	{
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
 		$modal_route = 'admin.settings.destroy';
-		$modal_id = $id;
+		$modal_id = $key;
 		$model = '$setting';
 //dd($modal_body);
 
 		return View('general::settings.edit',
-			$this->setting->edit($id),
+			$this->setting_repo->edit($key),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -125,10 +125,11 @@ class SettingsController extends GeneralController {
 		$id
 		)
 	{
-//dd("update");
-		$this->setting->update($request->all(), $id);
+//dd($request);
+//		$this->setting_repo->update($request->all(), $id);
+		Setting::set( $request->key, $request->value );
 
-		Flash::success( trans('kotoba::hr.success.setting_update') );
+		Flash::success( trans('kotoba::cms.success.setting_update') );
 		return redirect('admin/settings');
 	}
 
@@ -140,7 +141,7 @@ class SettingsController extends GeneralController {
 	 */
 	public function destroy($id)
 	{
-		$this->setting->find($id)->delete();
+		$this->setting_repo->find($id)->delete();
 
 		return Redirect::route('admin.settings.index');
 	}

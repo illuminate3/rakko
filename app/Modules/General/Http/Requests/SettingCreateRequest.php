@@ -4,7 +4,9 @@ namespace App\Modules\General\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Config;
 
+
 class SettingCreateRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -16,6 +18,7 @@ class SettingCreateRequest extends FormRequest {
 		return true;
 	}
 
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -24,9 +27,10 @@ class SettingCreateRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-// 			'name'						=> 'required',
-// 			'description'				=> 'required'
+			'key'						=> 'required',
+			'value'				=> 'required'
 		];
 	}
+
 
 }

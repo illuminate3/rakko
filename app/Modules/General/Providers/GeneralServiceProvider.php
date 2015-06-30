@@ -63,7 +63,7 @@ class GeneralServiceProvider extends ServiceProvider
 	public function boot()
 	{
 
-		$this->storeAllMenus();
+//		$this->storeAllMenus();
 
 
 // config
