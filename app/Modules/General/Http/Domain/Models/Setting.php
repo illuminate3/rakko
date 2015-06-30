@@ -4,7 +4,7 @@ namespace App\Modules\General\Http\Domain\Models;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
-class Status extends Model {
+class Setting extends Model {
 
 	use PresentableTrait;
 
@@ -13,7 +13,7 @@ class Status extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'statuses';
+	protected $table = 'system_registries';
 
 	protected $presenter = 'App\Modules\General\Http\Presenters\General';
 
@@ -30,9 +30,9 @@ class Status extends Model {
 			$table->string('description')->nullable();
 */
 	protected $fillable = [
-		'id',
-		'name',
-		'description'
+// 		'id',
+// 		'name',
+// 		'description'
 		];
 
 // DEFINE Relationships --------------------------------------------------

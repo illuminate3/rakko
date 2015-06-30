@@ -35,10 +35,11 @@ Route::group(['prefix' => 'admin'], function() {
 
 // Resources
 
-	Route::resource('statuses', 'StatusesController');
 	Route::resource('locales', 'LocalesController');
 	Route::resource('menus', 'MenusController');
 	Route::resource('menulinks', 'MenuLinksController');
+	Route::resource('settings', 'SettingsController');
+	Route::resource('statuses', 'StatusesController');
 
 
 // Controllers

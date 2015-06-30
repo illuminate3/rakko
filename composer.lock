@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b31139f0347656f8aee3982a77719b52",
+    "hash": "060eaf069849174efba153e68c1eff3b",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -1288,21 +1288,22 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "1009557c32205b077e34b2ae611e6316fa423021"
+                "reference": "ff4f45412044f3ab26f29260570a14ff41631d87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/1009557c32205b077e34b2ae611e6316fa423021",
-                "reference": "1009557c32205b077e34b2ae611e6316fa423021",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/ff4f45412044f3ab26f29260570a14ff41631d87",
+                "reference": "ff4f45412044f3ab26f29260570a14ff41631d87",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": ">=5.3.0"
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9.2",
@@ -1340,7 +1341,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-06-10 17:50:36"
+            "time": "2015-06-28 15:55:12"
         },
         {
             "name": "intervention/imagecache",
@@ -3398,6 +3399,54 @@
             "time": "2015-05-01 14:14:24"
         },
         {
+            "name": "torann/registry",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-registry.git",
+                "reference": "9d366fb1c0602b130324aec2a346dc4af7d19147"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-registry/zipball/9d366fb1c0602b130324aec2a346dc4af7d19147",
+                "reference": "9d366fb1c0602b130324aec2a346dc4af7d19147",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Torann\\Registry\\": "src/Torann/Registry"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "daniel@lyften.com"
+                }
+            ],
+            "description": "Laravel registry manager for application configurations",
+            "keywords": [
+                "Settings",
+                "configuration",
+                "laravel",
+                "registry"
+            ],
+            "time": "2015-03-11 19:37:02"
+        },
+        {
             "name": "vespakoen/menu",
             "version": "3.0.1",
             "source": {
@@ -4820,6 +4869,7 @@
         "kalnoy/nestedset": 20,
         "laracasts/presenter": 20,
         "laravelrus/localized-carbon": 20,
+        "torann/registry": 20,
         "laracasts/generators": 20,
         "vespakoen/menu": 0,
         "baum/baum": 0
