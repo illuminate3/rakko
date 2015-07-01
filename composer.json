@@ -12,6 +12,7 @@
 		"caffeinated/plugins": "^1.0",
 		"caffeinated/shinobi": "~1.0",
 		"caffeinated/themes": "~1.2",
+		"cviebrock/eloquent-sluggable": ">=3.0.0-beta",
 		"graham-campbell/throttle": "~3.0",
 		"illuminate3/kotoba": "dev-master",
 		"intervention/image": "~2.1",

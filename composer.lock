@@ -716,6 +716,118 @@
             "time": "2015-05-26 10:57:51"
         },
         {
+            "name": "cocur/slugify",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocur/slugify.git",
+                "reference": "2b67d4e2b75dbaed2ebefa9eb5683e8940513847"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/2b67d4e2b75dbaed2ebefa9eb5683e8940513847",
+                "reference": "2b67d4e2b75dbaed2ebefa9eb5683e8940513847",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "laravel/framework": "~4.1",
+                "latte/latte": "~2.2",
+                "mockery/mockery": "~0.9",
+                "nette/di": "~2.2",
+                "phpunit/phpunit": "~3.7",
+                "sami/sami": "~1.3",
+                "satooshi/php-coveralls": "0.6.*",
+                "silex/silex": "~1.2",
+                "symfony/dependency-injection": "~2.4",
+                "symfony/http-kernel": "~2.4",
+                "twig/twig": "~1",
+                "zendframework/zend-modulemanager": "~2.2",
+                "zendframework/zend-servicemanager": "~2.2",
+                "zendframework/zend-view": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cocur\\Slugify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivo Bathke",
+                    "email": "ivo.bathke@gmail.com"
+                },
+                {
+                    "name": "Florian Eckerstorfer",
+                    "email": "florian@eckerstorfer.co",
+                    "homepage": "https://florian.ec"
+                }
+            ],
+            "description": "Converts a string into a slug.",
+            "keywords": [
+                "slug",
+                "slugify"
+            ],
+            "time": "2015-03-18 08:21:30"
+        },
+        {
+            "name": "cviebrock/eloquent-sluggable",
+            "version": "3.0.0-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
+                "reference": "0b56831be599ccc8f73c51943f43b6765bfe4d7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/0b56831be599ccc8f73c51943f43b6765bfe4d7a",
+                "reference": "0b56831be599ccc8f73c51943f43b6765bfe4d7a",
+                "shasum": ""
+            },
+            "require": {
+                "cocur/slugify": "1.1.*",
+                "illuminate/config": "5.*",
+                "illuminate/database": "5.*",
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.0.*",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cviebrock\\EloquentSluggable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Viebrock",
+                    "email": "colin@viebrock.ca"
+                }
+            ],
+            "description": "Easy creation of slugs for your Eloquent models in Laravel",
+            "homepage": "https://github.com/cviebrock/eloquent-sluggable",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "slug"
+            ],
+            "time": "2015-06-13 03:54:26"
+        },
+        {
             "name": "danielstjules/stringy",
             "version": "1.9.0",
             "source": {
@@ -1248,12 +1360,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate3/kotoba.git",
-                "reference": "3fe741c94585881b0e85398d4343e4390f01c919"
+                "reference": "d0da9820d941e63b683a96318362d5b8e2736cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/3fe741c94585881b0e85398d4343e4390f01c919",
-                "reference": "3fe741c94585881b0e85398d4343e4390f01c919",
+                "url": "https://api.github.com/repos/illuminate3/kotoba/zipball/d0da9820d941e63b683a96318362d5b8e2736cdc",
+                "reference": "d0da9820d941e63b683a96318362d5b8e2736cdc",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1396,7 @@
                 "language",
                 "laravel"
             ],
-            "time": "2015-06-30 14:36:36"
+            "time": "2015-06-30 16:34:09"
         },
         {
             "name": "intervention/image",
@@ -1857,16 +1969,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.6",
+            "version": "v2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "31685e257ad092fb1a37f9d5d0d87f343e63c568"
+                "reference": "75e6275c5aaac8ddc9ab49f445c11cf1f9468396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/31685e257ad092fb1a37f9d5d0d87f343e63c568",
-                "reference": "31685e257ad092fb1a37f9d5d0d87f343e63c568",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/75e6275c5aaac8ddc9ab49f445c11cf1f9468396",
+                "reference": "75e6275c5aaac8ddc9ab49f445c11cf1f9468396",
                 "shasum": ""
             },
             "require": {
@@ -1907,7 +2019,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-06-18 16:36:42"
+            "time": "2015-06-30 15:59:08"
         },
         {
             "name": "laravelcollective/html",
@@ -4823,7 +4935,8 @@
         "laravelrus/localized-carbon": 20,
         "laracasts/generators": 20,
         "vespakoen/menu": 0,
-        "baum/baum": 0
+        "baum/baum": 0,
+        "cviebrock/eloquent-sluggable": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

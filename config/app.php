@@ -171,6 +171,7 @@ return [
 		'Caffeinated\Plugins\PluginsServiceProvider',
 		'Caffeinated\Themes\ThemesServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'GrahamCampbell\Throttle\ThrottleServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
