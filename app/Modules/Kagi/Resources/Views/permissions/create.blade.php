@@ -70,7 +70,9 @@
 <hr>
 
 <div class="form-group">
+<div class="col-sm-12">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
+</div>
 </div>
 
 {!! Form::close() !!}

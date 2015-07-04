@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7d9d51aa5a5af889803e8d13a0a0d684",
+    "hash": "551f97b00936e490c10ff3364f76bae2",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -4929,14 +4929,14 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "cviebrock/eloquent-sluggable": 10,
         "illuminate3/kotoba": 20,
         "kalnoy/nestedset": 20,
         "laracasts/presenter": 20,
         "laravelrus/localized-carbon": 20,
         "laracasts/generators": 20,
         "vespakoen/menu": 0,
-        "baum/baum": 0,
-        "cviebrock/eloquent-sluggable": 10
+        "baum/baum": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
