@@ -31,10 +31,10 @@
 
 
 <ul class="nav navbar-nav">
-	{!!
+	{{--
 		Menu::handler('top')
 			->getItemsAtDepth(0);
-	!!}
+	--}}
 </ul>
 
 

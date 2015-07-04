@@ -6,7 +6,9 @@
 		<div class="row">
 			<div class="col-sm-4">
 
-{!! Widget::FooterMenu() !!}
+{{--
+	Widget::FooterMenu()
+--}}
 
 			</div>
 			<div class="col-sm-4">
@@ -16,10 +18,10 @@
 			</div>
 			<div class="col-sm-4">
 
-	{!!
+	{{--
 		Menu::handler('right')
 			->getItemsAtDepth(0);
-	!!}
+	--}}
 {{--
 {!! Plugin::MenuAdmin() !!}
 {!! Widget::AdminMenu() !!}
