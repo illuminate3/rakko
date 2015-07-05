@@ -11,16 +11,16 @@ use Config;
 use Menu;
 use Session;
 
-class MenuNavigation
+class Featured
 {
 
 
 	public function run()
 	{
 
-		Menu::handler('top')->hydrate(function()
+		Menu::handler('featured')->hydrate(function()
 			{
-			$pages = Content::where('print_status_id', '=', 2)->orderBy('order')->get();
+			$pages = Content::whereRaw('print_status_id = 2 and is_featured =1')->orderBy('order')->get();
 //dd($pages);
 			return $pages;
 			},
@@ -31,7 +31,7 @@ class MenuNavigation
 				}
 			});
 
-		return view("plugins.navigation_menu");
+		return view("plugins.featured");
 	}
 
 
