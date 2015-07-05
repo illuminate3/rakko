@@ -16,7 +16,8 @@
 			</div>
 			<div class="col-sm-4">
 
-				{{-- Plugin::MenuNavigation() --}}
+				{!! Plugin::Featured() !!}
+				{!! Plugin::Timed() !!}
 
 {{--
 				<ul class="pull-right">

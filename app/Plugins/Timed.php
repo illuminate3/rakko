@@ -11,17 +11,17 @@ use Config;
 use Menu;
 use Session;
 
-class Featured
+class Timed
 {
 
 
 	public function run()
 	{
 
-		Menu::handler('featured')->hydrate(function()
+		Menu::handler('timed')->hydrate(function()
 			{
-//			$pages = Content::whereRaw('print_status_id = 2 and is_featured = 1')->orderBy('order')->get();
-			$pages = Content::where('print_status_id', '=', 2)->IsFeatured()->orderBy('order')->get();
+//			$pages = Content::IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
+			$pages = Content::where('print_status_id', '=', 2)->IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
 //dd($pages);
 			return $pages;
 			},
@@ -32,7 +32,7 @@ class Featured
 				}
 			});
 
-		return view("plugins.featured");
+		return view("plugins.timed");
 	}
 
 
