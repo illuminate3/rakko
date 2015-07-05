@@ -6,9 +6,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 
-{{--
-	Widget::FooterMenu()
---}}
+				{!! Plugin::MenuFooter() !!}
 
 			</div>
 			<div class="col-sm-4">
@@ -18,13 +16,9 @@
 			</div>
 			<div class="col-sm-4">
 
-	{{--
-		Menu::handler('right')
-			->getItemsAtDepth(0);
-	--}}
+				{{-- Plugin::MenuNavigation() --}}
+
 {{--
-{!! Plugin::MenuAdmin() !!}
-{!! Widget::AdminMenu() !!}
 				<ul class="pull-right">
 					<li>{!! link_to_route('dashboard', 'Home') !!}</li>
 					<li>{!! link_to_route('dashboard.faq', 'Faq') !!}</li>

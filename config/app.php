@@ -163,7 +163,7 @@ return [
 		'Illuminate3\Kotoba\KotobaServiceProvider',
 
 		'anlutro\LaravelSettings\ServiceProvider',
-		'Arrilot\Widgets\ServiceProvider',
+//		'Arrilot\Widgets\ServiceProvider',
 		'Baum\Providers\BaumServiceProvider',
 		'Caffeinated\Flash\FlashServiceProvider',
 		'Caffeinated\Modules\ModulesServiceProvider',
@@ -257,8 +257,8 @@ return [
 		'Socialize'				=> 'Laravel\Socialite\Facades\Socialite',
 		'Theme'					=> 'Caffeinated\Themes\Facades\Theme',
 		'Throttle'				=> 'GrahamCampbell\Throttle\Facades\Throttle',
-		'Widget'				=> 'Arrilot\Widgets\Facade',
-		'AsyncWidget'			=> 'Arrilot\Widgets\AsyncFacade',
+//		'Widget'				=> 'Arrilot\Widgets\Facade',
+//		'AsyncWidget'			=> 'Arrilot\Widgets\AsyncFacade',
 
 
 	],

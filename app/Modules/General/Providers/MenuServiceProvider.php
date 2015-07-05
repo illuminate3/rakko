@@ -65,8 +65,8 @@ Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
 	public function register()
 	{
 //
-Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
-Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
+// Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
+// Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
 
 	}
 

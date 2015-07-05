@@ -1,8 +1,6 @@
 <?php
 namespace App\Plugins;
 
-//use Arrilot\Widgets\AbstractWidget;
-
 use App\Modules\General\Http\Domain\Models\Menu as LMenu;
 use App\Modules\General\Http\Domain\Models\MenuLink;
 

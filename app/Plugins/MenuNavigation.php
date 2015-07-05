@@ -20,14 +20,14 @@ class MenuNavigation
 
 		Menu::handler('top')->hydrate(function()
 			{
-			$pages = Content::get();
+			$pages = Content::orderBy('order')->get();
 //dd($pages);
 			return $pages;
 			},
 			function($children, $item)
 			{
 				if($item->depth < 1) {
-					$children->add($item->translate(Config::get('app.locale'))->slug, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
+					$children->add($item->slug, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
 				}
 			});
 

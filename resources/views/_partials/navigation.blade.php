@@ -31,10 +31,9 @@
 
 
 <ul class="nav navbar-nav">
-	{{--
-		Menu::handler('top')
-			->getItemsAtDepth(0);
-	--}}
+{!!
+	Plugin::MenuNavigation()
+!!}
 </ul>
 
 
@@ -94,11 +93,9 @@
 						</a>
 					</li>
 					<li class="divider"></li>
-
-{{-- Widget::AdminMenu() --}}
-{!!
-	Plugin::MenuAdmin()
-!!}
+					{!!
+						Plugin::MenuAdmin()
+					!!}
 					<li class="divider"></li>
 @endif
 					<li>

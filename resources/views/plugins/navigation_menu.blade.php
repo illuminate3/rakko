@@ -1,6 +1,8 @@
 <! -- Plugin -->
+
+NAVIGATION
+
 {!!
-	Menu::handler('navigation')
-		->getAllItems()
-		->render();
+	Menu::handler('top')
+		->getItemsAtDepth(0);
 !!}
