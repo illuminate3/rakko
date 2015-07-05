@@ -3,13 +3,11 @@ namespace App\Plugins;
 
 use App\Modules\Himawari\Http\Domain\Models\Content as Content;
 
-
 use App;
-//use Cache;
 use Config;
-//use DB;
 use Menu;
 use Session;
+
 
 class Timed
 {
@@ -20,7 +18,6 @@ class Timed
 
 		Menu::handler('timed')->hydrate(function()
 			{
-//			$pages = Content::IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
 			$pages = Content::where('print_status_id', '=', 2)->IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
 //dd($pages);
 			return $pages;

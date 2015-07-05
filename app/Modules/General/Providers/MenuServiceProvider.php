@@ -48,8 +48,6 @@ class MenuServiceProvider extends ServiceProvider {
 				$children->add($item->translate(Config::get('app.locale'))->url, $item->translate(Config::get('app.locale'))->title, Menu::items($item->as));
 			});
 */
-Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
-Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
 
 	}
 
@@ -67,6 +65,10 @@ Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
 //
 // Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
 // Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
+
+		Plugin::register('MenuAdmin', 'App\Plugins\MenuAdmin');
+		Plugin::register('MenuFooter', 'App\Plugins\MenuFooter');
+		Plugin::register('MenuNavigation', 'App\Plugins\MenuNavigation');
 
 	}
 

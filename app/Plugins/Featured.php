@@ -3,13 +3,11 @@ namespace App\Plugins;
 
 use App\Modules\Himawari\Http\Domain\Models\Content as Content;
 
-
 use App;
-//use Cache;
 use Config;
-//use DB;
 use Menu;
 use Session;
+
 
 class Featured
 {
@@ -20,7 +18,6 @@ class Featured
 
 		Menu::handler('featured')->hydrate(function()
 			{
-//			$pages = Content::whereRaw('print_status_id = 2 and is_featured = 1')->orderBy('order')->get();
 			$pages = Content::where('print_status_id', '=', 2)->IsFeatured()->orderBy('order')->get();
 //dd($pages);
 			return $pages;
