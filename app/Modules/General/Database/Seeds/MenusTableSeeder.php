@@ -74,7 +74,7 @@ class MenusTableSeeder extends Seeder {
 			DB::unprepared($statement);
 		DB::table('menus')->insert( $menu_names );
 
-// Create Roles
+// Create Menu Translations
 		DB::table('menu_translations')->delete();
 			$statement = "ALTER TABLE menu_translations AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
