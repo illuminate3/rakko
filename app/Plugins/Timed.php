@@ -15,10 +15,11 @@ class Timed
 
 	public function run()
 	{
-
 		Menu::handler('timed')->hydrate(function()
 			{
-			$pages = Content::where('print_status_id', '=', 2)->IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
+//dd('die');
+			$pages = Content::where('print_status_id', '=', 3)->IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
+//			$pages = Content::whereRaw('print_status_id = 3 OR print_status_id = 4')->IsTimed()->PublishStart()->PublishEnd()->orderBy('order')->get();
 //dd($pages);
 			return $pages;
 			},

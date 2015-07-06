@@ -20,7 +20,8 @@ class MenuNavigation
 
 		Menu::handler('top')->hydrate(function()
 			{
-			$pages = Content::where('print_status_id', '=', 2)->orderBy('order')->get();
+//			$pages = Content::where('print_status_id', '=', 3)->orderBy('order')->get();
+			$pages = Content::whereRaw('print_status_id = 3 OR print_status_id = 4')->orderBy('order')->get();
 //dd($pages);
 			return $pages;
 			},
